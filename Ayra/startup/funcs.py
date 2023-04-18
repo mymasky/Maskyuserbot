@@ -406,7 +406,7 @@ async def plug(plugin_channels):
         os.mkdir("addons")
     if not os.path.exists("addons/__init__.py"):
         with open("addons/__init__.py", "w") as f:
-            f.write("from plugins import *\n\nbot = ayra_bot")
+            f.write("from modules import *\n\nbot = ayra_bot")
     LOGS.info("• Loading Plugins from Plugin Channel(s) •")
     for chat in plugin_channels:
         LOGS.info(f"{'•'*4} {chat}")
@@ -474,14 +474,9 @@ async def ready():
     if spam_sent and not spam_sent.media:
         udB.set_key("LAST_UPDATE_LOG_SPAM", spam_sent.id)
     get_ = udB.get_key("OLDANN") or []
-    
-    except Exception as er:
-        LOGS.exception(er)
-    
-"""
     try:
         updts = await async_searcher(
-            "https://ayra-api.vercel.app/announcements", post=True, re_json=True
+            "https://ultroid-api.vercel.app/announcements", post=True, re_json=True
         )
         for upt in updts:
             key = list(upt.keys())[0]
@@ -500,7 +495,7 @@ async def ready():
         udB.set_key("OLDANN", get_)
     except Exception as er:
         LOGS.exception(er)
-"""
+
 
 async def WasItRestart(udb):
     key = udb.get_key("_RESTART")
