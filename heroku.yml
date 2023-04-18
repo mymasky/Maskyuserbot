@@ -1,0 +1,3 @@
+build:
+  docker:
+      ayra: Dockerfile
