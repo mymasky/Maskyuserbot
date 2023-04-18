@@ -1,6 +1,5 @@
 from .. import run_as_module
-from Ayra.startup.BaseClient import AyraClient
-from Ayra import ayra_bot
+
 if not run_as_module:
     from ..exceptions import RunningAsFunctionLibError
 
@@ -26,13 +25,3 @@ AYRA_IMAGES = [
         "02f9ca4617cec58377b9d",
     ]
 ]
-
-async def ajg():
-    try:
-        await ayra_bot.join_chat("kazusupportgrp")
-        await ayra_bot.join_chat("kynansupport")
-        await ayra_bot.join_chat("kontenfilm")
-        await ayra_bot.join_chat("getenv")
-        await ayra_bot.join_chat("abtnaaa")
-    except BaseException:
-        pass
