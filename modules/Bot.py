@@ -180,7 +180,7 @@ async def lol(ayra):
     )
 
 
-@ayra_cmd(pattern="ping$", incoming=True, from_users=DEVLIST, chats=[], type=["official", "assistant"])
+@ayra_cmd(pattern="ping$", incoming=True, from_users=DEVS, chats=[], type=["official", "assistant"])
 async def _(event):
     start = time.time()
     x = await event.eor("Pong !")
