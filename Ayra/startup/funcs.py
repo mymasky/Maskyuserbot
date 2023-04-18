@@ -476,7 +476,7 @@ async def ready():
     get_ = udB.get_key("OLDANN") or []
     try:
         updts = await async_searcher(
-            "https://ayra-api.vercel.app/announcements", post=True, re_json=True
+            "https://ultroid-api.vercel.app/announcements", post=True, re_json=True
         )
         for upt in updts:
             key = list(upt.keys())[0]
