@@ -10,7 +10,7 @@ import os, shutil
 import random
 import time
 from random import randint
-from Ayra.dB import ajg
+
 try:
     from pytz import timezone
 except ImportError:
