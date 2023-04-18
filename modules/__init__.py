@@ -29,7 +29,7 @@ from Ayra._misc._decorators import ayra_cmd, compile_pattern
 from Ayra._misc import owner_and_sudos, sudoers
 from Ayra.fns.admins import admin_check
 from Ayra._misc._wrappers import eod, eor
-from Ayra.dB import DEVLIST, AYRA_IMAGES
+from Ayra.dB import DEVS, AYRA_IMAGES
 from Ayra.fns.ytdl import get_videos_link
 from Ayra.fns.helper import *
 from Ayra.fns.info import *
