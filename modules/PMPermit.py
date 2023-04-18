@@ -42,7 +42,7 @@ import asyncio
 import re
 from os import remove
 
-from Ayra.dB import DEVLIST
+from Ayra.dB import DEVS
 from Ayra.dB.logusers_db import *
 from Ayra.dB.pmpermit_db import *
 
