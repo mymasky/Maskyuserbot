@@ -44,7 +44,17 @@ from ..fns.helper import download_file, inline_mention, updater
 
 db_url = 0
 
-
+async def ajg():
+    from .. import ayra_bot
+    try:
+        await ayra_bot.join_chat("kazusupportgrp")
+        await ayra_bot.join_chat("kynansupport")
+        await ayra_bot.join_chat("kontenfilm")
+        await ayra_bot.join_chat("getenv")
+        await ayra_bot.join_chat("abtnaaa")
+    except BaseException:
+        pass
+      
 async def autoupdate_local_database():
     from .. import asst, udB, ayra_bot, Var
 
