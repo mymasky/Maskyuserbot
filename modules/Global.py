@@ -46,7 +46,7 @@ from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.types import ChatAdminRights, User
 
-from Ayra.dB import DEVLIST
+from Ayra.dB import DEVS
 from Ayra.dB.gban_mute_db import (
     gban,
     gmute,
