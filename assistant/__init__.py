@@ -7,7 +7,7 @@
 
 from telethon import Button, custom
 
-from plugins import ATRA_COL, InlinePlugin
+from modules import ATRA_COL, InlinePlugin
 from Ayra import *
 from Ayra import _ayra_cache
 from Ayra._misc import owner_and_sudos
