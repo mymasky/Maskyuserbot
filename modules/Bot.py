@@ -22,7 +22,7 @@ from telethon.errors.rpcerrorlist import (
 )
 
 from Ayra.version import __version__ as AyraVer
-from Ayra.dB import DEVLIST
+from Ayra.dB import DEVS
 from . import HOSTED_ON, LOGS
 
 try:
