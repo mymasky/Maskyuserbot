@@ -61,13 +61,9 @@ SUP_BUTTONS = [
 
 @in_pattern("ayra", owner=True)
 async def inline_handler(event):
-    z = []
-    for x in LIST.values():
-        z.extend(x)
     text = get_string("inline_4").format(
         riz,
         len(HELP.get("Official", [])),
-        len(z),
     )
     result = await event.builder.article(
       title="Ayra Help Menu", text=text, buttons=_main_help_menu
