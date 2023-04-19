@@ -37,7 +37,7 @@ from telethon.tl.functions.phone import EditGroupCallTitleRequest as settitle
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
-from . import ayra_cmd, vc_asst, owner_and_sudos, get_string, udB, inline_mention, add_to_queue, mediainfo, file_download, LOGS, is_url_ok, bash, download, Player, VC_QUEUE, list_queue, CLIENTS,VIDEO_ON, vid_download, dl_playlist, DEVS
+from . import ayra_cmd, vc_asst, owner_and_sudos, get_string, udB, inline_mention, add_to_queue, mediainfo, file_download, LOGS, is_url_ok, bash, download, Player, VC_QUEUE, list_queue, CLIENTS,VIDEO_ON, vid_download, dl_playlist, DEVS, eor
 from Ayra.kynan import register
 
 
@@ -115,15 +115,10 @@ async def _(e):
         await e.eor(f"`{ex}`")
         
         
-@vc_asst("joinvc")
+@ayra_cmd(
+    pattern="vctitle(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^Joinvcs$")
 async def join_(event):
-    sender = await event.get_sender()
-    nan = await event.client.get_me()
-    if sender.id != nan.id:
-        kynan = await event.reply(get_string("com_1"))
-    else: 
-        kynan = await eor(event, get_string("com_1"))
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
         try:
@@ -136,7 +131,7 @@ async def join_(event):
     await asyncio.sleep(1)
     if not Nan.group_call.is_connected:
         await Nan.group_call.join(chat)
-        await kynan.edit(get_string("jovc_1").format(chat)
+        await event.eor(get_string("jovc_1").format(chat)
         )
         await asyncio.sleep(1)
         await Nan.group_call.set_is_mute(False)
