@@ -62,7 +62,7 @@ from . import (
     updater,
 )
 
-piic ="https://graph.org/file/02f9ca4617cec58377b9d.jpg""
+piic ="https://graph.org/file/02f9ca4617cec58377b9d.jpg"
 
 buttons = [
     [
