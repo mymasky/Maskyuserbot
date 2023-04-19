@@ -28,7 +28,7 @@
             "value": ""
         },
         "MONGO_URI": {
-            "description": "Redis endpoint password, from redislabs.com",
+            "description": "MongoDB Gan....",
             "value": ""
         },
         "HEROKU_API": {
