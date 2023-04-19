@@ -316,7 +316,7 @@ async def _(e):
     m = await updater()
     branch = (Repo.init()).active_branch
     if m:
-        x = await asst.send_file(
+        x = await asst.send_message(
             udB.get_key("LOG_CHANNEL"),
             caption="• **Pembaruan tersedia** •",
             force_document=False,
