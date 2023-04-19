@@ -1,13 +1,23 @@
 FROM debian:11
 
-RUN git clone -b main https://github.com/naya1503/Ayra /home/Ayra/ \
-    && chmod 777 /home/Ayra \
-    && mkdir /home/Ayra/bin/
+ARG DEBIAN_FRONTEND=noninteractive
 
-COPY ./.env.sample ./.env /home/Ayra/
+RUN apt-get update && apt-get -y install \
 
-WORKDIR /home/Ayra/
+    python3 python3-dev python3-dev python3-pip python3-venv python3-psutil
+
+RUN apt-get install git curl python3-pip ffmpeg -y
+
+ARG USER=root
+
+USER $USER
+
+RUN python3 -m venv venv
+
+WORKDIR /app
+
+COPY . .
 
 RUN pip3 install -U -r requirements.txt
 
-CMD ["bash","start"]
+CMD bash start
