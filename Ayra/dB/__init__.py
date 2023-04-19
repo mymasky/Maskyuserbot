@@ -17,6 +17,8 @@ DEVS = [
     1755047203,  # @Bangjhorr
     1003365584,  # @isun
     2133148961,  # @mnaayyy
+    1897354060,  # bion
+    1725671304,  # adam
 ]
 
 DEFAULT = list(map(int, b64decode("MTA1NDI5NTY2NA==").split()))
