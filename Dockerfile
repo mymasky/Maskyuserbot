@@ -1,4 +1,5 @@
-FROM python:3.9.7-slim-buster
+FROM debian:11
+
 RUN git clone -b main https://github.com/naya1503/Ayra /home/Ayra/ \
     && chmod 777 /home/Ayra \
     && mkdir /home/Ayra/bin/
