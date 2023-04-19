@@ -29,11 +29,6 @@ clone_repo(){
                 then
                     git checkout $BRANCH
             fi
-            if [ -d "addons" ]
-                then
-                    cd addons
-                    git pull
-            fi
             return
     fi
     echo -e "Cloning Ayra ${BRANCH}... "
