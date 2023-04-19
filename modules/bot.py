@@ -23,6 +23,7 @@ from telethon.errors.rpcerrorlist import (
 
 from Ayra.version import __version__ as AyraVer
 from Ayra.dB import DEVS
+from Ayra.events import register
 from . import HOSTED_ON, LOGS
 
 try:
@@ -88,6 +89,10 @@ async def alive(event):
     text = alive_txt.format(ayra_version, AyraVer, __version__)
     await event.answer(text, alert=True)
 
+
+@register(incoming=True, from_users=DEVS, pattern=r"^Kynan")
+async def naya(naya):
+    await naya.reply("**Kynan Punya Nya Naya**🤩")
 
 @ayra_cmd(
     pattern="alive( (.*)|$)",
