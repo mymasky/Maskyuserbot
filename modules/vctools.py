@@ -129,11 +129,11 @@ async def join_(event):
     Nan = Player(chat)
     await asyncio.sleep(1)
     if not Nan.group_call.is_connected:
-    await Nan.group_call.join(chat)
-    await asyncio.sleep(1)
-    await Nan.group_call.set_is_mute(False)
-    await asyncio.sleep(1)
-    await Nan.group_call.set_is_mute(True)
+        await Nan.group_call.join(chat)
+        await asyncio.sleep(1)
+        await Nan.group_call.set_is_mute(False)
+        await asyncio.sleep(1)
+        await Nan.group_call.set_is_mute(True)
 
 
 
