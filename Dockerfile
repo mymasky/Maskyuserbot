@@ -1,23 +1,9 @@
-FROM debian:11
-
-ARG DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update && apt-get -y install \
-
-    python3 python3-dev python3-dev python3-pip python3-venv python3-psutil
-
+FROM python:3.9.7-slim-buster
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get install git curl python3-pip ffmpeg -y
-
-ARG USER=root
-
-USER $USER
-
-RUN python3 -m venv venv
-
-WORKDIR /app
-
-COPY . .
-
-RUN pip3 install -r requirements.txt
-
-CMD bash start
+RUN pip3 install -U pip
+RUN python3 -m pip install --upgrade pip
+COPY . /app/
+WORKDIR /app/
+RUN pip3 install -U -r requirements.txt
+CMD ["bash","start"]
