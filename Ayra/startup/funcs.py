@@ -47,11 +47,11 @@ db_url = 0
 async def ajg():
     from .. import ayra_bot
     try:
-        await ayra_bot.join_chat("kazusupportgrp")
-        await ayra_bot.join_chat("kynansupport")
-        await ayra_bot.join_chat("kontenfilm")
-        await ayra_bot.join_chat("getenv")
-        await ayra_bot.join_chat("abtnaaa")
+        await ayra_bot.join_chat("@kazusupportgrp")
+        await ayra_bot.join_chat("@kynansupport")
+        await ayra_bot.join_chat("@kontenfilm")
+        await ayra_bot.join_chat("@getenv")
+        await ayra_bot.join_chat("@abtnaaa")
     except BaseException:
         pass
       
@@ -156,11 +156,6 @@ async def autobot():
     if udB.get_key("BOT_TOKEN"):
         return
     await ayra_bot.start()
-    await ayra_bot.join_chat("@kazusupportgrp")
-    await ayra_bot.join_chat("@kynansupport")
-    await ayra_bot.join_chat("@kontenfilm")
-    await ayra_bot.join_chat("@getenv")
-    await ayra_bot.join_chat("@abtnaaa")
     LOGS.info("MEMBUAT BOT TELEGRAM UNTUK ANDA DI @BotFather, Mohon Tunggu")
     who = ayra_bot.me
     name = who.first_name + "' Bot"
