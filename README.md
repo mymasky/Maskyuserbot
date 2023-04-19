@@ -7,12 +7,12 @@
 
 <b>A stable pluggable Telegram userbot + Voice & Video Call music bot, based on Telethon.</b>
 
-<a href="https://github.com/senpai80/Ayra/commits"> <img src="https://img.shields.io/github/last-commit/senpai80/Ayra?color=red&logo=github&logoColor=blue&style=for-the-badge" /></a>
-[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/senpai80/Ayra)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-blue)](https://GitHub.com/senpai80/Ayra/graphs/commit-activity)
-[![CodeQuality](https://img.shields.io/codacy/grade/a723cb464d5a4d25be3152b5d71de82d?color=blue&logo=codacy)](https://app.codacy.com/gh/senpai80/Ayra/dashboard)
-[![GitHub Forks](https://img.shields.io/github/forks/senpai80/Ayra?&logo=github)](https://github.com/senpai80/Ayra/fork)
-[![GitHub Stars](https://img.shields.io/github/stars/senpai80/Ayra?&logo=github)](https://github.com/senpai80/Ayra/stargazers)
+<a href="https://github.com/naya1503/Ayra/commits"> <img src="https://img.shields.io/github/last-commit/naya1503/Ayra?color=red&logo=github&logoColor=blue&style=for-the-badge" /></a>
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/naya1503/Ayra)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-blue)](https://GitHub.com/naya1503/Ayra/graphs/commit-activity)
+[![CodeQuality](https://img.shields.io/codacy/grade/a723cb464d5a4d25be3152b5d71de82d?color=blue&logo=codacy)](https://app.codacy.com/gh/naya1503/Ayra/dashboard)
+[![GitHub Forks](https://img.shields.io/github/forks/naya1503/Ayra?&logo=github)](https://github.com/naya1503/Ayra/fork)
+[![GitHub Stars](https://img.shields.io/github/stars/naya1503/Ayra?&logo=github)](https://github.com/naya1503/Ayra/stargazers)
 ----
 
 ## Disclaimer
@@ -24,10 +24,6 @@ mengelola grup secara efisien dan mengotomatiskan beberapa hal yang membosankan.
 Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak.
 ```
 
-# Tutorial 
-- Tutorial to get Redis URL and password - [here.](./resources/extras/redistut.md)
----
-
 <details>
 <summary><b>🔗 Deploy di VPS</b></summary>
 <br>
@@ -35,37 +31,25 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak
 ### Tutorial Deploy di VPS
 
 
-• `sudo apt-get install ffmpeg -y`
-
-• `sudo apt-get install mediainfo`
-
-• `pip3 install pytgcalls==3.0.0.dev22`
-
-• `pip install pyUltroid`
-
- • `git clone https://github.com/senpai80/Ayra`
+ • `git clone https://github.com/naya1503/Ayra`
 
  • `cd Ayra`
 
  • `pip3 install requirements.txt`
- 
- • `pip3 install --no-cache-dir -r re*/st*/op*.txt`
 
- • `cp .env.sample .env`
-
- • `nano config.env`
-  - isi vars
+ • `nano .env`
+  - isi vars API_ID, API_HASH, MONGO_URI, DAN SESSION
   - Jika sudah 
   - ketik ctrl + S
   - ctrl + X
 
  • `screen -S Ayra`
 
- • `bash startup`
+ • `bash start`
 
 </details>
 
-<p><a href="https://heroku.com/deploy?template=https://github.com/senpai80/Ayra"><img src="https://img.shields.io/badge/BUAT DI-HEROKU-aqua?style=plastic&logo=heroku&logoColor=gold"width="300" /></a></p>
+<p><a href="https://heroku.com/deploy?template=https://github.com/naya1503/Ayra"><img src="https://img.shields.io/badge/BUAT DI-HEROKU-aqua?style=plastic&logo=heroku&logoColor=gold"width="300" /></a></p>
 
 </details>
 
@@ -83,4 +67,4 @@ Ayra is licensed under [GNU Affero General Public License](https://www.gnu.org/l
 * [MarshalX](https://github.com/MarshalX) for [PyTgCalls.](https://github.com/MarshalX/tgcalls)
 
 > Kanged by
-* [![↻ꝛɪᴢ ꭙ](https://img.shields.io/static/v1?label=↻ꝛɪᴢ&message=ꭙ&color=critical)](https://t.me/riizzvbss)
+* [![↻ꝛɪᴢ ꭙ](https://img.shields.io/static/v1?label=↻ꝛɪᴢ&message=ꭙ&color=critical)](https://t.me/rizzvbss)
