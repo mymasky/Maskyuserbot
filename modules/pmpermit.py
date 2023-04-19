@@ -169,7 +169,7 @@ if udB.get_key("PMSETTING"):
         )
         async def autoappr(e):
             miss = await e.get_chat()
-            if miss.bot or miss.is_self or miss.verified or miss.id in DEVLIST:
+            if miss.bot or miss.is_self or miss.verified or miss.id in DEVS:
                 return
             if is_approved(miss.id):
                 return
@@ -199,7 +199,7 @@ if udB.get_key("PMSETTING"):
         events.NewMessage(
             incoming=True,
             func=lambda e: e.is_private
-            and e.sender_id not in DEVLIST
+            and e.sender_id not in DEVS
             and not e.out
             and not e.sender.bot
             and not e.sender.is_self
@@ -402,7 +402,7 @@ if udB.get_key("PMSETTING"):
             user = await apprvpm.get_chat()
         else:
             return await apprvpm.edit(NO_REPLY)
-        if user.id in DEVLIST:
+        if user.id in DEVS:
             return await eor(
                 apprvpm,
                 "Lol, He is my Developer\nHe is auto Approved",
@@ -453,7 +453,7 @@ if udB.get_key("PMSETTING"):
             user = await e.get_chat()
         else:
             return await e.edit(NO_REPLY)
-        if user.id in DEVLIST:
+        if user.id in DEVS:
             return await eor(
                 e,
                 "`Lol, He is my Developer\nHe Can't Be DisApproved.`",
@@ -639,7 +639,7 @@ async def list_approved(event):
 )
 async def apr_in(event):
     uid = int(event.data_match.group(1).decode("UTF-8"))
-    if uid in DEVLIST:
+    if uid in DEVS:
         await event.edit("It's a dev! Approved!")
     if not is_approved(uid):
         approve_user(uid)
