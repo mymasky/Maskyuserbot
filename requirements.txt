@@ -25,7 +25,7 @@ textblob
 wikipedia
 spotdl
 pyrogram
-pyUltroid
+Ayra
 akinator
 apscheduler
 aiohttp
