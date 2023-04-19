@@ -248,7 +248,7 @@ def register(**args):
                     with open("error.log", "w+") as file:
                         file.write(ftext)
 
-        if bot:
+        if ayra_bot:
             if not disable_edited:
                 ayra_bot.add_event_handler(wrapper, events.MessageEdited(**args))
             ayra_bot.add_event_handler(wrapper, events.NewMessage(**args))
