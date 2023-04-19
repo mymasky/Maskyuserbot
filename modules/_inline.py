@@ -67,7 +67,6 @@ async def inline_handler(event):
     text = get_string("inline_4").format(
         riz,
         len(HELP.get("Official", [])),
-        len(HELP.get("Addons", [])),
         len(z),
     )
     result = await event.builder.article(
@@ -103,7 +102,6 @@ async def setting(event):
         get_string("inline_4").format(
             riz,
             len(HELP.get("Official", [])),
-            len(HELP.get("Addons", [])),
             len(z),
         ),
         link_preview=False,
@@ -251,7 +249,6 @@ async def opner(event):
         get_string("inline_4").format(
             riz,
             len(HELP.get("Official", [])),
-            len(HELP.get("Addons", [])),
             len(z),
         ),
         buttons=_main_help_menu,
