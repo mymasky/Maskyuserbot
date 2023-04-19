@@ -1,20 +1,23 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 Riizzvbss
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
-
 FROM debian:11
 
-# set timezone
-ENV TZ=Asia/Bangkok
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+ARG DEBIAN_FRONTEND=noninteractive
 
-COPY installer.sh .
+RUN apt-get update && apt-get -y install \
 
-RUN bash installer.sh
+    python3 python3-dev python3-dev python3-pip python3-venv python3-psutil
 
-# changing workdir
-WORKDIR "/root/naya1503"
+RUN apt-get install git curl python3-pip ffmpeg -y
 
-# start the bot.
-CMD ["bash", "start"]
+ARG USER=root
+
+USER $USER
+
+RUN python3 -m venv venv
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip3 install -r requirements.txt
+
+CMD bash start
