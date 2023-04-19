@@ -1,4 +1,4 @@
-FROM python:3.9.7-slim-buster
+FROM theteamultroid/ultroid:main
 
 RUN git clone https://github.com/naya1503/Ayra /home/Ayra/ \
     && chmod 777 /home/Ayra \
