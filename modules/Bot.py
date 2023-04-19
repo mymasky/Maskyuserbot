@@ -66,8 +66,8 @@ from . import (
 
 buttons = [
     [
-        Button.url(get_string("bot_3"), "https://github.com/senpai80/Ayra"),
-        Button.url(get_string("bot_4"), "t.me/ramsupportt"),
+        Button.url(get_string("bot_3"), "https://github.com/naya1503/Ayra"),
+        Button.url(get_string("bot_4"), "t.me/kynansupport"),
     ]
 ]
 
@@ -330,7 +330,7 @@ async def _(e):
         )
     else:
         await xx.edit(
-            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://github.com/Onlymeriz/Ayra/tree/{branch}">[{branch}]</a></strong>',
+            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://github.com/naya1503/Ayra/tree/{branch}">[{branch}]</a></strong>',
             parse_mode="html",
             link_preview=False,
         )
