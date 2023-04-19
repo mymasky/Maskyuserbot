@@ -126,10 +126,8 @@ async def join_(event):
         chat = event.chat_id
     aySongs = Player(chat, event)
     await asyncio.sleep(1)
-    await aySongs.group_call.set_pause(False)
     await aySongs.group_call.set_is_mute(False)
     await asyncio.sleep(1)
-    await aySongs.group_call.set_pause(True)
     await aySongs.group_call.set_is_mute(True)
     if not aySongs.group_call.is_connected:
         await aySongs.vc_joiner()
