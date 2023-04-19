@@ -62,7 +62,7 @@ from . import (
     updater,
 )
 
-
+piic ="https://graph.org/file/02f9ca4617cec58377b9d.jpg""
 
 buttons = [
     [
@@ -316,8 +316,9 @@ async def _(e):
     m = await updater()
     branch = (Repo.init()).active_branch
     if m:
-        x = await asst.send_message(
+        x = await asst.send_file(
             udB.get_key("LOG_CHANNEL"),
+            piic,
             caption="• **Pembaruan tersedia** •",
             force_document=False,
             buttons=Button.inline("Changelog", data="changes"),
