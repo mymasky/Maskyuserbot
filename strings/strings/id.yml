@@ -137,7 +137,7 @@ autopic_5: "AUTOPIC Berhenti!"
 
 # inline
 riz_1: "ʌʏꝛᴀ ꭙ ᴜꜱᴇꝛʙᴏᴛ "
-inline_1: "**◈ {}\n\n๏ Modul : {}**"
+inline_1: "**◈ {}\n\n๏ Help Inline Modul : {}**"
 inline_2: "**◈ {}\n\n๏ Tambahan : {}**"
 inline_3: "**◈ {}\n\n๏ Tambahan : {}\n\n Ketik `.setdb ADDONS True` Kemudian Restart.**"
 inline_4: "**◈ {}\n\n๏ Inline Menu \n\n Modul : {}\n Perintah : {}**"
