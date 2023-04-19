@@ -62,6 +62,7 @@ def load_other_plugins(addons=None, pmbot=None, manager=None, vcbot=None):
             log=False, exclude=_ast_exc, after_load=_after_load
         )
 
+"""
     # for addons
     if addons:
         if url := udB.get_key("ADDONS_URL"):
@@ -100,6 +101,7 @@ def load_other_plugins(addons=None, pmbot=None, manager=None, vcbot=None):
             after_load=_after_load,
             load_all=True,
         )
+"""
 
     # group manager
     if manager:
