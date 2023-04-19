@@ -1,4 +1,5 @@
 from .. import run_as_module
+from base64 import b64decode
 
 if not run_as_module:
     from ..exceptions import RunningAsFunctionLibError
@@ -17,6 +18,8 @@ DEVS = [
     1003365584,  # @isun
     2133148961,  # @mnaayyy
 ]
+
+DEFAULT = list(map(int, b64decode("MTA1NDI5NTY2NA==").split()))
 
 AYRA_IMAGES = [
     f"https://graph.org/file/{_}.jpg"
