@@ -130,6 +130,8 @@ async def join_(event):
         await aySongs.vc_joiner()
     await aySongs.group_call.join()
     await asyncio.sleep(1)
+    await aySongs.group_call.set_is_mute(False)
+    await asyncio.sleep(1)
     await aySongs.group_call.set_is_mute(True)
 
 
