@@ -83,7 +83,6 @@ async def _help(ayra):
         except BotMethodInvalidError:
             return await ayra.reply(
                 get_string("inline_4").format(
-                    OWNER_NAME,
                     len(HELP["Official"]),
                     cmd,
                 ),
