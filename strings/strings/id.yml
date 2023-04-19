@@ -213,7 +213,7 @@ cha_7: "Channel tujuan di database:"
 cha_8: "Sumber Channel dalam database:"
 
 # carbon
-carbon_1: "Carbon dibuat oleh [{}](tg://user?id={})"
+carbon_1: "Carbon dibuat oleh {}"
 carbon_2: "`Balas Pesan atau file yang dapat dibaca..`"
 carbon_3: "`Berikan Warna Kustom untuk Membuat Carbon...`"
 
