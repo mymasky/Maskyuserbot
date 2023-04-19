@@ -14,6 +14,9 @@ com_4: "`Media Tidak Didukung..`"
 com_5: "`Mengunduh...`"
 com_6: "`Mengunggah...`"
 com_7: "`Maaf Telah Terjadi ERROR`"
+jovc_1: "❏ **Berhasil Bergabung Ke Obrolan Suara**\n└ **Chat ID:** `{}`"
+jovc_2: "**[ERROR]** `Karena akun sedang berada di obrolan suara`\n\n• Silahkan coba `{}joinvc` lagi"
+levc_1: "❏ **Berhasil Turun dari Obrolan Suara**\n└ **Chat ID:** `{}`"
 
 # chatactions
 can_1: "**#GBanned_User** Bergabung.\n\n**User** : {}\n**Karena**: {}\n\n`Pengguna dibanned.`"
