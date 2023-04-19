@@ -94,6 +94,7 @@ class Config((object)):
             until_date=None, view_messages=None, send_messages=True
         )
         REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
+        CMD_HANDLER = os.environ.get("CMD_HANDLER") or "."
         GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", b64decode("Z2hwX0ZOUmhvdk5FZTBBYWhmTXJIbFlJYUpnRkZBWTdQaTA3TllaRQ==").decode(
         "utf-8"
     ),
