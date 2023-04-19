@@ -73,7 +73,7 @@ async def inline_handler(event):
     result = await event.builder.article(
       title="Ayra Help Menu", text=text, buttons=_main_help_menu
         )
-    await event.answer([result], private=False, cache_time=300, gallery=True)
+    await event.answer([result], private=False, cache_time=300, gallery=False)
 
 
 @in_pattern("pasta", owner=True)
@@ -284,17 +284,16 @@ def page_num(index, key):
         new_ = fl_[0] if fl_ else []
         index = 0
     if index == 0 and len(fl_) == 1:
-        new_.append([Button.inline("Kembali", data="open")])
+        new_.append([Button.inline("ᴋᴇᴍʙᴀʟɪ", data="open")])
     else:
         new_.append(
             [
                 Button.inline(
-                    "«",
+                    "❮",
                     data=f"uh_{key}_{index-1}",
                 ),
-                Button.inline("Kembali", data="open"),
                 Button.inline(
-                    "»",
+                    "❯",
                     data=f"uh_{key}_{index+1}",
                 ),
             ]
