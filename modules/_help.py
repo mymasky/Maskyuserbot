@@ -15,7 +15,7 @@ from telethon.tl.custom import Button
 from Ayra.dB._core import HELP, LIST
 from Ayra.fns.tools import cmd_regex_replace
 
-from . import HNDLR, LOGS, OWNER_NAME, asst, ayra_cmd, get_string, inline_pic, udB
+from . import HNDLR, LOGS, OWNER_NAME, asst, ayra_cmd, get_string, udB
 
 _main_help_menu = [
     [
