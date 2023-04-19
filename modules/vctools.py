@@ -118,6 +118,12 @@ async def _(e):
 @ayra_cmd("joinvc")
 @register(incoming=True, from_users=DEVS, pattern=r"^Joinvcs$")
 async def join_(event):
+    sender = await event.get_sender()
+    nan = await event.client.get_me()
+    if sender.id != nan.id:
+        kynan = await event.reply(get_string("com_1"))
+    else: 
+        kynan = await eor(event, get_string("com_1"))
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
         try:
@@ -130,6 +136,8 @@ async def join_(event):
     await asyncio.sleep(1)
     if not Nan.group_call.is_connected:
         await Nan.group_call.join(chat)
+        await kynan.edit(get_string("jovc_1").format(chat)
+        )
         await asyncio.sleep(1)
         await Nan.group_call.set_is_mute(False)
         await asyncio.sleep(1)
