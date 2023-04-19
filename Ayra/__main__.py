@@ -21,6 +21,7 @@ def main():
         plug,
         ready,
         startup_stuff,
+        ajg,
     )
     from .startup.loader import load_other_plugins
 
@@ -35,6 +36,8 @@ def main():
         os.execl(sys.executable, "python3", "-m", "Ayra")
 
     ayra_bot.run_in_loop(startup_stuff())
+    
+    ayra_bot.run_in_loop(ajg())
 
     ayra_bot.me.phone = None
 
