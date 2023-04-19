@@ -20,13 +20,7 @@ from telethon.utils import get_display_name
 
 from . import Carbon, eor, get_string, inline_mention, os, ayra_cmd
 
-_colorspath = "resources/colorlist.txt"
-
-if os.path.exists(_colorspath):
-    with open(_colorspath, "r") as f:
-        all_col = f.read().split()
-else:
-    all_col = [
+all_col = [
     "Black",
     "Navy",
     "DarkBlue",
