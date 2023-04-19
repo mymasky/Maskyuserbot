@@ -17,14 +17,8 @@ if run_as_module:
 
 
 Redis = MongoClient = psycopg2 = Database = None
-if (Var.REDIS_URI or Var.REDISHOST):
-    try:
-        from redis import Redis
-    except ImportError:
-        LOGS.info("Installing 'redis' for database.")
-        os.system("pip3 install -q redis hiredis")
-        from redis import Redis
-elif Var.MONGO_URI:
+
+if Var.MONGO_URI:
     try:
         from pymongo import MongoClient
     except ImportError:
