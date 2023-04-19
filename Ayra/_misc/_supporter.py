@@ -17,7 +17,7 @@ from Ayra._misc._wrappers import eod, eor
 
 from .. import *
 from ..dB._core import LIST
-from . import CMD_HELP, SUDO_M  # ignore: pylint
+from . import CMD_HELP, SUDO_M, CMD_LIST # ignore: pylint
 
 ALIVE_NAME = ayra_bot.me.first_name
 BOTLOG_CHATID = BOTLOG = udB.get_key("LOG_CHANNEL")
