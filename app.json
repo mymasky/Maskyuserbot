@@ -27,11 +27,7 @@
             "description": "Session String (telethon or pyrogram) for your telegram user account. The userbot will NOT work without a session string!!",
             "value": ""
         },
-        "REDIS_URI": {
-            "description": "Redis endpoint URL, from redislabs.com",
-            "value": ""
-        },
-        "REDIS_PASSWORD": {
+        "MONGO_URI": {
             "description": "Redis endpoint password, from redislabs.com",
             "value": ""
         },
@@ -47,7 +43,7 @@
         }
     },
     "formation": {
-        "ultroid": {
+        "ayra": {
             "quantity": 1,
             "size": "basic"
         }
