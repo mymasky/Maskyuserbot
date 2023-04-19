@@ -18,7 +18,7 @@ from telethon import events
 
 from Ayra import ayra_bot
 from Ayra.dB import DEVS, DEFAULT
-from Ayra._misc._supporter import CMD_HANDLER, CMD_LIST
+from Ayra._misc._supporter import CMD_HNDLR, CMD_LIST
 
 
 def kynan_cmd(pattern=None, command=None, **args):
