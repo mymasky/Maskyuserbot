@@ -131,7 +131,7 @@ async def join_(event):
     await asyncio.sleep(1)
     if not Nan.group_call.is_connected:
         await Nan.group_call.join(chat)
-        await event.eor(f"❏ **Berhasil Bergabung Ke Obrolan Suara**\n└ **Chat ID:** `{chat}`")
+        await event.reply(f"❏ **Berhasil Bergabung Ke Obrolan Suara**\n└ **Chat ID:** `{chat}`")
         await asyncio.sleep(1)
         await Nan.group_call.set_is_mute(False)
         await asyncio.sleep(1)
