@@ -44,7 +44,7 @@ class Var:
     HEROKU_API = config("HEROKU_API", default=None)
     SUDO = config("SUDO", default=True, cast=bool)
     VC_SESSION = config("VC_SESSION", default=SESSION)
-    ADDONS = config("ADDONS", default=True, cast=bool)
+    ADDONS = config("ADDONS", default=False, cast=bool)
     INLINE_PIC = config("INLINE_PIC", default=False, cast=bool)
     VCBOT = config("VCBOT", default=True, cast=bool)
     PMSETTING = config("PMSETTING", default=True, cast=bool)
