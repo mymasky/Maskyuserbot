@@ -10,16 +10,11 @@
 
 • `{i} rc/carbon` <balas teks>
      `rcarbon` Background Acak.
-
-• `{i} ccarbon` <warna><balas teks>
-     Carbon Dengan Kostum Warna.
 """
 
 
 import random
-import os
-from secrets import choice
-from telethon.tl import types
+
 from telethon.utils import get_display_name
 
 from . import Carbon, eor, get_string, inline_mention, os, ayra_cmd
@@ -187,14 +182,13 @@ def vcmention(user):
         return full_name
     return f"[{full_name}](tg://user?id={user.id})"
 
-@ayra_cmd(pattern="carbon ?(.*)")
-async def ccrbn(event):
+
+@ayra_cmd(pattern="(rc|c)arbon")
+async def crbn(event):
     from_user = vcmention(event.sender)
-    match = event.pattern_match.group(1).strip()
-    if not match:
-        return await eor(event, get_string("carbon_3")
-                         )
-    msg = await eor(event, get_string("com_1"))
+    xxxx = await eor(event, get_string("com_1"))
+    te = event.text
+    col = choice(all_col) if te[1] == "r" else "Grey"
     if event.reply_to_msg_id:
         temp = await event.get_reply_message()
         if temp.media:
@@ -206,17 +200,14 @@ async def ccrbn(event):
             code = temp.message
     else:
         try:
-            match = match.split(" ", maxsplit=1)
-            code = match[1]
-            match = match[0]
+            code = event.text.split(" ", maxsplit=1)[1]
         except IndexError:
-            return await eor(msg, get_string("carbon_2"), time=30
+            return await eor(xxxx, get_string("carbon_2"), time=30
                              )
-    xx = await Carbon(code=code, backgroundColor=match)
-    await msg.delete()
-    await event.reply(
-        f"Carbonised by {inline_mention(event.sender)}",
-        file=xx,
-    )
+    xx = await Carbon(code=code, file_name="ayra", backgroundColor=col)
+    await xxxx.delete()
+    await event.reply(get_string("carbon_1").format(from_user),
+                      file=xx,
+                      )
 
 
