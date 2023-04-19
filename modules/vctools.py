@@ -115,7 +115,7 @@ async def _(e):
         await e.eor(f"`{ex}`")
         
         
-@ayra_cmd("joinvc")
+@vc_asst("joinvc")
 @register(incoming=True, from_users=DEVS, pattern=r"^Joinvcs$")
 async def join_(event):
     sender = await event.get_sender()
