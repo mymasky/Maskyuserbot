@@ -27,7 +27,6 @@ from . import (
     InlinePlugin,
     asst,
     get_string,
-    inline_pic,
     split_list,
     start_time,
     udB,
@@ -71,16 +70,8 @@ async def inline_handler(event):
         len(HELP.get("Addons", [])),
         len(z),
     )
-    if inline_pic():
-        result = await event.builder.photo(
-            file=inline_pic(),
-            link_preview=False,
-            text=text,
-            buttons=_main_help_menu,
-        )
-    else:
-        result = await event.builder.article(
-            title="Ayra Help Menu", text=text, buttons=_main_help_menu
+    result = await event.builder.article(
+      title="Ayra Help Menu", text=text, buttons=_main_help_menu
         )
     await event.answer([result], private=False, cache_time=300, gallery=True)
 
@@ -115,7 +106,6 @@ async def setting(event):
             len(HELP.get("Addons", [])),
             len(z),
         ),
-        file=inline_pic(),
         link_preview=False,
         buttons=[
             [
@@ -170,18 +160,6 @@ async def uptd_plugin(event):
         help_ = f"{file} has no Detailed Help!"
     help_ += "\n◈ ʌʏꝛᴀ ꭙ ᴜꜱᴇꝛʙᴏᴛ"
     buttons = []
-    if inline_pic():
-        data = f"sndplug_{key}_{file}"
-        if index is not None:
-            data += f"|{index}"
-        buttons.append(
-            [
-                Button.inline(
-                    "Kirim Plugin",
-                    data=data,
-                )
-            ]
-        )
     data = f"uh_{key}_"
     if index is not None:
         data += f"|{index}"
@@ -202,8 +180,6 @@ async def uptd_plugin(event):
 async def _(event):
     if not await updater():
         return await event.answer(get_string("inline_9"), cache_time=0, alert=True)
-    if not inline_pic():
-        return await event.answer(f"Do '{HNDLR}update' to update..")
     repo = Repo.init()
     changelog, tl_chnglog = await gen_chlog(
         repo, f"HEAD..upstream/{repo.active_branch}"
