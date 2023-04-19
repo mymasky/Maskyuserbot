@@ -63,7 +63,7 @@ async def webss(event):
     except FileNotFoundError:
         pic = (
             await fast_download(
-                f"https://shot.screenshotapi.net/screenshot?&url={xurl}&output=image&file_type=png&wait_for_event=load",
+                f"https://mini.s-shot.ru/1920x1080/JPEG/1024/Z100/?{xurl}",
                 filename=check_filename("shot.png"),
             )
         )[0]
