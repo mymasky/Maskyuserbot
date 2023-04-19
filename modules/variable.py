@@ -27,6 +27,7 @@
 """
 
 import os
+import re
 
 from . import eor, get_string, udB, ayra_cmd
 
