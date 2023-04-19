@@ -12,7 +12,7 @@
      `rcarbon` Background Acak.
 """
 
-
+from io import BytesIO
 import os
 from secrets import choice
 from telethon.tl import types
