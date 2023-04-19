@@ -13,8 +13,9 @@
 """
 
 
-import random
-
+import os
+from secrets import choice
+from telethon.tl import types
 from telethon.utils import get_display_name
 
 from . import Carbon, eor, get_string, inline_mention, os, ayra_cmd
