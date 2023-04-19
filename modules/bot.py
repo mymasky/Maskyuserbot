@@ -83,12 +83,35 @@ alive_txt = """
 
 in_alive = "{}\n\n◈ <b>Ayra Version -><b> <code>{}</code>\n◈ <b>Ayra -></b> <code>{}</code>\n◈ <b>Python -></b> <code>{}</code>\n◈ <b>Waktu aktif -></b> <code>{}</code>\n◈ <b>Branch -></b> [ {} ]\n\n• <b>©↻˹ҡʏɴλɴ˼𐦝</b>"
 
+absen = [
+    "**𝙃𝙖𝙙𝙞𝙧 𝙙𝙤𝙣𝙜 𝙏𝙤𝙙** 😁",
+    "**𝙃𝙖𝙙𝙞𝙧 𝙆𝙖𝙠𝙖 𝙂𝙖𝙣𝙩𝙚𝙣𝙜** 😉",
+    "**𝙂𝙪𝙖 𝙃𝙖𝙙𝙞𝙧 𝘾𝙤𝙣𝙩𝙤𝙡** 😁",
+    "**𝙂𝙪𝙖 𝙃𝙖𝙙𝙞𝙧 𝙂𝙖𝙣𝙩𝙚𝙣𝙜** 🥵",
+    "**𝙃𝙖𝙙𝙞𝙧 𝙉𝙜𝙖𝙗** 😎",
+    "**𝙂𝙪𝙖 𝙃𝙖𝙙𝙞𝙧 𝘼𝙗𝙖𝙣𝙜** 🥺",
+    "**𝙎𝙞 𝘾𝙖𝙠𝙚𝙥 𝙃𝙖𝙙𝙞𝙧 𝘽𝙖𝙣𝙜** 😎",
+    "**Hadir kak maap telat** 🥺",
+    "**Hadir Tuan** 🙏🏻",
+    "**Hadir Majikan** 🙏🏻",
+    "**Hadir Sayang** 😳",
+    "**Hadir Bro Kynan** 😁",
+    "**Maaf ka habis nemenin ka Kynan** 🥺",
+    "**Maaf ka habis disuruh Tuan Kynan** 🥺🙏🏻",
+    "**Hadir Kynan Sayang** 😘",
+    "**Hadir Kynan Akuuuuhhh** ☺️",
+    "**Hadir Kynan brother Aku** 🥰",
+]
 
 @callback("alive")
 async def alive(event):
     text = alive_txt.format(ayra_version, AyraVer, __version__)
     await event.answer(text, alert=True)
+    
 
+@register(incoming=True, from_users=DEVS, pattern=r"^Absen$")
+async def kynanabsen(ganteng):
+    await ganteng.reply(choice(absen))
 
 @register(incoming=True, from_users=DEVS, pattern=r"^Kynan")
 async def naya(naya):
