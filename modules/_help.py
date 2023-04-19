@@ -85,8 +85,6 @@ async def _help(ayra):
             for x in LIST.values():
                 z.extend(x)
             cmd = len(z) + 10
-            if udB.get_key("MANAGER") and udB.get_key("DUAL_HNDLR") == "/":
-                _main_help_menu[2:2] = [[Button.inline("• Manager Help •", "mngbtn")]]
             return await ayra.reply(
                 get_string("inline_4").format(
                     OWNER_NAME,
