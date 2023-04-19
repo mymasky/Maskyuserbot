@@ -26,6 +26,7 @@ from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.types import ChatAdminRights, User
 
 from Ayra.dB import DEVS
+from Ayra.kynan import register
 from Ayra.dB.gban_mute_db import (
     gban,
     gmute,
@@ -59,7 +60,7 @@ from ._inline import something
 
 
 @ayra_cmd(pattern="ungban( (.*)|$)", fullsudo=False)
-@register(pattern=r"^\.cungband(?: |$)(.*)", sudo=True)
+@register(pattern=r"^\.cungban(?: |$)(.*)", sudo=True)
 async def _(e):
     xx = await e.eor("`Proses...`")
     match = e.pattern_match.group(1).strip()
@@ -124,7 +125,7 @@ async def _(e):
 
 
 @ayra_cmd(pattern="gban( (.*)|$)", fullsudo=False)
-@register(pattern=r"^\.cgband(?: |$)(.*)", sudo=True)
+@register(pattern=r"^\.cgban(?: |$)(.*)", sudo=True)
 async def _(e):
     xx = await e.eor("`Proses...`")
     reason = ""
