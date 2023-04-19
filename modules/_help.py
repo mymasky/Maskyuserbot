@@ -20,9 +20,8 @@ from . import HNDLR, LOGS, OWNER_NAME, asst, ayra_cmd, get_string, udB
 _main_help_menu = [
     [
         Button.inline(get_string("help_4"), data="uh_Official_"),
-        Button.inline(get_string("help_5"), data="uh_Addons_"),
+        #Button.inline(get_string("help_5"), data="uh_Addons_"),
     ],
-    [Button.inline(get_string("help_10"), data="close")],
 ]
 
 
@@ -35,12 +34,6 @@ async def _help(ayra):
             if plug in HELP["Official"]:
                 output = f"**Plugin** - `{plug}`\n"
                 for i in HELP["Official"][plug]:
-                    output += i
-                output += "\n◈ ʌʏꝛᴀ ꭙ ᴜꜱᴇꝛʙᴏᴛ"
-                await ayra.eor(output)
-            elif HELP.get("Addons") and plug in HELP["Addons"]:
-                output = f"**Plugin** - `{plug}`\n"
-                for i in HELP["Addons"][plug]:
                     output += i
                 output += "\n◈ ʌʏꝛᴀ ꭙ ᴜꜱᴇꝛʙᴏᴛ"
                 await ayra.eor(output)
@@ -79,9 +72,6 @@ async def _help(ayra):
                     if file in HELP["Official"]:
                         for i in HELP["Official"][file]:
                             output += i
-                    elif HELP.get("Addons") and file in HELP["Addons"]:
-                        for i in HELP["Addons"][file]:
-                            output += i
                     output += "\n◈ ʌʏꝛᴀ ꭙ ᴜꜱᴇꝛʙᴏᴛ"
                     await ayra.eor(output)
         except BaseException as er:
@@ -101,7 +91,6 @@ async def _help(ayra):
                 get_string("inline_4").format(
                     OWNER_NAME,
                     len(HELP["Official"]),
-                    len(HELP["Addons"] if "Addons" in HELP else []),
                     cmd,
                 ),
                 buttons=_main_help_menu,
