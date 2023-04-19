@@ -91,6 +91,20 @@ if HOSTED_ON == "heroku":
     except BaseException as er:
         LOGS.exception(er)
 
+FilesEMOJI = {
+    "py": "🐍",
+    "json": "🔮",
+    ("sh", "bat"): "⌨️",
+    (".mkv", ".mp4", ".avi", ".gif", "webm"): "🎥",
+    (".mp3", ".ogg", ".m4a", ".opus"): "🔊",
+    (".jpg", ".jpeg", ".png", ".webp", ".ico"): "🖼",
+    (".txt", ".text", ".log"): "📄",
+    (".apk", ".xapk"): "📲",
+    (".pdf", ".epub"): "📗",
+    (".zip", ".rar"): "🗜",
+    (".exe", ".iso"): "⚙",
+}
+
 
 @ayra_cmd(pattern="usage")
 async def usage_finder(event):
