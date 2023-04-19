@@ -39,12 +39,12 @@ def kynan_cmd(pattern=None, command=None, **args):
             except BaseException:
                 CMD_LIST.update({file_test: [cmd]})
         else:
-            if len(CMD_HANDLER) == 2:
-                catreg = "^" + CMD_HANDLER
-                reg = CMD_HANDLER[1]
-            elif len(CMD_HANDLER) == 1:
-                catreg = "^\\" + CMD_HANDLER
-                reg = CMD_HANDLER
+            if len(CMD_HNDLR) == 2:
+                catreg = "^" + CMD_HNDLR
+                reg = CMD_HNDLR[1]
+            elif len(CMD_HNDLR) == 1:
+                catreg = "^\\" + CMD_HNDLR
+                reg = CMD_HNDLR
             args["pattern"] = re.compile(catreg + pattern)
             if command is not None:
                 cmd = reg + command
