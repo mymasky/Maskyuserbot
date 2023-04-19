@@ -3,6 +3,7 @@
 aiohttp
 https://github.com/New-dev0/Telethon/archive/diamond.zip
 python-decouple
+pymongo
 python-dotenv
 pytgcalls==3.0.0.dev22
 covid
