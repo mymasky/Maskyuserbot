@@ -39,7 +39,7 @@ from . import (
     ayra_cmd,
     uploader,
 )
-from .Karbon import all_col
+from .carbon import all_col
 
 File = []
 
