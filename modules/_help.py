@@ -104,7 +104,6 @@ async def _help(ayra):
                     len(HELP["Addons"] if "Addons" in HELP else []),
                     cmd,
                 ),
-                #file=inline_pic(),
                 buttons=_main_help_menu,
             )
         except BotResponseTimeoutError:
