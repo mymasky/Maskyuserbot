@@ -258,6 +258,9 @@ except ImportError:
 
 from strings import get_string
 
+StartTime = time.time()
+
+
 asstUserName = asst.me.username
 LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
 ACTIVE_CALLS, VC_QUEUE = [], {}
