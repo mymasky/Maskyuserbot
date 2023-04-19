@@ -12,6 +12,7 @@ __doc__ = get_help("help_bot")
 import os
 import sys
 import time
+from datetime import datetime
 from platform import python_version as pyver
 from random import choice
 
@@ -24,7 +25,7 @@ from telethon.errors.rpcerrorlist import (
 from Ayra.version import __version__ as AyraVer
 from Ayra.dB import DEVS
 from Ayra.kynan import register
-from . import HOSTED_ON, LOGS
+from . import HOSTED_ON, LOGS, StartTime
 
 try:
     from git import Repo
@@ -203,7 +204,7 @@ async def lol(ayra):
         buttons=buttons if inline else None,
     )
 
-
+"""
 @ayra_cmd(pattern="ping$", incoming=True, from_users=DEVS, chats=[], type=["official", "assistant"])
 async def _(event):
     start = time.time()
@@ -211,7 +212,53 @@ async def _(event):
     end = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
     await x.edit(get_string("ping").format(end, uptime))
+"""
 
+async def get_readable_time(seconds: int) -> str:
+    count = 0
+    up_time = ""
+    time_list = []
+    time_suffix_list = ["s", "m", "Jam", "Hari"]
+
+    while count < 4:
+        count += 1
+        remainder, result = divmod(
+            seconds, 60) if count < 3 else divmod(
+            seconds, 24)
+        if seconds == 0 and remainder == 0:
+            break
+        time_list.append(int(result))
+        seconds = int(remainder)
+
+    for x in range(len(time_list)):
+        time_list[x] = str(time_list[x]) + time_suffix_list[x]
+    if len(time_list) == 4:
+        up_time += time_list.pop() + ", "
+
+    time_list.reverse()
+    up_time += ":".join(time_list)
+
+    return up_time
+
+
+@ayra_cmd(pattern=r"^ping$")
+async def _(ping):
+    uptime = await get_readable_time((time.time() - StartTime))
+    start = datetime.now()
+    ping = await eor(ping, "**✧**")
+    await ping.edit("**✧✧**")
+    await ping.edit("**✧✧✧**")
+    await ping.edit("**✧✧✧✧**")
+    await ping.edit("**✧✧✧✧✧**")
+    end = datetime.now()
+    duration = (end - start).microseconds / 1000
+    user = await ping.client.get_me()
+    await ping.edit(
+        f"**❏ 𝙰𝚈𝚁𝙰 𝚄𝚂𝙴𝚁𝙱𝙾𝚃**\n\n"
+        f"**├ 𝙿𝙸𝙽𝙶𝙴𝚁 :** `%sms`\n"
+        f"**├ 𝚄𝙿𝚃𝙸𝙼𝙴 :** `{uptime}` \n"
+        f"**╰ 𝙾𝚆𝙽𝙴𝚁 :** [{user.first_name}](tg://user?id={user.id})" % (duration)
+    )
 
 @ayra_cmd(
     pattern="cmds$",
