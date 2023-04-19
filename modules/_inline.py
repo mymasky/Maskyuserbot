@@ -64,7 +64,6 @@ async def inline_handler(event):
     text = get_string("inline_4").format(
         riz,
         len(HELP.get("Official", [])),
-        cmd,
     )
     result = await event.builder.article(
       title="Ayra Help Menu", text=text, buttons=_main_help_menu
