@@ -1,13 +1,13 @@
 {
     "name": "Ayra UserBot",
-    "description": "Pluggable telegram userbot, made in python using Telethon.",
+    "description": "Ayra Userbot Dibuat Untuk String Telethon Dan Pyrogram Untuk ID 5 Pasti Aman.",
     "logo": "https://graph.org/file/fa8b4f60dd9d81ef33249.jpg",
     "keywords": [
         "Telethon",
+        "Pyrogram",
         "telegram",
         "userbot",
-        "python",
-        "ultroid"
+        "python"
     ],
     "repository": "https://github.com/naya1503/Ayra",
     "success_url": "https://t.me/rizzvbss",
