@@ -52,7 +52,6 @@ from . import (
     get_string,
     heroku_logs,
     in_pattern,
-    inline_pic,
     restart,
     shutdown,
     start_time,
@@ -63,9 +62,6 @@ from . import (
     updater,
 )
 
-
-def AYRAPIC():
-    return inline_pic() or choice(AYRA_IMAGES)
 
 
 buttons = [
@@ -322,7 +318,6 @@ async def _(e):
     if m:
         x = await asst.send_file(
             udB.get_key("LOG_CHANNEL"),
-            AYRAPIC(),
             caption="• **Pembaruan tersedia** •",
             force_document=False,
             buttons=Button.inline("Changelog", data="changes"),
@@ -346,7 +341,6 @@ async def updava(event):
     await event.delete()
     await asst.send_file(
         udB.get_key("LOG_CHANNEL"),
-        AYRAPIC(),
         caption="• **Pembaruan tersedia** •",
         force_document=False,
         buttons=Button.inline("Changelog", data="changes"),
