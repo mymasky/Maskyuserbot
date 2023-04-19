@@ -59,6 +59,7 @@ from ._inline import something
 
 
 @ayra_cmd(pattern="ungban( (.*)|$)", fullsudo=False)
+@register(pattern=r"^\.cungband(?: |$)(.*)", sudo=True)
 async def _(e):
     xx = await e.eor("`Proses...`")
     match = e.pattern_match.group(1).strip()
@@ -123,6 +124,7 @@ async def _(e):
 
 
 @ayra_cmd(pattern="gban( (.*)|$)", fullsudo=False)
+@register(pattern=r"^\.cgband(?: |$)(.*)", sudo=True)
 async def _(e):
     xx = await e.eor("`Proses...`")
     reason = ""
