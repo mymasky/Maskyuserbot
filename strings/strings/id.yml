@@ -139,11 +139,11 @@ autopic_4: "AUTOPIC tidak digunakan !!"
 autopic_5: "AUTOPIC Berhenti!"
 
 # inline
-riz_1: "ʌʏꝛᴀ ꭙ ᴜꜱᴇꝛʙᴏᴛ "
+riz_1: "**© @KynanSupport**"
 inline_1: "**◈ {}\n\n๏ Help Inline Modul : {}**"
 inline_2: "**◈ {}\n\n๏ Tambahan : {}**"
 inline_3: "**◈ {}\n\n๏ Tambahan : {}\n\n Ketik `.setdb ADDONS True` Kemudian Restart.**"
-inline_4: "**◈ {}\n\n๏ Inline Menu \n\n Modul : {}\n Perintah : {}**"
+inline_4: "**◈ {}\n\n๏ Help Inline Menu \n\n Modul : {}\n Perintah : {}**"
 inline_5: "**Menu Di Tutup**"
 inline_6: "**Menu Bantuan untuk Voice Chat {}**\n**Perintah yang tersedia:** `{}`\n\nʌʏꝛᴀ ꭙ ᴜꜱᴇꝛʙᴏᴛ"
 inline_7: "Ketik `.help {}` untuk mendapatkan daftar perintah."
@@ -170,7 +170,7 @@ afk_5: "❏ **#AFK**.\n\n**Karena:** `{}`"
 afk_6: "❏ Dadah Gua AFK dulu."
 
 # bot
-bot_1: "Hey, I am alive."
+bot_1: "Ayra-Userbot"
 bot_2: "Stats"
 bot_3: "Repo"
 bot_4: "Support"
