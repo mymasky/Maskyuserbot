@@ -27,6 +27,7 @@ wikipedia
 spotdl
 pyrogram
 py-Ayra==7.9.0
+pyUltroid
 akinator
 apscheduler
 aiohttp
