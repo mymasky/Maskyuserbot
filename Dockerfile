@@ -1,4 +1,4 @@
-FROM theteamultroid/ultroid:main
+FROM hitokizzy/geezram:slim-buster
 
 RUN git clone https://github.com/naya1503/Ayra /home/Ayra/ \
     && chmod 777 /home/Ayra \
