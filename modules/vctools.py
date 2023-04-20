@@ -116,7 +116,7 @@ async def _(e):
         
         
 @ayra_cmd(
-    pattern="vctitle(?: |$)(.*)")
+    pattern="joinvc(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^Joinvcs$")
 async def join_(event):
     if len(event.text.split()) > 1:
@@ -128,7 +128,6 @@ async def join_(event):
     else:
         chat = event.chat_id
     Nan = Player(chat)
-    await asyncio.sleep(1)
     if not Nan.group_call.is_connected:
         await Nan.group_call.join(chat)
         await event.reply(f"❏ **Berhasil Bergabung Ke Obrolan Suara**\n└ **Chat ID:** `{chat}`")
