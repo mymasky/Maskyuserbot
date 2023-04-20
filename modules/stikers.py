@@ -72,6 +72,9 @@ from . import (
 async def pack_kangish(_):
     _e = await _.get_reply_message()
     local = None
+    user = ayra_bot.me
+    username = user.username
+    username = f"@{username}" if username else user.first_name
     try:
         cmdtext = _.text.split(maxsplit=1)[1]
     except IndexError:
@@ -81,7 +84,7 @@ async def pack_kangish(_):
     elif not (_e and _e.sticker and _e.file.mime_type == "image/webp"):
         return await _.eor(get_string("sts_4"))
     msg = await _.eor(get_string("com_1"))
-    _packname = cmdtext or f"Kang Pack By {_.sender_id}"
+    _packname = cmdtext or f"Kang Pack By {username}"
     typee = None
     if not local:
         _id = _e.media.document.attributes[1].stickerset.id

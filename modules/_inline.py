@@ -114,7 +114,7 @@ async def setting(event):
                 Button.inline("•Stats•", data="alive"),
                 Button.inline("•Uᴘᴅᴀᴛᴇ•", data="doupdate"),
             ],
-            [Button.inline("«", data="open")],
+            [Button.inline("❮", data="open")],
         ],
     )
 
@@ -156,14 +156,14 @@ async def uptd_plugin(event):
                 help_ += "\n"
     if not help_:
         help_ = f"{file} has no Detailed Help!"
-    help_ += "\n◈ ʌʏꝛᴀ ꭙ ᴜꜱᴇꝛʙᴏᴛ"
+    help_ += "\n© @KynanSupport"
     buttons = []
     data = f"uh_{key}_"
     if index is not None:
         data += f"|{index}"
     buttons.append(
         [
-            Button.inline("«", data=data),
+            Button.inline("❮", data=data),
         ]
     )
     try:
@@ -191,8 +191,8 @@ async def _(event):
             get_string("upd_5"),
             file="ayra_updates.txt",
             buttons=[
-                [Button.inline("• Uᴘᴅᴀᴛᴇ Nᴏᴡ •", data="updatenow")],
-                [Button.inline("«", data="ownr")],
+                [Button.inline("Update Sekarang", data="updatenow")],
+                [Button.inline("❮", data="ownr")],
             ],
         )
         remove("ayra_updates.txt")
@@ -200,8 +200,8 @@ async def _(event):
         await event.edit(
             changelog_str,
             buttons=[
-                [Button.inline("Update Now", data="updatenow")],
-                [Button.inline("«", data="ownr")],
+                [Button.inline("Update Sekarang", data="updatenow")],
+                [Button.inline("❮", data="ownr")],
             ],
             parse_mode="html",
         )
@@ -234,7 +234,7 @@ async def _(e):
     button = InButtons.copy()
     button.append(
         [
-            Button.inline("«", data="open"),
+            Button.inline("❮", data="open"),
         ],
     )
     await e.edit(buttons=button, link_preview=False)

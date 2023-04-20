@@ -68,7 +68,6 @@ piic ="https://graph.org/file/02f9ca4617cec58377b9d.jpg"
 
 buttons = [
     [
-        Button.url(get_string("bot_3"), "https://github.com/naya1503/Ayra"),
         Button.url(get_string("bot_4"), "t.me/kynansupport"),
     ]
 ]
@@ -339,7 +338,7 @@ async def inline_alive(ayra):
     )
 
     if _e := udB.get_key("ALIVE_EMOJI"):
-        als = als.replace("◈", _e)
+        als = als.replace("", _e)
     builder = ayra.builder
     if pic:
         try:
