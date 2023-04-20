@@ -125,7 +125,7 @@ async def naya(naya):
 async def lol(ayra):
     match = ayra.pattern_match.group(1).strip()
     inline = True
-    if match in ["inline", "i"]:
+    if match not in ["n", "no_inline"]:
         try:
             res = await ayra.client.inline_query(asst.me.username, "alive")
             return await res[0].click(ayra.chat_id)
@@ -278,7 +278,7 @@ heroku_api = Var.HEROKU_API
 )
 async def restart(e):
     ok = await e.eor(get_string("bot_5"))
-    call_back()
+    #call_back()
     who = "bot" if e.client._bot else "user"
     udB.set_key("_RESTART", f"{who}_{e.chat_id}_{ok.id}")
     if heroku_api:
