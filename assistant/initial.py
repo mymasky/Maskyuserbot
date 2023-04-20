@@ -50,7 +50,7 @@ async def init_depl(e):
     if CURRENT == 5:
         return await e.edit(
             STRINGS[5],
-            buttons=Button.inline("<< Back", "initbk_4"),
+            buttons=Button.inline("Kembali", "initbk_4"),
             link_preview=False,
         )
 

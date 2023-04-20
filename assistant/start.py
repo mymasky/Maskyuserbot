@@ -35,18 +35,10 @@ if Owner_info_msg is None:
 
 _settings = [
     [
-        Button.inline("API Kᴇʏs", data="cbs_apiset"),
-        Button.inline("Pᴍ Bᴏᴛ", data="cbs_chatbot"),
+        Button.inline("Lainnya", data="cbs_otvars"),
+        Button.inline("PM Permit", data="cbs_ppmset"),
     ],
-    [
-        Button.inline("Aʟɪᴠᴇ", data="cbs_alvcstm"),
-        Button.inline("PᴍPᴇʀᴍɪᴛ", data="cbs_ppmset"),
-    ],
-    [
-        Button.inline("Fᴇᴀᴛᴜʀᴇs", data="cbs_otvars"),
-        Button.inline("VC Sᴏɴɢ Bᴏᴛ", data="cbs_vcb"),
-    ],
-    [Button.inline("« Bᴀᴄᴋ", data="mainmenu")],
+    [Button.inline("Kembali", data="mainmenu")],
 ]
 
 _start = [
@@ -71,7 +63,7 @@ async def own(event):
         msg += "\n\n• Powered by **@kynansupport**"
     await event.edit(
         msg,
-        buttons=[Button.inline("Close", data="closeit")],
+        buttons=[Button.inline("Tutup", data="closeit")],
         link_preview=False,
     )
 
@@ -201,7 +193,7 @@ Total Users in Bot - {len(ok)}
 @callback("setter", owner=True)
 async def setting(event):
     await event.edit(
-        "Choose from the below options -",
+        "Pengaturan.",
         buttons=_settings,
     )
 

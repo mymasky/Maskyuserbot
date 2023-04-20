@@ -18,7 +18,7 @@ from . import (
 )
 
 
-@callback("lang", owner=True)
+@callback("lang", owner=False)
 async def setlang(event):
     languages = get_languages()
     tayd = [
@@ -31,7 +31,7 @@ async def setlang(event):
     buttons = list(zip(tayd[::2], tayd[1::2]))
     if len(tayd) % 2 == 1:
         buttons.append((tayd[-1],))
-    buttons.append([Button.inline("« Back", data="mainmenu")])
+    buttons.append([Button.inline("Kembali", data="mainmenu")])
     await event.edit(get_string("ast_4"), buttons=buttons)
 
 
