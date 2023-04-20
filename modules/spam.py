@@ -76,19 +76,23 @@ async def bigspam(e):
     await e.delete()
 
 
-@ayra_cmd(pattern="delayspam ?(.*)")
+@ayra_cmd(pattern="(delayspam|dspam) ?(.*)")
 async def delayspammer(e):
     try:
         args = e.text.split(" ", 3)
         delay = float(args[1])
         count = int(args[2])
-        msg = str(args[3])
+        if e.reply_to:
+            spam_message = await e.get_reply_message()
+        else:
+            spam_message = str(args[3])
     except BaseException:
-        return await e.edit(f"**Penggunaan :** {HNDLR}delayspam <delay time> <count> <msg>")
+        return await e.edit(f"**Penggunaan :** {HNDLR}delayspam <delay time> <count> <balas pesan>")
     await e.delete()
     try:
         for i in range(count):
-            await e.respond(msg)
+            await e.respond(spam_message)
             await asyncio.sleep(delay)
     except Exception as u:
-        await e.respond(f"**Error :** `{u}`")
+        await e.respond(f"**Error :** `{u}`") 
+
