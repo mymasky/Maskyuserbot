@@ -29,8 +29,7 @@
         },
         "MONGO_URI": {
             "description": "MongoDB Gan....",
-            "value": "",
-            "required": false
+            "value": ""
         },
         "HEROKU_API": {
             "description": "Heroku API token. Mandatory for Heroku Deploy...",
@@ -43,15 +42,6 @@
             "required": false
         }
     },
-    "addons": [
-    {
-    "plan": "rediscloud",
-      "options": {
-        "maxmemory-policy": "allkeys-lru",
-        "maxmemory-redis": "2GB"
-      }
-    }
-  ],
   "buildpacks": [
     {
       "url": "heroku/python"
