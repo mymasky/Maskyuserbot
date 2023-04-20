@@ -1,11 +1,11 @@
-FROM hitokizzy/geezram:slim-buster
+FROM theteamultroid/ultroid:main
 
-RUN git clone https://github.com/naya1503/Ayra /home/Ayra/ \
-    && chmod 777 /home/Ayra \
-    && mkdir /home/Ayra/bin/
+COPY installer.sh .
 
-WORKDIR /home/Ayra/
+RUN bash installer.sh
 
-RUN pip3 install -U -r requirements.txt
+# changing workdir
+WORKDIR "/root/naya1503"
 
-CMD ["bash","start"]
+# start the bot.
+CMD ["bash", "start"]
