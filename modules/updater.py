@@ -20,9 +20,25 @@ from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 from . import *
-from .system import HEROKU_API, HEROKU_APP_NAME
+
 from Ayra.kynan import register
 
+
+HEROKU_API = None
+HEROKU_APP_NAME = None
+
+if HOSTED_ON == "heroku":
+    heroku_api, app_name = Var.HEROKU_API, Var.HEROKU_APP_NAME
+    try:
+        if heroku_api and app_name:
+            import heroku3
+
+            Heroku = heroku3.from_key(heroku_api)
+            app = Heroku.app(app_name)
+            HEROKU_API = heroku_api
+            HEROKU_APP_NAME = app_name
+    except BaseException as er:
+        LOGS.exception(er)
 
 async def gen_chlog(repo, diff):
     d_form = "%d - %B - %Y"
