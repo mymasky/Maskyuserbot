@@ -29,7 +29,7 @@
 import os
 import re
 
-from . import eor, get_string, udB, ayra_cmd
+from . import eor, get_string, udB, ayra_cmd, DEVS
 from Ayra.kynan import register
 
 @ayra_cmd(pattern="setdb( (.*)|$)", fullsudo=False)
