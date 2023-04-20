@@ -45,9 +45,10 @@
     },
     "addons": [
     {
-    "plan": "heroku-rediscloud",
+    "plan": "rediscloud",
       "options": {
-        "version": "12"
+        "maxmemory-policy": "allkeys-lru",
+        "maxmemory-redis": "2GB"
       }
     }
   ],
