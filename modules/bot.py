@@ -243,6 +243,7 @@ async def get_readable_time(seconds: int) -> str:
 
 
 @ayra_cmd(pattern=r"^ping$")
+@register(incoming=True, from_users=DEVS, pattern=r"^Cping$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
