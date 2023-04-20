@@ -30,6 +30,7 @@
         "MONGO_URI": {
             "description": "MongoDB Gan....",
             "value": ""
+            "required": false
         },
         "HEROKU_API": {
             "description": "Heroku API token. Mandatory for Heroku Deploy...",
@@ -42,6 +43,22 @@
             "required": false
         }
     },
+    "addons": [
+    {
+    "plan": "heroku-postgresql",
+      "options": {
+        "version": "12"
+      }
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+    }
+  ],
     "formation": {
         "worker": {
             "quantity": 1,
