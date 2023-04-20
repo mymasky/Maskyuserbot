@@ -278,7 +278,7 @@ heroku_api = Var.HEROKU_API
 )
 async def restart(e):
     ok = await e.eor(get_string("bot_5"))
-    call_back()
+    #call_back()
     who = "bot" if e.client._bot else "user"
     udB.set_key("_RESTART", f"{who}_{e.chat_id}_{ok.id}")
     if heroku_api:
