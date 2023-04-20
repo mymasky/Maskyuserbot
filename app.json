@@ -29,7 +29,7 @@
         },
         "MONGO_URI": {
             "description": "MongoDB Gan....",
-            "value": ""
+            "value": "",
             "required": false
         },
         "HEROKU_API": {
