@@ -276,11 +276,11 @@ heroku_api = Var.HEROKU_API
     pattern="restart$",
     fullsudo=False,
 )
-async def restart(ayra):
-    ok = await ayra.eor(get_string("bot_5"))
+async def restart(e):
+    ok = await e.eor(get_string("bot_5"))
     call_back()
-    who = "bot" if ayra.client._bot else "user"
-    udB.set_key("_RESTART", f"{who}_{ayra.chat_id}_{ok.id}")
+    who = "bot" if e.client._bot else "user"
+    udB.set_key("_RESTART", f"{who}_{e.chat_id}_{ok.id}")
     if heroku_api:
         return await restart(ok)
     await bash("git pull && pip3 install -r requirements.txt")
