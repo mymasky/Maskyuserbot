@@ -23,6 +23,14 @@
             "value": "",
             "required": false
         },
+        "REDIS_PASSWORD": {
+            "description": "Wajib Isi",
+            "value": ""
+        },
+        "REDIS_URI": {
+            "description": "Wajib Isi",
+            "value": ""
+        },
         "SESSION": {
             "description": "Session String (telethon or pyrogram) for your telegram user account. The userbot will NOT work without a session string!!",
             "value": ""
