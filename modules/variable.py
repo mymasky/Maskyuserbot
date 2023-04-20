@@ -33,7 +33,7 @@ from . import eor, get_string, udB, ayra_cmd, DEVS
 from Ayra.kynan import register
 
 @ayra_cmd(pattern="setdb( (.*)|$)", fullsudo=False)
-@register(incoming=True, from_users=DEVS, pattern=r"^Setdb")
+@register(pattern=r"^\.setdb(?: |$)(.*)", sudo=True)
 async def _(ay):
     match = ay.pattern_match.group(1).strip()
     if not match:
@@ -54,7 +54,7 @@ async def _(ay):
 
 
 @ayra_cmd(pattern="deldb( (.*)|$)", fullsudo=False)
-@register(incoming=True, from_users=DEVS, pattern=r"^Deldb")
+@register(pattern=r"^\.deldb(?: |$)(.*)", sudo=True)
 async def _(ay):
     key = ay.pattern_match.group(1).strip()
     if not key:
@@ -74,6 +74,7 @@ async def _(ay):
         await ay.eor(get_string("com_7"))
 
 @ayra_cmd(pattern="get($| (.*))", fullsudo=False)
+@register(pattern=r"^\.get(?: |$)(.*)", sudo=True)
 async def get_var(event):
     try:
         opt = event.text.split(maxsplit=2)[1]
