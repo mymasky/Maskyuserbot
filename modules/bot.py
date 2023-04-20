@@ -104,6 +104,7 @@ absen = [
     "**Hadir Kynan brother Aku** 🥰",
 ]
 
+
 @callback("alive")
 async def alive(event):
     text = alive_txt.format(ayra_version, AyraVer, __version__)
@@ -123,7 +124,7 @@ async def naya(naya):
 )
 async def lol(ayra):
     match = ayra.pattern_match.group(1).strip()
-    inline = None
+    inline = True
     if match in ["inline", "i"]:
         try:
             res = await ayra.client.inline_query(asst.me.username, "alive")
@@ -155,7 +156,7 @@ async def lol(ayra):
         )
 
         if _e := udB.get_key("ALIVE_EMOJI"):
-            als = als.replace("◈", _e)
+            als = als.replace("", _e)
     else:
         parse = "md"
         als = (get_string("alive_1")).format(
@@ -170,7 +171,7 @@ async def lol(ayra):
         )
 
         if a := udB.get_key("ALIVE_EMOJI"):
-            als = als.replace("◈", a)
+            als = als.replace("", a)
     if pic:
         try:
             await ayra.reply(
