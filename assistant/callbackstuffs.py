@@ -210,7 +210,7 @@ async def update(eve):
         await eve.edit("`Berhasil Diperbarui!\nMemulai ulang, harap tunggu...`")
     else:
         await eve.edit(get_string("clst_1"))
-        call_back()
+        #call_back()
         await bash("git pull && pip3 install -r requirements.txt")
         execl(sys.executable, sys.executable, "-m", "Ayra")
 
