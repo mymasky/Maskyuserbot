@@ -45,7 +45,7 @@
     },
     "addons": [
     {
-    "plan": "heroku-postgresql",
+    "plan": "heroku-rediscloud",
       "options": {
         "version": "12"
       }
