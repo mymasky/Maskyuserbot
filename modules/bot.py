@@ -278,7 +278,7 @@ heroku_api = Var.HEROKU_API
 )
 async def restart(ayra):
     ok = await ayra.eor(get_string("bot_5"))
-#    call_back()
+    call_back()
     who = "bot" if ayra.client._bot else "user"
     udB.set_key("_RESTART", f"{who}_{ayra.chat_id}_{ok.id}")
     if heroku_api:
