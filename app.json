@@ -42,6 +42,15 @@
             "required": false
         }
     },
+  "addons": [
+    {
+      "plan": "rediscloud",
+      "options": {
+        "maxmemory-policy": "allkeys-lru",
+        "maxmemory-redis": "2GB"
+      }
+    }
+  ],
   "buildpacks": [
     {
       "url": "heroku/python"
