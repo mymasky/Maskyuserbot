@@ -71,6 +71,7 @@ from . import (
 @ayra_cmd(pattern="packkang")
 async def pack_kangish(_):
     _e = await _.get_reply_message()
+    ayra_bot = _.client
     local = None
     user = ayra_bot.me
     username = user.username
