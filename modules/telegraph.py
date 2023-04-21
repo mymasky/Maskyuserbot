@@ -77,7 +77,7 @@ _copied_msg = {}
 
 
 @ayra_cmd(
-    pattern="tg( (.*)|$)",
+    pattern="[tT][gG]( (.*)|$)",
 )
 async def telegraphcmd(event):
     xx = await event.eor(get_string("com_1"))
