@@ -28,13 +28,13 @@ def run_sync(func, *args, **kwargs):
 
 @ayra_cmd(pattern="(v|V)ideo")
 async def yt_video(e):
-    if len(message.command) < 2:
+    if len(e.command) < 2:
         return await e.reply(
             "❌ **Video tidak ditemukan,**\nMohon masukan judul video dengan benar.",
         )
     infomsg = await e.reply("**🔍 Pencarian...**", quote=False)
     try:
-        search = SearchVideos(str(message.text.split(None, 1)[1]), offset=1, mode="dict", max_results=1).result().get("search_result")
+        search = SearchVideos(str(e.text.split(None, 1)[1]), offset=1, mode="dict", max_results=1).result().get("search_result")
         link = f"https://youtu.be/{search[0]['id']}"
     except Exception as error:
         return await infomsg.edit(f"**🔍 Pencarian...\n\n❌ Error: {error}**")
@@ -86,14 +86,14 @@ async def yt_video(e):
 
 
 @ayra_cmd(pattern="(s|S)ong")
-async def yt_audio(client, message):
-    if len(message.command) < 2:
+async def yt_audio(e):
+    if len(e.command) < 2:
         return await e.reply(
             "❌ **Audio tidak ditemukan,**\nmohon masukan judul video dengan benar.",
         )
     infomsg = await e.reply("**🔍 Pencarian...**", quote=False)
     try:
-        search = SearchVideos(str(message.text.split(None, 1)[1]), offset=1, mode="dict", max_results=1).result().get("search_result")
+        search = SearchVideos(str(e.text.split(None, 1)[1]), offset=1, mode="dict", max_results=1).result().get("search_result")
         link = f"https://youtu.be/{search[0]['id']}"
     except Exception as error:
         return await infomsg.edit(f"**🔍 Pencarian...\n\n❌ Error: {error}**")
