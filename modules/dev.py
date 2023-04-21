@@ -39,7 +39,7 @@ fn = functions
 
 
 @ayra_cmd(
-    pattern="sysinfo$",
+    pattern="(S|s)ysinfo$",
 )
 async def _(e):
     xx = await e.eor(get_string("com_1"))
@@ -54,7 +54,7 @@ async def _(e):
     remove("neo.txt")
 
 
-@ayra_cmd(pattern="bash", fullsudo=False, only_devs=False)
+@ayra_cmd(pattern="(B|b)ash", fullsudo=False, only_devs=False)
 async def _(event):
     carb, yamlf = None, False
     try:
@@ -151,7 +151,7 @@ def _parse_eval(value=None):
     return str(value)
 
 
-@ayra_cmd(pattern="eval", fullsudo=False, only_devs=False)
+@ayra_cmd(pattern="(Eval|eval|ev)", fullsudo=False, only_devs=False)
 async def _(event):
     try:
         cmd = event.text.split(maxsplit=1)[1]
