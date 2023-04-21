@@ -1,27 +1,26 @@
 
 """
-◈ Perintah Tersedia -
+✘ **Bantuan Untuk Welcome**
 
----- Welcomes ----
-• `{i}setwelcome <message/reply to message>`
-    Set welcome message in the current chat.
+๏ **Perintah:** `setwelcome` <berikan pesan/balas pesan>
+◉ **Keterangan:** Set welcome message in the current chat.
 
-• `{i}clearwelcome`
-    Delete the welcome in the current chat.
+๏ **Perintah:** `clearwelcome`
+◉ **Keterangan:** Delete the welcome in the current chat.
 
-• `{i}getwelcome`
-    Get the welcome message in the current chat.
+๏ **Perintah:** `getwelcome`
+◉ **Keterangan:** Get the welcome message in the current chat.
 
----- GoodByes ----
-• `{i}setgoodbye <message/reply to message>`
-    Set goodbye message in the current chat.
+๏ **Perintah:** `setgoodbye` <berikan pesan/balas pesan>
+◉ **Keterangan:** Set goodbye message in the current chat.
 
-• `{i}cleargoodbye`
-    Delete the goodbye in the current chat.
+๏ **Perintah:** `cleargoodbye`
+◉ **Keterangan:** Delete the goodbye in the current chat.
 
-• `{i}getgoodbye`
-    Get the goodbye message in the current chat.
+๏ **Perintah:** `getgoodbye`
+◉ **Keterangan:** Get the goodbye message in the current chat.
 
+Note: `{mention}`, `{group}`, `{count}`, `{name}`, `{fullname}`, `{username}`, `{userid}`\nBisa menggunakan fromat seperti diatas."
 """
 import os
 
