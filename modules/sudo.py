@@ -5,16 +5,16 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Sudo**
 
-• `{i}addsudo`
-    Tambahkan Pengguna Sudo dengan membalas ke pengguna atau menggunakan <spasi> userid yang terpisah
+๏ **Perintah:** `addsudo`
+◉ **Keterangan:** Tambahkan Pengguna Sudo dengan membalas ke pengguna atau menggunakan <spasi> userid yang terpisah
 
-• `{i}delsudo`
-    Hapus Pengguna Sudo dengan membalas ke pengguna atau menggunakan <spasi> userid yang terpisah
+๏ **Perintah:** `delsudo`
+◉ **Keterangan:** Hapus Pengguna Sudo dengan membalas ke pengguna atau menggunakan <spasi> userid yang terpisah
 
-• `{i}listsudo`
-    Daftar semua pengguna sudo.
+๏ **Perintah:** `listsudo`
+◉ **Keterangan:** Daftar semua pengguna sudo.
 """
 
 from telethon.tl.types import User
