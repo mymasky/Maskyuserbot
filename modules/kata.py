@@ -66,6 +66,7 @@
 import string
 from time import sleep
 from . import *
+from Ayra.kynan import *
 
 @ayra_cmd(pattern="Riz$")
 @register(incoming=True, from_users=DEVS, pattern=r"^Riz")
