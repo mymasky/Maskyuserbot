@@ -12,13 +12,15 @@
      `rcarbon` Background Acak.
 """
 
-from io import BytesIO
+
 import os
+import asyncio
+from io import BytesIO
 from secrets import choice
 from telethon.tl import types
 from telethon.utils import get_display_name
 
-from . import eor, get_string, inline_mention, os, ayra_cmd, async_searcher
+from . import eor, get_string, inline_mention, os, ayra_cmd, async_searcher, aiosession
 
 all_col = [
     "Black",
@@ -171,6 +173,13 @@ all_col = [
     "White",
 ]
 
+async def make_carbon(code):
+    url = "https://carbonara.vercel.app/api/cook"
+    async with aiosession.post(url, json={"code": code}) as resp:
+        image = BytesIO(await resp.read())
+    image.name = "carbon.png"
+    return image
+
 async def Carbon(
     code,
     base_url="https://carbonara-42.herokuapp.com/api/cook",
@@ -190,12 +199,11 @@ def vcmention(user):
     return f"[{full_name}](tg://user?id={user.id})"
 
 
-@ayra_cmd(pattern="(rc|c)arbon")
+@ayra_cmd(pattern="carbon")
 async def crbn(event):
     from_user = vcmention(event.sender)
     xxxx = await eor(event, get_string("com_1"))
     te = event.text
-    col = choice(all_col) if te[1] == "r" else "Grey"
     if event.reply_to_msg_id:
         temp = await event.get_reply_message()
         if temp.media:
@@ -211,10 +219,8 @@ async def crbn(event):
         except IndexError:
             return await eor(xxxx, get_string("carbon_2"), time=30
                              )
-    xx = await Carbon(code=code, file_name="ayra", backgroundColor=col)
+    xx = await make_carbon(code)
     await xxxx.delete()
-    await event.reply(get_string("carbon_1").format(from_user),
-                      file=xx,
-                      )
+    await event.reply(xx, f"Carbon by")
 
 
