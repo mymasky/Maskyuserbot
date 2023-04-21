@@ -20,7 +20,7 @@
 ๏ **Perintah:** `getgoodbye`
 ◉ **Keterangan:** Get the goodbye message in the current chat.
 
-**Note:** `{mention}`, `{group}`, `{count}`, `{name}`, `{fullname}`, `{username}`, `{userid}`\nBisa menggunakan format seperti diatas.
+**Note:** `{group}`, `{count}`, `{name}`, `{fullname}`, `{username}`, `{userid}`\nBisa menggunakan format seperti diatas.
 """
 import os
 
@@ -43,7 +43,7 @@ from Ayra.fns.tools import create_tl_btn, format_btn, get_msg_button
 from . import HNDLR, eor, get_string, mediainfo, ayra_cmd
 from ._inline import something
 
-Note = "\n\nNote: `{mention}`, `{group}`, `{count}`, `{name}`, `{fullname}`, `{username}`, `{userid}` can be used as formatting parameters.\n\n"
+Note = "\n\nNote: `{group}`, `{count}`, `{name}`, `{fullname}`, `{username}`, `{userid}` can be used as formatting parameters.\n\n"
 
 
 @ayra_cmd(pattern="(s|S)etwelcome", groups_only=True)
