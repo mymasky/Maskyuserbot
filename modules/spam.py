@@ -5,19 +5,19 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk System**
 
-• `{i}spam <angka> <tulis/balas pesan>`
-    obrolan spam, batas saat ini adalah dari 1 hingga 99.
+๏ **Perintah:** `spam` <jumlah> <berikan pesan/balas pesan>
+◉ **Keterangan:** Lakukan spam, batas saat ini adalah dari 1 hingga 99.
 
-• `{i}bigspam <angka> <tulis/balas pesan>`
-    Obrolan spam, batas saat ini di atas 100.
+๏ **Perintah:** `bspam` <jumlah> <berikan pesan/balas pesan>
+◉ **Keterangan:** Lakukan spam diatas 100 di obrolan.
 
-• `{i}delayspam <delay time> <count> <msg>`
-    Obrolan spam dengan penundaan..
+๏ **Perintah:** `dspam` <waktu delay><jumlah><balas pesan>
+◉ **Keterangan:** Delay spam dengan waktu dan jumlah tertentu.
 
-• `{i}tspam <text>`
-    Obrolan Spam dengan Satu-Satu Karakter..
+๏ **Perintah:** `tspam` <berikan pesan>
+◉ **Keterangan:** Spam PerKarakter.
 """
 
 import asyncio
@@ -25,7 +25,7 @@ import asyncio
 from . import *
 
 
-@ayra_cmd(pattern="tspam")
+@ayra_cmd(pattern="(t|T)spam")
 async def tmeme(e):
     tspam = str(e.text[7:])
     message = tspam.replace(" ", "")
@@ -34,7 +34,7 @@ async def tmeme(e):
     await e.delete()
 
 
-@ayra_cmd(pattern="spam")
+@ayra_cmd(pattern="(s|S)pam")
 async def spammer(e):
     message = e.text
     if e.reply_to:
@@ -56,7 +56,7 @@ async def spammer(e):
     await e.delete()
 
 
-@ayra_cmd(pattern="bigspam", fullsudo=True)
+@ayra_cmd(pattern="(b|B)spam", fullsudo=True)
 async def bigspam(e):
     message = e.text
     if e.reply_to:
@@ -76,7 +76,7 @@ async def bigspam(e):
     await e.delete()
 
 
-@ayra_cmd(pattern="(delayspam|dspam) ?(.*)")
+@ayra_cmd(pattern="(d|D)spam?(.*)")
 async def delayspammer(e):
     try:
         args = e.text.split(" ", 3)
@@ -87,7 +87,7 @@ async def delayspammer(e):
         else:
             spam_message = str(args[3])
     except BaseException:
-        return await e.edit(f"**Penggunaan :** {HNDLR}delayspam <delay time> <count> <balas pesan>")
+        return await e.edit(f"**Penggunaan :** {HNDLR} dspam <waktu delay> <jumlah> <balas pesan>")
     await e.delete()
     try:
         for i in range(count):
