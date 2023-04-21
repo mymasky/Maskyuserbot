@@ -5,8 +5,10 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-• `{i}webshot/ss <url>`
-    Dapatkan screenshot dari tautan tersebut.
+✘ **Bantuan Untuk Webshot**
+
+๏ **Perintah:** `webshot/ss` <link>
+◉ **Keterangan:** Dapatkan screenshot dari link tersebut
 """
 import glob
 import io
