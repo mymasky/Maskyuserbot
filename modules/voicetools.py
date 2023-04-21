@@ -27,7 +27,7 @@ reco = sr.Recognizer()
 
 
 @ayra_cmd(
-    pattern=r"^[tT][tts](?: |$)(.*)",
+    pattern=r"^[tT][tT][sS](?: |$)(.*)",
 )
 async def _(event):
     input_str = event.pattern_match.group(1)
@@ -81,7 +81,7 @@ async def _(event):
         await event.eor(str(e))
 
 
-@ayra_cmd(pattern=r"^[sS][sst](?: |$)(.*)")
+@ayra_cmd(pattern=r"^[sS][tT][tT](?: |$)(.*)")
 async def speec_(e):
     reply = await e.get_reply_message()
     if not (reply and reply.media):
