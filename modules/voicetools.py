@@ -5,12 +5,13 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Webshot**
 
-• `{i}tts` `<kode bahasa> <balas pesan>`
+๏ **Perintah:** `tts id` <balas pesan>
+◉ **Keterangan:** Buat teks ke Voice Google.
 
-• `{i}stt` `<balas audio>`
-       Convert VN Ke Teks . Belum 100% Akurasi
+๏ **Perintah:** `stt id` <balas pesan>
+◉ **Keterangan:** Convert voice ke teks.
 """
 
 import os
