@@ -119,8 +119,7 @@ async def naya(naya):
     await naya.reply("**Kynan Punya Nya Naya**🤩")
 
 @ayra_cmd(
-    pattern="alive( (.*)|$)",
-)
+    pattern=r"^[aA][live](?: |$)(.*)")
 async def lol(ayra):
     match = ayra.pattern_match.group(1).strip()
     inline = True
@@ -241,7 +240,7 @@ async def get_readable_time(seconds: int) -> str:
     return up_time
 
 
-@ayra_cmd(pattern=r"^ping$")
+@ayra_cmd(pattern=r"^[pP][ing](?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^Cping$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
@@ -374,7 +373,7 @@ async def inline_alive(ayra):
     await ayra.answer(result)
 
 
-@ayra_cmd(pattern="update( (.*)|$)")
+@ayra_cmd(pattern=r"^[uU][pdate](?: |$)(.*)")
 async def _(e):
     xx = await e.eor(get_string("upd_1"))
     if e.pattern_match.group(1).strip() and (
