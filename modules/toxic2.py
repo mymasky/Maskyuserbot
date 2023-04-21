@@ -120,7 +120,7 @@ async def _(event):
     await event.eor("`Tapi Bo'ong Hiyahiyahiya`")
 # Create by myself @localheart
 
-@ayra_cmd(outgoing=True, pattern="(k|Kont|ntl)")
+@ayra_cmd(outgoing=True, pattern="(k|K|ont|ntl)")
 async def _(event):
     xx = await event.eor("**KONTOLL**")
     sleep(1.5)
