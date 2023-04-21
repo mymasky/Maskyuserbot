@@ -5,72 +5,139 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Youtube**
 
-• `{i}ytsv <berikan link>`
-       Unduh audio atau video dari link.
+๏ **Perintah:** Video
+◉ **Keterangan:** Unduh Video Dari Youtube.
+
+๏ **Perintah:** Song
+◉ **Keterangan:** Unduh Lagu Dari Youtube.
 """
-from Ayra.fns.ytdl import download_yt, get_yt_link
+import os
+from asyncio import get_event_loop
+from functools import partial
+import wget
+from . import *
+from youtubesearchpython import SearchVideos
+from yt_dlp import YoutubeDL
 
-from . import get_string, requests, ayra_cmd
+
+def run_sync(func, *args, **kwargs):
+    return get_event_loop().run_in_executor(None, partial(func, *args, **kwargs))
 
 
-@ayra_cmd(
-    pattern="yt(a|v|sa|sv) ?(.*)",
-)
-async def download_from_youtube_(event):
-    ytd = {
-        "prefer_ffmpeg": True,
-        "addmetadata": True,
-        "geo-bypass": True,
-        "nocheckcertificate": True,
-    }
-    opt = event.pattern_match.group(1).strip()
-    xx = await event.eor(get_string("com_1"))
-    if opt == "a":
-        ytd["format"] = "bestaudio"
-        ytd["outtmpl"] = "%(id)s.m4a"
-        url = event.pattern_match.group(2)
-        if not url:
-            return await xx.eor(get_string("youtube_1"))
-        try:
-            requests.get(url)
-        except BaseException:
-            return await xx.eor(get_string("youtube_2"))
-    elif opt == "v":
-        ytd["format"] = "best"
-        ytd["outtmpl"] = "%(id)s.mp4"
-        ytd["postprocessors"] = [{"key": "FFmpegMetadata"}]
-        url = event.pattern_match.group(2)
-        if not url:
-            return await xx.eor(get_string("youtube_3"))
-        try:
-            requests.get(url)
-        except BaseException:
-            return await xx.eor(get_string("youtube_4"))
-    elif opt == "sa":
-        ytd["format"] = "bestaudio"
-        ytd["outtmpl"] = "%(id)s.m4a"
-        try:
-            query = event.text.split(" ", 1)[1]
-        except IndexError:
-            return await xx.eor(get_string("youtube_5"))
-        url = get_yt_link(query)
-        if not url:
-            return await xx.edit(get_string("unspl_1"))
-        await xx.eor(get_string("youtube_6"))
-    elif opt == "sv":
-        ytd["format"] = "best"
-        ytd["outtmpl"] = "%(id)s.mp4"
-        ytd["postprocessors"] = [{"key": "FFmpegMetadata"}]
-        try:
-            query = event.text.split(" ", 1)[1]
-        except IndexError:
-            return await xx.eor(get_string("youtube_7"))
-        url = get_yt_link(query)
-        if not url:
-            return await xx.edit(get_string("unspl_1"))
-        await xx.eor(get_string("youtube_8"))
-    else:
-        return
-    await download_yt(xx, url, ytd)
+@ayra_cmd(pattern="(v|V)ideo")
+async def yt_video(e):
+    if len(message.command) < 2:
+        return await e.reply(
+            "❌ **Video tidak ditemukan,**\nMohon masukan judul video dengan benar.",
+        )
+    infomsg = await e.reply("**🔍 Pencarian...**", quote=False)
+    try:
+        search = SearchVideos(str(message.text.split(None, 1)[1]), offset=1, mode="dict", max_results=1).result().get("search_result")
+        link = f"https://youtu.be/{search[0]['id']}"
+    except Exception as error:
+        return await infomsg.edit(f"**🔍 Pencarian...\n\n❌ Error: {error}**")
+    ydl = YoutubeDL(
+        {
+            "quiet": True,
+            "no_warnings": True,
+            "format": "(bestvideo[height<=?720][width<=?1280][ext=mp4])+(bestaudio[ext=m4a])",
+            "outtmpl": "downloads/%(id)s.%(ext)s",
+            "nocheckcertificate": True,
+            "geo_bypass": True,
+        }
+    )
+    await infomsg.edit(f"**📥 Downloader...**")
+    try:
+        ytdl_data = await run_sync(ydl.extract_info, link, download=True)
+        file_path = ydl.prepare_filename(ytdl_data)
+        videoid = ytdl_data["id"]
+        title = ytdl_data["title"]
+        url = f"https://youtu.be/{videoid}"
+        duration = ytdl_data["duration"]
+        channel = ytdl_data["uploader"]
+        views = f"{ytdl_data['view_count']:,}".replace(",", ".")
+        thumbs = f"https://img.youtube.com/vi/{videoid}/hqdefault.jpg" 
+    except Exception as error:
+        return await infomsg.edit(f"**📥 Downloader...\n\n❌ Error: {error}**")
+    thumbnail = wget.download(thumbs)
+    await ayra_bot.send_video(
+        message.chat.id,
+        video=file_path,
+        thumb=thumbnail,
+        file_name=title,
+        duration=duration,
+        supports_streaming=True,
+        caption="**💡 Informasi {}**\n\n**🏷 Nama:** {}\n**🧭 Durasi:** {}\n**👀 Dilihat:** {}\n**📢 Channel:** {}\n**🔗 Tautan:** <a href={}>Youtube</a>\n\n**".format(
+            "video",
+            title,
+            duration,
+            views,
+            channel,
+            url,
+        ),
+        reply_to_message_id=message.id,
+    )
+    await infomsg.delete()
+    for files in (thumbnail, file_path):
+        if files and os.path.exists(files):
+            os.remove(files)
+
+
+@ayra_cmd(pattern="(s|S)ong")
+async def yt_audio(client, message):
+    if len(message.command) < 2:
+        return await e.reply(
+            "❌ **Audio tidak ditemukan,**\nmohon masukan judul video dengan benar.",
+        )
+    infomsg = await e.reply("**🔍 Pencarian...**", quote=False)
+    try:
+        search = SearchVideos(str(message.text.split(None, 1)[1]), offset=1, mode="dict", max_results=1).result().get("search_result")
+        link = f"https://youtu.be/{search[0]['id']}"
+    except Exception as error:
+        return await infomsg.edit(f"**🔍 Pencarian...\n\n❌ Error: {error}**")
+    ydl = YoutubeDL(
+        {
+            "quiet": True,
+            "no_warnings": True,
+            "format": "bestaudio[ext=m4a]",
+            "outtmpl": "downloads/%(id)s.%(ext)s",
+            "nocheckcertificate": True,
+            "geo_bypass": True,
+        }
+    )
+    await infomsg.edit(f"**📥 Downloader...**")
+    try:
+        ytdl_data = await run_sync(ydl.extract_info, link, download=True)
+        file_path = ydl.prepare_filename(ytdl_data)
+        videoid = ytdl_data["id"]
+        title = ytdl_data["title"]
+        url = f"https://youtu.be/{videoid}"
+        duration = ytdl_data["duration"]
+        channel = ytdl_data["uploader"]
+        views = f"{ytdl_data['view_count']:,}".replace(",", ".")
+        thumbs = f"https://img.youtube.com/vi/{videoid}/hqdefault.jpg" 
+    except Exception as error:
+        return await infomsg.edit(f"**📥 Downloader...\n\n❌ Error: {error}**")
+    thumbnail = wget.download(thumbs)
+    await ayra_bot.send_audio(
+        message.chat.id,
+        audio=file_path,
+        thumb=thumbnail,
+        file_name=title,
+        duration=duration,
+        caption="**💡 Informasi {}**\n\n**🏷 Nama:** {}\n**🧭 Durasi:** {}\n**👀 Dilihat:** {}\n**📢 Channel:** {}\n**🔗 Tautan:** <a href={}>Youtube</a>\n\n**".format(
+            "Audio",
+            title,
+            duration,
+            views,
+            channel,
+            url,
+        ),
+        reply_to_message_id=message.id,
+    )
+    await infomsg.delete()
+    for files in (thumbnail, file_path):
+        if files and os.path.exists(files):
+            os.remove(files)
