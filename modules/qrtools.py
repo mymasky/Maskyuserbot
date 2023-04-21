@@ -5,16 +5,17 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk QR Tools**
 
-• `{i}qrcode <text/reply to text>`
-   `Membuat qrcode teks`
+๏ **Perintah:** `qrcode` <balas pesan>
+◉ **Keterangan:** Membuat qrcode teks.
 
-• `{i}addqr <reply image> <text>`
-   `Membuat qr teks dan menambahkannya ke gambar.`
+๏ **Perintah:** `addqr` <balas pesan>
+◉ **Keterangan:** Membuat qr teks dan menambahkannya ke gambar.
 
-• `{i}qrdecode <reply to qrcode>`
-   `Ini menerjemahkan qrcode.`
+๏ **Perintah:** `qrdecode` <balas pesan> <jumlah> <warna>
+◉ **Keterangan:** Menerjemahkan QR.
+
 """
 import os
 
