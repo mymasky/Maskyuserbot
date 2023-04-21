@@ -17,7 +17,7 @@
 ๏ **Perintah:** `play`
 ◉ **Keterangan:** Putar Lagu atau Balas Ke Audio.
 
-๏ **Perintah:** `vplay`
+๏ **Perintah:** `vplay` <berikan link youtube>
 ◉ **Keterangan:** Putar Video Dengan Judul atau Balas File.
 
 ๏ **Perintah:** `mutevc`
