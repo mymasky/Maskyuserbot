@@ -5,9 +5,8 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Update**
 
-• `{i}update`
-    Cek Pembaruan Ayra-Userbot.
-    
+๏ **Perintah:** `update`
+◉ **Keterangan:** Cek pembaruan dari userbot.
 """
