@@ -40,7 +40,7 @@ from Ayra.dB.greetings_db import (
 )
 from Ayra.fns.tools import create_tl_btn, format_btn, get_msg_button
 
-from . import HNDLR, eor, get_string, mediainfo, ayra_cmd
+from . import *
 from ._inline import something
 
 Note = "\n\nNote: `{group}`, `{count}`, `{name}`, `{fullname}`, `{username}`, `{userid}` can be used as formatting parameters.\n\n"
