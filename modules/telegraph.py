@@ -5,10 +5,10 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
-• `{i}tg <reply to media/text>`
-    Upload media/text to telegraph.
+✘ **Bantuan Untuk VC Tools**
 
+๏ **Perintah:** `tg`
+◉ **Keterangan:** Upload File Atau Teks Ke Telegraph
 """
 
 import calendar
