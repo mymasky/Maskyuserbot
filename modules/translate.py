@@ -5,8 +5,13 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-• `{i}tr <lang code> <balas ke pesan>`
-    Dapatkan pesan yang diterjemahkan.
+✘ **Bantuan Untuk Update**
+
+๏ **Perintah:** `tr` <kode bahasa>
+◉ **Keterangan:** Terjemahkan pesan.
+
+◉ **Contoh:** `tr id` <balas ke pesan>
+Ini akan menerjemahkan pesan ke Bahasa Indonesia.
 """
 import glob
 import io
