@@ -5,22 +5,19 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Profile**
 
-• `{i}setname <first name // last name>`
-    Ubah nama profil Anda.
+๏ **Perintah:** `setname` <first name/last name>
+◉ **Keterangan:** Ubah nama anda.
 
-• `{i}setbio <bio>`
-    Ubah bio profil Anda.
+๏ **Perintah:** `setbio` <balas pesan>
+◉ **Keterangan:** Ubah bio anda.
 
-• `{i}setfp <reply to pic>`
-    Ubah foto profil Anda.
+๏ **Perintah:** `setfp` <balas pesan>
+◉ **Keterangan:** Ubah foto profil anda.
 
-• `{i}delfp <n>(optional)`
-    Hapus satu foto profil, jika tidak ada nilai yang diberikan, hapus n jumlah foto.
-
-• `{i}poto <username>`
-    Unggah foto Obrolan/Pengguna jika Tersedia.
+๏ **Perintah:** `delfp` <jumlah>
+◉ **Keterangan:** Hapus satu foto profil, jika tidak ada nilai yang diberikan atau hapus jumlah foto.
 """
 import os
 
@@ -34,7 +31,7 @@ TMP_DOWNLOAD_DIRECTORY = "resources/downloads/"
 # bio changer
 
 
-@ayra_cmd(pattern="setbio( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="(S|s)etbio( (.*)|$)", fullsudo=False)
 async def _(ayra):
     ok = await ayra.eor("...")
     set = ayra.pattern_match.group(1).strip()
@@ -48,7 +45,7 @@ async def _(ayra):
 # name changer
 
 
-@ayra_cmd(pattern="setname ?((.|//)*)", fullsudo=False)
+@ayra_cmd(pattern="(S|s)etname ?((.|//)*)", fullsudo=False)
 async def _(ayra):
     ok = await ayra.eor("...")
     names = ayra.pattern_match.group(1).strip()
@@ -71,7 +68,7 @@ async def _(ayra):
 # profile pic
 
 
-@ayra_cmd(pattern="setfp$", fullsudo=False)
+@ayra_cmd(pattern="(s|S)etfp$", fullsudo=False)
 async def _(ayra):
     if not ayra.is_reply:
         return await ayra.eor("`Balas ke Media..`", time=5)
@@ -93,7 +90,7 @@ async def _(ayra):
 # delete profile pic(s)
 
 
-@ayra_cmd(pattern="delfp( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="(D|d)elfp( (.*)|$)", fullsudo=False)
 async def remove_profilepic(delpfp):
     ok = await eor(delpfp, "`...`")
     group = delpfp.text[8:]
@@ -108,7 +105,7 @@ async def remove_profilepic(delpfp):
     await eod(ok, f"`Berhasil dihapus {len(pfplist)} gambar profil(s).`")
 
 
-@ayra_cmd(pattern="poto( (.*)|$)")
+@ayra_cmd(pattern="(p|P)oto( (.*)|$)")
 async def gpoto(e):
     ayra = e.pattern_match.group(1).strip()
     a = await e.eor(get_string("com_1"))
