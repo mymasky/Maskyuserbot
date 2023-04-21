@@ -163,7 +163,7 @@ async def _(e):
     chats = 0
     if userid == ayra_bot.uid:
         return await xx.eor("`Tidak Dapat Gban Diri Sendiri.`", time=3)
-    elif userid in DEVLIST:
+    elif userid in DEVS:
         return await xx.eor("`Tidak Dapat Gban DEVS.`", time=3)
     elif is_gbanned(userid):
         return await eod(
@@ -221,7 +221,7 @@ async def _(e):
     chats = 0
     if userid == ayra_bot.uid:
         return await xx.eor("`I can't gmute myself.`", time=3)
-    if userid in DEVLIST:
+    if userid in DEVS:
         return await xx.eor("`I can't gmute my Developers.`", time=3)
     if is_gmuted(userid):
         return await xx.eor("`User is already gmuted.`", time=4)
