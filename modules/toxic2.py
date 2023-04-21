@@ -48,8 +48,6 @@ async def _(event):
     await event.eor("**HAHAHAHA**")
 # Create by myself @localheart
 
-Sekarang bantu saya benarkan perintah ini agar bisa menggunakan perintah dengan kata goblok, atau pun Goblok serta bisa juga dengan perintah Gblk ataupun gblk
-
 @ayra_cmd(outgoing=True, pattern=r"^[gG][oO][bB][lL[oO][kK](g|G)blk(?: |$)(.*)")
 async def _(event):
     xx = await event.eor("**WOYY GOBLOK!!**")
