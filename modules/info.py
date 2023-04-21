@@ -5,13 +5,16 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
-• `{i}info <username/userid/chatid>`
-    Reply to someone's msg.
-    
-• `{i}stats` : See your profile stats.
+✘ **Bantuan Untuk Info**
 
-• `{i}ipinfo <ipAddress>` : Get info about that IP address.
+๏ **Perintah:** `info` <username/userid/chatid>
+◉ **Keterangan:** You know lah.
+
+๏ **Perintah:** `stats`
+◉ **Keterangan:** Cek stats akun anda.
+
+๏ **Perintah:** `ipinfo` <ipAddress>
+◉ **Keterangan:** Get info about that IP address.
 """
 
 import calendar
@@ -80,7 +83,7 @@ _copied_msg = {}
 
 
 @ayra_cmd(
-    pattern="stats$",
+    pattern="(S|s)tats$",
 )
 async def stats(
     event: NewMessage.Event,
@@ -154,7 +157,7 @@ async def stats(
     await ok.edit(response)
 
 @ayra_cmd(
-    pattern="info( (.*)|$)",
+    pattern="(I|i)nfo( (.*)|$)",
     manager=True,
 )
 async def _(event):
@@ -254,7 +257,7 @@ async def _(event):
     await xx.delete()
 
 
-@ayra_cmd(pattern="ipinfo( (.*)|$)")
+@ayra_cmd(pattern="(I|i)pinfo( (.*)|$)")
 async def ipinfo(event):
     ip = event.text.split()
     ipaddr = ""
