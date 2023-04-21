@@ -74,7 +74,7 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="(v|V)ctitle(?: |$)(.*)",
+    pattern="(v|V)ctitle$",
     admins_only=True,
     groups_only=True,
 )
