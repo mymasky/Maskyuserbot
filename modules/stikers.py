@@ -5,22 +5,22 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Tag All**
 
-• `{i}destroy <reply to animated sticker>`
-    Untuk menghancurkan stiker.
+๏ **Perintah:** `destroy` <balas stikers>
+◉ **Keterangan:** Untuk menghancurkan stiker.
 
-• `{i}tiny <reply to media>`
-    Untuk membuat stiker Tiny.
+๏ **Perintah:** `tiny` <balas foto>
+◉ **Keterangan:** Untuk membuat stiker Tiny.
 
-• `{i}kang <reply to image/sticker>`
-    Kang stikernya (tambahkan ke paket Anda).
+๏ **Perintah:** `kang` <balas stiker>
+◉ **Keterangan:** Kang stikernya (tambahkan ke paket Anda).
 
-• `{i}packkang <pack name>`
-    Kang set sticker Lengkap (dengan nama kustom).
+๏ **Perintah:** `packkang` <balas stiker <nama pack>
+◉ **Keterangan:** Kang set sticker Lengkap (dengan nama kustom).
 
-• `{i}round <reply to any media>`
-    Untuk mengekstrak stiker bulat.
+๏ **Perintah:** `round` <balas media>
+◉ **Keterangan:** Untuk membuat stiker bulat.
 """
 import glob
 import io
@@ -68,7 +68,7 @@ from . import (
 )
 
 
-@ayra_cmd(pattern="packkang")
+@ayra_cmd(pattern="(p|P)ackkang")
 async def pack_kangish(_):
     _e = await _.get_reply_message()
     ayra_bot = _.client
@@ -149,7 +149,7 @@ async def pack_kangish(_):
 
 
 @ayra_cmd(
-    pattern="kang",
+    pattern="(K|k)ang",
 )
 async def hehe(args):
     ayra_bot = args.client
@@ -373,7 +373,7 @@ async def hehe(args):
 
 
 @ayra_cmd(
-    pattern="round$",
+    pattern="(R|r)ound$",
 )
 async def ayraround(event):
     ureply = await event.get_reply_message()
@@ -410,7 +410,7 @@ async def ayraround(event):
 
 
 @ayra_cmd(
-    pattern="destroy$",
+    pattern="(D|d)estroy$",
 )
 async def ayradestroy(event):
     ayra = await event.get_reply_message()
@@ -450,7 +450,7 @@ async def ayradestroy(event):
 
 
 @ayra_cmd(
-    pattern="tiny$",
+    pattern="(T|t)iny$",
 )
 async def ayratiny(event):
     reply = await event.get_reply_message()
