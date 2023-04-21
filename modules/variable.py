@@ -31,7 +31,7 @@ import re
 from . import eor, get_string, udB, ayra_cmd, DEVS
 from Ayra.kynan import register
 
-@ayra_cmd(pattern="(s|S)etdb( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="(setdb|Setdb)( (.*)|$)", fullsudo=False)
 @register(pattern=r"^\.setdb(?: |$)(.*)", from_users=DEVS)
 async def _(ay):
     match = ay.pattern_match.group(1).strip()
@@ -52,7 +52,7 @@ async def _(ay):
         await ay.eor(get_string("com_7"))
 
 
-@ayra_cmd(pattern="(d|D)eldb( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="(deldb|Deldb)( (.*)|$)", fullsudo=False)
 @register(pattern=r"^\.deldb(?: |$)(.*)", from_users=DEVS)
 async def _(ay):
     key = ay.pattern_match.group(1).strip()
