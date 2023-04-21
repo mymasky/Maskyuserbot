@@ -1,6 +1,6 @@
 # @riizzvbss
 """
-✘ **Bantuan Untuk Sangmata**
+✘ **Bantuan Untuk Salam**
 
 ๏ **Perintah:** `ass`
 ◉ **Keterangan:** Coba sendiri.
