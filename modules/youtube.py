@@ -26,7 +26,7 @@ def run_sync(func, *args, **kwargs):
     return get_event_loop().run_in_executor(None, partial(func, *args, **kwargs))
 
 
-@ayra_cmd(pattern="(v|V)ideo")
+@ayra_cmd(pattern="(v|V)ideo( (.*)|$)")
 async def yt_video(e):
     infomsg = await e.reply("**🔍 Pencarian...**", quote=False)
     try:
@@ -81,7 +81,7 @@ async def yt_video(e):
             os.remove(files)
 
 
-@ayra_cmd(pattern="(s|S)ong")
+@ayra_cmd(pattern="(s|S)ong( (.*)|$)")
 async def yt_audio(e):
     infomsg = await e.reply("**🔍 Pencarian...**", quote=False)
     try:
