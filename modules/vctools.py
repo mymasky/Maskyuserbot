@@ -5,27 +5,22 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk VC Tools**
 
-• `{i} startvc`
-    Mulai Panggilan Grup dalam grup.
+๏ **Perintah:** `startvc`
+◉ **Keterangan:** Memulai obrolan suara.
 
-• `{i} stopvc`
-    Hentikan Panggilan Grup dalam grup.
+๏ **Perintah:** `stopvc`
+◉ **Keterangan:** Mengakhiri obrolan suara.
 
-• `{i} vctitle <title>`
-    Ubah judul Panggilan grup.
+๏ **Perintah:** `vctitle`
+◉ **Keterangan:** Ubah judul obrolan suara.
 
-• `{i} vcinvite`
-    Undang semua anggota grup di Group Call.
-    (Anda harus bergabung)
-    
-• `{i} joinvc` <chat id/username grup>
-   Bergabunglah dengan obrolan suara.
+๏ **Perintah:** `joinvc`
+◉ **Keterangan:** Bergabung ke obrolan suara.
 
-• `{i} leavevc` <chat id/username grup>
-   Tinggalkan obrolan suara.
-
+๏ **Perintah:** `leavevc`
+◉ **Keterangan:** Meninggalkan ke obrolan suara.
 """
 
 import asyncio
@@ -63,27 +58,6 @@ async def _(e):
         await e.eor(get_string("vct_4"))
     except Exception as ex:
         await e.eor(f"`{ex}`")
-
-
-@ayra_cmd(
-    pattern="vcinvite$",
-    groups_only=True,
-)
-async def _(e):
-    ok = await e.eor(get_string("vct_3"))
-    users = []
-    z = 0
-    async for x in e.client.iter_participants(e.chat_id):
-        if not x.bot:
-            users.append(x.id)
-    hmm = list(user_list(users, 6))
-    for p in hmm:
-        try:
-            await e.client(invitetovc(call=await get_call(e), users=p))
-            z += 6
-        except BaseException:
-            pass
-    await ok.edit(get_string("vct_5").format(z))
 
 
 @ayra_cmd(
