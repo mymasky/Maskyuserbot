@@ -5,7 +5,7 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-✘ **Bantuan Untuk System**
+✘ **Bantuan Untuk Spam**
 
 ๏ **Perintah:** `spam` <jumlah> <berikan pesan/balas pesan>
 ◉ **Keterangan:** Lakukan spam, batas saat ini adalah dari 1 hingga 99.
