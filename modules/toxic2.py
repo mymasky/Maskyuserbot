@@ -1,17 +1,21 @@
 # @riizzvbss
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Toxic 2**
 
-•`{i}ngentot`
+๏ **Perintah:** `ngentot`
+◉ **Keterangan:** Coba sendiri.
 
-•`{i}goblok`
+๏ **Perintah:** `goblok`
+◉ **Keterangan:** Coba sendiri.
 
-•`{i}ngatain`
+๏ **Perintah:** `ngatain`
+◉ **Keterangan:** Coba sendiri.
 
-•`{i}yatim`
+๏ **Perintah:** `yatim`
+◉ **Keterangan:** Coba sendiri.
 
-•`{i}kont`
-    Coba aja sendiri.
+๏ **Perintah:** `kont`
+◉ **Keterangan:** Coba sendiri.
 """
 
 from time import sleep
@@ -21,7 +25,7 @@ from . import (
 )
 
 
-@ayra_cmd(outgoing=True, pattern="ngentot")
+@ayra_cmd(outgoing=True, pattern="(n|N)gentot")
 async def _(event):
     xx = await event.eor("**WOYY NGENTOD!!**")
     sleep(1)
@@ -45,7 +49,7 @@ async def _(event):
 # Create by myself @localheart
 
 
-@ayra_cmd(outgoing=True, pattern="goblok")
+@ayra_cmd(outgoing=True, pattern="(g|G)oblok|blk")
 async def _(event):
     xx = await event.eor("**WOYY GOBLOK!!**")
     sleep(1)
@@ -116,7 +120,7 @@ async def _(event):
     await event.eor("`Tapi Bo'ong Hiyahiyahiya`")
 # Create by myself @localheart
 
-@ayra_cmd(outgoing=True, pattern="kont")
+@ayra_cmd(outgoing=True, pattern="(k|K)ont|ntl")
 async def _(event):
     xx = await event.eor("**KONTOLL**")
     sleep(1.5)
