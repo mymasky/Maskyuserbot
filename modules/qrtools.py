@@ -34,7 +34,7 @@ from telethon.tl.types import MessageMediaPhoto as photu
 from . import check_filename, get_string, ayra_bot, ayra_cmd
 
 
-@ayra_cmd(pattern="qrcode( (.*)|$)")
+@ayra_cmd(pattern="(q|Q)rcode( (.*)|$)")
 async def cd(e):
     reply = await e.get_reply_message()
     msg = e.pattern_match.group(1).strip()
@@ -67,7 +67,7 @@ async def cd(e):
         os.remove(cimg)
 
 
-@ayra_cmd(pattern="addqr( (.*)|$)")
+@ayra_cmd(pattern="(A|a)ddqr( (.*)|$)")
 async def qrwater(e):
     msg = e.pattern_match.group(1).strip()
     r = await e.get_reply_message()
@@ -91,7 +91,7 @@ async def qrwater(e):
     os.remove(dl)
 
 
-@ayra_cmd(pattern="qrdecode$")
+@ayra_cmd(pattern="(q|Q)rdecode$")
 async def decod(e):
     r = await e.get_reply_message()
     if not (r and r.media):
