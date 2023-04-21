@@ -5,55 +5,46 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Image**
 
-• `{i}border <reply to photo/sticker>`
-    Untuk membuat batas di sekitar media itu ..
-    Ex - `{i}border 12,22,23`
-       - `{i}border 12,22,23 ; width (in number)`
+๏ **Perintah:** `border`
+◉ **Keterangan:** Untuk membuat batas di sekitar media itu .
 
-• `{i}grey <reply to any media>`
-    Untuk membuatnya hitam dan putih.
+๏ **Perintah:** `grey`
+◉ **Keterangan:** Untuk membuatnya hitam dan putih.
 
-• `{i}color <reply to any Black nd White media>`
-    Untuk membuatnya Berwarna-warni.
+๏ **Perintah:** `color`
+◉ **Keterangan:** Untuk membuatnya Berwarna-warni.
 
-• `{i}toon <reply to any media>`
-    Untuk membuatnya toon.
+๏ **Perintah:** `toon`
+◉ **Keterangan:** Untuk membuatnya toon.
 
-• `{i}danger <reply to any media>`
-    Agar terlihat Bahaya.
+๏ **Perintah:** `danger`
+◉ **Keterangan:** Agar terlihat Bahaya.
 
-• `{i}negative <reply to any media>`
-    Untuk membuat citra negatif.
+๏ **Perintah:** `negative`
+◉ **Keterangan:** Untuk membuat citra negatif.
 
-• `{i}blur <reply to any media>`
-    Untuk membuatnya buram.
+๏ **Perintah:** `blur`
+◉ **Keterangan:** Untuk membuatnya buram.
 
-• `{i}quad <reply to any media>`
-    membuat Vortex.
+๏ **Perintah:** `quad`
+◉ **Keterangan:**membuat Vortex.
 
-• `{i}mirror <reply to any media>`
-    Untuk membuat gambar cermin.
+๏ **Perintah:** `mirror`
+◉ **Keterangan:** Untuk membuat gambar cermin.
 
-• `{i}flip <reply to any media>`
-    Untuk membuatnya terbalik.
+๏ **Perintah:** `flip`
+◉ **Keterangan:** Untuk membuatnya terbalik.
 
-• `{i}sketch <reply to any media>`
-    Untuk menggambar sketsanya.
+๏ **Perintah:** `sketch`
+◉ **Keterangan:** Untuk menggambar sketsanya.
 
-• `{i}blue <reply to any media>`
-    hanya keren.
+๏ **Perintah:** `pixelator`
+◉ **Keterangan:** Buat Gambar Piksel..
 
-• `{i}csample <color name /color code>`
-   example : `{i}csample red`
-             `{i}csample #ffffff`
-
-• `{i}pixelator <reply image>`
-    Buat Gambar Piksel..
-    
-• `{i}rmbg <reply to pic>`
-    Remove background from that picture.
+๏ **Perintah:** `rmbg`
+◉ **Keterangan:** Remove background from that picture.
 """
 import os
 
@@ -77,18 +68,10 @@ from telethon.errors.rpcerrorlist import (
     MessageDeleteForbiddenError,
 )
 
-from . import (
-    Redis,
-    async_searcher,
-    download_file,
-    get_string,
-    requests,
-    udB,
-    ayra_cmd,
-)
+from . import *
 
 
-@ayra_cmd(pattern="color$")
+@ayra_cmd(pattern="(C|c)olor$")
 async def _(event):
     reply = await event.get_reply_message()
     if not (reply and reply.media):
@@ -247,7 +230,7 @@ async def ayra(event):
     os.remove(ayra)
 
 
-@ayra_cmd(pattern="border( (.*)|$)")
+@ayra_cmd(pattern="(b|B)order( (.*)|$)")
 async def ok(event):
     hm = await event.get_reply_message()
     if not (hm and (hm.photo or hm.sticker)):
@@ -275,7 +258,7 @@ async def ok(event):
     await event.delete()
 
 
-@ayra_cmd(pattern="pixelator( (.*)|$)")
+@ayra_cmd(pattern="(P|p)ixelator( (.*)|$)")
 async def pixelator(event):
     reply_message = await event.get_reply_message()
     if not (reply_message and reply_message.photo):
@@ -299,7 +282,7 @@ async def pixelator(event):
     os.remove(image)
 
 @ayra_cmd(
-    pattern="rmbg($| (.*))",
+    pattern="(R|r)mbg($| (.*))",
 )
 async def abs_rmbg(event):
     RMBG_API = udB.get_key("RMBG_API")
