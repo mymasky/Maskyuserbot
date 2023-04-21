@@ -1,9 +1,9 @@
 # @riizzvbss
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Toxic**
 
-•`{i}A sampai Z`
-   Coba aja sendiri.
+๏ **Perintah:** `A` sampai `Z`
+◉ **Keterangan:** Coba Sendiri.
 """
 
 from time import sleep
