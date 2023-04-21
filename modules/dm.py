@@ -5,17 +5,16 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk DM**
 
-• `{i}dm <username/id> <reply/type>`
-    kirim pesan ke Pengguna/Obrolan.
-
+๏ **Perintah:** `dm` <username/id> <reply/type>`
+◉ **Keterangan:** Kirim pesan pribadi ke pengguna.
 """
 
 from . import HNDLR, eod, get_string, ayra_cmd
 
 
-@ayra_cmd(pattern="(send|dm)( (.*)|$)", fullsudo=True)
+@ayra_cmd(pattern="[dD][mM]( (.*)|$)", fullsudo=True)
 async def dm(e):
     if len(e.text.split()) <= 1:
         return await e.eor(get_string("dm_1"), time=5)
