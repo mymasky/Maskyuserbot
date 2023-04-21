@@ -28,10 +28,6 @@ def run_sync(func, *args, **kwargs):
 
 @ayra_cmd(pattern="(v|V)ideo")
 async def yt_video(e):
-    if len(e.command) < 2:
-        return await e.reply(
-            "❌ **Video tidak ditemukan,**\nMohon masukan judul video dengan benar.",
-        )
     infomsg = await e.reply("**🔍 Pencarian...**", quote=False)
     try:
         search = SearchVideos(str(e.text.split(None, 1)[1]), offset=1, mode="dict", max_results=1).result().get("search_result")
@@ -87,10 +83,6 @@ async def yt_video(e):
 
 @ayra_cmd(pattern="(s|S)ong")
 async def yt_audio(e):
-    if len(e.command) < 2:
-        return await e.reply(
-            "❌ **Audio tidak ditemukan,**\nmohon masukan judul video dengan benar.",
-        )
     infomsg = await e.reply("**🔍 Pencarian...**", quote=False)
     try:
         search = SearchVideos(str(e.text.split(None, 1)[1]), offset=1, mode="dict", max_results=1).result().get("search_result")
