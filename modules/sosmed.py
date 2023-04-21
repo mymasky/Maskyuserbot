@@ -5,10 +5,10 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Sosmed**
 
-•`{i}sosmed <link url>`
-    Download Video Tiktok, Instagram, Twitter Tanpa Watermark
+๏ **Perintah:** `sosmed` <link>
+◉ **Keterangan:** Download Video Youtube, Tiktok, Instagram, Twitter Tanpa Watermark.
 """
 
 
