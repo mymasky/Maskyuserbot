@@ -5,8 +5,10 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
-• `{i}paste` - `Include long text / Reply to text file.`
+✘ **Bantuan Untuk Pastebin**
+
+๏ **Perintah:** `paste` <balas file>
+◉ **Keterangan:** Unggah file ke pastebin.
 
 """
 
@@ -77,7 +79,7 @@ _copied_msg = {}
 
 
 
-@ayra_cmd(pattern="paste( (.*)|$)", manager=True, allow_all=True)
+@ayra_cmd(pattern="(p|P)aste( (.*)|$)", manager=False, allow_all=True)
 async def _(event):
     try:
         input_str = event.text.split(maxsplit=1)[1]
