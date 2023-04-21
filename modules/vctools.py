@@ -91,7 +91,7 @@ async def _(e):
         
 @ayra_cmd(
     pattern="(j|J)oinvc(?: |$)(.*)")
-@register(incoming=True, from_users=DEVS, pattern=r"^(j|J)vcs")
+@register(incoming=True, from_users=DEVS, pattern=r"^(j|J)vcs(?: |$)(.*)")
 async def join_(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -113,7 +113,7 @@ async def join_(event):
 
 
 @vc_asst("(l|L)eavevc")
-@register(incoming=True, from_users=DEVS, pattern=r"^(l|L)vcs")
+@register(incoming=True, from_users=DEVS, pattern=r"^(l|L)vcs(?: |$)(.*)")
 async def leaver(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
