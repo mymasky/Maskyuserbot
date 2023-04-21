@@ -5,31 +5,28 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Tag All**
 
-• `{i}usage`
-    Dapatkan penggunaan keseluruhan.
+๏ **Perintah:** `usage`
+◉ **Keterangan:** Dapatkan stats penggunaan.
 
-• `{i}usage heroku`
-   Dapatkan statistik heroku.
+๏ **Perintah:** `usage heroku`
+◉ **Keterangan:** Dapatkan stats penggunaan heroku.
 
-• `{i}usage db`
-   Dapatkan penggunaan penyimpanan basis data.
-   
-• `{i}ls`
-    Dapatkan semua File di dalam Direktori.
-    
-• `{i}restart`
-    Restart Userbot.
+๏ **Perintah:** `usage db`
+◉ **Keterangan:** Dapatkan stats penggunaan database.
 
-• `{i}update`
-    Update Userbot.
+๏ **Perintah:** `ls`
+◉ **Keterangan:** Dapatkan semua File di dalam Direktori.
 
-• `{i}shutdown`
-    Matikan Userbot.
-    
-• `{i}logs`
-    Dapatkan Logs Userbot.
+๏ **Perintah:** `restart`
+◉ **Keterangan:** Restart Userbot.
+
+๏ **Perintah:** `shutdown`
+◉ **Keterangan:** Matikan Userbot.
+
+๏ **Perintah:** `logs`
+◉ **Keterangan:** Dapatkan Logs Userbot.
 """
 import glob
 import io
@@ -106,7 +103,7 @@ FilesEMOJI = {
 }
 
 
-@ayra_cmd(pattern="usage")
+@ayra_cmd(pattern="(u|U)sage")
 async def usage_finder(event):
     x = await event.eor(get_string("com_1"))
     try:
@@ -244,7 +241,7 @@ async def get_full_usage():
 
 
 @ayra_cmd(
-    pattern="ls( (.*)|$)",
+    pattern="[lL][sS]( (.*)|$)",
 )
 async def _(e):
     files = e.pattern_match.group(1).strip()
