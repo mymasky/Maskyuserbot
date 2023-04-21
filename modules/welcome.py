@@ -20,7 +20,7 @@
 ๏ **Perintah:** `getgoodbye`
 ◉ **Keterangan:** Get the goodbye message in the current chat.
 
-Note: `{mention}`, `{group}`, `{count}`, `{name}`, `{fullname}`, `{username}`, `{userid}`\nBisa menggunakan fromat seperti diatas."
+**Note:** `{mention}`, `{group}`, `{count}`, `{name}`, `{fullname}`, `{username}`, `{userid}`\nBisa menggunakan format seperti diatas.
 """
 import os
 
