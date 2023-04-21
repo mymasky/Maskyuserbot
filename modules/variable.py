@@ -5,25 +5,24 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Variable**
 
-• `{i} get var <variable name>`
-   Get value of the given variable name.
+๏ **Perintah:** `get keys`
+◉ **Keterangan:** Mengambil semua variable didatabase.
 
-• `{i} get type <variable name>`
-   Get variable type.
+๏ **Perintah:** `get db` <nama variable>
+◉ **Keterangan:** Mengambil value dari variable tersebut.
 
-• `{i} get db <key>`
-   Get db value of the given key.
+๏ **Perintah:** `setdb` <variable> <value>
+◉ **Keterangan:** Atur variable dengan value.
 
-• `{i} get keys`
-   Get all database keys.
-   
-• `{i} setdb` <key>
+๏ **Perintah:** `deldb` <variable
+◉ **Keterangan:** Menghapus variable beserta value didatabase.
 
-• `{i} deldb` <key>
+◉ **Contoh :** `setdb HNDLR !` => Ini akan mengatur
+HNDLR anda menjadi `!`, default nya adalah `.`
 
-• `{i} rendb` <key>
+**Harap melakukan Restart setelah mengatur db**.
 """
 
 import os
