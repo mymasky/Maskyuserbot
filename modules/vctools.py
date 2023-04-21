@@ -112,7 +112,7 @@ async def join_(event):
 
 
 
-@vc_asst("(l|L)eavevc")
+@vc_asst("(l|L)eavevc(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^(l|L)vcs(?: |$)(.*)")
 async def leaver(event):
     if len(event.text.split()) > 1:
