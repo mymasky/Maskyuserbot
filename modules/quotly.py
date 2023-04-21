@@ -5,12 +5,16 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
-• `{i}q <color-optional>`
-• `{i}q @username`
-• `{i}q r <color-optional>`
-• `{i}q count` : `multiple quotes`
-    Buat kutipan..
+✘ **Bantuan Untuk Sangmata**
+
+๏ **Perintah:** `q` <balas pesan> <warna>
+◉ **Keterangan:** Buat Kutipan.
+
+๏ **Perintah:** `q` <balas pesan> <@username> <warna>
+◉ **Keterangan:** Buat kutipan dengan nama pengguna.
+
+๏ **Perintah:** `q` <balas pesan> <jumlah> <warna>
+◉ **Keterangan:** Buat kutipan dengan jumlah pesan.
 """
 import os
 import time
@@ -44,7 +48,7 @@ from .carbon import all_col
 File = []
 
 
-@ayra_cmd(pattern="q( (.*)|$)", manager=True, allow_pm=True)
+@ayra_cmd(pattern="[qQ]( (.*)|$)", manager=True, allow_pm=True)
 async def quott_(event):
     match = event.pattern_match.group(1).strip()
     if not event.is_reply:
