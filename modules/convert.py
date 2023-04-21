@@ -6,41 +6,38 @@
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk DM**
 
-• `{i} makevoice` <balasan ke video>
-        Membuat catatan suara dari video
+๏ **Perintah:** `toaudio` <balas file>
+◉ **Keterangan:** Extrak Audio Dari Video.
 
-• `{i} extractaudio` <balas ke video>
-        Untuk mengekstrak audio dari video
+๏ **Perintah:** `convert` <gif/img/stiker/webm> <balas ke file>
+◉ **Keterangan:** Convert.
 
-• `{i} convert` <gif/img/stiker/webm> <balas ke file>
+๏ **Perintah:** `glitch <balas ke gambar>`
+◉ **Keterangan:** Memberikan gif glitchy.
 
-•`{i}glitch <balas ke gambar>`
-      Memberikan gif glitchy.
-      
-•`{i}invertgif`
-  Membuat Gif Terbalik(negative).
+๏ **Perintah:** `invertgif` <balas file>
+◉ **Keterangan:** Membuat Gif Terbalik(negative).
 
-•`{i}bwgif`
-  Jadikan Gif hitam putih
+๏ **Perintah:** `bwgif` <balas file>
+◉ **Keterangan:** Jadikan Gif hitam putih
 
-•`{i}rvgif`
-  Balikkan gif
+๏ **Perintah:** `rvgif` <balas file>
+◉ **Keterangan:** Balikkan gif
 
-•`{i}vtog`
-  Balas Ke Video, Ini akan Membuat Gif
-  Video ke Gif
+๏ **Perintah:** `vtog` <balas file>
+◉ **Keterangan:** Balas Ke Video, Ini akan Membuat Gif
+  Video ke Gif.
 
-•`{i}gif <query>`
-   Kirim video tentang kueri.
+๏ **Perintah:** `gif` <kata kunci>
+◉ **Keterangan:** Mencari gif.
   
-•`{i}size <reply to media>`
-   Untuk mendapatkan ukurannya.
-
-•`{i}resize <number> <number>`
-   Untuk mengubah ukuran gambar pada sumbu x, y.
-   eg. `{i}resize 690 960`
+๏ **Perintah:** `size` <balas file>
+◉ **Keterangan:** Mendapatkan ukuran media.
+  
+๏ **Perintah:** `resize` <number> <number>
+◉ **Keterangan:** Ubah ukuran media.
 """
 
 import os
@@ -112,7 +109,7 @@ conv_keys = {
     "tgs": "tgs",
 }
 @ayra_cmd(
-    pattern="convert( (.*)|$)",
+    pattern="(C|c)onvert( (.*)|$)",
 )
 async def uconverter(event):
     xx = await event.eor(get_string("com_1"))
@@ -142,7 +139,7 @@ async def vnc(e):
     if not e.reply_to:
         return await eod(e, get_string("audiotools_1"))
     r = await e.get_reply_message()
-    if not mediainfo(r.media).startswith(("audio", "video")):
+    if not mediainfo(r.media).startswith(("video")):
         return await eod(e, get_string("spcltool_1"))
     xxx = await e.eor(get_string("com_1"))
     file, _ = await e.client.fast_downloader(
@@ -164,7 +161,7 @@ async def vnc(e):
     os.remove("out.opus")
 
 
-@ayra_cmd(pattern="toaudio$")
+@ayra_cmd(pattern="(T|t)oaudio$")
 async def ex_aud(e):
     reply = await e.get_reply_message()
     if not (reply and reply.media and mediainfo(reply.media).startswith("video")):
@@ -204,7 +201,7 @@ async def ex_aud(e):
     await msg.delete()
 
 
-@ayra_cmd(pattern="glitch$")
+@ayra_cmd(pattern="(G|g)litch$")
 async def _(e):
     try:
         import glitch_me  # ignore :pylint
@@ -231,7 +228,7 @@ async def _(e):
     os.remove("ayra.gif")
     
     
-@ayra_cmd(pattern="(bw|invert)gif$")
+@ayra_cmd(pattern="(bw|Bw|Invert|invert)$")
 async def igif(e):
     match = e.pattern_match.group(1).strip()
     a = await e.get_reply_message()
@@ -256,7 +253,7 @@ async def igif(e):
         LOGS.info(er)
 
 
-@ayra_cmd(pattern="rvgif$")
+@ayra_cmd(pattern="(R|r)vgif$")
 async def reverse_gif(event):
     a = await event.get_reply_message()
     if not (a and a.media) and "video" not in mediainfo(a.media):
@@ -270,7 +267,7 @@ async def reverse_gif(event):
     os.remove("reversed.mp4")
 
 
-@ayra_cmd(pattern="gif( (.*)|$)")
+@ayra_cmd(pattern="(Gif|gif)( (.*)|$)")
 async def gifs(ayra):
     get = ayra.pattern_match.group(1).strip()
     xx = random.randint(0, 5)
@@ -296,7 +293,7 @@ async def gifs(ayra):
     await m.delete()
 
 
-@ayra_cmd(pattern="vtog$")
+@ayra_cmd(pattern="(V|v)tog$")
 async def vtogif(e):
     a = await e.get_reply_message()
     if not (a and a.media):
@@ -327,7 +324,7 @@ async def vtogif(e):
     os.remove("ayra.gif")
     await xx.delete()
     
-@ayra_cmd(pattern="size$")
+@ayra_cmd(pattern="(size|Size)")
 async def size(e):
     r = await e.get_reply_message()
     if not (r and r.media):
@@ -343,7 +340,7 @@ async def size(e):
     os.remove(img)
 
 
-@ayra_cmd(pattern="resize( (.*)|$)")
+@ayra_cmd(pattern="(resize|Resize)( (.*)|$)")
 async def size(e):
     r = await e.get_reply_message()
     if not (r and r.media):
