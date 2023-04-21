@@ -25,7 +25,7 @@ from . import (
 )
 
 
-@ayra_cmd(outgoing=True, pattern="(n|N)gentot")
+@ayra_cmd(outgoing=True, pattern=r"^[nN][gentot](?: |$)(.*)")
 async def _(event):
     xx = await event.eor("**WOYY NGENTOD!!**")
     sleep(1)
@@ -49,7 +49,7 @@ async def _(event):
 # Create by myself @localheart
 
 
-@ayra_cmd(outgoing=True, pattern="(g|Goblok|blk)")
+@ayra_cmd(outgoing=True, pattern=r"^[gG][oblok|blk](?: |$)(.*)")
 async def _(event):
     xx = await event.eor("**WOYY GOBLOK!!**")
     sleep(1)
@@ -73,7 +73,7 @@ async def _(event):
 # Create by myself @localheart
 
 
-@ayra_cmd(outgoing=True, pattern="ngatain")
+@ayra_cmd(outgoing=True, pattern=r"^[nN][gatain](?: |$)(.*)")
 async def _(event):
     xx = await event.eor("**BABI!!**")
     sleep(1)
@@ -97,7 +97,7 @@ async def _(event):
 # Create by myself @localheart
 
 
-@ayra_cmd(outgoing=True, pattern="yatim")
+@ayra_cmd(outgoing=True, pattern=r"^[yY][atim](?: |$)(.*)")
 async def _(event):
     xx = await event.eor("`Hai Anak Kontol 🙈, Jangan Lupa Makan Yaa`")
     sleep(1)
@@ -120,7 +120,7 @@ async def _(event):
     await event.eor("`Tapi Bo'ong Hiyahiyahiya`")
 # Create by myself @localheart
 
-@ayra_cmd(outgoing=True, pattern="(k|K|ont|ntl)")
+@ayra_cmd(outgoing=True, pattern=r"^[kK][ontol|ntl](?: |$)(.*)")
 async def _(event):
     xx = await event.eor("**KONTOLL**")
     sleep(1.5)
