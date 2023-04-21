@@ -14,7 +14,7 @@
 ๏ **Perintah:** `yatim`
 ◉ **Keterangan:** Coba sendiri.
 
-๏ **Perintah:** `kont`
+๏ **Perintah:** `kntl`
 ◉ **Keterangan:** Coba sendiri.
 """
 
