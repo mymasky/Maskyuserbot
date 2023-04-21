@@ -120,7 +120,7 @@ async def _(e):
     if isinstance(peer, User):
         await e.client(UnblockRequest(userid))
     await xx.edit(
-        f"`Ungbaned` {name} in {chats} `chats.\nRemoved from gbanwatch.`",
+        f"**#Ungbaned**\n**Pengguna :**{name}\n**Chat :** {chats}",
     )
 
 
@@ -200,9 +200,9 @@ async def _(e):
     gban(userid, reason)
     if isinstance(user, User):
         await e.client(BlockRequest(userid))
-    gb_msg = f"**#Gbanned** {name} `in {chats} chats and added to gbanwatch!`"
+    gb_msg = f"**#Gbanned**\n**Pengguna :** {name}\n**Chat :**{chats}"
     if reason:
-        gb_msg += f"\n**Reason** : {reason}"
+        gb_msg += f"\n**Alasan** : {reason}"
     await xx.edit(gb_msg)
 
 
