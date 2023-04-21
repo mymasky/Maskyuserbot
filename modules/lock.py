@@ -5,13 +5,13 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Lock**
 
-• `{i}lock <msgs/media/sticker/gif/games/inline/polls/invites/pin/changeinfo>`
-    Lock Pengaturan gunakan di Grup .
+๏ **Perintah:** `lock` <msgs/media/sticker/gif/games/inline/polls/invites/pin/changeinfo>
+◉ **Keterangan:** Lock Pengaturan gunakan di Grup .
 
-• `{i}unlock <msgs/media/sticker/gif/games/inline/polls/invites/pin/changeinfo>`
-    Unlock Pengaturan gunakan di Grup .
+๏ **Perintah:** `unlock` <msgs/media/sticker/gif/games/inline/polls/invites/pin/changeinfo>
+◉ **Keterangan:** Unlock Pengaturan gunakan di Grup .
 """
 from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
 
@@ -21,7 +21,7 @@ from . import ayra_cmd
 
 
 @ayra_cmd(
-    pattern="(un|)lock( (.*)|$)", admins_only=True, manager=True, require="change_info"
+    pattern="(un|Un)[lL]ock( (.*)|$)", admins_only=True, manager=True, require="change_info"
 )
 async def un_lock(e):
     mat = e.pattern_match.group(2).strip()
