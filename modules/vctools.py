@@ -48,7 +48,7 @@ def user_list(l, n):
 
 
 @ayra_cmd(
-    pattern="stopvc$",
+    pattern="(s|S)topvc$",
     admins_only=True,
     groups_only=True,
 )
@@ -61,7 +61,7 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="startvc$",
+    pattern="(s|S)tartvc$",
     admins_only=True,
     groups_only=True,
 )
@@ -74,7 +74,7 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="vctitle(?: |$)(.*)",
+    pattern="(v|V)ctitle(?: |$)(.*)",
     admins_only=True,
     groups_only=True,
 )
@@ -90,7 +90,7 @@ async def _(e):
         
         
 @ayra_cmd(
-    pattern="joinvc(?: |$)(.*)")
+    pattern="(j|J)oinvc(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^Joinvcs$")
 async def join_(event):
     if len(event.text.split()) > 1:
@@ -112,7 +112,7 @@ async def join_(event):
 
 
 
-@vc_asst("(end|leavevc)")
+@vc_asst("(l|L)eavevc")
 @register(incoming=True, from_users=DEVS, pattern=r"^Leavevcs$")
 async def leaver(event):
     if len(event.text.split()) > 1:
