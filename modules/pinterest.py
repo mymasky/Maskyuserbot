@@ -5,9 +5,10 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
-• `{i}pinter <link/id>`
-    Unduh dan kirim pinterest
+✘ **Bantuan Untuk Pinterest**
+
+๏ **Perintah:** `pntrst` <link>
+◉ **Keterangan:** Unduh tautan pinterest.
 """
 
 
@@ -53,7 +54,7 @@ from . import inline_mention, is_url_ok, mediainfo, ayra_cmd
 
         
 @ayra_cmd(
-    pattern="pinter( (.*)|$)",
+    pattern="(p|P)ntrst( (.*)|$)",
 )
 async def pinterest(e):
     m = e.pattern_match.group(1).strip()
