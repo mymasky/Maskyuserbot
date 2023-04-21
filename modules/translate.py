@@ -52,7 +52,7 @@ from . import humanbytes as hb
 from . import inline_mention, is_url_ok, mediainfo, ayra_cmd
 
 
-@ayra_cmd(pattern="(t|T|r)", manager=False)
+@ayra_cmd(pattern="(tr|Tr)", manager=False)
 async def _(event):
     input = event.pattern_match.group(1).strip().split(maxsplit=1)
     txt = input[1] if len(input) > 1 else None
