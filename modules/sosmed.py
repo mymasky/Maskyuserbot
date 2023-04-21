@@ -51,7 +51,7 @@ from . import (
 from . import humanbytes as hb
 from . import inline_mention, is_url_ok, mediainfo, ayra_cmd
 
-@ayra_cmd(pattern="sosmed(?: |$)(.*)")
+@ayra_cmd(pattern="(s|S)osmed(?: |$)(.*)")
 async def _(event):
     xxnx = event.pattern_match.group(1)
     if xxnx:
