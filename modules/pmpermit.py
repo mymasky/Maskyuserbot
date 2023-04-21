@@ -5,37 +5,28 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk PM Permit**
 
-• `{i}a` or `{i}ok`
-    Menyetujui seseorang untuk PM.
+๏ **Perintah:** `ok`
+◉ **Keterangan:** Setujui pesan.
 
-• `{i}da` or `{i}no`
-    Menolak seseorang untuk PM.
+๏ **Perintah:** `no`
+◉ **Keterangan:** Tolak pesan.
 
-• `{i}block`
-    Blokir seseorang.
+๏ **Perintah:** `block`
+◉ **Keterangan:** Blokir pengguna.
 
-• `{i}unblock` | `{i}unblock all`
-    Buka blokir seseorang.
+๏ **Perintah:** `unblock`
+◉ **Keterangan:** Buka blokir pengguna.
 
-• `{i}nologpm`
-    Berhenti mencatat pesan dari pengguna.
+๏ **Perintah:** `nologpm`
+◉ **Keterangan:** Berhenti mencatat pesan pengguna tsb.
 
-• `{i}logpm`
-    Mulai mencatat pesan dari pengguna.
+๏ **Perintah:** `logpm`
+◉ **Keterangan:** Mencatat pesan pengguna tsb.
 
-• `{i}startarchive`
-    Arsipkan PM baru.
-
-• `{i}stoparchive`
-    Jangan mengarsipkan PM baru.
-
-• `{i}cleararchive`
-    Batalkan pengarsipan semua obrolan.
-
-• `{i}listapproved`
-   Cantumkan semua PM yang disetujui.
+๏ **Perintah:** `listok`
+◉ **Keterangan:** Mendapatkan daftar pengguna yang disetujui.
 """
 
 import asyncio
@@ -74,7 +65,7 @@ UND = get_string("pmperm_1")
 UNS = get_string("pmperm_2")
 NO_REPLY = get_string("pmperm_3")
 
-UNAPPROVED_MSG = "**Pesan Keamanan {ON}!**\n\n{UND}\n\nEnte Punya {warn}/{twarn} peringatan!"
+UNAPPROVED_MSG = "**Pesan Keamanan {ON}!**\n\n{UND}\n\nAnda Punya {warn}/{twarn} peringatan!"
 if udB.get_key("PM_TEXT"):
     UNAPPROVED_MSG = (
         "**Pesan Keamanan dari {ON}!**\n\n"
@@ -122,7 +113,7 @@ async def delete_pm_warn_msgs(chat: int):
 if udB.get_key("PMLOG"):
 
     @ayra_cmd(
-        pattern="logpm$",
+        pattern="(l|L)ogpm$",
     )
     async def _(e):
         if not e.is_private:
@@ -134,7 +125,7 @@ if udB.get_key("PMLOG"):
         return await e.eor("`Now I Will log msgs from here.`", time=3)
 
     @ayra_cmd(
-        pattern="nologpm$",
+        pattern="(n|N)ologpm$",
     )
     async def _(e):
         if not e.is_private:
@@ -394,7 +385,7 @@ if udB.get_key("PMSETTING"):
             except Exception as mm:
                 await e.eor(str(mm), time=5)
 
-    @ayra_cmd(pattern="(a|ok)(?: |$)", fullsudo=False)
+    @ayra_cmd(pattern="[oO][kK](?: |$)", fullsudo=False)
     async def approvepm(apprvpm):
         if apprvpm.reply_to_msg_id:
             user = (await apprvpm.get_reply_message()).sender
@@ -445,7 +436,7 @@ if udB.get_key("PMSETTING"):
         else:
             await apprvpm.eor("`User may already be approved.`", time=5)
 
-    @ayra_cmd(pattern="(no|tolak)(?: |$)", fullsudo=False)
+    @ayra_cmd(pattern="[nN][oO](?: |$)", fullsudo=False)
     async def disapprovepm(e):
         if e.reply_to_msg_id:
             user = (await e.get_reply_message()).sender
@@ -496,7 +487,7 @@ if udB.get_key("PMSETTING"):
             )
 
 
-@ayra_cmd(pattern="block( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="(B|b)lock( (.*)|$)", fullsudo=False)
 async def blockpm(block):
     match = block.pattern_match.group(1).strip()
     if block.reply_to_msg_id:
@@ -539,7 +530,7 @@ async def blockpm(block):
         pass
 
 
-@ayra_cmd(pattern="unblock( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="(U|u)nblock( (.*)|$)", fullsudo=False)
 async def unblockpm(event):
     match = event.pattern_match.group(1).strip()
     reply = await event.get_reply_message()
@@ -601,7 +592,7 @@ async def unblockpm(event):
         pass
 
 
-@ayra_cmd(pattern="listapproved$", owner=True)
+@ayra_cmd(pattern="(L|l)istok", owner=True)
 async def list_approved(event):
     xx = await event.eor(get_string("com_1"))
     all = get_approved()
