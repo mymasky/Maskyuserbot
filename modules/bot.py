@@ -25,7 +25,8 @@ from telethon.errors.rpcerrorlist import (
 from Ayra.version import __version__ as AyraVer
 from Ayra.dB import DEVS
 from Ayra.kynan import register
-from . import HOSTED_ON, LOGS, StartTime
+from . import *
+from .music import *
 
 try:
     from git import Repo
