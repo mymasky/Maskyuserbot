@@ -6,13 +6,16 @@
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Filter**
 
-• `{i} addfilter` <kata> <balas ke pesan>
+๏ **Perintah:** `addfilter` <balas pesan> <kata kunci>
+◉ **Keterangan:** Tambahkan filter digrup.
 
-• `{i} remfilter` <kata>
+๏ **Perintah:** `remfilter` <kata kunci>
+◉ **Keterangan:** Hapus filter digrup.
 
-• `{i} listfilter`
+๏ **Perintah:** `listfilter`
+◉ **Keterangan:** Lihat daftar filter digrup.
 """
 
 import os
@@ -29,7 +32,7 @@ from . import events, get_string, mediainfo, udB, ayra_bot, ayra_cmd
 from ._inline import something
 
 
-@ayra_cmd(pattern="addfilter( (.*)|$)")
+@ayra_cmd(pattern="(A|a)ddfilter( (.*)|$)")
 async def af(e):
     wrd = (e.pattern_match.group(1).strip()).lower()
     wt = await e.get_reply_message()
@@ -68,7 +71,7 @@ async def af(e):
     ayra_bot.add_handler(filter_func, events.NewMessage())
 
 
-@ayra_cmd(pattern="remfilter( (.*)|$)")
+@ayra_cmd(pattern="(R|r)emfilter( (.*)|$)")
 async def rf(e):
     wrd = (e.pattern_match.group(1).strip()).lower()
     chat = e.chat_id
@@ -78,7 +81,7 @@ async def rf(e):
     await e.eor(get_string("flr_5").format(wrd))
 
 
-@ayra_cmd(pattern="listfilter$")
+@ayra_cmd(pattern="(L|l)istfilter$")
 async def lsnote(e):
     if x := list_filter(e.chat_id):
         sd = "Filter Ditemukan Dalam Obrolan Ini Adalah\n\n"
