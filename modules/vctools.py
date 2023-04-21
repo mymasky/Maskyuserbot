@@ -75,7 +75,7 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="(v|V)ctitle$",
+    pattern="(vctitle|Vctitle(?: |$)(.*)"),
     admins_only=True,
     groups_only=True,
 )
@@ -113,7 +113,7 @@ async def join_(event):
 
 
 
-@vc_asst("(l|L)eavevc(?: |$)(.*)")
+@vc_asst("(leavevc|Leavevc|end|End)(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^(l|L)vcs(?: |$)(.*)")
 async def leaver(event):
     if len(event.text.split()) > 1:
