@@ -443,7 +443,7 @@ async def file_download(event, reply, fast_download=True):
     file = reply.file.name or f"{str(time())}.mp4"
     if fast_download:
         dl = await downloader(
-            f"vcbot/downloads/{file}",
+            f"downloads/{file}",
             reply.media.document,
             event,
             time(),
