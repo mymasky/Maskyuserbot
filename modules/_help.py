@@ -25,7 +25,7 @@ _main_help_menu = [
 ]
 
 
-@ayra_cmd(pattern="(H|h)elp( (.*)|$)")
+@ayra_cmd(pattern="[hH][eE][lL][pP]( (.*)|$)")
 async def _help(ayra):
     plug = ayra.pattern_match.group(1).strip()
     chat = await ayra.get_chat()
