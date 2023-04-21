@@ -5,17 +5,19 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Global**
 
-• `{i}gban <reply user/ username>`
+๏ **Perintah:** `gban` <balas pengguna/berikan username>
+◉ **Keterangan:** Global banned pengguna.
 
-• `{i}ungban`
-    Ban/Unban Globally.
+๏ **Perintah:** `ungban` <balas pengguna/berikan username>
+◉ **Keterangan:** Global unbanned pengguna. .
 
-• `{i}gstat <reply to user/userid/username>`
-   apakahPeriksa pengguna GBanned.
+๏ **Perintah:** `gstat` <balas pengguna/berikan username>
+◉ **Keterangan:** Periksa pengguna.
 
-• `{i}listgban` : List all GBanned users.
+๏ **Perintah:** `listgban`
+◉ **Keterangan:** Dapatkan daftar pengguna gban.
 """
 import asyncio
 import os
@@ -59,7 +61,7 @@ from ._inline import something
 
 
 
-@ayra_cmd(pattern="ungban( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="(U|u)ngban( (.*)|$)", fullsudo=False)
 @register(pattern=r"^\.cungban(?: |$)(.*)", sudo=True)
 async def _(e):
     xx = await e.eor("`Proses...`")
@@ -124,7 +126,7 @@ async def _(e):
     )
 
 
-@ayra_cmd(pattern="gban( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="(G|g)ban( (.*)|$)", fullsudo=False)
 @register(pattern=r"^\.cgban(?: |$)(.*)", sudo=True)
 async def _(e):
     xx = await e.eor("`Proses...`")
@@ -273,7 +275,7 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="listgban$",
+    pattern="(L|l)istgban$",
 )
 async def list_gengbanned(event):
     users = list_gbanned()
@@ -309,7 +311,7 @@ async def list_gengbanned(event):
 
 
 @ayra_cmd(
-    pattern="gstat( (.*)|$)",
+    pattern="(G|g)stat( (.*)|$)",
 )
 async def gstat_(e):
     xx = await e.eor(get_string("com_1"))
@@ -330,7 +332,7 @@ async def gstat_(e):
     reason = list_gbanned().get(userid)
     if is_banned:
         msg += "Globally Banned"
-        msg += f" with reason** `{reason}`" if reason else ".**"
+        msg += f"\nAlasan:** `{reason}`" if reason else ".**"
     else:
         msg += "not Globally Banned.**"
     await xx.edit(msg)
