@@ -7,7 +7,7 @@
 
 from . import get_help
 
-__doc__ = get_help("help_bot")
+
 
 import os
 import sys
@@ -119,7 +119,7 @@ async def naya(naya):
     await naya.reply("**Kynan Punya Nya Naya**🤩")
 
 @ayra_cmd(
-    pattern=r"^[aA][live](?: |$)(.*)")
+    pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
 async def lol(ayra):
     match = ayra.pattern_match.group(1).strip()
     inline = True
@@ -271,7 +271,7 @@ heroku_api = Var.HEROKU_API
 
 
 @ayra_cmd(
-    pattern="restart$",
+    pattern="(r|R)estart$",
     fullsudo=False,
 )
 async def restart(e):
@@ -286,7 +286,7 @@ async def restart(e):
 
 
 @ayra_cmd(
-    pattern="shutdown$",
+    pattern="(s|S)hutdown$",
     fullsudo=False,
 )
 async def shutdownbot(ayra):
@@ -294,7 +294,7 @@ async def shutdownbot(ayra):
 
 
 @ayra_cmd(
-    pattern="logs( (.*)|$)",
+    pattern="(l|L)ogs( (.*)|$)",
     chats=[],
 )
 async def _(event):
