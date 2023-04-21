@@ -31,8 +31,8 @@ import re
 from . import eor, get_string, udB, ayra_cmd, DEVS
 from Ayra.kynan import register
 
-@ayra_cmd(pattern="setdb( (.*)|$)", fullsudo=False)
-@register(pattern=r"^\.setdb(?: |$)(.*)", sudo=True)
+@ayra_cmd(pattern="(s|S)etdb( (.*)|$)", fullsudo=False)
+@register(pattern=r"^\.setdb(?: |$)(.*)", from_users=DEVS)
 async def _(ay):
     match = ay.pattern_match.group(1).strip()
     if not match:
@@ -52,8 +52,8 @@ async def _(ay):
         await ay.eor(get_string("com_7"))
 
 
-@ayra_cmd(pattern="deldb( (.*)|$)", fullsudo=False)
-@register(pattern=r"^\.deldb(?: |$)(.*)", sudo=True)
+@ayra_cmd(pattern="(d|D)eldb( (.*)|$)", fullsudo=False)
+@register(pattern=r"^\.deldb(?: |$)(.*)", from_users=DEVS)
 async def _(ay):
     key = ay.pattern_match.group(1).strip()
     if not key:
@@ -72,8 +72,8 @@ async def _(ay):
     except BaseException:
         await ay.eor(get_string("com_7"))
 
-@ayra_cmd(pattern="get($| (.*))", fullsudo=False)
-@register(pattern=r"^\.get(?: |$)(.*)", sudo=True)
+@ayra_cmd(pattern="(g|G)et($| (.*))", fullsudo=False)
+@register(pattern=r"^\.get(?: |$)(.*)", from_users=DEVS)
 async def get_var(event):
     try:
         opt = event.text.split(maxsplit=2)[1]
