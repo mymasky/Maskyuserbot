@@ -5,9 +5,10 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
-• `{i}copy <message link>`
-  Get messages from chats with forward/copy restrictions.
+✘ **Bantuan Untuk Nyolong**
+
+๏ **Perintah:** `copy` <link>
+◉ **Keterangan:** Colong pesan dari group/channel.
 """
 
 import calendar
@@ -75,7 +76,7 @@ TMP_DOWNLOAD_DIRECTORY = "resources/downloads/"
 _copied_msg = {}
 
 
-@ayra_cmd(pattern="copy( ?(.*)|$)")
+@ayra_cmd(pattern="(c|C)opy( ?(.*)|$)")
 async def get_restriced_msg(event):
     match = event.pattern_match.group(1).strip()
     if not match:
