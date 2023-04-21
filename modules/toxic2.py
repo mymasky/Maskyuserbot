@@ -25,7 +25,7 @@ from . import (
 )
 
 
-@ayra_cmd(outgoing=True, pattern=r"^[nN][gentot](?: |$)(.*)")
+@ayra_cmd(outgoing=True, pattern=r"^(n|N)gentot(?: |$)(.*)")
 async def _(event):
     xx = await event.eor("**WOYY NGENTOD!!**")
     sleep(1)
@@ -48,8 +48,9 @@ async def _(event):
     await event.eor("**HAHAHAHA**")
 # Create by myself @localheart
 
+Sekarang bantu saya benarkan perintah ini agar bisa menggunakan perintah dengan kata goblok, atau pun Goblok serta bisa juga dengan perintah Gblk ataupun gblk
 
-@ayra_cmd(outgoing=True, pattern=r"^[gG][oblok|blk](?: |$)(.*)")
+@ayra_cmd(outgoing=True, pattern=r"^[gG][oO][bB][lL[oO][kK](g|G)blk(?: |$)(.*)")
 async def _(event):
     xx = await event.eor("**WOYY GOBLOK!!**")
     sleep(1)
@@ -73,7 +74,7 @@ async def _(event):
 # Create by myself @localheart
 
 
-@ayra_cmd(outgoing=True, pattern=r"^[nN][gatain](?: |$)(.*)")
+@ayra_cmd(outgoing=True, pattern=r"^(n|N)gatain(?: |$)(.*)")
 async def _(event):
     xx = await event.eor("**BABI!!**")
     sleep(1)
@@ -97,7 +98,7 @@ async def _(event):
 # Create by myself @localheart
 
 
-@ayra_cmd(outgoing=True, pattern=r"^[yY][atim](?: |$)(.*)")
+@ayra_cmd(outgoing=True, pattern=r"^(y|Y)atim(?: |$)(.*)")
 async def _(event):
     xx = await event.eor("`Hai Anak Kontol 🙈, Jangan Lupa Makan Yaa`")
     sleep(1)
@@ -120,7 +121,7 @@ async def _(event):
     await event.eor("`Tapi Bo'ong Hiyahiyahiya`")
 # Create by myself @localheart
 
-@ayra_cmd(outgoing=True, pattern=r"^[kK][ontol|ntl](?: |$)(.*)")
+@ayra_cmd(outgoing=True, pattern=r"^[kK][nN][tT][lL](?: |$)(.*)")
 async def _(event):
     xx = await event.eor("**KONTOLL**")
     sleep(1.5)
