@@ -240,7 +240,7 @@ async def get_readable_time(seconds: int) -> str:
     return up_time
 
 
-@ayra_cmd(pattern=r"^[pP][ing](?: |$)(.*)")
+@ayra_cmd(pattern=r"^(p|P)ing(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^Cping$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
@@ -373,7 +373,7 @@ async def inline_alive(ayra):
     await ayra.answer(result)
 
 
-@ayra_cmd(pattern=r"^[uU][pdate](?: |$)(.*)")
+@ayra_cmd(pattern=r"^[uU][pP][dD][aA][tT][eE](?: |$)(.*)")
 async def _(e):
     xx = await e.eor(get_string("upd_1"))
     if e.pattern_match.group(1).strip() and (
