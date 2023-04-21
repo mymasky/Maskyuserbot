@@ -5,10 +5,10 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Limit**
 
-• `{i}limit`
-   Periksa Anda terbatas atau tidak!
+๏ **Perintah:** `limit`
+◉ **Keterangan:** Periksa Anda terbatas atau tidak.
 """
 
 from telethon import events
@@ -17,7 +17,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from . import ayra_cmd
 
 
-@ayra_cmd(pattern="limit$")
+@ayra_cmd(pattern="(L|l)imit$")
 async def demn(ayra):
     chat = "@SpamBot"
     msg = await ayra.eor("Memeriksa Jika Anda Terbatas...")
