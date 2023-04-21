@@ -5,13 +5,13 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-• `{i}id`
-    Balas Stiker untuk Mendapatkan Id-nya
-    Balas Pengguna untuk Mendapatkan Id-nya
-    Tanpa Membalas Anda Akan Mendapatkan Id Obrolan
+✘ **Bantuan Untuk Sangmata**
 
-• `{i}sg <reply to a user><username/id>`
-    Dapatkan His Name History dari pengguna yang menjawab.
+๏ **Perintah:** `id` <balas pesan/berikan username/none>
+◉ **Keterangan:** Dapatkan ID
+
+๏ **Perintah:** `sg` <balas pesan/berikan user id>
+◉ **Keterangan:** Dapatkan History Pengguna.
 """
 import glob
 import io
@@ -53,7 +53,7 @@ from . import inline_mention, is_url_ok, mediainfo, ayra_cmd
 
 
 @ayra_cmd(
-    pattern="id( (.*)|$)",
+    pattern="[iI][dD]( (.*)|$)",
     manager=True,
 )
 async def _(event):
@@ -79,7 +79,7 @@ async def _(event):
 
 
 @ayra_cmd(
-    pattern="sg( (.*)|$)",
+    pattern="[sS][gG]( (.*)|$)",
 )
 async def lastname(steal):
     mat = steal.pattern_match.group(1).strip()
@@ -93,7 +93,7 @@ async def lastname(steal):
     message = await steal.get_reply_message()
     if message:
         user_id = message.sender.id
-    chat = "@SangMata_BOT"
+    chat = "@SangMata_beta_bot"
     id = f"{user_id}"
     lol = await steal.eor(get_string("com_1"))
     try:
@@ -104,7 +104,7 @@ async def lastname(steal):
                 respond = await conv.get_response()
                 responds = await conv.get_response()
             except YouBlockedUserError:
-                return await lol.edit("Buka Blokir @SangMata_BOT dan Coba Lagi.")
+                return await lol.edit("Buka Blokir @SangMata_beta_bot dan Coba Lagi.")
             if (
                 (response and response.text == "No records found")
                 or (respond and respond.text == "No records found")
