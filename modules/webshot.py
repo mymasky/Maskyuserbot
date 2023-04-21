@@ -49,7 +49,7 @@ from . import humanbytes as hb
 from . import inline_mention, is_url_ok, mediainfo, ayra_cmd
 
 
-@ayra_cmd(pattern="(w|W|)ebshot|s|S|(s)( (.*)|$)")
+@ayra_cmd(pattern="(w|W|ebshot)( (.*)|$)")
 async def webss(event):
     xx = await event.eor(get_string("com_1"))
     xurl = event.pattern_match.group(1).strip()
