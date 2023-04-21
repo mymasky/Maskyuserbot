@@ -5,26 +5,19 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Mute**
 
-• `{i}mute <reply to msg/ user id>`
-    Bisukan pengguna dalam obrolan saat ini.
+๏ **Perintah:** `mute` <balas pesan/berikan username>
+◉ **Keterangan:** Bisukan pengguna dalam obrolan saat ini.
 
-• `{i}unmute <reply to msg/ user id>`
-    Aktifkan pengguna dalam obrolan saat ini.
+๏ **Perintah:** `unmute` <balas pesan/berikan username>
+◉ **Keterangan:** Aktifkan pengguna dalam obrolan saat ini.
 
-• `{i}dmute <reply to msg/ user id>`
-    Bisukan pengguna dalam obrolan saat ini dengan menghapus pesan.
+๏ **Perintah:** `dmute` <balas pesan/berikan username>
+◉ **Keterangan:** Bisukan pengguna dalam obrolan saat ini dengan menghapus pesan.
 
-• `{i}undmute <reply to msg/ use id>`
-    Suarakan pengguna yang dibisukan dalam obrolan saat ini.
-
-• `{i}tmute <time> <reply to msg/ use id>`
-    s- seconds
-    m- minutes
-    h- hours
-    d- days
-    Bisukan pengguna dalam obrolan saat ini dengan waktu.
+๏ **Perintah:** `undmute` <balas pesan/berikan username>
+◉ **Keterangan:** Suarakan pengguna yang dibisukan dalam obrolan saat ini.
 """
 from telethon import events
 from telethon.utils import get_display_name
@@ -44,7 +37,7 @@ async def watcher(event):
 
 
 @ayra_cmd(
-    pattern="dmute( (.*)|$)",
+    pattern="(D|d)mute( (.*)|$)",
 )
 async def startmute(event):
     xx = await event.eor("`Bentar...`")
@@ -75,7 +68,7 @@ async def startmute(event):
 
 
 @ayra_cmd(
-    pattern="undmute( (.*)|$)",
+    pattern="(U|u)ndmute( (.*)|$)",
 )
 async def endmute(event):
     xx = await event.eor("`Bentar...`")
@@ -142,7 +135,7 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="unmute( (.*)|$)",
+    pattern="(U|u)nmute( (.*)|$)",
     admins_only=True,
     manager=True,
 )
@@ -176,7 +169,7 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="mute( (.*)|$)", admins_only=True, manager=True, require="ban_users"
+    pattern="(M|m)ute( (.*)|$)", admins_only=True, manager=True, require="ban_users"
 )
 async def _(e):
     xx = await e.eor("`Bentar...`")
