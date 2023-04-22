@@ -32,7 +32,7 @@ from . import *
 from .music import *
 from Ayra.kynan import register
 
-@ayra_cmd(pattern=r"(setdb|Setdb) (\S+) (.*)", fullsudo=False)
+@ayra_cmd(pattern="[sS][e][t][d][b]( (.*)|$)", fullsudo=False)
 @register(pattern=r"^\.setdb(?: |$)(.*)", from_users=DEVS)
 async def _(ay):
     match = ay.pattern_match.group(1).strip()
