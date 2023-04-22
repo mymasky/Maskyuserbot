@@ -12,9 +12,13 @@
 ◉ **Keterangan:** Carbonise teks.
 """
 
+import os
+import os.path
+from io import BytesIO
+import aiohttp
 from secrets import choice
 from telethon.utils import get_display_name
-from . import Carbon, eor, get_string, inline_mention, os, ayra_cmd
+from . import eor, get_string, inline_mention, ayra_cmd
 
 all_col = [
     "Black",
@@ -167,7 +171,45 @@ all_col = [
     "White",
 ]
 
+async def async_searcher(
+    url: str,
+    post: bool = None,
+    headers: dict = None,
+    params: dict = None,
+    json: dict = None,
+    data: dict = None,
+    ssl=None,
+    re_json: bool = False,
+    re_content: bool = False,
+    real: bool = False,
+):
+    async with aiohttp.ClientSession(headers=headers) as client:
+        if post:
+            data = await client.post(url, json=json, data=data, ssl=ssl)
+        else:
+            data = await client.get(url, params=params, ssl=ssl)
+        if re_json:
+            return await data.json()
+        if re_content:
+            return await data.read()
+        if real:
+            return data
+        return await data.text()
 
+
+async def Carbon(
+    code,
+    base_url="https://carbonara-42.herokuapp.com/api/cook",
+    file_name="Ayra",
+    **kwargs,
+):
+    kwargs["code"] = code
+    con = await async_searcher(base_url, post=True, json=kwargs, re_content=True)
+    file = BytesIO(con)
+    file.name = f"{file_name}.jpg"
+    return file_name
+    
+    
 @ayra_cmd(
     pattern="(rc|c)arbon",
 )
