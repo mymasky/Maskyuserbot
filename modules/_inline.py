@@ -65,7 +65,7 @@ async def inline_handler(event):
     for x in LIST.values():
         z.extend(x)
     text = get_string("inline_4").format(
-        riz,
+        OWNER_NAME,
         len(HELP.get("Official", [])),
         len(z),
     )
@@ -100,7 +100,7 @@ async def setting(event):
         z.extend(x)
     await event.edit(
         get_string("inline_4").format(
-            riz,
+            OWNER_NAME,
             len(HELP.get("Official", [])),
             len(z),
         ),
@@ -247,7 +247,7 @@ async def opner(event):
         z.extend(x)
     await event.edit(
         get_string("inline_4").format(
-            riz,
+            OWNER_NAME,
             len(HELP.get("Official", [])),
             len(z),
         ),
