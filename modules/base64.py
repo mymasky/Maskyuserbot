@@ -5,13 +5,13 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Base64**
 
-• {i}encode <text/reply to message>
-    encode the text
+๏ **Perintah:** `encode` <berikan pesan/balas pesan>
+◉ **Keterangan:** Encode base64.
 
- • {i}decode <text/reply to message>
-    decode the text
+๏ **Perintah:** `decode` <berikan pesan/balas pesan>
+◉ **Keterangan:** Decode base64.
 """
 
 import base64
@@ -19,7 +19,7 @@ import base64
 from . import ayra_cmd
 
 
-@ayra_cmd(pattern="encode ?(.*)")
+@ayra_cmd(pattern="(E|e)ncode ?(.*)")
 async def encod(e):
     match = e.pattern_match.group(1)
     if not match and e.is_reply:
@@ -34,7 +34,7 @@ async def encod(e):
     await e.eor(f"**=>> Encoded Text :** `{match}`\n\n**=>> OUTPUT :**\n`{atc}`")
 
 
-@ayra_cmd(pattern="decode ?(.*)")
+@ayra_cmd(pattern="(D|d)ecode ?(.*)")
 async def encod(e):
     match = e.pattern_match.group(1)
     if not match and e.is_reply:
