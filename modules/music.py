@@ -258,7 +258,7 @@ class Player:
 # --------------------------------------------------
 
 
-def vc_asst(dec, **kwargs):
+def ayra_cmd(dec, **kwargs):
     def ay(func):
         kwargs["func"] = (
             lambda e: not e.is_private and not e.via_bot_id and not e.fwd_from
@@ -464,7 +464,7 @@ async def file_download(event, reply, fast_download=True):
 # --------------------------------------------------
 
 
-@vc_asst("(p|P)lay")
+@ayra_cmd("(p|P)lay")
 async def play_music_(event):
     if "playfrom" in event.text.split()[0]:
         return  # For PlayFrom Conflict
@@ -549,7 +549,7 @@ async def play_music_(event):
         )
 
 
-@vc_asst("(m|M)utevc")
+@ayra_cmd("(m|M)utevc")
 async def mute(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -564,7 +564,7 @@ async def mute(event):
     await event.eor(get_string("vcbot_12"))
 
 
-@vc_asst("(u|U)nmutevc")
+@ayra_cmd("(u|U)nmutevc")
 async def unmute(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -579,7 +579,7 @@ async def unmute(event):
     await event.eor("`Menyalakan pemutaran di obrolan ini.`")
 
 
-@vc_asst("(p|P)ausevc")
+@ayra_cmd("(p|P)ausevc")
 async def pauser(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -594,7 +594,7 @@ async def pauser(event):
     await event.eor(get_string("vcbot_14"))
 
 
-@vc_asst("(r|R)esumevc")
+@ayra_cmd("(r|R)esumevc")
 async def resumer(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -609,7 +609,7 @@ async def resumer(event):
     await event.eor(get_string("vcbot_13"))
 
     
-@vc_asst("(A|a)ddauth", from_users=owner_and_sudos(), vc_auth=False)
+@ayra_cmd("(A|a)ddauth", from_users=owner_and_sudos(), vc_auth=False)
 async def auth_group(event):
     try:
         key = event.text.split(" ", maxsplit=1)[1]
@@ -630,7 +630,7 @@ async def auth_group(event):
     )
 
 
-@vc_asst("(r|R)emauth", from_users=owner_and_sudos(), vc_auth=False)
+@ayra_cmd("(r|R)emauth", from_users=owner_and_sudos(), vc_auth=False)
 async def auth_group(event):
     chat = event.chat_id
     key = udB.get_key("VC_AUTH_GROUPS") or {}
@@ -645,7 +645,7 @@ async def auth_group(event):
     await event.eor(get_string("vcbot_10"))
 
 
-@vc_asst("(l|L)istauth", from_users=owner_and_sudos(), vc_auth=False)
+@ayra_cmd("(l|L)istauth", from_users=owner_and_sudos(), vc_auth=False)
 async def listVc(e):
     chats = udB.get_key("VC_AUTH_GROUPS")
     if not chats:
@@ -661,7 +661,7 @@ async def listVc(e):
     await e.eor(text, parse_mode="html")
     
     
-@vc_asst("(l|L)istplay")
+@ayra_cmd("(l|L)istplay")
 async def lstqueue(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -677,7 +677,7 @@ async def lstqueue(event):
     await event.eor(f"• <strong>Queue:</strong>\n\n{q}", parse_mode="html")
 
 
-@vc_asst("cplaylist")
+@ayra_cmd("cplaylist")
 async def clean_queue(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -692,7 +692,7 @@ async def clean_queue(event):
     await event.eor(get_string("vcbot_22"), time=5)
 
 
-@vc_asst("(R|r)ejoin")
+@ayra_cmd("(R|r)ejoin")
 async def rejoiner(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -710,7 +710,7 @@ async def rejoiner(event):
     await event.eor(get_string("vcbot_5"))
     
     
-@vc_asst("(S|s)kip")
+@ayra_cmd("(S|s)kip")
 async def skipper(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -724,7 +724,7 @@ async def skipper(event):
     await aySongs.play_from_queue()
     
     
-@vc_asst("(V|v)play")
+@ayra_cmd("(V|v)play")
 async def video_c(event):
     xx = await event.eor(get_string("com_1"))
     chat = event.chat_id
