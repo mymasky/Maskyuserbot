@@ -167,7 +167,7 @@ async def _(event):
     )
     
 
-@ayra_cmd(pattern=r"[sS][oO]")
+@ayra_cmd(pattern=r"(So|so)")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
