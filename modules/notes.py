@@ -21,7 +21,7 @@ import os
 from telegraph import upload_file as uf
 from telethon.utils import pack_bot_file_id
 
-from .database.notesdb import .
+from .database.notesdb import *
 from ._inline import something
 from . import *
 
