@@ -11,6 +11,9 @@
 ๏ **Perintah:** `promote` <balas ke pengguna/username>
 ◉ **Keterangan:** Jadikan pengguna sebagai admin.
 
+๏ **Perintah:** `promote -f` <balas ke pengguna/username>
+◉ **Keterangan:** Jadikan pengguna sebagai admin akses penuh.
+
 ๏ **Perintah:** `demote` <balas ke pengguna/username>
 ◉ **Keterangan:** Turunkan pengguna dari admin.
 
