@@ -181,7 +181,7 @@ async def bban(ayra):
 )
 async def uunban(ayra):
     xx = await ayra.eor(get_string("com_1"))
-    if ayra.text[1:].startswith("unbanall") or ("Unbanall"):
+    if ayra.text[1:].startswith("unbanall"):
         return
     something = await get_uinfo(ayra)
     if not something:
