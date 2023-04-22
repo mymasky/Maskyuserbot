@@ -47,24 +47,31 @@ def user_list(l, n):
         yield l[i : i + n]
 
 
-@kynan_cmd(pattern="(s|S)topvc$")
-async def stopvc(event):
+@ayra_cmd(
+    pattern="(S|s)topvc$",
+    admins_only=True,
+    groups_only=True,
+)
+async def _(e):
     try:
-        await event.client(stopvc(await get_call(event)))
-        await event.eor(get_string("vct_4"))
+        await e.client(stopvc(await get_call(e)))
+        await e.eor(get_string("vct_4"))
     except Exception as ex:
-        await event.eor(f"`{ex}`")
+        await e.eor(f"`{ex}`")
 
-
-@kynan_cmd(pattern="(s|S)tartvc$")
-async def startvc(event):
+@ayra_cmd(
+    pattern="(S|s)tartvc$",
+    admins_only=True,
+    groups_only=True,
+)
+async def _(e):
     try:
-        await event.client(startvc(event.chat_id))
-        await event.eor(get_string("vct_1"))
+        await e.client(startvc(e.chat_id))
+        await e.eor(get_string("vct_1"))
     except Exception as ex:
-        await event.eor(f"`{ex}`")
+        await e.eor(f"`{ex}`")
 
-@kynan_cmd(pattern="(v|V)ctitle( (.*)|$)")
+@ayra_cmd(pattern="(v|V)ctitle( (.*)|$)")
 async def _(event):
     title = event.pattern_match.group(2).strip()
     if not title:
