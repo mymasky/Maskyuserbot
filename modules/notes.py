@@ -7,16 +7,19 @@
 """
 ✘ **Bantuan Untuk Notes**
 
-๏ **Perintah:** `snote` <nama catatan><balas pesan>
+๏ **Perintah:** `save` <nama catatan><balas pesan>
 ◉ **Keterangan:** Tambahkan catatan .
 
-๏ **Perintah:** `rnote` <nama catatan>
+๏ **Perintah:** `rm` <nama catatan>
 ◉ **Keterangan:** Hapus catatan .
+
+๏ **Perintah:** `get` <nama catatan>
+◉ **Keterangan:** Daftar semua catatan.
 
 ๏ **Perintah:** `notes`
 ◉ **Keterangan:** Daftar semua catatan.
 
-◉ **Notes:** Bisa menggunakan media apapun serta menggunakan button. Cara mengambil catatan diawali dengan #.
+◉ **Notes:** Bisa menggunakan media apapun serta menggunakan button.
 ◉ **Contoh:**
 Kirim ke
 [Dana|https://link.dana]
@@ -30,16 +33,13 @@ from .database.notesdb import *
 from ._inline import something
 from . import *
 
-@ayra_cmd(pattern="snote( (.*)|$)")
+@ayra_cmd(pattern="[sS][a][v][e]( (.*)|$)")
 async def an(e):
     wrd = (e.pattern_match.group(1).strip()).lower()
     wt = await e.get_reply_message()
-    bahan = int(udB.get_key("LOG_CHANNEL"))
     user = e.sender_id
     if not (wt and wrd):
         return await e.eor(get_string("notes_1"), time=5)
-    if "#" in wrd:
-        wrd = wrd.replace("#", "")
     btn = format_btn(wt.buttons) if wt.buttons else None
     if wt and wt.media:
         wut = mediainfo(wt.media)
@@ -73,30 +73,28 @@ async def an(e):
     ayra_bot.add_handler(notes, events.NewMessage())
 
 
-@ayra_cmd(pattern="rnote( (.*)|$)")
+@ayra_cmd(pattern="[Rr][m]( (.*)|$)")
 async def rn(e):
     wrd = (e.pattern_match.group(1).strip()).lower()
     user = e.sender_id
     if not wrd:
         return await e.eor(get_string("notes_3"), time=5)
-    if wrd.startswith("#"):
-        wrd = wrd.replace("#", "")
     rem_note(int(user), wrd)
     await e.eor(f"Selesai Catatan: `{wrd}` Dihapus.")
 
 
-@ayra_cmd(pattern="notes")
+@ayra_cmd(pattern="[Nn][o][t][e][s]")
 async def lsnote(e):
     user = e.sender_id
     if x := list_note(user):
-        sd = "**❏ Daftar Notes**\n"
+        sd = "**❏ Daftar Notes**\n\n"
         return await e.eor(sd + x)
     await e.eor("**Belum ada catatan**")
 
-@ayra_cmd(pattern="get( (.*)|$)")
+
+@ayra_cmd(pattern="[Gg][e][t]( (.*)|$)")
 async def notes(e):
     user = e.sender_id
-    xx = [z.replace("#", "") for z in e.text.lower().split() if z.startswith("#")]
     for word in xx:
         if k := get_notes(user, word):
             msg = k["msg"]
