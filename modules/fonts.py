@@ -33,7 +33,7 @@ Fonts = {
 
 
 @ayra_cmd(
-    pattern="font( (.*)|$)",
+    pattern="[fF][o][n][t]( (.*)|$)",
 )
 async def _(e):
     input = e.pattern_match.group(1).strip()
