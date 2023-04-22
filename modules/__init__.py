@@ -19,7 +19,7 @@ from telethon import events
 from telethon.utils import get_display_name
 from telethon import Button, events
 from telethon.tl import functions, types  # pylint:ignore
-from aiohttp import ClientSession
+
 from pytgcalls import GroupCallFactory
 from pytgcalls.exceptions import GroupCallNotFoundError
 
@@ -44,7 +44,7 @@ con = TgConverter
 quotly = Quotly()
 OWNER_NAME = ayra_bot.full_name
 OWNER_ID = ayra_bot.uid
-aiosession = ClientSession()
+
 LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
 
 """
