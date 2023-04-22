@@ -157,7 +157,7 @@ async def stats(
     await ok.edit(response)
 
 @ayra_cmd(
-    pattern="(I|i)nfo( (.*)|$)",
+    pattern="[iI][n][f][o]( (.*)|$)",
     manager=True,
 )
 async def _(event):
@@ -257,7 +257,7 @@ async def _(event):
     await xx.delete()
 
 
-@ayra_cmd(pattern="(I|i)pinfo( (.*)|$)")
+@ayra_cmd(pattern="[iI][p][i][n][f][o]( (.*)|$)")
 async def ipinfo(event):
     ip = event.text.split()
     ipaddr = ""
