@@ -21,12 +21,12 @@ from . import ayra_cmd
 
 
 @ayra_cmd(
-    pattern="(Unlock|unlock|lock|Lock)( (.*)|$)", admins_only=True, manager=True, require="change_info"
+    pattern="(Unlock|unlock|lock|Lock)(?: |$)(.*)", admins_only=True, manager=True, require="change_info"
 )
 async def un_lock(e):
     mat = e.pattern_match.group(2).strip()
     if not mat:
-        return await e.eor("`Berikan query yang tepat..`", time=5)
+        return await e.eor("`Berikan kata kunci yang tepat..`", time=5)
     lock = e.pattern_match.group(1) == ""
     ml = lock_unlock(mat, lock)
     if not ml:
