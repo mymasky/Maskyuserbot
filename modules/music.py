@@ -258,7 +258,7 @@ class Player:
 # --------------------------------------------------
 
 
-def ayra_cmd(dec, **kwargs):
+def vc_asst(dec, **kwargs):
     def ay(func):
         kwargs["func"] = (
             lambda e: not e.is_private and not e.via_bot_id and not e.fwd_from
