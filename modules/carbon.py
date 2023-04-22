@@ -13,12 +13,18 @@
 """
 
 import os
-import os.path
+from telethon.tl import types
+from telethon.utils import get_display_name
 from io import BytesIO
 import aiohttp
 from secrets import choice
-from telethon.utils import get_display_name
-from . import eor, get_string, inline_mention, ayra_cmd
+from . import eor, get_string, ayra_cmd
+
+def vcmention(user):
+    full_name = get_display_name(user)
+    if not isinstance(user, types.User):
+        return full_name
+    return f"[{full_name}](tg://user?id={user.id})"
 
 all_col = [
     "Black",
@@ -210,13 +216,22 @@ async def Carbon(
     return file_name
     
     
-@ayra_cmd(
-    pattern="(rc|c)arbon",
-)
-async def cr_bn(event):
-    xxxx = await event.eor(get_string("com_1"))
-    te = event.pattern_match.group(1)
-    col = choice(all_col) if te[0] == "r" else "White"
+def vcmention(user):
+    full_name = get_display_name(user)
+    if not isinstance(user, types.User):
+        return full_name
+    return f"[{full_name}](tg://user?id={user.id})"
+
+
+
+
+
+@ayra_cmd(pattern="(rc|c)arbon")
+async def crbn(event):
+    from_user = vcmention(event.sender)
+    xxxx = await eor(event, get_string("com_1"))
+    te = event.text
+    col = choice(all_col) if te[1] == "r" else "Grey"
     if event.reply_to_msg_id:
         temp = await event.get_reply_message()
         if temp.media:
@@ -230,26 +245,23 @@ async def cr_bn(event):
         try:
             code = event.text.split(" ", maxsplit=1)[1]
         except IndexError:
-            return await xxxx.eor(get_string("carbon_2"), time=30)
-    xx = await Carbon(code=code, file_name="carbon_ayra", backgroundColor=col)
-    if isinstance(xx, dict):
-        await xxxx.edit(f"`{xx}`")
-        return
+            return await eor(xxxx, get_string("carbon_2"), time=30
+                             )
+    xx = await Carbon(code=code, file_name="carbon_ayiin", backgroundColor=col)
     await xxxx.delete()
-    await event.reply(
-        caption=f"Carbonised by {inline_mention(event.sender)}",
-        file=xx,
-    )
+    await event.reply(get_string("carbon_1").format(from_user),
+                      file=xx,
+                      )
 
 
-@ayra_cmd(
-    pattern="ccarbon( (.*)|$)",
-)
-async def crbn(event):
+@ayra_cmd(pattern="ccarbon ?(.*)")
+async def ccrbn(event):
+    from_user = vcmention(event.sender)
     match = event.pattern_match.group(1).strip()
     if not match:
-        return await event.eor(get_string("carbon_3"))
-    msg = await event.eor(get_string("com_1"))
+        return await eor(event, get_string("carbon_3")
+                         )
+    msg = await eor(event, get_string("com_1"))
     if event.reply_to_msg_id:
         temp = await event.get_reply_message()
         if temp.media:
@@ -265,56 +277,10 @@ async def crbn(event):
             code = match[1]
             match = match[0]
         except IndexError:
-            return await msg.eor(get_string("carbon_2"), time=30)
+            return await eor(msg, get_string("carbon_2"), time=30
+                             )
     xx = await Carbon(code=code, backgroundColor=match)
     await msg.delete()
-    await event.reply(
-        caption=f"Carbonised by {inline_mention(event.sender)}",
-        file=xx,
-    )
-
-
-RaySoTheme = [
-    "meadow",
-    "breeze",
-    "raindrop",
-    "candy",
-    "crimson",
-    "falcon",
-    "sunset",
-    "midnight",
-]
-
-@ayra_cmd(pattern="rayso")
-async def pass_on(kaz):
-    spli = kaz.text.split()
-    theme, dark, title, text = None, True, get_display_name(kaz.chat), None
-    if len(spli) > 2:
-        if spli[1] in RaySoTheme:
-            theme = spli[1]
-        dark = spli[2].lower().strip() in ["true", "t"]
-    elif len(spli) > 1:
-        if spli[1] in RaySoTheme:
-            theme = spli[1]
-        elif spli[1] == "list":
-            text = "**List of Rayso Themes:**\n" + "\n".join(
-                [f"- `{th_}`" for th_ in RaySoTheme]
-            )
-
-            await kaz.eor(text)
-            return
-        else:
-            try:
-                text = kaz.text.split(maxsplit=1)[1]
-            except IndexError:
-                pass
-    if not theme:
-        theme = random.choice(RaySoTheme)
-    if kaz.is_reply:
-        msg = await kaz.get_reply_message()
-        text = msg.text
-        title = get_display_name(msg.sender)
-    await kaz.reply(
-        file=await Carbon(text, rayso=True, title=title, theme=theme, darkMode=dark)
-    )
-
+    await event.reply(get_string("carbon_1").format(from_user),
+                      file=xx,
+                      )
