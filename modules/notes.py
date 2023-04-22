@@ -97,7 +97,7 @@ async def notes(e):
     chat = e.chat_id
     xx = [z.replace("#", "") for z in e.text.lower().split() if z.startswith("#")]
     for word in xx:
-        if k := get_notes(chat, word):
+        if k := get_notes(word):
             msg = k["msg"]
             media = k["media"]
             if k.get("button"):
