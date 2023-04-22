@@ -108,13 +108,11 @@ async def lastname(steal):
                 await steal.client.delete_messages(conv.chat_id, [msg.id, response.id])
             elif response.text.startswith("History"):
                 await lol.edit(response.message)
-                await lol.reply(response.message)
             else:
                 await lol.edit(response.message)
-                await lol.reply(response.message)
             await steal.client.delete_messages(
                 conv.chat_id,
                 [msg.id, response.id],
             )
     except AsyncTimeout:
-        await lol.edit("Error: @SangMata_BOT is not responding!.")
+        await lol.edit("Error: @SangMata_beta_bot is not responding!.")
