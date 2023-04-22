@@ -50,6 +50,7 @@ async def cr_bn(event):
         return
     await xxxx.delete()
     await event.client.send_file(
+        event.chat.id,
         caption=f"Carbonised by {inline_mention(event.sender)}",
         file=xx,
     )
@@ -82,6 +83,7 @@ async def crbn(event):
     xx = await Carbon(code=code, backgroundColor=match)
     await msg.delete()
     await event.client.send_file(
+        event.chat.id
         caption=f"Carbonised by {inline_mention(event.sender)}",
         file=xx,
     )
