@@ -15,6 +15,8 @@ com_5: "`Mengunduh...`"
 com_6: "`Mengunggah...`"
 com_7: "`Maaf Telah Terjadi ERROR`"
 
+adzan1: "**Tidak Dapat Menemukan Kota** `{}`"
+
 # vc tools
 stvc_1: "**Maaf {} Bukan Admin 👮**"
 stvc_2: "`Obrolan Suara Dimulai...`"
