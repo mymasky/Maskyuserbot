@@ -18,7 +18,7 @@ from telethon.utils import get_display_name
 from io import BytesIO
 import aiohttp
 from secrets import choice
-from . import eor, get_string, ayra_cmd
+from . import eor, get_string, ayra_cmd, async_searcher
 
 def vcmention(user):
     full_name = get_display_name(user)
@@ -176,32 +176,6 @@ all_col = [
     "Ivory",
     "White",
 ]
-
-async def async_searcher(
-    url: str,
-    post: bool = None,
-    headers: dict = None,
-    params: dict = None,
-    json: dict = None,
-    data: dict = None,
-    ssl=None,
-    re_json: bool = False,
-    re_content: bool = False,
-    real: bool = False,
-):
-    async with aiohttp.ClientSession(headers=headers) as client:
-        if post:
-            data = await client.post(url, json=json, data=data, ssl=ssl)
-        else:
-            data = await client.get(url, params=params, ssl=ssl)
-        if re_json:
-            return await data.json()
-        if re_content:
-            return await data.read()
-        if real:
-            return data
-        return await data.text()
-
 
 async def Carbon(
     code,
