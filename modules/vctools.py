@@ -47,29 +47,43 @@ def user_list(l, n):
         yield l[i : i + n]
 
 
-@ayra_cmd(
-    pattern="(S|s)topvc$",
-    admins_only=True,
-    groups_only=True,
-)
-async def _(e):
-    try:
-        await e.client(stopvc(await get_call(e)))
-        await e.eor(get_string("vct_4"))
-    except Exception as ex:
-        await e.eor(f"`{ex}`")
+@kynan_cmd(pattern="startvc$", group_only=True)
+@register(pattern=r"^\.startvcs$", sudo=True)
+async def start_voice(c):
+    xnxx = await eor(c, get_string("com_1"))
+    me = await c.client.get_me()
+    chat = await c.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
 
-@ayra_cmd(
-    pattern="(S|s)tartvc$",
-    admins_only=True,
-    groups_only=True,
-)
-async def _(e):
+    if not admin and not creator:
+        await eod(xnxx, get_string("stvc_1").format(me.first_name))
+        return
     try:
-        await e.client(startvc(e.chat_id))
-        await e.eor(get_string("vct_1"))
+        Nan = Player(c.chat_id)
+        await Nan make_vc_active()
+        await xnxx.edit(get_string("stvc_2"))
     except Exception as ex:
-        await e.eor(f"`{ex}`")
+        await eod(xnxx, get_string("error_1").format(e))
+
+
+@kynan_cmd(pattern="stopvc$", group_only=True)
+@register(pattern=r"^\.stopvcs$", sudo=True)
+async def stop_voice(c):
+    jing = await eor(c, get_string("com_1"))
+    me = await c.client.get_me()
+    chat = await c.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    if not admin and not creator:
+        await eod(yins, get_string("stvc_1").format(me.first_name))
+        return
+    try:
+        await c.client(stopvc(await get_call(c)))
+        await yins.edit(get_string("stvc_3"))
+    except Exception as ex:
+        await eod(jing, get_string("error_1").format(ex))
 
 @ayra_cmd(pattern="(v|V)ctitle( (.*)|$)")
 async def _(event):
