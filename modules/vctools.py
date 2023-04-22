@@ -49,7 +49,6 @@ def user_list(l, n):
 
 @kynan_cmd(
     pattern="(s|S)topvc$",
-    admins_only=True,
     groups_only=True,
 )
 async def _(event):
@@ -62,7 +61,6 @@ async def _(event):
 
 @kynan_cmd(
     pattern="(s|S)tartvc$",
-    admins_only=True,
     groups_only=True,
 )
 async def _(event):
@@ -74,7 +72,6 @@ async def _(event):
 
 @kynan_cmd(
     pattern="vctitle( (.*)|$)",
-    admins_only=True,
     groups_only=True,
 )
 async def _(event):
