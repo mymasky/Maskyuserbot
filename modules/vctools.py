@@ -48,32 +48,32 @@ def user_list(l, n):
         yield l[i : i + n]
 
 
-@ayra_cmd(
+@kynan_cmd(
     pattern="(s|S)topvc$",
     admins_only=True,
     groups_only=True,
 )
-async def _(e):
+async def _(event):
     try:
-        await e.client(stopvc(await get_call(e)))
-        await e.eor(get_string("vct_4"))
+        await event.client(stopvc(await get_call(e)))
+        await event.eor(get_string("vct_4"))
     except Exception as ex:
-        await e.eor(f"`{ex}`")
+        await event.eor(f"`{ex}`")
 
 
-@ayra_cmd(
+@kynan_cmd(
     pattern="(s|S)tartvc$",
     admins_only=True,
     groups_only=True,
 )
-async def _(e):
+async def _(event):
     try:
-        await e.client(startvc(e.chat_id))
-        await e.eor(get_string("vct_1"))
+        await event.client(startvc(e.chat_id))
+        await event.eor(get_string("vct_1"))
     except Exception as ex:
-        await e.eor(f"`{ex}`")
+        await event.eor(f"`{ex}`")
 
-@ayra_cmd(
+@kynan_cmd(
     pattern="vctitle( (.*)|$)",
     admins_only=True,
     groups_only=True,
@@ -89,7 +89,7 @@ async def _(event):
         await event.eor(f"Terjadi kesalahan: {ex}")
         
         
-@ayra_cmd(
+@kynan_cmd(
     pattern="(j|J)oinvc(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^(j|J)vcs(?: |$)(.*)")
 async def join_(event):
@@ -112,7 +112,7 @@ async def join_(event):
 
 
 
-@vc_asst("(leavevc|Leavevc|end|End)(?: |$)(.*)")
+@kynan_cmd("(leavevc|Leavevc|end|End)(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^(l|L)vcs(?: |$)(.*)")
 async def leaver(event):
     if len(event.text.split()) > 1:
