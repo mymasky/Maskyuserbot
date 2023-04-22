@@ -74,7 +74,7 @@ async def _(e):
         await e.eor(f"`{ex}`")
 
 @ayra_cmd(
-    pattern="[vV][c][t][i][t][l][e](?: |$)(.*)",
+    pattern="(V|v)ctitle(?: |$)(.*)",
     admins_only=True,
     groups_only=True,
 )
