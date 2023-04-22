@@ -43,4 +43,4 @@ def get_notes(user, word):
 def list_note(user):
     ok = get_stuff()
     if ok.get(int(user)):
-        return "".join(f"👉 #{z}\n" for z in ok[user])
+        return "".join(f"**├ {z}**\n" for z in ok[user])
