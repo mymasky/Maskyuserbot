@@ -14,9 +14,18 @@ com_4: "`Media Tidak Didukung..`"
 com_5: "`Mengunduh...`"
 com_6: "`Mengunggah...`"
 com_7: "`Maaf Telah Terjadi ERROR`"
-jovc_1: "❏ **Berhasil Bergabung Ke Obrolan Suara**\n└ **Chat ID:** `{}`"
+
+# vc tools
+stvc_1: "**Maaf {} Bukan Admin 👮**"
+stvc_2: "`Obrolan Suara Dimulai...`"
+stvc_3: "`Obrolan Suara Dihentikan...`"
+vcin_1: "`Mengundang Anggota ke Obrolan Suara...`"
+vcin_2: "`{}` **Orang Berhasil diundang ke VCG**"
+vcti_1: "**Silahkan Masukan Title Obrolan Suara Grup**"
+vcti_2: "**Berhasil Mengubah Judul VCG Menjadi** `{}`"
+jovc_1: "⍟ [{}](tg://user?id={})\n\n❏ **Berhasil Bergabung Ke Obrolan Suara**\n└ **Chat ID:** `{}`"
 jovc_2: "**[ERROR]** `Karena akun sedang berada di obrolan suara`\n\n• Silahkan coba `{}joinvc` lagi"
-levc_1: "❏ **Berhasil Turun dari Obrolan Suara**\n└ **Chat ID:** `{}`"
+levc_1: "⍟ [{}](tg://user?id={})\n\n❏ **Berhasil Turun dari Obrolan Suara**\n└ **Chat ID:** `{}`"
 
 # chatactions
 can_1: "**#GBanned_User** Bergabung.\n\n**User** : {}\n**Karena**: {}\n\n`Pengguna dibanned.`"
@@ -286,6 +295,16 @@ dm_3: "**⚜️Berhasil Mengirim Pesan!⚜️**"
 dm_4: "ERROR: {}\nBaca Cara Menggunakan Ketik `{}help dm`"
 dm_5: "`Silahkan Check di Private.`"
 dm_6: "`Tidak ditemukan pesan untuk dikirim :(`"
+
+# for error
+error_1: "**KESALAHAN : **`{}`"
+error_2: "**Terjadi KESALAHAN!**"
+error_3: "**Berkas tidak ditemukan** `{}`"
+error_4: "**Terjadi Kesalah Yang Tidak Terduga.**"
+error_5: "`File Tidak Di Dukung...`"
+error_6: "`Informasi Tidak Ditemukan...`"
+error_7: "**Gagal mendownload gambar.**"
+error_8: "**KESALAHAN: {} tidak merespon silahkan coba lagi nanti**"
 
 # echo
 echo_1: "**Echo Diaktifkan Untuk Pengguna:**\n\n"
