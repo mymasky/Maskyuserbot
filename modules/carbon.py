@@ -44,7 +44,7 @@ async def cr_bn(event):
             code = event.text.split(" ", maxsplit=1)[1]
         except IndexError:
             return await xxxx.eor(get_string("carbon_2"))
-    xx = await Carbon(code=code, file_name="ayra", backgroundColor=col)
+    xx = await Carbon(code=code, backgroundColor=col)
     if isinstance(xx, dict):
         await xxxx.edit(f"`{xx}`")
         return
