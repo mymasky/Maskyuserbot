@@ -73,21 +73,25 @@ async def _(e):
     except Exception as ex:
         await e.eor(f"`{ex}`")
 
+@ayra_cmd(pattern="(v|V)ctitle(?: |$)(.*)")
+
 
 @ayra_cmd(
     pattern="(V|v)ctitle(?: |$)(.*)",
     admins_only=True,
     groups_only=True,
 )
-async def _(e):
-    title = e.pattern_match.group(1).strip()
+async def _(event):
+    title = event.pattern_match.group(2).strip()
     if not title:
-        return await e.eor(get_string("vct_6"), time=5)
+        return await event.eor("Mohon masukkan judul obrolan suara yang valid.")
     try:
-        await e.client(settitle(call=await get_call(e), title=title.strip()))
-        await e.eor(get_string("vct_2").format(title))
+        chat = await event.get_chat()
+        call = await event.client.join_group_call(chat.id)
+        await event.client.set_group_call_title(call=call, title=title)
+        await event.eor(f"❏ **Judul Voice Chat**\n└ '{title}'.")
     except Exception as ex:
-        await e.eor(f"`{ex}`")
+        await event.eor(f"Terjadi kesalahan: {ex}")
         
         
 @ayra_cmd(
@@ -105,7 +109,7 @@ async def join_(event):
     Nan = Player(chat)
     if not Nan.group_call.is_connected:
         await Nan.group_call.join(chat)
-        await event.reply(f"❏ **Berhasil Bergabung Ke Obrolan Suara**\n└ **Chat ID:** `{chat}`")
+        await event.eor(f"❏ **Berhasil Bergabung Voice Chat**\n└ **Chat ID:** `{chat}`")
         await asyncio.sleep(1)
         await Nan.group_call.set_is_mute(False)
         await asyncio.sleep(1)
@@ -130,4 +134,4 @@ async def leaver(event):
         del CLIENTS[chat]
     if VIDEO_ON.get(chat):
         del VIDEO_ON[chat]
-    await event.eor(get_string("vcbot_1"))
+    await event.eor(f"❏ **Berhasil Turun Voice Chat**\n└ **Chat ID:** `{chat}`")
