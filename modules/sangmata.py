@@ -108,7 +108,7 @@ async def lastname(steal):
             if (respond and respond.text == "No"):
                 await lol.edit("No records found for this user")
                 await steal.client.delete_messages(conv.chat_id, [msg.id, respond.id])
-            elif (respond.text == "History for"):
+            elif respond.text.startswith("History"):
                 await lol.edit(respond.message)
                 await lol.reply(respond.message)
             else:
@@ -116,7 +116,7 @@ async def lastname(steal):
                 await lol.reply(respond.message)
             await steal.client.delete_messages(
                 conv.chat_id,
-                [msg.id, responds.id, respond.id, response.id],
+                [msg.id, respond.id],
             )
     except AsyncTimeout:
         await lol.edit("Error: @SangMata_BOT is not responding!.")
