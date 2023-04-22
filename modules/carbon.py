@@ -49,8 +49,8 @@ async def cr_bn(event):
         await xxxx.edit(f"`{xx}`")
         return
     await xxxx.delete()
-    await event.reply(
-        f"Carbonised by {inline_mention(event.sender)}",
+    await event.client.send_file(
+        caption=f"Carbonised by {inline_mention(event.sender)}",
         file=xx,
     )
 
@@ -81,8 +81,8 @@ async def crbn(event):
             return await msg.eor(get_string("carbon_2"))
     xx = await Carbon(code=code, backgroundColor=match)
     await msg.delete()
-    await event.reply(
-        f"Carbonised by {inline_mention(event.sender)}",
+    await event.client.send_file(
+        caption=f"Carbonised by {inline_mention(event.sender)}",
         file=xx,
     )
 
