@@ -34,6 +34,8 @@ from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
 from . import *
 from .music import *
+from Ayra.kynan import register
+
 
 async def get_call(event):
     mm = await event.client(getchat(event.chat_id))
@@ -87,7 +89,7 @@ async def _(event):
         await event.eor(f"Terjadi kesalahan: {ex}")
         
         
-@vc_asst(
+@ayra_cmd(
     pattern="(j|J)oinvc(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^(j|J)vcs(?: |$)(.*)")
 async def join_(event):
