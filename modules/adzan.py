@@ -10,7 +10,7 @@ import requests
 from . import *
 
 
-@ayra_cmd(pattern="(A|a)dzan(?:\\s|$)([\\s\\S]*)")
+@ayra_cmd(pattern="(A|a)dzan( (.*)|$)")
 async def get_adzan(e):
     LOKASI = e.pattern_match.group(1).strip()
     if not LOKASI:
