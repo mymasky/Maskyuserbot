@@ -94,9 +94,10 @@ async def lsnote(e):
 
 
 async def notes(e):
+    chat = e.chat_id
     xx = [z.replace("#", "") for z in e.text.lower().split() if z.startswith("#")]
     for word in xx:
-        if k := get_notes(e.chat_id, word):
+        if k := get_notes(chat, word):
             msg = k["msg"]
             media = k["media"]
             if k.get("button"):
