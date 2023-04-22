@@ -82,7 +82,7 @@ alive_txt = """
   ◈ Telethon - {}
 """
 
-in_alive = "{}\n\n◈ <b>Ayra Version -><b> <code>{}</code>\n◈ <b>Ayra -></b> <code>{}</code>\n◈ <b>Python -></b> <code>{}</code>\n◈ <b>Waktu aktif -></b> <code>{}</code>\n◈ <b>Branch -></b> [ {} ]\n\n• <b>©↻˹ҡʏɴλɴ˼𐦝</b>"
+in_alive = "**{}*\n\n<b>╼┅━━━━━━━━━━━┅╾</b>\n<b>❏ 𝙰𝚈𝚁𝙰-𝚅𝙴𝚁𝚂𝙸𝙾𝙽 :</b> <code>{}</code>\n<b>├ 𝙿𝚈-𝙰𝚈𝚁𝙰 :</b> <code>{}</code>\n<b>├ 𝙿𝚈𝚃𝙷𝙾𝙽 :</b> <code>{}</code>\n<b>├ 𝚄𝙿𝚃𝙸𝙼𝙴 :</b> <code>{}</code>\n<b>├ 𝙱𝚁𝙰𝙽𝙲𝙷</b> {}\n<b>╰ 𝙰𝚈𝚁𝙰-𝚄𝚂𝙴𝚁𝙱𝙾𝚃</b>\n<b>╼┅━━━━━━━━━━━┅╾</b>"
 
 absen = [
     "**𝙃𝙖𝙙𝙞𝙧 𝙙𝙤𝙣𝙜 𝙏𝙤𝙙** 😁",
@@ -146,7 +146,7 @@ async def lol(ayra):
         kk = f"<a href={rep}>{y}</a>"
         parse = "html"
         als = in_alive.format(
-            header,
+            OWNER_NAME,
             f"{ayra_version} [{HOSTED_ON}]",
             AyraVer,
             pyver(),
@@ -241,7 +241,7 @@ async def get_readable_time(seconds: int) -> str:
     return up_time
 
 
-@ayra_cmd(pattern=r"^(ping|Ping)")
+@ayra_cmd(pattern="[pP][i][n][g]")
 @register(incoming=True, from_users=DEVS, pattern=r"^Cping$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
