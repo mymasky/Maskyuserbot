@@ -42,7 +42,7 @@ async def _(event):
             data = data[1].split(maxsplit=1)
             data[1] = f"{str(udB.get_key(data[0]))} {data[1]}"
         udB.set_key(data[0], data[1])
-        await ay.eor(
+        await event.eor(
             f"**Pasangan Nilai Kunci DB Diperbarui\nKunci :** `{data[0]}`\n**Value :** `{data[1]}`"
         )
 
@@ -64,7 +64,7 @@ async def _(event):
         else:
             k = udB.del_key(key)
         if k == 0:
-            return await ay.eor("`Tidak Ada Kunci Seperti Itu.`")
+            return await event.eor("`Tidak Ada Kunci Seperti Itu.`")
         await event.eor(f"`Kunci berhasil dihapus {key}`")
     except BaseException:
         await event.eor(get_string("com_7"))
