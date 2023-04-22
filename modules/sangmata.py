@@ -106,16 +106,16 @@ async def lastname(steal):
             except YouBlockedUserError:
                 return await lol.edit("Buka Blokir @SangMata_beta_bot dan Coba Lagi.")
             if (
-                (response and response.text == "No records found")
-                or (respond and respond.text == "No records found")
-                or (responds and responds.text == "No records found")
+                (response and response.text == "History")
+                or (respond and respond.text == "History")
+                or (responds and responds.text == "History")
             ):
                 await lol.edit("No records found for this user")
                 await steal.client.delete_messages(conv.chat_id, [msg.id, response.id])
-            elif response.text.startswith("🔗"):
+            elif response.text.startswith("History"):
                 await lol.edit(respond.message)
                 await lol.reply(responds.message)
-            elif respond.text.startswith("🔗"):
+            elif respond.text.startswith("History"):
                 await lol.edit(response.message)
                 await lol.reply(responds.message)
             else:
