@@ -46,8 +46,8 @@ async def crbn(event):
             return await eor(xxxx, get_string("carbon_2"))
     xx = await Carbon(code=code, file_name="ayra", backgroundColor=col)
     await xxxx.delete()
-    await event.client.send_file(
-        f"Carbonised by {OWNER_NAME}",
+    await event.reply(
+        f"Carbonised by {inline_mention(event.sender)}",
         file=xx,
     )
 
@@ -78,8 +78,8 @@ async def crbn(event):
             return await eor(msg, get_string("carbon_2"))
     xx = await Carbon(code=code, backgroundColor=match)
     await msg.delete()
-    await event.client.send_file(
-        f"Carbonised by {OWNER_NAME}",
+    await event.reply(
+        f"Carbonised by {inline_mention(event.sender)}",
         file=xx,
     )
 
