@@ -84,9 +84,9 @@ async def rn(e):
 async def lsnote(e):
     user = e.sender_id
     if x := list_note(user):
-        sd = "Catatan Ditemukan Dalam Obrolan Ini Adalah\n\n"
+        sd = "**❏ Daftar Notes\n"
         return await e.eor(sd + x)
-    await e.eor(get_string("notes_5"))
+    await e.eor("**Belum ada catatan**")
 
 
 async def notes(e):
