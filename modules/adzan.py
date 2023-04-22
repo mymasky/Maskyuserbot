@@ -10,15 +10,15 @@ import requests
 from . import *
 
 @ayra_cmd(pattern="(A|a)dzan( (.*)|$)")
-async def get_adzan(e):
-    LOKASI = e.pattern_match.group(1)
+async def get_adzan(adzan):
+    LOKASI = adzan.pattern_match.group(1)
     if not LOKASI:
-        await e.eor("<i>Silahkan Masukkan Nama Kota Anda</i>")
+        await adzan.eor("<i>Silahkan Masukkan Nama Kota Anda</i>")
         return True
     url = f"http://muslimsalat.com/{LOKASI}.json?key=bd099c5825cbedb9aa934e255a81a5fc"
     request = requests.get(url)
     if request.status_code != 200:
-        return await eor(e, get_string("adzan1").format(LOCATION), time=120
+        return await eor(adzan, get_string("adzan1").format(LOCATION), time=120
                                )
     result = json.loads(request.text)
     catresult = f"<b>Jadwal Shalat Hari Ini:</b>\
@@ -31,4 +31,4 @@ async def get_adzan(e):
             \n<b>Maghrib : </b><code>{result['items'][0]['maghrib']}</code>\
             \n<b>Isya : </b><code>{result['items'][0]['isha']}</code>\
     "
-    await eor(e, catresult, "html")
+    await eor(adzan, catresult, "html")
