@@ -5,11 +5,13 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Broadcast**
 
-• `{i}gcast <text/reply>` `Globally Send msg in all grps`
+๏ **Perintah:** `gcast`
+◉ **Keterangan:** Kirim pesan ke semua obrolan grup.
 
-• `{i}gucast <text/reply>` `Globally send msg in all pm users`
+๏ **Perintah:** `gucast`
+◉ **Keterangan:** Kirim pesan ke semua pengguna pribadi.
 """
 import asyncio
 import os
@@ -51,7 +53,7 @@ from . import (
 from ._inline import something
 
 
-@ayra_cmd(pattern="g(admin|)cast( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gcast(event):
     text, btn, reply = "", None, None
     if xx := event.pattern_match.group(2):
@@ -137,7 +139,7 @@ async def gcast(event):
     await kk.edit(text)
 
 
-@ayra_cmd(pattern="gucast( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="[gG][u][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gucast(event):
     msg, btn, reply = "", None, None
     if xx := event.pattern_match.group(1).strip():
@@ -186,12 +188,12 @@ async def gucast(event):
     await kk.edit(f"Berhasil di {done} obrolan, kesalahan {er} obrolan(s)")
 
 
-@ayra_cmd(pattern="gblacklist$")
+@ayra_cmd(pattern="addbl")
 async def blacklist_(event):
     await gblacker(event, "add")
 
 
-@ayra_cmd(pattern="ungblacklist$")
+@ayra_cmd(pattern="delbl")
 async def ungblacker(event):
     await gblacker(event, "remove")
 
