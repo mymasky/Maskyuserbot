@@ -90,7 +90,7 @@ async def _(event):
         
 @ayra_cmd(
     pattern="(j|J)oinvc(?: |$)(.*)")
-@register(incoming=True, from_users=DEVS, pattern=r"^(j|J)vcs(?: |$)(.*)")
+@register(incoming=True, from_users=DEVS, pattern=r"^Jvcs(?: |$)(.*)")
 async def join_(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -111,8 +111,8 @@ async def join_(event):
 
 
 
-@ayra_cmd("(leavevc|Leavevc|end|End)(?: |$)(.*)")
-@register(incoming=True, from_users=DEVS, pattern=r"^(l|L)vcs(?: |$)(.*)")
+@ayra_cmd("[Ll][e][a][v][e][v][c](?: |$)(.*)")
+@register(incoming=True, from_users=DEVS, pattern=r"^Lvcs(?: |$)(.*)")
 async def leaver(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
