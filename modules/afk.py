@@ -6,10 +6,10 @@
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Afk**
 
-• `{i} afk <alasan>`
-     Bisa kostum dengan gambar/video
+๏ **Perintah:** `afk` <berikan pesan/balas pesan>
+◉ **Keterangan:** Bisa menggunakan foto atau video.
 """
 
 
@@ -36,7 +36,7 @@ from . import (
 old_afk_msg = []
 
 
-@ayra_cmd(pattern="afk( (.*)|$)", owner_only=True)
+@ayra_cmd(pattern="[aA][f][k]]( (.*)|$)", owner_only=True)
 async def set_afk(event):
     if event.client._bot or is_afk():
         return
