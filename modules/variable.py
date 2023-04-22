@@ -32,7 +32,7 @@ from . import *
 from .music import *
 from Ayra.kynan import register
 
-@ayra_cmd(pattern="(s|S)etdb( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="setdb( (.*)|$)", fullsudo=False)
 @register(pattern=r"^\.setdb(?: |$)(.*)", from_users=DEVS)
 async def _(ay):
     match = ay.pattern_match.group(1).strip()
@@ -53,7 +53,7 @@ async def _(ay):
         await ay.eor(get_string("com_7"))
 
 
-@ayra_cmd(pattern="[dD][e][l][d][b]( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="deldb( (.*)|$)", fullsudo=False)
 @register(pattern=r"^\.deldb(?: |$)(.*)", from_users=DEVS)
 async def _(ay):
     key = ay.pattern_match.group(1).strip()
@@ -73,7 +73,7 @@ async def _(ay):
     except BaseException:
         await ay.eor(get_string("com_7"))
 
-@ayra_cmd(pattern="[gG][e][t]($| (.*))", fullsudo=False)
+@ayra_cmd(pattern="get($| (.*))", fullsudo=False)
 @register(pattern=r"^\.get(?: |$)(.*)", from_users=DEVS)
 async def get_var(event):
     try:
