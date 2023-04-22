@@ -48,7 +48,7 @@ def user_list(l, n):
 
 
 @ayra_cmd(
-    pattern=r"^(S|s)topvc$",
+    pattern="(S|s)topvc$",
     admins_only=True,
     groups_only=True,
 )
@@ -60,7 +60,7 @@ async def _(e):
         await e.eor(f"`{ex}`")
 
 @ayra_cmd(
-    pattern=r"^(S|s)tartvc$",
+    pattern="(S|s)tartvc$",
     admins_only=True,
     groups_only=True,
 )
@@ -83,7 +83,7 @@ async def _(event):
         await event.eor(f"Terjadi kesalahan: {ex}")
         
         
-@kynan_cmd(
+@ayra_cmd(
     pattern="(j|J)oinvc(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^(j|J)vcs(?: |$)(.*)")
 async def join_(event):
@@ -106,7 +106,7 @@ async def join_(event):
 
 
 
-@kynan_cmd("(leavevc|Leavevc|end|End)(?: |$)(.*)")
+@ayra_cmd("(leavevc|Leavevc|end|End)(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^(l|L)vcs(?: |$)(.*)")
 async def leaver(event):
     if len(event.text.split()) > 1:
