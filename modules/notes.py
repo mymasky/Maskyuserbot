@@ -89,14 +89,14 @@ async def rn(e):
 async def lsnote(e):
     user = e.sender_id
     if x := list_note(user):
-        sd = "**❏ Daftar Notes\n"
+        sd = "**❏ Daftar Notes**\n"
         return await e.eor(sd + x)
     await e.eor("**Belum ada catatan**")
 
 
 async def notes(e):
     user = e.sender_id
-    xx = [z.replace("get", "") for z in e.text.lower().split() if z.startswith("get")]
+    xx = [z.replace("#", "") for z in e.text.lower().split() if z.startswith("#")]
     for word in xx:
         if k := get_notes(user, word):
             msg = k["msg"]
