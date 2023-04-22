@@ -18,7 +18,8 @@ async def get_adzan(e):
     url = f"http://muslimsalat.com/{LOKASI}.json?key=bd099c5825cbedb9aa934e255a81a5fc"
     request = requests.get(url)
     if request.status_code != 200:
-        return await e.eor(f"**Tidak Dapat Menemukan Kota** `{LOKASI}`", time=120)
+        return await eor(adzan, get_string("adzan1").format(LOCATION), time=120
+                               )
     result = json.loads(request.text)
     catresult = f"<b>Jadwal Shalat Hari Ini:</b>\
             \n<b>📆 Tanggal </b><code>{result['items'][0]['date_for']}</code>\
@@ -30,4 +31,4 @@ async def get_adzan(e):
             \n<b>Maghrib : </b><code>{result['items'][0]['maghrib']}</code>\
             \n<b>Isya : </b><code>{result['items'][0]['isha']}</code>\
     "
-    await e.eor(catresult, "html")
+    await eor(adzan, catresult, "html")
