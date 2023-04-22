@@ -18,7 +18,7 @@ from . import *
 async def webshot(e):
     await e.eor("`Processing...`")
     try:
-        user_link = e.command[1]
+        user_link = e.pattern_match.group(1).strip()
         try:
             full_link = f"https://webshot.deam.io/{user_link}/?width=1920&height=1080?delay=2000?type=png"
             await e.client.send_file(
