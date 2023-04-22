@@ -62,13 +62,14 @@ async def an(e):
         txt = wt.text
         if not btn:
             txt, btn = get_msg_button(wt.text)
-        add_note(chat, wrd, txt, None, btn)
-    await e.client.send_message(chat,
-    f"#NOTE\nKEYWORD: {wrd}"
-        "\n\nPesan berikut disimpan sebagai data balasan catatan untuk obrolan, mohon jangan dihapus !!",
-    )
+        await e.client.send_message(chat,
+            f"#NOTE\nKEYWORD: {wrd}\n\nPesan berikut disimpan sebagai data balasan catatan untuk obrolan, mohon jangan dihapus !!",
+            reply_to=wt.id
+        )
+        add_note(chat, wrd, txt, None, btn, reply_to=wt.id)
     await e.eor(get_string("notes_2").format(wrd))
     ayra_bot.add_handler(notes, events.NewMessage())
+
 
 
 @ayra_cmd(pattern="rnote( (.*)|$)")
@@ -85,7 +86,8 @@ async def rn(e):
 
 @ayra_cmd(pattern="notes$")
 async def lsnote(e):
-    if x := list_note(e.chat_id):
+    chat = int(udB.get_key("LOG_CHANNEL"))
+    if x := list_note(e.chat):
         sd = "Catatan Ditemukan Dalam Obrolan Ini Adalah\n\n"
         return await e.eor(sd + x)
     await e.eor(get_string("notes_5"))
