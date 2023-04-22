@@ -17,6 +17,12 @@ com_7: "`Maaf Telah Terjadi ERROR`"
 
 adzan1: "**Tidak Dapat Menemukan Kota** `{}`"
 
+
+# carbon
+carbon_1: "Dikarbonisasi oleh {}"
+carbon_2: "`Balas Pesan atau file yang dapat dibaca..`"
+carbon_3: "`Berikan Warna Kustom untuk Membuat Carbon...`"
+
 # vc tools
 stvc_1: "**Maaf {} Bukan Admin 👮**"
 stvc_2: "`Obrolan Suara Dimulai...`"
