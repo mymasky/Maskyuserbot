@@ -35,10 +35,10 @@ def rem_all_note(chat):
         return udB.set_key("NOTE", ok)
 
 
-def get_notes(chat, word):
+def get_notes(word):
     ok = get_stuff()
-    if ok.get(int(chat)) and ok[int(chat)].get(word):
-        return ok[int(chat)][word]
+    if ok.get(word):
+        return ok[word]
 
 
 def list_note(chat):
