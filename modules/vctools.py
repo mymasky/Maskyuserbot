@@ -73,9 +73,6 @@ async def _(e):
     except Exception as ex:
         await e.eor(f"`{ex}`")
 
-@ayra_cmd(pattern="(v|V)ctitle(?: |$)(.*)")
-
-
 @ayra_cmd(
     pattern="(V|v)ctitle(?: |$)(.*)",
     admins_only=True,
@@ -86,9 +83,7 @@ async def _(event):
     if not title:
         return await event.eor("Mohon masukkan judul obrolan suara yang valid.")
     try:
-        chat = await event.get_chat()
-        call = await event.client.join_group_call(chat.id)
-        await event.client.set_group_call_title(call=call, title=title)
+        await event.client(settitle(call=await get_call(event), title=title.strip()))
         await event.eor(f"❏ **Judul Voice Chat**\n└ '{title}'.")
     except Exception as ex:
         await event.eor(f"Terjadi kesalahan: {ex}")
