@@ -26,7 +26,7 @@ textblob
 wikipedia
 spotdl
 pyrogram
-py-Ayra==7.9.0
+py-Ayra==8.2.5
 akinator
 apscheduler
 aiohttp
