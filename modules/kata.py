@@ -128,7 +128,7 @@ async def _(event):
     await xx.edit("LEMBEK NGENTOT🔥")
 
 
-@ayra_cmd(pattern=r"[pP][pP]")
+@ayra_cmd(pattern=r"(pp|Pp)")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -138,7 +138,7 @@ async def _(event):
     await event.delete()
 
 
-@ayra_cmd(pattern=r"[dD][pP]")
+@ayra_cmd(pattern=r"(Dp|dp)")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -177,7 +177,7 @@ async def _(event):
     await event.delete()
 
 
-@ayra_cmd(pattern=r"[nN][bB]")
+@ayra_cmd(pattern=r"(Nb|nb)")
 async def _(event):
     if event.chat_id in NOSPAM_CHAT:
         return await event.eor(
@@ -191,7 +191,7 @@ async def _(event):
     await event.delete()
 
 
-@ayra_cmd(pattern=r"[mM][eE][tT]")
+@ayra_cmd(pattern=r"(met|Met)")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -201,7 +201,7 @@ async def _(event):
     await event.delete()
 
 
-@ayra_cmd(pattern=r"[wW][aA][rR]")
+@ayra_cmd(pattern=r"(war|War)")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -211,7 +211,7 @@ async def _(event):
     await event.delete()
 
 
-@ayra_cmd(pattern="(W|w)artai$")
+@ayra_cmd(pattern="wartai$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
