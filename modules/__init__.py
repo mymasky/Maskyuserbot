@@ -24,6 +24,7 @@ from pytgcalls import GroupCallFactory
 from pytgcalls.exceptions import GroupCallNotFoundError
 
 from Ayra import *
+from Ayra.kynan import *
 from Ayra._misc._assistant import asst_cmd, callback, in_pattern
 from Ayra._misc._decorators import ayra_cmd, compile_pattern
 from Ayra._misc import owner_and_sudos, sudoers
