@@ -11,14 +11,14 @@ from . import *
 
 @ayra_cmd(pattern="(A|a)dzan( (.*)|$)")
 async def get_adzan(e):
-    LOKASI = e.pattern_match.group(1).strip()
+    LOKASI = e.pattern_match.group(1)
     if not LOKASI:
         await e.eor("<i>Silahkan Masukkan Nama Kota Anda</i>")
         return True
     url = f"http://muslimsalat.com/{LOKASI}.json?key=bd099c5825cbedb9aa934e255a81a5fc"
     request = requests.get(url)
     if request.status_code != 200:
-        return await e.eor(f"**Tidak Dapat Menemukan Kota** `{LOKASI}`", time=120)
+        return await e.eor(f"**Tidak Dapat Menemukan Kota** `{LOKASI}`")
     result = json.loads(request.text)
     catresult = f"<b>Jadwal Shalat Hari Ini:</b>\
             \n<b>📆 Tanggal </b><code>{result['items'][0]['date_for']}</code>\
