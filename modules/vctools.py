@@ -33,7 +33,6 @@ from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
 from . import *
-from .music import *
 
 
 async def get_call(event):
@@ -110,7 +109,7 @@ async def _(e):
         await e.eor(f"`{ex}`")
         
         
-@vc_asst("joinvc")
+@ayra_cmd("joinvc")
 async def join_(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -129,7 +128,7 @@ async def join_(event):
         await aySongs.vc_joiner()
 
 
-@vc_asst("(end|leavevc)")
+@ayra_cmd("(end|leavevc)")
 async def leaver(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
