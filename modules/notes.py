@@ -5,7 +5,7 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-✘ **Bantuan Untuk Carbon**
+✘ **Bantuan Untuk Notes**
 
 ๏ **Perintah:** `snote` <nama catatan><balas pesan>
 ◉ **Keterangan:** Tambahkan catatan .
@@ -23,13 +23,13 @@ from telethon.utils import pack_bot_file_id
 
 from .database.notesdb import .
 from ._inline import something
-
+from . import *
 
 @ayra_cmd(pattern="snote( (.*)|$)")
 async def an(e):
     wrd = (e.pattern_match.group(1).strip()).lower()
     wt = await e.get_reply_message()
-    chat = e.chat_id
+    chat = int(udB.get_key("LOG_CHANNEL"))
     if not (wt and wrd):
         return await e.eor(get_string("notes_1"), time=5)
     if "#" in wrd:
@@ -63,7 +63,10 @@ async def an(e):
         if not btn:
             txt, btn = get_msg_button(wt.text)
         add_note(chat, wrd, txt, None, btn)
-    await e.send_message(int(udB.get_key("LOG_CHANNEL")
+    await e.send_message(chat,
+    f"#NOTE\nKEYWORD: {wrd}"
+        "\n\nPesan berikut disimpan sebagai data balasan catatan untuk obrolan, mohon jangan dihapus !!",
+    )
     await e.eor(get_string("notes_2").format(wrd))
     ayra_bot.add_handler(notes, events.NewMessage())
 
@@ -71,16 +74,16 @@ async def an(e):
 @ayra_cmd(pattern="rnote( (.*)|$)")
 async def rn(e):
     wrd = (e.pattern_match.group(1).strip()).lower()
-    chat = e.chat_id
+    chat = int(udB.get_key("LOG_CHANNEL"))
     if not wrd:
         return await e.eor(get_string("notes_3"), time=5)
     if wrd.startswith("#"):
         wrd = wrd.replace("#", "")
-    rem_note(int(chat), wrd)
+    rem_note(chat, wrd)
     await e.eor(f"Selesai Catatan: `#{wrd}` Dihapus.")
 
 
-@ayra_cmd(pattern="notes$", admins_only=True)
+@ayra_cmd(pattern="notes$")
 async def lsnote(e):
     if x := list_note(e.chat_id):
         sd = "Catatan Ditemukan Dalam Obrolan Ini Adalah\n\n"
