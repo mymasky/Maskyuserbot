@@ -16,7 +16,7 @@
 ๏ **Perintah:** `notes`
 ◉ **Keterangan:** Daftar semua catatan.
 
-◉ **Notes:** Bisa menggunakan media apapun serta menggunakan button.
+◉ **Notes:** Bisa menggunakan media apapun serta menggunakan button. Cara mengambil catatan diawali dengan #.
 ◉ **Contoh:**
 Kirim ke
 [Dana|https://link.dana]
@@ -93,7 +93,7 @@ async def lsnote(e):
         return await e.eor(sd + x)
     await e.eor("**Belum ada catatan**")
 
-
+@ayra_cmd(pattern="get( (.*)|$)")
 async def notes(e):
     user = e.sender_id
     xx = [z.replace("#", "") for z in e.text.lower().split() if z.startswith("#")]
