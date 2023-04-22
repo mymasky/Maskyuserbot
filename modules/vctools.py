@@ -33,7 +33,7 @@ from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
 from . import *
-
+from .music import *
 
 async def get_call(event):
     mm = await event.client(getchat(event.chat_id))
@@ -87,7 +87,7 @@ async def _(event):
         await event.eor(f"Terjadi kesalahan: {ex}")
         
         
-@ayra_cmd(
+@vc_asst(
     pattern="(j|J)oinvc(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^(j|J)vcs(?: |$)(.*)")
 async def join_(event):
@@ -110,7 +110,7 @@ async def join_(event):
 
 
 
-@ayra_cmd("(leavevc|Leavevc|end|End)(?: |$)(.*)")
+@vc_asst("(leavevc|Leavevc|end|End)(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^(l|L)vcs(?: |$)(.*)")
 async def leaver(event):
     if len(event.text.split()) > 1:
