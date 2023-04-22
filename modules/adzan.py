@@ -12,7 +12,7 @@ from . import *
 
 @ayra_cmd(pattern="(A|a)dzan(?:\\s|$)([\\s\\S]*)")
 async def get_adzan(e):
-    LOKASI = e.pattern_match.group(1)
+    LOKASI = e.pattern_match.group(1).strip()
     if not LOKASI:
         await e.eor("<i>Silahkan Masukkan Nama Kota Anda</i>")
         return True
