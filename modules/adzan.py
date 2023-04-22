@@ -9,7 +9,7 @@ import json
 import requests
 from . import *
 
-@ayra_cmd(pattern="(A|a)dzan( (.*)|$)")
+@kynan_cmd(pattern="adzan(?:\\s|$)([\\s\\S]*)")
 async def get_adzan(adzan):
     LOKASI = adzan.pattern_match.group(1)
     if not LOKASI:
