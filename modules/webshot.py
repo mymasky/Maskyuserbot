@@ -7,14 +7,14 @@
 """
 ✘ **Bantuan Untuk Webshot**
 
-๏ **Perintah:** `webshot/ss` <link>
+๏ **Perintah:** `webshot` <link>
 ◉ **Keterangan:** Dapatkan screenshot dari link tersebut
 """
 
 import asyncio
 from . import *
 
-@ayra_cmd(pattern="(webshot|Webshot|Ss|ss)( (.*)|$)")
+@ayra_cmd(pattern="([Ww][e][b][s][h][o][t]( (.*)|$)")
 async def webshot(e):
     await e.eor("`Processing...`")
     try:
