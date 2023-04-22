@@ -7,7 +7,6 @@
 
 from . import *
 
-
 def get_stuff():
     return udB.get_key("NOTE") or {}
 
@@ -35,14 +34,13 @@ def rem_all_note(chat):
         return udB.set_key("NOTE", ok)
 
 
-def get_notes(word):
+def get_notes(chat, word):
     ok = get_stuff()
-    if ok.get(word):
-        return ok[word]
+    if ok.get(int(chat)) and ok[int(chat)].get(word):
+        return ok[int(chat)][word]
 
 
-def list_note(user_id):
+def list_note(chat):
     ok = get_stuff()
-    if ok.get(int(user_id)):
-        return "".join(f"👉 #{z}\n" for z in ok[user_id])
-
+    if ok.get(int(chat)):
+        return "".join(f"👉 #{z}\n" for z in ok[chat])
