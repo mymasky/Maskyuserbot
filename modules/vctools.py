@@ -122,8 +122,8 @@ async def leaver(event):
             return await event.eor(get_string("vcbot_2").format(str(e)))
     else:
         chat = event.chat_id
-    aySongs = Player(chat)
-    await aySongs.group_call.leave()
+    jing = Player(chat)
+    await jing.group_call.leave()
     if CLIENTS.get(chat):
         del CLIENTS[chat]
     if VIDEO_ON.get(chat):
