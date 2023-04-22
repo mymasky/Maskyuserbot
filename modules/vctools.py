@@ -47,59 +47,70 @@ def user_list(l, n):
         yield l[i : i + n]
 
 
-@kynan_cmd(pattern="startvc$", group_only=True)
-@register(pattern=r"^\.startvcs$", sudo=True)
-async def start_voice(c):
-    xnxx = await eor(c, get_string("com_1"))
-    me = await c.client.get_me()
-    chat = await c.get_chat()
-    admin = chat.admin_rights
-    creator = chat.creator
-
-    if not admin and not creator:
-        await eor(xnxx, get_string("stvc_1").format(me.first_name))
-        return
+@ayra_cmd(
+    pattern="stopvc$",
+    admins_only=True,
+    groups_only=True,
+)
+async def _(e):
     try:
-        Nan = Player(c.chat_id)
-        await Nan.make_vc_active()
-        await xnxx.edit(get_string("stvc_2"))
+        await e.client(stopvc(await get_call(e)))
+        await e.eor(get_string("vct_4"))
     except Exception as ex:
-        await eor(xnxx, get_string("error_1").format(e))
+        await e.eor(f"`{ex}`")
 
 
-@kynan_cmd(pattern="stopvc$", group_only=True)
-@register(pattern=r"^\.stopvcs$", sudo=True)
-async def stop_voice(c):
-    jing = await eor(c, get_string("com_1"))
-    me = await c.client.get_me()
-    chat = await c.get_chat()
-    admin = chat.admin_rights
-    creator = chat.creator
+@ayra_cmd(
+    pattern="vcinvite$",
+    groups_only=True,
+)
+async def _(e):
+    ok = await e.eor(get_string("vct_3"))
+    users = []
+    z = 0
+    async for x in e.client.iter_participants(e.chat_id):
+        if not x.bot:
+            users.append(x.id)
+    hmm = list(user_list(users, 6))
+    for p in hmm:
+        try:
+            await e.client(invitetovc(call=await get_call(e), users=p))
+            z += 6
+        except BaseException:
+            pass
+    await ok.edit(get_string("vct_5").format(z))
 
-    if not admin and not creator:
-        await eor(jing, get_string("stvc_1").format(me.first_name))
-        return
+
+@ayra_cmd(
+    pattern="startvc$",
+    admins_only=True,
+    groups_only=True,
+)
+async def _(e):
     try:
-        await c.client(stopvc(await get_call(c)))
-        await yins.edit(get_string("stvc_3"))
+        await e.client(startvc(e.chat_id))
+        await e.eor(get_string("vct_1"))
     except Exception as ex:
-        await eor(jing, get_string("error_1").format(ex))
+        await e.eor(f"`{ex}`")
 
-@ayra_cmd(pattern="(v|V)ctitle( (.*)|$)")
-async def _(event):
-    title = event.pattern_match.group(2).strip()
+
+@ayra_cmd(
+    pattern="vctitle(?: |$)(.*)",
+    admins_only=True,
+    groups_only=True,
+)
+async def _(e):
+    title = e.pattern_match.group(1).strip()
     if not title:
-        return await event.eor("Mohon masukkan judul obrolan suara yang valid.")
+        return await e.eor(get_string("vct_6"), time=5)
     try:
-        await event.client(settitle(call=await get_call(event), title=title.strip()))
-        await event.eor(f"❏ **Judul Voice Chat**\n└ `{title}`.")
+        await e.client(settitle(call=await get_call(e), title=title.strip()))
+        await e.eor(get_string("vct_2").format(title))
     except Exception as ex:
-        await event.eor(f"Terjadi kesalahan: {ex}")
+        await e.eor(f"`{ex}`")
         
         
-@vc_asst(
-    pattern="(j|J)oinvc(?: |$)(.*)")
-@register(incoming=True, from_users=DEVS, pattern=r"^(j|J)vcs(?: |$)(.*)")
+@vc_asst("joinvc")
 async def join_(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -109,19 +120,16 @@ async def join_(event):
             return await event.eor(get_string("vcbot_2").format(str(e)))
     else:
         chat = event.chat_id
-    Nan = Player(chat)
-    if not Nan.group_call.is_connected:
-        await Nan.group_call.join(chat)
-        await event.eor(f"❏ **Berhasil Bergabung Voice Chat**\n└ **Chat ID:** `{chat}`")
-        await asyncio.sleep(1)
-        await Nan.group_call.set_is_mute(False)
-        await asyncio.sleep(1)
-        await Nan.group_call.set_is_mute(True)
+    aySongs = Player(chat, event)
+    await asyncio.sleep(1)
+    await aySongs.group_call.set_pause(False)
+    await asyncio.sleep(1)
+    await aySongs.group_call.set_pause(True)
+    if not aySongs.group_call.is_connected:
+        await aySongs.vc_joiner()
 
 
-
-@vc_asst("(leavevc|Leavevc|end|End)(?: |$)(.*)")
-@register(incoming=True, from_users=DEVS, pattern=r"^(l|L)vcs(?: |$)(.*)")
+@vc_asst("(end|leavevc)")
 async def leaver(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -132,9 +140,9 @@ async def leaver(event):
     else:
         chat = event.chat_id
     aySongs = Player(chat)
-    await aySongs.group_call.leave()
+    await aySongs.group_call.stop()
     if CLIENTS.get(chat):
         del CLIENTS[chat]
     if VIDEO_ON.get(chat):
         del VIDEO_ON[chat]
-    await event.eor(f"❏ **Berhasil Turun Voice Chat**\n└ **Chat ID:** `{chat}`")
+    await event.eor(get_string("vcbot_1"))
