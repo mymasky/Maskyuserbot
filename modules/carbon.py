@@ -26,7 +26,7 @@ else:
 @ayra_cmd(
     pattern="(rc|c)arbon",
 )
-async def crbn(event):
+async def cr_bn(event):
     xxxx = await event.eor(get_string("com_1"))
     te = event.pattern_match.group(1)
     col = random.choice(all_col) if te[0] == "r" else "White"
@@ -43,10 +43,16 @@ async def crbn(event):
         try:
             code = event.text.split(" ", maxsplit=1)[1]
         except IndexError:
-            return await eor(xxxx, get_string("carbon_2"))
+            return await xxxx.eor(get_string("carbon_2"))
     xx = await Carbon(code=code, file_name="ayra", backgroundColor=col)
+    if isinstance(xx, dict):
+        await xxxx.edit(f"`{xx}`")
+        return
     await xxxx.delete()
-    await event.client.send_file(file=xx)
+    await event.reply(
+        f"Carbonised by {inline_mention(event.sender)}",
+        file=xx,
+    )
 
 
 @ayra_cmd(
@@ -72,10 +78,13 @@ async def crbn(event):
             code = match[1]
             match = match[0]
         except IndexError:
-            return await eor(msg, get_string("carbon_2"))
+            return await msg.eor(get_string("carbon_2"))
     xx = await Carbon(code=code, backgroundColor=match)
     await msg.delete()
-    await event..client.send_file(file=xx)
+    await event.reply(
+        f"Carbonised by {inline_mention(event.sender)}",
+        file=xx,
+    )
 
 
 RaySoTheme = [
