@@ -241,7 +241,7 @@ async def get_readable_time(seconds: int) -> str:
     return up_time
 
 
-@ayra_cmd(pattern="[pP][i][n][g]")
+@ayra_cmd(pattern="[pP][i][n][g]$")
 @register(incoming=True, from_users=DEVS, pattern=r"^Cping$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
@@ -334,7 +334,7 @@ async def inline_alive(ayra):
     rep = xx.replace(".git", f"/tree/{y}")
     kk = f"<a href={rep}>{y}</a>"
     als = in_alive.format(
-        header, f"{ayra_version} [{HOSTED_ON}]", AyraVer, pyver(), uptime, kk
+        OWNER_NAME, f"{ayra_version} [{HOSTED_ON}]", AyraVer, pyver(), uptime, kk
     )
 
     if _e := udB.get_key("ALIVE_EMOJI"):
