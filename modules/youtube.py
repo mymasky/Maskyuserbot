@@ -65,13 +65,12 @@ async def yt_video(e):
         file_name=title,
         duration=duration,
         supports_streaming=True,
-        caption="**💡 Informasi {}**\n\n**🏷 Nama:** {}\n**🧭 Durasi:** {}\n**👀 Dilihat:** {}\n**📢 Channel:** {}\n**🔗 Tautan:** <a href={}>Youtube</a>\n\n**".format(
+        caption="**💡 Informasi {}**\n\n**🏷 Nama:** {}\n**🧭 Durasi:** {}\n**👀 Dilihat:** {}\n**📢 Channel:** {}**".format(
             "video",
             title,
             duration,
             views,
             channel,
-            url,
         ),
         reply_to=e.reply_to_msg_id,
     )
@@ -119,13 +118,12 @@ async def yt_audio(e):
         thumb=thumbnail,
         file_name=title,
         duration=duration,
-        caption="**💡 Informasi {}**\n\n**🏷 Nama:** {}\n**🧭 Durasi:** {}\n**👀 Dilihat:** {}\n**📢 Channel:** {}\n**🔗 Tautan:** <a href={}>Youtube</a>\n\n**".format(
+        caption="**💡 Informasi {}**\n\n**🏷 Nama:** {}\n**🧭 Durasi:** {}\n**👀 Dilihat:** {}\n**📢 Channel:** {}**".format(
             "Audio",
             title,
             duration,
             views,
             channel,
-            url,
         ),
         reply_to=e.reply_to_msg_id,
     )
