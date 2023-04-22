@@ -58,7 +58,7 @@ async def yt_video(e):
     except Exception as error:
         return await infomsg.edit(f"**📥 Downloader...\n\n❌ Error: {error}**")
     thumbnail = wget.download(thumbs)
-    await e.send_video(
+    await e.client.send_file(
         message.chat.id,
         video=file_path,
         thumb=thumbnail,
@@ -113,7 +113,7 @@ async def yt_audio(e):
     except Exception as error:
         return await infomsg.edit(f"**📥 Downloader...\n\n❌ Error: {error}**")
     thumbnail = wget.download(thumbs)
-    await e.send_audio(
+    await e.client.send_file(
         message.chat.id,
         audio=file_path,
         thumb=thumbnail,
