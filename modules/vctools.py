@@ -48,7 +48,7 @@ def user_list(l, n):
 
 
 @ayra_cmd(
-    pattern="(S|s)topvc$",
+    pattern=r"^(S|s)topvc$",
     admins_only=True,
     groups_only=True,
 )
@@ -60,7 +60,7 @@ async def _(e):
         await e.eor(f"`{ex}`")
 
 @ayra_cmd(
-    pattern="(S|s)tartvc$",
+    pattern=r"^(S|s)tartvc$",
     admins_only=True,
     groups_only=True,
 )
