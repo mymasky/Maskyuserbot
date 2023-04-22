@@ -34,7 +34,6 @@ from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
 from . import *
 from .music import *
-from Ayra.kynan import register
 
 
 async def get_call(event):
