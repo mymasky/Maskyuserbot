@@ -11,36 +11,36 @@ def get_stuff():
     return udB.get_key("NOTE") or {}
 
 
-def add_note(chat, word, msg, media, button):
+def add_note(user, word, msg, media, button):
     ok = get_stuff()
-    if ok.get(int(chat)):
-        ok[int(chat)].update({word: {"msg": msg, "media": media, "button": button}})
+    if ok.get(int(user)):
+        ok[int(user)].update({word: {"msg": msg, "media": media, "button": button}})
     else:
-        ok.update({int(chat): {word: {"msg": msg, "media": media, "button": button}}})
+        ok.update({int(user): {word: {"msg": msg, "media": media, "button": button}}})
     udB.set_key("NOTE", ok)
 
 
-def rem_note(chat, word):
+def rem_note(user, word):
     ok = get_stuff()
-    if ok.get(int(chat)) and ok[int(chat)].get(word):
-        ok[int(chat)].pop(word)
+    if ok.get(int(user)) and ok[int(user)].get(word):
+        ok[int(user)].pop(word)
         return udB.set_key("NOTE", ok)
 
 
 def rem_all_note(chat):
     ok = get_stuff()
-    if ok.get(int(chat)):
-        ok.pop(int(chat))
+    if ok.get(int(user)):
+        ok.pop(int(user))
         return udB.set_key("NOTE", ok)
 
 
-def get_notes(chat, word):
+def get_notes(user, word):
     ok = get_stuff()
-    if ok.get(int(chat)) and ok[int(chat)].get(word):
-        return ok[int(chat)][word]
+    if ok.get(int(user)) and ok[int(user)].get(word):
+        return ok[int(user)][word]
 
 
-def list_note(chat):
+def list_note(user):
     ok = get_stuff()
-    if ok.get(int(chat)):
-        return "".join(f"👉 #{z}\n" for z in ok[chat])
+    if ok.get(int(user)):
+        return "".join(f"👉 #{z}\n" for z in ok[user])
