@@ -84,7 +84,7 @@ async def _(event):
         return await event.eor("Mohon masukkan judul obrolan suara yang valid.")
     try:
         await event.client(settitle(call=await get_call(event), title=title.strip()))
-        await event.eor(f"❏ **Judul Voice Chat**\n└ '{title}'.")
+        await event.eor(f"❏ **Judul Voice Chat**\n└ `{title}`.")
     except Exception as ex:
         await event.eor(f"Terjadi kesalahan: {ex}")
         
