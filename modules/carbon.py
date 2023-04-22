@@ -6,204 +6,35 @@
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Carbon**
 
-• `{i} rc/carbon` <balas teks>
-     `rcarbon` Background Acak.
+๏ **Perintah:** `carbon` <berikan pesan/balas pesan>
+◉ **Keterangan:** Carbonise teks.
 """
 
 
-import os
-import asyncio
-from io import BytesIO
-from secrets import choice
-from telethon.tl import types
+import random
+
 from telethon.utils import get_display_name
 
-from . import eor, get_string, inline_mention, os, ayra_cmd, async_searcher, aiosession
+from . import *
 
-all_col = [
-    "Black",
-    "Navy",
-    "DarkBlue",
-    "MediumBlue",
-    "Blue",
-    "DarkGreen",
-    "Green",
-    "Teal",
-    "DarkCyan",
-    "DeepSkyBlue",
-    "DarkTurquoise",
-    "MediumSpringGreen",
-    "Lime",
-    "SpringGreen",
-    "Aqua",
-    "Cyan",
-    "MidnightBlue",
-    "DodgerBlue",
-    "LightSeaGreen",
-    "ForestGreen",
-    "SeaGreen",
-    "DarkSlateGray",
-    "DarkSlateGrey",
-    "LimeGreen",
-    "MediumSeaGreen",
-    "Turquoise",
-    "RoyalBlue",
-    "SteelBlue",
-    "DarkSlateBlue",
-    "MediumTurquoise",
-    "Indigo  ",
-    "DarkOliveGreen",
-    "CadetBlue",
-    "CornflowerBlue",
-    "RebeccaPurple",
-    "MediumAquaMarine",
-    "DimGray",
-    "DimGrey",
-    "SlateBlue",
-    "OliveDrab",
-    "SlateGray",
-    "SlateGrey",
-    "LightSlateGray",
-    "LightSlateGrey",
-    "MediumSlateBlue",
-    "LawnGreen",
-    "Chartreuse",
-    "Aquamarine",
-    "Maroon",
-    "Purple",
-    "Olive",
-    "Gray",
-    "Grey",
-    "SkyBlue",
-    "LightSkyBlue",
-    "BlueViolet",
-    "DarkRed",
-    "DarkMagenta",
-    "SaddleBrown",
-    "DarkSeaGreen",
-    "LightGreen",
-    "MediumPurple",
-    "DarkViolet",
-    "PaleGreen",
-    "DarkOrchid",
-    "YellowGreen",
-    "Sienna",
-    "Brown",
-    "DarkGray",
-    "DarkGrey",
-    "LightBlue",
-    "GreenYellow",
-    "PaleTurquoise",
-    "LightSteelBlue",
-    "PowderBlue",
-    "FireBrick",
-    "DarkGoldenRod",
-    "MediumOrchid",
-    "RosyBrown",
-    "DarkKhaki",
-    "Silver",
-    "MediumVioletRed",
-    "IndianRed ",
-    "Peru",
-    "Chocolate",
-    "Tan",
-    "LightGray",
-    "LightGrey",
-    "Thistle",
-    "Orchid",
-    "GoldenRod",
-    "PaleVioletRed",
-    "Crimson",
-    "Gainsboro",
-    "Plum",
-    "BurlyWood",
-    "LightCyan",
-    "Lavender",
-    "DarkSalmon",
-    "Violet",
-    "PaleGoldenRod",
-    "LightCoral",
-    "Khaki",
-    "AliceBlue",
-    "HoneyDew",
-    "Azure",
-    "SandyBrown",
-    "Wheat",
-    "Beige",
-    "WhiteSmoke",
-    "MintCream",
-    "GhostWhite",
-    "Salmon",
-    "AntiqueWhite",
-    "Linen",
-    "LightGoldenRodYellow",
-    "OldLace",
-    "Red",
-    "Fuchsia",
-    "Magenta",
-    "DeepPink",
-    "OrangeRed",
-    "Tomato",
-    "HotPink",
-    "Coral",
-    "DarkOrange",
-    "LightSalmon",
-    "Orange",
-    "LightPink",
-    "Pink",
-    "Gold",
-    "PeachPuff",
-    "NavajoWhite",
-    "Moccasin",
-    "Bisque",
-    "MistyRose",
-    "BlanchedAlmond",
-    "PapayaWhip",
-    "LavenderBlush",
-    "SeaShell",
-    "Cornsilk",
-    "LemonChiffon",
-    "FloralWhite",
-    "Snow",
-    "Yellow",
-    "LightYellow",
-    "Ivory",
-    "White",
-]
+_colorspath = "resources/colorlist.txt"
 
-async def make_carbon(code):
-    url = "https://carbonara.vercel.app/api/cook"
-    async with aiosession.post(url, json={"code": code}) as resp:
-        image = BytesIO(await resp.read())
-    image.name = "carbon.png"
-    return image
-
-async def Carbon(
-    code,
-    base_url="https://carbonara-42.herokuapp.com/api/cook",
-    file_name="ayra",
-    **kwargs,
-):
-    kwargs["code"] = code
-    con = await async_searcher(base_url, post=True, json=kwargs, re_content=True)
-    file = BytesIO(con)
-    file.name = f"{file_name}.jpg"
-    return file
-
-def vcmention(user):
-    full_name = get_display_name(user)
-    if not isinstance(user, types.User):
-        return full_name
-    return f"[{full_name}](tg://user?id={user.id})"
+if os.path.exists(_colorspath):
+    with open(_colorspath, "r") as f:
+        all_col = f.read().split()
+else:
+    all_col = []
 
 
-@ayra_cmd(pattern="carbon")
+@ayra_cmd(
+    pattern="(rc|c)arbon",
+)
 async def crbn(event):
-    from_user = vcmention(event.sender)
-    xxxx = await eor(event, get_string("com_1"))
-    te = event.text
+    xxxx = await event.eor(get_string("com_1"))
+    te = event.pattern_match.group(1)
+    col = random.choice(all_col) if te[0] == "r" else "White"
     if event.reply_to_msg_id:
         temp = await event.get_reply_message()
         if temp.media:
@@ -217,10 +48,87 @@ async def crbn(event):
         try:
             code = event.text.split(" ", maxsplit=1)[1]
         except IndexError:
-            return await eor(xxxx, get_string("carbon_2"), time=30
-                             )
-    xx = await make_carbon(code)
+            return await eor(xxxx, get_string("carbon_2"))
+    xx = await Carbon(code=code, file_name="ayra", backgroundColor=col)
     await xxxx.delete()
-    await event.reply(xx, f"Carbon by")
+    await event.client.send_file(
+        f"Carbonised by {inline_mention(event.sender)}",
+        file=xx,
+    )
 
 
+@ayra_cmd(
+    pattern="ccarbon( (.*)|$)",
+)
+async def crbn(event):
+    match = event.pattern_match.group(1).strip()
+    if not match:
+        return await event.eor(get_string("carbon_3"))
+    msg = await event.eor(get_string("com_1"))
+    if event.reply_to_msg_id:
+        temp = await event.get_reply_message()
+        if temp.media:
+            b = await event.client.download_media(temp)
+            with open(b) as a:
+                code = a.read()
+            os.remove(b)
+        else:
+            code = temp.message
+    else:
+        try:
+            match = match.split(" ", maxsplit=1)
+            code = match[1]
+            match = match[0]
+        except IndexError:
+            return await eor(msg, get_string("carbon_2"))
+    xx = await Carbon(code=code, backgroundColor=match)
+    await msg.delete()
+    await event.client.send_file(
+        f"Carbonised by {inline_mention(event.sender)}",
+        file=xx,
+    )
+
+
+RaySoTheme = [
+    "meadow",
+    "breeze",
+    "raindrop",
+    "candy",
+    "crimson",
+    "falcon",
+    "sunset",
+    "midnight",
+]
+
+@ayra_cmd(pattern="rayso")
+async def pass_on(kaz):
+    spli = kaz.text.split()
+    theme, dark, title, text = None, True, get_display_name(kaz.chat), None
+    if len(spli) > 2:
+        if spli[1] in RaySoTheme:
+            theme = spli[1]
+        dark = spli[2].lower().strip() in ["true", "t"]
+    elif len(spli) > 1:
+        if spli[1] in RaySoTheme:
+            theme = spli[1]
+        elif spli[1] == "list":
+            text = "**List of Rayso Themes:**\n" + "\n".join(
+                [f"- `{th_}`" for th_ in RaySoTheme]
+            )
+
+            await kaz.eor(text)
+            return
+        else:
+            try:
+                text = kaz.text.split(maxsplit=1)[1]
+            except IndexError:
+                pass
+    if not theme:
+        theme = random.choice(RaySoTheme)
+    if kaz.is_reply:
+        msg = await kaz.get_reply_message()
+        text = msg.text
+        title = get_display_name(msg.sender)
+    await kaz.reply(
+        file=await Carbon(text, rayso=True, title=title, theme=theme, darkMode=dark)
+    )
