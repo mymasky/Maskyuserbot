@@ -41,7 +41,8 @@ def get_notes(word):
         return ok[word]
 
 
-def list_note(chat):
+def list_note(user_id):
     ok = get_stuff()
-    if ok.get(int(chat)):
-        return "".join(f"👉 #{z}\n" for z in ok[chat])
+    if ok.get(int(user_id)):
+        return "".join(f"👉 #{z}\n" for z in ok[user_id])
+
