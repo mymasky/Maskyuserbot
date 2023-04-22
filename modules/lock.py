@@ -21,7 +21,7 @@ from . import ayra_cmd
 
 
 @ayra_cmd(
-    pattern="(Un|)(un|)(l|L)ock(?: |$)(.*)", admins_only=True, manager=True, require="change_info"
+    pattern="(Un|)(un|)(l|L)ock( (.*)|$)", admins_only=True, manager=True, require="change_info"
 )
 async def un_lock(e):
     mat = e.pattern_match.group(2).strip()
