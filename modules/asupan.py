@@ -31,7 +31,7 @@ from secrets import choice
 
 from telethon.tl.types import InputMessagesFilterVideo, InputMessagesFilterVoice, InputMessagesFilterPhotos
 
-from . import 
+from . import *
 
 
 @ayra_cmd(pattern="[Aa][s][u][p][a][n]$")
