@@ -68,6 +68,7 @@ async def _(e):
 async def _(e):
     try:
         await e.client(startvc(e.chat_id))
+        await asyncio.sleep(1)
         await e.eor(get_string("vct_1"))
     except Exception as ex:
         await e.eor(f"`{ex}`")
@@ -103,6 +104,7 @@ async def join_(event):
     Nan = Player(chat)
     if not Nan.group_call.is_connected:
         await Nan.group_call.join(chat)
+        await asyncio.sleep(1)
         await event.eor(f"❏ **Berhasil Bergabung Voice Chat**\n└ **Chat ID:** `{chat}`")
         await asyncio.sleep(1)
         await Nan.group_call.set_is_mute(False)
@@ -124,6 +126,7 @@ async def leaver(event):
         chat = event.chat_id
     jing = Player(chat)
     await jing.group_call.leave()
+    await asyncio.sleep(1)
     await event.eor(f"❏ **Berhasil Turun Voice Chat**\n└ **Chat ID:** `{chat}`")
     if CLIENTS.get(chat):
         del CLIENTS[chat]
