@@ -60,7 +60,7 @@ async def yt_video(e):
     thumbnail = wget.download(thumbs)
     await e.client.send_file(
         e.chat.id,
-        video=file_path,
+        file=file_path,
         thumb=thumbnail,
         file_name=title,
         duration=duration,
@@ -115,7 +115,7 @@ async def yt_audio(e):
     thumbnail = wget.download(thumbs)
     await e.client.send_file(
         e.chat.id,
-        audio=file_path,
+        file=file_path,
         thumb=thumbnail,
         file_name=title,
         duration=duration,
