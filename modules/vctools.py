@@ -47,10 +47,7 @@ def user_list(l, n):
         yield l[i : i + n]
 
 
-@kynan_cmd(
-    pattern="(s|S)topvc$",
-    groups_only=True,
-)
+@kynan_cmd(pattern="(s|S)topvc$", groups_only=True)
 async def _(event):
     try:
         await event.client(stopvc(await get_call(e)))
@@ -59,10 +56,7 @@ async def _(event):
         await event.eor(f"`{ex}`")
 
 
-@kynan_cmd(
-    pattern="(s|S)tartvc$",
-    groups_only=True,
-)
+@kynan_cmd(pattern="(s|S)tartvc$", groups_only=True)
 async def _(event):
     try:
         await event.client(startvc(e.chat_id))
@@ -70,10 +64,7 @@ async def _(event):
     except Exception as ex:
         await event.eor(f"`{ex}`")
 
-@kynan_cmd(
-    pattern="(v|V)title( (.*)|$)",
-    groups_only=True,
-)
+@kynan_cmd(pattern="(v|V)ctitle( (.*)|$)", groups_only=True)
 async def _(event):
     title = event.pattern_match.group(2).strip()
     if not title:
