@@ -111,7 +111,7 @@ async def join_(event):
 
 
 
-@vc_asst("[Ll][e][a][v][e][v][c](?: |$)(.*)")
+@ayra_cmd(pattern="(Leavevc|leavevc|End|end)(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^Lvcs(?: |$)(.*)")
 async def leaver(event):
     if len(event.text.split()) > 1:
