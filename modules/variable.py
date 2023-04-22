@@ -29,8 +29,6 @@ import os
 import re
 
 from . import *
-from .music import *
-from Ayra.kynan import register
 
 @ayra_cmd(pattern=r"^[sS][e][t][d][b]( (.*)|$)", fullsudo=False)
 async def _(event):
