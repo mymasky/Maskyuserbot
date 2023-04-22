@@ -61,7 +61,7 @@ from ._inline import something
 
 
 
-@ayra_cmd(pattern="(U|u)ngban( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="[uU][n][g][b][a][n]( (.*)|$)", fullsudo=False)
 @register(pattern=r"^\.cungban(?: |$)(.*)", sudo=True)
 async def _(e):
     xx = await e.eor("`Proses...`")
