@@ -14,7 +14,7 @@
 import asyncio
 from . import *
 
-@ayra_cmd(pattern="([Ww][e][b][s][h][o][t]( (.*)|$)")
+@ayra_cmd(pattern="([Ww][e][b][s][h][o][t])( (.*)|$)")
 async def webshot(e):
     await e.eor("`Processing...`")
     try:
