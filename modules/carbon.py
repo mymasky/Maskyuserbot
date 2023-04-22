@@ -12,11 +12,6 @@
 ◉ **Keterangan:** Carbonise teks.
 """
 
-
-import random
-
-from telethon.utils import get_display_name
-
 from . import *
 
 _colorspath = "resources/colorlist.txt"
@@ -52,7 +47,7 @@ async def crbn(event):
     xx = await Carbon(code=code, file_name="ayra", backgroundColor=col)
     await xxxx.delete()
     await event.client.send_file(
-        f"Carbonised by {inline_mention(event.sender)}",
+        f"Carbonised by {OWNER_NAME}",
         file=xx,
     )
 
@@ -84,7 +79,7 @@ async def crbn(event):
     xx = await Carbon(code=code, backgroundColor=match)
     await msg.delete()
     await event.client.send_file(
-        f"Carbonised by {inline_mention(event.sender)}",
+        f"Carbonised by {OWNER_NAME}",
         file=xx,
     )
 
