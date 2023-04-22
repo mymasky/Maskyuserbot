@@ -76,7 +76,7 @@ TMP_DOWNLOAD_DIRECTORY = "resources/downloads/"
 _copied_msg = {}
 
 
-@ayra_cmd(pattern="(c|C)opy( ?(.*)|$)")
+@ayra_cmd(pattern="[cC][o][p][y]( ?(.*)|$)")
 async def get_restriced_msg(event):
     match = event.pattern_match.group(1).strip()
     if not match:
