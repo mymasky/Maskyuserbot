@@ -15,6 +15,11 @@
 
 ๏ **Perintah:** `notes`
 ◉ **Keterangan:** Daftar semua catatan.
+
+◉ **Notes:** Bisa menggunakan media apapun serta menggunakan button.
+◉ **Contoh:**
+Kirim ke
+[Dana|https://link.dana]
 """
 import os
 
@@ -77,7 +82,7 @@ async def rn(e):
     if wrd.startswith("#"):
         wrd = wrd.replace("#", "")
     rem_note(int(user), wrd)
-    await e.eor(f"Selesai Catatan: `#{wrd}` Dihapus.")
+    await e.eor(f"Selesai Catatan: `{wrd}` Dihapus.")
 
 
 @ayra_cmd(pattern="notes")
@@ -91,7 +96,7 @@ async def lsnote(e):
 
 async def notes(e):
     user = e.sender_id
-    xx = [z.replace("#", "") for z in e.text.lower().split() if z.startswith("#")]
+    xx = [z.replace("get", "") for z in e.text.lower().split() if z.startswith("get")]
     for word in xx:
         if k := get_notes(user, word):
             msg = k["msg"]
