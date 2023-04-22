@@ -9,7 +9,6 @@ import json
 import requests
 from . import *
 
-
 @ayra_cmd(pattern="(A|a)dzan( (.*)|$)")
 async def get_adzan(e):
     LOKASI = e.pattern_match.group(1).strip()
@@ -31,4 +30,4 @@ async def get_adzan(e):
             \n<b>Maghrib : </b><code>{result['items'][0]['maghrib']}</code>\
             \n<b>Isya : </b><code>{result['items'][0]['isha']}</code>\
     "
-    await e.eor(catresult, "html")
+    await e.eor(catresult, "html", time=120)
