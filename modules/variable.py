@@ -30,7 +30,7 @@ import re
 
 from . import *
 
-@ayra_cmd(pattern=r"^[sS][e][t][d][b]( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="[sS][e][t][d][b]( (.*)|$)", fullsudo=False)
 async def _(event):
     match = event.pattern_match.group(1).strip()
     if not match:
@@ -50,7 +50,7 @@ async def _(event):
         await event.eor(get_string("com_7"))
 
 
-@ayra_cmd(pattern=r"^[dD][e][l][d][b]( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="[dD][e][l][d][b]( (.*)|$)", fullsudo=False)
 async def _(event):
     key = event.pattern_match.group(1).strip()
     if not key:
