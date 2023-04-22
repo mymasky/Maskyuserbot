@@ -311,7 +311,7 @@ async def list_gengbanned(event):
 
 
 @ayra_cmd(
-    pattern="(G|g)stat( (.*)|$)",
+    pattern="[gG][s][t][a][t]( (.*)|$)",
 )
 async def gstat_(e):
     xx = await e.eor(get_string("com_1"))
