@@ -22,7 +22,7 @@ if os.path.exists(_colorspath):
 else:
     all_col = []
 
-
+"""
 @ayra_cmd(
     pattern="(rc|c)arbon",
 )
@@ -132,3 +132,4 @@ async def pass_on(kaz):
     await kaz.reply(
         file=await Carbon(text, rayso=True, title=title, theme=theme, darkMode=dark)
     )
+"""
