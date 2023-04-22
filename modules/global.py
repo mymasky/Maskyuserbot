@@ -62,7 +62,7 @@ from ._inline import something
 
 
 @ayra_cmd(pattern="[uU][n][g][b][a][n]( (.*)|$)", fullsudo=False)
-@register(incoming=True, pattern=r"^\.cungban(?: |$)(.*)", from_users=DEVS)
+@register(incoming=True, pattern=r"^\.cungban( (.*)|$)", from_users=DEVS)
 async def _(e):
     xx = await e.eor("`Proses...`")
     match = e.pattern_match.group(1).strip()
@@ -127,7 +127,7 @@ async def _(e):
 
 
 @ayra_cmd(pattern="[gG][b][a][n]( (.*)|$)", fullsudo=False)
-@register(incoming=True, pattern=r"^\.cgban(?: |$)(.*)", from_users=DEVS)
+@register(incoming=True, pattern=r"^\.cgban( (.*)|$)", from_users=DEVS)
 async def _(e):
     xx = await e.eor("`Proses...`")
     reason = ""
