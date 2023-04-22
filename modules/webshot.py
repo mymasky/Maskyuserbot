@@ -10,71 +10,31 @@
 ๏ **Perintah:** `webshot/ss` <link>
 ◉ **Keterangan:** Dapatkan screenshot dari link tersebut
 """
-import glob
-import io
-import os
-from asyncio.exceptions import TimeoutError as AsyncTimeout
 
-try:
-    import cv2
-except ImportError:
-    cv2 = None
+import asyncio
+from . import *
 
-try:
-    from htmlwebshot import WebShot
-except ImportError:
-    WebShot = None
-from telethon.errors.rpcerrorlist import MessageTooLongError, YouBlockedUserError
-from telethon.tl.types import (
-    ChannelParticipantAdmin,
-    ChannelParticipantsBots,
-    DocumentAttributeVideo,
-)
-
-from Ayra.fns.tools import metadata, translate
-
-from . import (
-    HNDLR,
-    LOGS,
-    AyConfig,
-    async_searcher,
-    bash,
-    check_filename,
-    con,
-    eor,
-    fast_download,
-    get_string,
-)
-from . import humanbytes as hb
-from . import inline_mention, is_url_ok, mediainfo, ayra_cmd
-
-
-@ayra_cmd(pattern=r"^(w|W)ebshot")
-async def webss(event):
-    xx = await event.eor(get_string("com_1"))
-    xurl = event.pattern_match.group(1).strip()
-    if not xurl:
-        return await xx.eor(get_string("wbs_1"), time=5)
-    if not is_url_ok(xurl):
-        return await xx.eor(get_string("wbs_2"), time=5)
+@ayra_cmd(pattern="(webshot|Webshot|Ss|ss)( (.*)|$)")
+async def webshot(e):
+    await e.eor("`Processing...`")
     try:
-        shot = WebShot(
-            quality=88, flags=["--enable-javascript", "--no-stop-slow-scripts"]
-        )
-        pic = await shot.create_pic_async(url=xurl)
-    except FileNotFoundError:
-        pic = (
-            await fast_download(
-                f"https://mini.s-shot.ru/1920x1080/JPEG/1024/Z100/?{xurl}",
-                filename=check_filename("shot.png"),
+        user_link = e.command[1]
+        try:
+            full_link = f"https://webshot.deam.io/{user_link}/?width=1920&height=1080?delay=2000?type=png"
+            await e.client.send_file(
+                e.chat_id,
+                full_link,
+                caption=f"**Tangkapan layar halaman** {user_link}",
             )
-        )[0]
-    if pic:
-        await xx.reply(
-            get_string("wbs_3").format(xurl),
-            file=pic,
-            link_preview=False,
-            force_document=True,
+        except Exception as dontload:
+            await e.eor(f"Error! `{dontload}`\nMencoba lagi membuat tangkapan layar...")
+            full_link = f"https://mini.s-shot.ru/1920x1080/JPEG/1024/Z100/?{user_link}"
+            await e.client.send_file(
+                e.chat_id,
+                full_link,
+                caption=f"**Tangkapan layar halaman** `{user_link}`",
+            )
+    except Exception as error:
+        await e.eor(
+            e.chat_id, f"**Ada yang salah\nLog:`{error}`...**"
         )
-        os.remove(pic)
-    await xx.delete()
