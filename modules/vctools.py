@@ -71,7 +71,7 @@ async def _(event):
         await event.eor(f"`{ex}`")
 
 @kynan_cmd(
-    pattern="vctitle( (.*)|$)",
+    pattern="(v|V)title( (.*)|$)",
     groups_only=True,
 )
 async def _(event):
