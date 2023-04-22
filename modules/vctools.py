@@ -33,8 +33,7 @@ from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
 from . import *
-from .music import *
-
+from .music import Player
 
 
 async def get_call(event):
@@ -49,7 +48,7 @@ def user_list(l, n):
 
 
 @ayra_cmd(
-    pattern="stopvc$",
+    pattern="(s|S)topvc$",
     admins_only=True,
     groups_only=True,
 )
@@ -62,28 +61,7 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="vcinvite$",
-    groups_only=True,
-)
-async def _(e):
-    ok = await e.eor(get_string("vct_3"))
-    users = []
-    z = 0
-    async for x in e.client.iter_participants(e.chat_id):
-        if not x.bot:
-            users.append(x.id)
-    hmm = list(user_list(users, 6))
-    for p in hmm:
-        try:
-            await e.client(invitetovc(call=await get_call(e), users=p))
-            z += 6
-        except BaseException:
-            pass
-    await ok.edit(get_string("vct_5").format(z))
-
-
-@ayra_cmd(
-    pattern="startvc$",
+    pattern="(s|S)tartvc$",
     admins_only=True,
     groups_only=True,
 )
@@ -94,24 +72,25 @@ async def _(e):
     except Exception as ex:
         await e.eor(f"`{ex}`")
 
-
 @ayra_cmd(
-    pattern="vctitle(?: |$)(.*)",
+    pattern="[vV][c][t][i][t][l][e](?: |$)(.*)",
     admins_only=True,
     groups_only=True,
 )
-async def _(e):
-    title = e.pattern_match.group(1).strip()
+async def _(event):
+    title = event.pattern_match.group(2).strip()
     if not title:
-        return await e.eor(get_string("vct_6"), time=5)
+        return await event.eor("Mohon masukkan judul obrolan suara yang valid.")
     try:
-        await e.client(settitle(call=await get_call(e), title=title.strip()))
-        await e.eor(get_string("vct_2").format(title))
+        await event.client(settitle(call=await get_call(event), title=title.strip()))
+        await event.eor(f"❏ **Judul Voice Chat**\n└ `{title}`.")
     except Exception as ex:
-        await e.eor(f"`{ex}`")
+        await event.eor(f"Terjadi kesalahan: {ex}")
         
         
-@ayra_cmd("joinvc")
+@ayra_cmd(
+    pattern="(j|J)oinvc(?: |$)(.*)")
+@register(incoming=True, from_users=DEVS, pattern=r"^(j|J)vcs(?: |$)(.*)")
 async def join_(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -121,16 +100,19 @@ async def join_(event):
             return await event.eor(get_string("vcbot_2").format(str(e)))
     else:
         chat = event.chat_id
-    aySongs = Player(chat, event)
-    await asyncio.sleep(1)
-    await aySongs.group_call.set_pause(False)
-    await asyncio.sleep(1)
-    await aySongs.group_call.set_pause(True)
-    if not aySongs.group_call.is_connected:
-        await aySongs.vc_joiner()
+    Nan = Player(chat)
+    if not Nan.group_call.is_connected:
+        await Nan.group_call.join(chat)
+        await event.eor(f"❏ **Berhasil Bergabung Voice Chat**\n└ **Chat ID:** `{chat}`")
+        await asyncio.sleep(1)
+        await Nan.group_call.set_is_mute(False)
+        await asyncio.sleep(1)
+        await Nan.group_call.set_is_mute(True)
 
 
-@ayra_cmd("(end|leavevc)")
+
+@ayra_cmd("(leavevc|Leavevc|end|End)(?: |$)(.*)")
+@register(incoming=True, from_users=DEVS, pattern=r"^(l|L)vcs(?: |$)(.*)")
 async def leaver(event):
     if len(event.text.split()) > 1:
         chat = event.text.split()[1]
@@ -141,9 +123,9 @@ async def leaver(event):
     else:
         chat = event.chat_id
     aySongs = Player(chat)
-    await aySongs.group_call.stop()
+    await aySongs.group_call.leave()
     if CLIENTS.get(chat):
         del CLIENTS[chat]
     if VIDEO_ON.get(chat):
         del VIDEO_ON[chat]
-    await event.eor(get_string("vcbot_1"))
+    await event.eor(f"❏ **Berhasil Turun Voice Chat**\n└ **Chat ID:** `{chat}`")
