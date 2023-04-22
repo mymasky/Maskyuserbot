@@ -48,21 +48,21 @@ def user_list(l, n):
 
 
 @kynan_cmd(pattern="(s|S)topvc$")
-async def _(c):
+async def stopvc(event):
     try:
-        await c.client(stopvc(await get_call(e)))
-        await c.eor(get_string("vct_4"))
+        await event.client(stopvc(await get_call(event)))
+        await event.eor(get_string("vct_4"))
     except Exception as ex:
         await event.eor(f"`{ex}`")
 
 
 @kynan_cmd(pattern="(s|S)tartvc$")
-async def _(e):
+async def startvc(event):
     try:
-        await e.client(startvc(e.chat_id))
-        await e.eor(get_string("vct_1"))
+        await event.client(startvc(event.chat_id))
+        await event.eor(get_string("vct_1"))
     except Exception as ex:
-        await e.eor(f"`{ex}`")
+        await event.eor(f"`{ex}`")
 
 @kynan_cmd(pattern="(v|V)ctitle( (.*)|$)")
 async def _(event):
