@@ -73,7 +73,7 @@ async def yt_video(e):
             channel,
             url,
         ),
-        reply_to_message_id=message.id,
+        reply_to=e.reply_to_msg_id,
     )
     await infomsg.delete()
     for files in (thumbnail, file_path):
@@ -127,7 +127,7 @@ async def yt_audio(e):
             channel,
             url,
         ),
-        reply_to_message_id=message.id,
+        reply_to=e.reply_to_msg_id,
     )
     await infomsg.delete()
     for files in (thumbnail, file_path):
