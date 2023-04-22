@@ -26,7 +26,7 @@ from Ayra.fns.tools import LogoHelper
 from . import *
 
 
-@ayra_cmd(pattern="(logo|Logo)( (.*)|$)")
+@ayra_cmd(pattern="[lL][o][g][o]( (.*)|$)")
 async def logo_gen(event):
     xx = await event.eor(get_string("com_1"))
     name = event.pattern_match.group(1).strip()
@@ -65,7 +65,7 @@ async def logo_gen(event):
         else:
             pics = []
             async for i in event.client.iter_messages(
-                "@UltroidLogos", filter=InputMessagesFilterPhotos
+                "@AllLogoHyper", filter=InputMessagesFilterPhotos
             ):
                 pics.append(i)
             id_ = random.choice(pics)
