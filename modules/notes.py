@@ -63,7 +63,7 @@ async def an(e):
         if not btn:
             txt, btn = get_msg_button(wt.text)
         add_note(chat, wrd, txt, None, btn)
-    await e.send_message(chat,
+    await e.client.send_message(chat,
     f"#NOTE\nKEYWORD: {wrd}"
         "\n\nPesan berikut disimpan sebagai data balasan catatan untuk obrolan, mohon jangan dihapus !!",
     )
