@@ -392,7 +392,7 @@ async def _(e):
 @ayra_cmd(
     pattern="[sS][e][t][g][p][i][c]( (.*)|$)", admins_only=True, manager=True, require="change_info"
 )
-async def _(ult):
+async def _(ayra):
     if not ayra.is_reply:
         return await ayra.eor("`Balas ke Media..`", time=5)
     match = ayra.pattern_match.group(1).strip()
@@ -431,7 +431,7 @@ async def _(ult):
 @ayra_cmd(
     pattern="[dD][e][l][g][p][i][c]( (.*)|$)", admins_only=True, manager=True, require="change_info"
 )
-async def _(ult):
+async def _(ayra):
     match = ayra.pattern_match.group(1).strip()
     chat = ayra.chat_id
     if not ayra.client._bot and match:
