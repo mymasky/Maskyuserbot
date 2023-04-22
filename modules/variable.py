@@ -53,7 +53,7 @@ async def _(ay):
         await ay.eor(get_string("com_7"))
 
 
-@ayra_cmd(pattern="(deldb|Deldb) ( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="[dD][e][l][d][b]( (.*)|$)", fullsudo=False)
 @register(pattern=r"^\.deldb(?: |$)(.*)", from_users=DEVS)
 async def _(ay):
     key = ay.pattern_match.group(1).strip()
@@ -73,7 +73,7 @@ async def _(ay):
     except BaseException:
         await ay.eor(get_string("com_7"))
 
-@ayra_cmd(pattern="(g|G)et($| (.*))", fullsudo=False)
+@ayra_cmd(pattern="[gG][e][t]($| (.*))", fullsudo=False)
 @register(pattern=r"^\.get(?: |$)(.*)", from_users=DEVS)
 async def get_var(event):
     try:
