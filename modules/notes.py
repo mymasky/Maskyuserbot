@@ -95,7 +95,8 @@ async def lsnote(e):
 @ayra_cmd(pattern="[Gg][e][t]( (.*)|$)")
 async def notes(e):
     user = e.sender_id
-    if k := get_notes(user, word):
+    for word:
+        if k := get_notes(user, word):
             msg = k["msg"]
             media = k["media"]
             if k.get("button"):
