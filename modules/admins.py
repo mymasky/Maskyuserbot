@@ -61,6 +61,7 @@ from telethon.tl.types import InputMessagesFilterPinned
 from telethon.utils import get_display_name
 
 from Ayra.dB import DEVS
+from Ayra.kynan import register
 from Ayra.fns.admins import ban_time
 
 from . import (
@@ -163,7 +164,7 @@ async def bban(ayra):
     user, reason = something
     if not user:
         return await eod(ayra, get_string("ban_1"))
-    if user.id in DEVLIST:
+    if user.id in DEVS:
         return await eod(ayra, get_string("ban_2"))
     try:
         await ayra.client.edit_permissions(ayra.chat_id, user.id, view_messages=False)
@@ -216,7 +217,7 @@ async def uunban(ayra):
     fullsudo=False,
 )
 async def kck(ayra):
-    if "kickme" or "Kickme" in ayra.text:
+    if "kickme" in ayra.text:
         return
     if ayra.is_private:
         return await ayra.eor("`Gunakan ini di Grup.`", time=5)
@@ -228,7 +229,7 @@ async def kck(ayra):
     user, reason = something
     if not user:
         return await xx.edit(get_string("adm_1"))
-    if user.id in DEVLIST:
+    if user.id in DEVS:
         return await xx.edit(get_string("kick_2"))
     if getattr(user, "is_self", False):
         return await xx.edit(get_string("kick_3"))
