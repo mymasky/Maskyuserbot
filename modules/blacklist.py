@@ -6,16 +6,16 @@
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Broadcast**
 
-• `{i} blacklist <kata>`
-    Daftar hitam kan kata yang dipilih.
+๏ **Perintah:** `blacklist` <kata>
+◉ **Keterangan:** Daftar hitam kan kata didalam grup.
 
-• `{i} remblacklist <kata>`
-     Hapus kata dari daftar hitam.
-     
-• `{i} listblacklist`
-     Lihat Semua Daftar Kata Terlarang .
+๏ **Perintah:** `remblacklist` <kata>
+◉ **Keterangan:** Hapus kata dari daftar hitam.
+
+๏ **Perintah:** `listblacklist`
+◉ **Keterangan:** Lihat Semua Daftar Kata Terlarang .
 """
 
 
@@ -29,7 +29,7 @@ from Ayra.dB.blacklist_db import (
 from . import ayra_bot, ayra_cmd, events, get_string, udB
 
 
-@ayra_cmd(pattern="addblacklist( (.*)|$)", admins_only=True)
+@ayra_cmd(pattern="(A|a)ddblacklist( (.*)|$)", admins_only=True)
 async def af(e):
     wrd = e.pattern_match.group(1).strip()
     chat = e.chat_id
@@ -43,7 +43,7 @@ async def af(e):
     await e.eor(get_string("blk_2").format(wrd))
 
 
-@ayra_cmd(pattern="delblacklist( (.*)|$)", admins_only=True)
+@ayra_cmd(pattern="(D|d)elblacklist( (.*)|$)", admins_only=True)
 async def rf(e):
     wrd = e.pattern_match.group(1).strip()
     chat = e.chat_id
@@ -56,7 +56,7 @@ async def rf(e):
     await e.eor(get_string("blk_4").format(wrd))
 
 
-@ayra_cmd(pattern="listblacklist$", admins_only=True)
+@ayra_cmd(pattern="(L|l)istblacklist$", admins_only=True)
 async def lsnote(e):
     if x := list_blacklist(e.chat_id):
         sd = get_string("blk_5")
