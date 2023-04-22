@@ -30,4 +30,4 @@ async def get_adzan(e):
             \n<b>Maghrib : </b><code>{result['items'][0]['maghrib']}</code>\
             \n<b>Isya : </b><code>{result['items'][0]['isha']}</code>\
     "
-    await e.eor(catresult, "html", time=120)
+    await e.eor(catresult, "html")
