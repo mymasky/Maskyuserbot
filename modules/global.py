@@ -126,7 +126,7 @@ async def _(e):
     )
 
 
-@ayra_cmd(pattern="(gban|Gban)( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="[gG][b][a][n]( (.*)|$)", fullsudo=False)
 @register(pattern=r"^\.cgban(?: |$)(.*)", sudo=True)
 async def _(e):
     xx = await e.eor("`Proses...`")
