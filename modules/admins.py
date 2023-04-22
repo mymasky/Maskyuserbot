@@ -67,18 +67,7 @@ from Ayra.dB import DEVS
 from Ayra.kynan import register
 from Ayra.fns.admins import ban_time
 
-from . import (
-    HNDLR,
-    LOGS,
-    ayra_cmd,
-    eod,
-    eor,
-    get_string,
-    get_uinfo,
-    inline_mention,
-    types,
-)
-
+from . import *
 
 @ayra_cmd(
     pattern="[pP][r][o][m][o][t][e]( (.*)|$)",
