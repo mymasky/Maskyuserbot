@@ -6,7 +6,7 @@
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 """
-✘ **Bantuan Untuk Broadcast**
+✘ **Bantuan Untuk Blacklist**
 
 ๏ **Perintah:** `blacklist` <kata>
 ◉ **Keterangan:** Daftar hitam kan kata didalam grup.
