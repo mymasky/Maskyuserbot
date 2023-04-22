@@ -86,8 +86,8 @@ async def rn(e):
 
 @ayra_cmd(pattern="notes$")
 async def lsnote(e):
-    chat = int(udB.get_key("LOG_CHANNEL"))
-    if x := list_note(e.chat):
+    chat = udB.get_key("LOG_CHANNEL"))
+    if x := list_note(e.int(chat)):
         sd = "Catatan Ditemukan Dalam Obrolan Ini Adalah\n\n"
         return await e.eor(sd + x)
     await e.eor(get_string("notes_5"))
