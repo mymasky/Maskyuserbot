@@ -33,10 +33,10 @@ from .music import *
 from Ayra.kynan import register
 
 @ayra_cmd(pattern=r"^[sS][e][t][d][b]( (.*)|$)", fullsudo=False)
-async def _(ay):
-    match = ay.pattern_match.group(1).strip()
+async def _(event):
+    match = event.pattern_match.group(1).strip()
     if not match:
-        return await ay.eor("Berikan kunci dan nilai untuk ditetapkan!")
+        return await event.eor("Berikan kunci dan nilai untuk ditetapkan!")
     try:
         delim = " " if re.search("[|]", match) is None else " | "
         data = match.split(delim, maxsplit=1)
@@ -49,14 +49,14 @@ async def _(ay):
         )
 
     except BaseException:
-        await ay.eor(get_string("com_7"))
+        await event.eor(get_string("com_7"))
 
 
 @ayra_cmd(pattern=r"^[dD][e][l][d][b]( (.*)|$)", fullsudo=False)
-async def _(ay):
-    key = ay.pattern_match.group(1).strip()
+async def _(event):
+    key = event.pattern_match.group(1).strip()
     if not key:
-        return await ay.eor("Beri saya nama kunci untuk dihapus!", time=5)
+        return await event.eor("Beri saya nama kunci untuk dihapus!", time=5)
     _ = key.split(maxsplit=1)
     try:
         if _[0] == "-m":
@@ -67,9 +67,9 @@ async def _(ay):
             k = udB.del_key(key)
         if k == 0:
             return await ay.eor("`Tidak Ada Kunci Seperti Itu.`")
-        await ay.eor(f"`Kunci berhasil dihapus {key}`")
+        await event.eor(f"`Kunci berhasil dihapus {key}`")
     except BaseException:
-        await ay.eor(get_string("com_7"))
+        await event.eor(get_string("com_7"))
 
 @ayra_cmd(pattern="[gG][e][t]($| (.*))", fullsudo=False)
 async def get_var(event):
