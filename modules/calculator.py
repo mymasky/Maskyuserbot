@@ -6,9 +6,10 @@
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 """
-◈ Perintah Tersedia
+✘ **Bantuan Untuk Calculator**
 
-• `{i} calc` - Inline Calculator
+๏ **Perintah:** `calc`
+◉ **Keterangan:** Inline Calculator.
 """
 
 import re
@@ -44,7 +45,7 @@ lst = list(zip(tayrad[::4], tayrad[1::4], tayrad[2::4], tayrad[3::4]))
 lst.append([Button.inline("=", data="calc=")])
 
 
-@ayra_cmd(pattern="calc")
+@ayra_cmd(pattern="[cC][a][l][c]")
 async def icalc(e):
     udB.del_key("calc")
     if e.client._bot:
