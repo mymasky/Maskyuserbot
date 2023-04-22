@@ -7,10 +7,10 @@
 """
 ✘ **Bantuan Untuk Variable**
 
-๏ **Perintah:** `get keys`
+๏ **Perintah:** `var keys`
 ◉ **Keterangan:** Mengambil semua variable didatabase.
 
-๏ **Perintah:** `get db` <nama variable>
+๏ **Perintah:** `var db` <nama variable>
 ◉ **Keterangan:** Mengambil value dari variable tersebut.
 
 ๏ **Perintah:** `setdb` <variable> <value>
@@ -69,7 +69,7 @@ async def _(event):
     except BaseException:
         await event.eor(get_string("com_7"))
 
-@ayra_cmd(pattern="[gG][e][t]($| (.*))", fullsudo=False)
+@ayra_cmd(pattern="[vV][a][r]($| (.*))", fullsudo=False)
 async def get_var(event):
     try:
         opt = event.text.split(maxsplit=2)[1]
