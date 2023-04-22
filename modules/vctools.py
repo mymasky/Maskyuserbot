@@ -33,7 +33,7 @@ from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
 from . import *
-from .music import Player
+from .music import Player, vc_asst
 
 
 async def get_call(event):
@@ -111,7 +111,7 @@ async def join_(event):
 
 
 
-@ayra_cmd("[Ll][e][a][v][e][v][c](?: |$)(.*)")
+@vc_asst("[Ll][e][a][v][e][v][c](?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^Lvcs(?: |$)(.*)")
 async def leaver(event):
     if len(event.text.split()) > 1:
