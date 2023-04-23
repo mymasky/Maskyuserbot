@@ -17,13 +17,16 @@
 import asyncio
 import time
 from telethon.tl.types import *
-from telethon.tl.functions.contacts import (
-    BlockRequest,
-    GetBlockedRequest,
-    UnblockRequest,
-)
+from telethon.tl.functions.contacts import *
 from . import *
 
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/Ayra/_misc/_decorators.py", line 113, in wrapp
+    await dec(ay)
+  File "/root/Ayra/modules/toanime.py", line 45, in convert_image
+    await event.client.send_photos(
+AttributeError: 'AyraClient' object has no attribute 'send_photos'
 
 
 @ayra_cmd(pattern="toanime")
@@ -42,10 +45,11 @@ async def convert_image(event):
         async for Toanime in event.client.iter_messages(bot, filter=InputMessagesFilterPhotos):
             get_photo.append(await Toanime.download_media())
         if get_photo:
-            await event.client.send_photos(
-                event.chat_id,
-                files=get_photo,
-                reply_to=event.message.id,
+            for photo in get_photo:
+                await event.client.send_file(
+                    event.chat_id,
+                    photo,
+                    reply_to=event.message.id,
                 )
         else:
             await event.reply("**Tidak dapat menemukan foto untuk dikirim sebagai grup.**")
