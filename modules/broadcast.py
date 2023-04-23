@@ -208,9 +208,6 @@ async def ungblacker(event):
 
 @ayra_cmd(pattern="blchat")
 async def chatbl(event):
-    async for x in event.client.iter_dialogs():
-        if x.is_group:
-            id = x.id
     xx = list_bl(id)
     if xx:
         sd = "**❏ Daftar Blacklist Gcast**\n\n"
