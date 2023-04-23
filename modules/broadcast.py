@@ -88,7 +88,7 @@ async def gcast(event):
     for x in dialog:
         if x.is_group:
             chat = x.entity.id
-            if chat(
+            if (chat
                 not is_gblacklisted(chat)
                 and not in NOSPAM_CHAT
                 and (
