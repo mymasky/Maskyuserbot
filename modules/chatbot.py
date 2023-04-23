@@ -18,7 +18,7 @@ import openai
 import shutil
 from asyncio import gather
 from telethon.errors import MessageNotModifiedError
-from . import ayra_cmd
+from . import ayra_cmd, udB
 
 
 class OpenAi:
