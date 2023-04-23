@@ -97,8 +97,7 @@ async def gcast(event):
                         event.text[2:7] != "admin"
                         or (x.entity.admin_rights or x.entity.creator)
                     )
-                )
-            ):
+                  ):
                 try:
                     if btn:
                         bt = create_tl_btn(btn)
