@@ -79,7 +79,7 @@ async def _(e):
     groups_only=True,
 )
 async def _(event):
-    title = event.pattern_match.group(2).strip()
+    title = event.pattern_match.group(1).strip()
     if not title:
         return await event.eor("Mohon masukkan judul obrolan suara yang valid.")
     try:
