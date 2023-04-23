@@ -24,7 +24,6 @@ from telethon.tl.functions.contacts import (
 )
 from . import *
 
-
 @ayra_cmd(pattern="toanime")
 async def convert_image(event):
     if not event.reply_to_msg_id:
@@ -33,7 +32,7 @@ async def convert_image(event):
     if event.reply_to_msg_id:
         cot = await event.respond("**Processing...**")
         await event.client(UnblockRequest(bot))
-        ba = await event.client.client.forward_message(bot, event.reply_to_msg_id, event.chat_id)
+        ba = await event.client.forward_messages(bot, event.reply_to_msg_id, event.chat_id)
         await asyncio.sleep(30)
         await ba.delete()
         await cot.delete()
