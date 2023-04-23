@@ -211,10 +211,10 @@ async def chatbl(event):
     async for x in event.client.iter_dialogs():
         if x.is_group:
             id = x.id
-    x = list_bl(id)
-    if x:
+    xx = list_bl(id)
+    if xx:
         sd = "**❏ Daftar Blacklist Gcast**\n\n"
-        return await event.eor(sd + x)
+        return await event.eor(sd + xx)
     await event.eor("**Belum ada daftar**")
 
 
