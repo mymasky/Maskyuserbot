@@ -49,7 +49,7 @@ async def openai(event):
         return
     msg = await event.eor("`Processing...`")
     try:
-        response = OpenAi.text(event.pattern_match.group(1).strip()
+        response = OpenAi.text(event.pattern_match.group(1).strip())
         await msg.edit(f"**Q:** {question}\n\n**A:** {response}")
     except Exception as e:
         await msg.edit(f"**Q:** {question}\n\n**A:** `Error: {e}`")
@@ -63,7 +63,7 @@ async def imge(event):
         return
     msg = await event.eor("`Processing...`")
     try:
-        response = OpenAi.photo(event.pattern_match.group(1).strip()
+        response = OpenAi.photo(event.pattern_match.group(1).strip())
         await event.client.send_photo(event.chat_id, response, reply_to=event.message.id)
         await msg.delete()
     except Exception as error:
