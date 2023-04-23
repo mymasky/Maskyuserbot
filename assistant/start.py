@@ -193,7 +193,7 @@ Total Users in Bot - {len(ok)}
 @callback("setter", owner=True)
 async def setting(event):
     await event.edit(
-        "Pengaturan.",
+        "Silakan pilih pengaturan yang anda inginkan.",
         buttons=_settings,
     )
 
