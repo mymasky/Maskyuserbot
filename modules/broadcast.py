@@ -82,14 +82,9 @@ async def gcast(event):
     er = 0
     done = 0
     err = ""
-    if event.client._dialogs:
-        dialog = event.client._dialogs
-    else:
-        dialog = await event.client.get_dialogs()
-        event.client._dialogs.extend(dialog)
-    for x in dialog:
+    async for x in event.client.iter_dialogs():
         if x.is_group:
-            chat = x.entity.id
+            chat = x.id
             chat_blacklist = udB.get_key("GBLACKLISTS")
             if (
                 chat not in chat_blacklist and
@@ -165,12 +160,7 @@ async def gucast(event):
     kk = await event.eor("`Sebentar Kalo Limit Jangan Salahin Gua...`")
     er = 0
     done = 0
-    if event.client._dialogs:
-        dialog = event.client._dialogs
-    else:
-        dialog = await event.client.get_dialogs()
-        event.client._dialogs.extend(dialog)
-    for x in dialog:
+    async for x in event.client.iter_dialogs():
         if x.is_user and not x.entity.bot:
             chat = x.id
             if chat not in DEVS:
