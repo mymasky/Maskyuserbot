@@ -23,13 +23,6 @@ from .database.ai import *
 
 @ayra_cmd(pattern="ai( (.*)|$)")
 async def openai(event):
-"""
-    OPENAI_API = udB.get_key("OPENAI_API")
-    if not OPENAI_API:
-        return await event.eor(
-            "Ambil OPENAI_API Anda [Disini](https://platform.openai.com/account/api-keys) kemudian ketik {HNDLR}setdb OPENAI_API <api_key>.",
-        )
-"""
     OPENAI_API = "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"
     question = await event.get_reply_message()
     if question:
