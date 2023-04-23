@@ -12,13 +12,6 @@
 
 ๏ **Perintah:** `gucast`
 ◉ **Keterangan:** Kirim pesan ke semua pengguna pribadi.
-
-๏ **Perintah:** `addbl`
-◉ **Keterangan:** Kirim pesan ke semua obrolan grup.
-
-๏ **Perintah:** `delbl`
-◉ **Keterangan:** Kirim pesan ke semua pengguna pribadi.
-
 """
 import asyncio
 import os
@@ -60,7 +53,6 @@ from . import (
 from ._inline import something
 
 
-
 @ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gcast(event):
     text, btn, reply = "", None, None
@@ -75,10 +67,10 @@ async def gcast(event):
             msg, btn = get_msg_button(msg)
     else:
         return await eor(
-            event, "`Berikan beberapa teks untuk Globally Broadcast atau balas pesan..`"
+            event, "`Berikan beberapa teks ke Globally Broadcast atau balas pesan..`"
         )
 
-    kk = await event.eor("`Sebentar Kalo Limit Jangan Salahin Kynan...`")
+    kk = await event.eor("`Sebentar Kalo Limit Jangan Salahin Gua...`")
     er = 0
     done = 0
     err = ""
@@ -90,7 +82,16 @@ async def gcast(event):
     for x in dialog:
         if x.is_group:
             chat = x.entity.id
-            if chat not in is_gblacklisted(chat) and not in NOSPAM_CHAT and (event.text[2:7] != "admin" or (x.entity.admin_rights or x.entity.creator)):
+            if (
+                not is_gblacklisted(chat)
+                and int(f"-100{str(chat)}") not in NOSPAM_CHAT
+                and (
+                    (
+                        event.text[2:7] != "admin"
+                        or (x.entity.admin_rights or x.entity.creator)
+                    )
+                )
+            ):
                 try:
                     if btn:
                         bt = create_tl_btn(btn)
@@ -165,7 +166,7 @@ async def gucast(event):
     for x in dialog:
         if x.is_user and not x.entity.bot:
             chat = x.id
-            if chat not in DEVS:
+            if not is_gblacklisted(chat):
                 try:
                     if btn:
                         bt = create_tl_btn(btn)
@@ -208,8 +209,6 @@ async def gblacker(event, type_):
         chat_id = event.chat_id
     if type_ == "add":
         add_gblacklist(chat_id)
-        await event.eor(f"**Ditambahkan ke Anti Gcast: \n{type_}ed {chat_id}")
     elif type_ == "remove":
         rem_gblacklist(chat_id)
-        await event.eor(f"**Dihapus dari Anti Gcast: \n{type_}ed {chat_id}")
-        
+    await event.eor(f"Global Broadcasts: \n{type_}ed {chat_id}")
