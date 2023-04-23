@@ -1,3 +1,15 @@
+# Ayra - UserBot
+# Copyright (C) 2021-2022 senpai80
+#
+# This file is a part of < https://github.com/senpai80/Ayra/ >
+# PLease read the GNU Affero General Public License in
+# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
+"""
+✘ **Bantuan Untuk Chatbot**
+
+๏ **Perintah:** `ai` <balas pesan/berikan pertanyaan>
+◉ **Keterangan:** Sangat berguna untuk kebutuhan.
+"""
 import os
 import requests
 import shutil
@@ -8,7 +20,7 @@ from . import *
 from .database.ai import *
 
 
-@ayra_cmd(pattern=r"^ai"( (.*)|$)")
+@ayra_cmd(pattern="ai( (.*)|$)")
 async def openai(event):
     OPENAI_API = udB.get_key("OPENAI_API")
     if not OPENAI_API:
