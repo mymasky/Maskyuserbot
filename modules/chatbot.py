@@ -19,9 +19,10 @@ from asyncio import gather
 from io import *
 from . import *
 
+Error: OpenAi.text() takes 1 positional argument but 2 were given
 
 class OpenAi:
-    def text(question):
+    def text(self, question):
         OPENAI_API = udB.get_key("OPENAI_API")
         response = openai.Completion.create(
             model="text-davinci-003",
@@ -35,7 +36,7 @@ class OpenAi:
         )
         return response.choices[0].text
 
-    def photo(question):
+    def photo(self, question):
         OPENAI_API = udB.get_key("OPENAI_API")
         api_key=OPENAI_API
         response = openai.Image.create(prompt=question, n=1, size="1024x1024")
