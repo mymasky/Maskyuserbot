@@ -50,7 +50,7 @@ def text_to_url(event):
 
 _buttons = {
     "otvars": {
-        "text": "Variabel lain untuk ditetapkan @kynansupport:",
+        "text": "Pengaturan Lain nya.:",
         "buttons": [
             [
                 Button.inline("Tag Logger", data="taglog"),
@@ -131,7 +131,7 @@ TOKEN_FILE = "resources/auths/auth_token.txt"
     re.compile(
         "sndplug_(.*)",
     ),
-    owner=False,
+    owner=True,
 )
 async def send(eve):
     key, name = (eve.data_match.group(1)).decode("UTF-8").split("_")
@@ -167,7 +167,7 @@ async def send(eve):
 heroku_api, app_name = Var.HEROKU_API, Var.HEROKU_APP_NAME
 
 
-@callback("updatenow", owner=False)
+@callback("updatenow", owner=True)
 async def update(eve):
     repo = Repo()
     ac_br = repo.active_branch
@@ -215,7 +215,7 @@ async def update(eve):
         execl(sys.executable, sys.executable, "-m", "Ayra")
 
 
-@callback(re.compile("changes(.*)"), owner=False)
+@callback(re.compile("changes(.*)"), owner=True)
 async def changes(okk):
     match = okk.data_match.group(1).decode("utf-8")
     await okk.answer(get_string("clst_3"))
@@ -266,7 +266,7 @@ async def changes(okk):
     re.compile(
         "pasta-(.*)",
     ),
-    owner=False,
+    owner=True,
 )
 async def _(e):
     ok = (e.data_match.group(1)).decode("UTF-8")
@@ -297,7 +297,7 @@ async def _(e):
     )
 
 
-@callback(re.compile("cbs_(.*)"), owner=False)
+@callback(re.compile("cbs_(.*)"), owner=True)
 async def _edit_to(event):
     match = event.data_match.group(1).decode("utf-8")
     data = _buttons.get(match)
@@ -306,7 +306,7 @@ async def _edit_to(event):
     await event.edit(data["text"], buttons=data["buttons"], link_preview=False)
 
 
-@callback(re.compile("abs_(.*)"), owner=False)
+@callback(re.compile("abs_(.*)"), owner=True)
 async def convo_handler(event: events.CallbackQuery):
     match = event.data_match.group(1).decode("utf-8")
     if not _convo.get(match):
@@ -330,7 +330,7 @@ async def convo_handler(event: events.CallbackQuery):
             buttons=get_back_button(back),
         )
 
-@callback("hhndlr", owner=False)
+@callback("hhndlr", owner=True)
 async def hndlrr(event):
     await event.delete()
     pru = event.sender_id
@@ -366,7 +366,7 @@ async def hndlrr(event):
             )
 
 
-@callback("shndlr", owner=False)
+@callback("shndlr", owner=True)
 async def hndlrr(event):
     await event.delete()
     pru = event.sender_id
@@ -403,7 +403,7 @@ async def hndlrr(event):
             )
 
 
-@callback("taglog", owner=False)
+@callback("taglog", owner=True)
 async def tagloggrr(e):
     BUTTON = [
         [Button.inline("Set Tag Logger", data="abs_settag")],
@@ -416,13 +416,13 @@ async def tagloggrr(e):
     )
 
 
-@callback("deltag", owner=False)
+@callback("deltag", owner=True)
 async def _(e):
     udB.del_key("TAG_LOG")
     await e.answer("Tag Logger Berhasil Dimatikan")
 
 
-@callback("inpm_in", owner=False)
+@callback("inpm_in", owner=True)
 async def inl_on(event):
     var = "INLINE_PM"
     await setit(event, var, "True")
@@ -432,7 +432,7 @@ async def inl_on(event):
     )
 
 
-@callback("inpm_no", owner=False)
+@callback("inpm_no", owner=True)
 async def inl_on(event):
     var = "INLINE_PM"
     await setit(event, var, "False")
@@ -442,7 +442,7 @@ async def inl_on(event):
     )
 
 
-@callback("pmtxt", owner=False)
+@callback("pmtxt", owner=True)
 async def name(event):
     await event.delete()
     pru = event.sender_id
@@ -472,7 +472,7 @@ async def name(event):
         )
 
 
-@callback("swarn", owner=False)
+@callback("swarn", owner=True)
 async def name(event):
     m = range(1, 10)
     tayd = [Button.inline(f"{x}", data=f"wrns_{x}") for x in m]
@@ -484,12 +484,12 @@ async def name(event):
     )
 
 
-@callback(re.compile(b"wrns_(.*)"), owner=False)
+@callback(re.compile(b"wrns_(.*)"), owner=True)
 async def set_wrns(event):
     value = int(event.data_match.group(1).decode("UTF-8"))
     if dn := udB.set_key("PMWARNS", value):
         await event.edit(
-            f"Silakan Atur Angka PM Limit .",
+            f"PM Limit di setel ke {value}.",
             buttons=get_back_button("cbs_pmcstm"),
         )
     else:
@@ -499,7 +499,7 @@ async def set_wrns(event):
         )
 
 
-@callback("pmmed", owner=False)
+@callback("pmmed", owner=True)
 async def media(event):
     await event.delete()
     pru = event.sender_id
@@ -546,7 +546,7 @@ async def media(event):
         )
 
 
-@callback("delpmmed", owner=False)
+@callback("delpmmed", owner=True)
 async def dell(event):
     try:
         udB.del_key("PMPIC")
@@ -561,7 +561,7 @@ async def dell(event):
         )
 
 
-@callback("apon", owner=False)
+@callback("apon", owner=True)
 async def apon(event):
     var = "AUTOAPPROVE"
     await setit(event, var, "True")
@@ -571,7 +571,7 @@ async def apon(event):
     )
 
 
-@callback("apof", owner=False)
+@callback("apof", owner=True)
 async def apof(event):
     try:
         udB.set_key("AUTOAPPROVE", "False")
@@ -587,7 +587,7 @@ async def apof(event):
         )
 
 
-@callback("pml", owner=False)
+@callback("pml", owner=True)
 async def l_vcs(event):
     BT = (
         [Button.inline("PM Logger Off", data="pmlogof")]
@@ -605,7 +605,7 @@ async def l_vcs(event):
     )
 
 
-@callback("pmlog", owner=False)
+@callback("pmlog", owner=True)
 async def pmlog(event):
     await setit(event, "PMLOG", "True")
     await event.edit(
@@ -614,7 +614,7 @@ async def pmlog(event):
     )
 
 
-@callback("pmlogof", owner=False)
+@callback("pmlogof", owner=True)
 async def pmlogof(event):
     try:
         udB.del_key("PMLOG")
@@ -630,7 +630,7 @@ async def pmlogof(event):
         )
 
 
-@callback("pmon", owner=False)
+@callback("pmon", owner=True)
 async def pmonn(event):
     var = "PMSETTING"
     await setit(event, var, "True")
@@ -640,7 +640,7 @@ async def pmonn(event):
     )
 
 
-@callback("pmoff", owner=False)
+@callback("pmoff", owner=True)
 async def pmofff(event):
     var = "PMSETTING"
     await setit(event, var, "False")
