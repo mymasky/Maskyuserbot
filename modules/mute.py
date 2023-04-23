@@ -68,7 +68,7 @@ async def startmute(event):
 
 
 @ayra_cmd(
-    pattern="(U|u)ndmute( (.*)|$)",
+    pattern="[uU][n][d][m][u][t][e]( (.*)|$)",
 )
 async def endmute(event):
     xx = await event.eor("`Bentar...`")
@@ -135,7 +135,7 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="(U|u)nmute( (.*)|$)",
+    pattern="[Uu][n][m][u][t][e]( (.*)|$)",
     admins_only=True,
     manager=True,
 )
@@ -169,7 +169,7 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="(M|m)ute( (.*)|$)", admins_only=True, manager=True, require="ban_users"
+    pattern="[mM][u][t][e]( (.*)|$)", admins_only=True, manager=True, require="ban_users"
 )
 async def _(e):
     xx = await e.eor("`Bentar...`")
