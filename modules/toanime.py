@@ -37,7 +37,7 @@ async def convert_image(event):
         await ba.delete()
         await cot.delete()
         get_photo = []
-        async for Toanime in client.iter_messages(bot, filter=InputMessagesFilterPhotos):
+        async for Toanime in event.client.iter_messages(bot, filter=InputMessagesFilterPhotos):
             get_photo.append(InputMediaPhoto(Toanime.photo))
         await event.client.send_file(
             event.chat_id,
