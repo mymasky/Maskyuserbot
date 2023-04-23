@@ -44,7 +44,7 @@ from Ayra.dB.gcast_blacklist_db import (
     add_gblacklist,
     is_gblacklisted,
     rem_gblacklist,
-    get_stuff,
+    list_bl,
 )
 from Ayra.fns.tools import create_tl_btn, format_btn, get_msg_button
 
@@ -62,15 +62,6 @@ from . import (
     udB,
 )
 from ._inline import something
-
-
-def black_aja():
-    return udB.get_key("GBLACKLISTS") or {}
-
-def list_bl(id):
-    ok = black_aja()
-    for id in ok:
-        return "".join(f"**๏ {z}**\n" for z in ok)
 
 @ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gcast(event):
@@ -145,7 +136,7 @@ async def gcast(event):
                 except BaseException as h:
                     err += f"• {str(h)}" + "\n"
                     er += 1
-    text += f"Berhasil di {done} obrolan, kesalahan {er} obrolan(s)"
+    text += f"Berhasil di {done} obrolan, kesalahan {er} obrolan"
     if err != "":
         open("gcast-error.log", "w+").write(err)
         text += f"\Anda dapat melakukan `{HNDLR}ayra gcast-error.log` untuk mengetahui laporan kesalahan."
@@ -193,7 +184,7 @@ async def gucast(event):
                     done += 1
                 except BaseException:
                     er += 1
-    await kk.edit(f"Berhasil di {done} obrolan, kesalahan {er} obrolan(s)")
+    await kk.edit(f"Berhasil di {done} obrolan, kesalahan {er} obrolan")
 
 
 @ayra_cmd(pattern="addbl")
@@ -216,18 +207,6 @@ async def chatbl(event):
     await event.eor("**Belum ada daftar**")
 
 
-
-"""
-@ayra_cmd(pattern="blchat")
-async def chatbl(event):
-    chat = event.chat_id
-    if x := list_bl(chat):
-        sd = "**❏ Daftar Blacklist Gcast**\n\n"
-        return await e.eor(sd + x)
-    await e.eor("**Belum ada daftar**")
-"""
-
-
 async def gblacker(event, type_):
     try:
         chat_id = int(event.text.split(maxsplit=1)[1])
@@ -239,7 +218,7 @@ async def gblacker(event, type_):
         chat_id = event.chat_id
     if type_ == "add":
         add_gblacklist(chat_id)
-        await event.eor(f"Ditambahkan ke BLGCAST\n{chat_id}")
+        await event.eor(f"Ditambahkan ke BLGCAST\n`{chat_id}`")
     elif type_ == "remove":
         rem_gblacklist(chat_id)
-        await event.eor(f"Dihapus dari BLGCAST\n{chat_id}")
+        await event.eor(f"Dihapus dari BLGCAST\n`{chat_id}`")
