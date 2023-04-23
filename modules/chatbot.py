@@ -31,7 +31,7 @@ async def openai(event):
     if question:
         text = question.text
     else:
-        text = event.pattern_match.group(3)
+        text = event.text.split(maxsplit=1)[1])
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {OPENAI_API}",
