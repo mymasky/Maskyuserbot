@@ -17,7 +17,6 @@
 import asyncio
 import time
 from telethon.tl.types import *
-from telethon.tl.functions.messages import DeleteHistory
 
 
 @ayra_cmd(pattern="toanime ")
@@ -40,5 +39,3 @@ async def convert_image(event):
             get_photo,
             reply_to=event.message.id,
         )
-#        user_info = await event.client.get_entity(bot)
-#        await event.client(functions.messages.DeleteHistoryRequest(peer=user_info, max_id=0, just_clear=False, revoke=True))
