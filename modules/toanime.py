@@ -30,7 +30,7 @@ async def convert_image(event):
         return await event.eor("**Mohon Balas Ke Foto**")
     bot = "@qq_neural_anime_bot"
     if event.reply_to_msg_id:
-        cot = await event.respond("**Processing...**")
+        cot = await event.eor("**Processing...**")
         await event.client(UnblockRequest(bot))
         ba = await event.client.forward_messages(bot, event.reply_to_msg_id, event.chat_id)
         await asyncio.sleep(30)
