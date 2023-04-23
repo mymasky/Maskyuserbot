@@ -30,5 +30,5 @@ async def cek(event):
 <b>Ashar  : </b><code>{result['items'][0]['asr']}</code>
 <b>Maghrib : </b><code>{result['items'][0]['maghrib']}</code>
 <b>Isya : </b><code>{result['items'][0]['isha']}</code>
-    """
+"""
     await eor(event, catresult)
