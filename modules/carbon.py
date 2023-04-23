@@ -19,6 +19,7 @@ from io import BytesIO
 import aiohttp
 from secrets import choice
 from . import eor, get_string, ayra_cmd
+from .anu import *
 
 def vcmention(user):
     full_name = get_display_name(user)
