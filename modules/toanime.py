@@ -21,14 +21,6 @@ from telethon.tl.functions.contacts import *
 from . import *
 
 
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/Ayra/_misc/_decorators.py", line 113, in wrapp
-    await dec(ay)
-  File "/root/Ayra/modules/toanime.py", line 45, in convert_image
-    await event.client.send_photos(
-AttributeError: 'AyraClient' object has no attribute 'send_photos'
-
-
 @ayra_cmd(pattern="toanime")
 async def convert_image(event):
     if not event.reply_to_msg_id:
