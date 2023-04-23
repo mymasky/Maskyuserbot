@@ -37,7 +37,7 @@ async def watcher(event):
 
 
 @ayra_cmd(
-    pattern="(D|d)mute( (.*)|$)",
+    pattern="[Dd][m][u][t][e]( (.*)|$)",
 )
 async def startmute(event):
     xx = await event.eor("`Bentar...`")
