@@ -10,7 +10,7 @@ import requests
 from . import *
 
 @kynan_cmd(pattern="adzan(?:\\s|$)([\\s\\S]*)")
-async def get_adzan(adzan):
+async def cek(adzan):
     LOKASI = adzan.pattern_match.group(1)
     if not LOKASI:
         await adzan.eor("<i>Silahkan Masukkan Nama Kota Anda</i>")
