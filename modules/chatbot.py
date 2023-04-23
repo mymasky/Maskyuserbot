@@ -19,6 +19,7 @@ from asyncio import gather
 from io import *
 from . import *
 
+
 class OpenAi:
     def text(self, question):
         OPENAI_API = udB.get_key("OPENAI_API")
