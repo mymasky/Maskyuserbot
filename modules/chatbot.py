@@ -13,7 +13,7 @@
 import os
 import requests
 import shutil
-
+from telethon.errors import MessageNotModifiedError
 from asyncio import gather
 from io import *
 from . import *
@@ -47,7 +47,7 @@ async def openai(event):
     try:
         response = (await requests.post("https://api.openai.com/v1/completions", headers=headers, json=json_data)).json()
         await msg.edit(response["choices"][0]["text"])
-    except MessageNotModified:
+    except MessageNotModifiedError:
         pass
     except Exception:
         await msg.eor("`Data tidak ditemukan, pastikan OPENAI_API valid...`")
