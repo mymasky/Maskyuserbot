@@ -69,7 +69,7 @@ def black_aja():
 
 def list_bl(id):
     ok = black_aja()
-    if id in ok:
+    for id in ok:
         return "".join(f"**๏ {z}**\n" for z in ok)
 
 @ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
@@ -208,6 +208,7 @@ async def ungblacker(event):
 
 @ayra_cmd(pattern="blchat")
 async def chatbl(event):
+    id = event.chat_id
     xx = list_bl(id)
     if xx:
         sd = "**❏ Daftar Blacklist Gcast**\n\n"
