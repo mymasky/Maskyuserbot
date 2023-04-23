@@ -12,6 +12,7 @@
 """
 import os
 import requests
+import openai
 import shutil
 from telethon.errors import MessageNotModifiedError
 from asyncio import gather
