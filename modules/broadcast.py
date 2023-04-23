@@ -18,6 +18,9 @@
 
 ๏ **Perintah:** `delbl`
 ◉ **Keterangan:** Hapus grup dari daftar anti gcast.
+
+๏ **Perintah:** `blchat`
+◉ **Keterangan:** Melihat daftar anti gcast.
 """
 import asyncio
 import os
@@ -60,6 +63,10 @@ from . import (
 )
 from ._inline import something
 
+def list_bl(chat):
+    ok = get_stuff()
+    if ok.get(int(chat)):
+        return "".join(f"**๏ {z}**\n" for z in ok[chat])
 
 @ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gcast(event):
@@ -195,6 +202,16 @@ async def ungblacker(event):
     await gblacker(event, "remove")
 
 
+@ayra_cmd(pattern="blchat")
+async def chatbl(event):
+    chat = event.chat_id
+    if x := list_bl(chat):
+        sd = "**❏ Daftar Blacklist Gcast**\n\n"
+        return await e.eor(sd + x)
+    await e.eor("**Belum ada daftar**")
+
+
+
 async def gblacker(event, type_):
     try:
         chat_id = int(event.text.split(maxsplit=1)[1])
@@ -206,7 +223,7 @@ async def gblacker(event, type_):
         chat_id = event.chat_id
     if type_ == "add":
         add_gblacklist(chat_id)
-        await event.eor(f"Ditambahkan ke BLGCAST: \n{type_}ed {chat_id}")
+        await event.eor(f"Ditambahkan ke BLGCAST\n{chat_id}")
     elif type_ == "remove":
         rem_gblacklist(chat_id)
-        await event.eor(f"Dihapus dari BLGCAST: \n{type_}ed {chat_id}")
+        await event.eor(f"Dihapus dari BLGCAST\n{chat_id}")
