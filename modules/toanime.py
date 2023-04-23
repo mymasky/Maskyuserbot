@@ -40,12 +40,15 @@ async def convert_image(event):
         await cot.delete()
         get_photo = []
         async for Toanime in event.client.iter_messages(bot, filter=InputMessagesFilterPhotos):
-            get_photo.append(InputMediaPhoto(Toanime.photo))
-        await event.client.send_media_group(
-            event.chat_id,
-            media=get_photo,
-            reply_to=event.message.id,
-        )
+            get_photo.append(await Toanime.download_media())
+        if get_photo:
+            await event.client.send_photos(
+                event.chat_id,
+                files=get_photo,
+                reply_to=event.message.id,
+                )
+        else:
+            await event.reply("**Tidak dapat menemukan foto untuk dikirim sebagai grup.**")
 #        await event.client.delete_messages(
 #                Toanime.chat_id,
 
