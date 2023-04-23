@@ -22,7 +22,7 @@ from . import ayra_cmd
 
 
 class OpenAi:
-    def text(self, question):
+    def text(question):
         openai.api_key = udB.get_key("OPENAI_API")
         response = openai.Completion.create(
             model="text-davinci-003",
@@ -35,7 +35,7 @@ class OpenAi:
         )
         return response.choices[0].text
 
-    def photo(self, question):
+    def photo(question):
         openai.api_key = udB.get_key("OPENAI_API")
         response = openai.Image.create(prompt=question, n=1, size="1024x1024")
         return response["data"][0]["url"]
@@ -49,7 +49,22 @@ async def openai(event):
         return
     msg = await event.eor("`Processing...`")
     try:
-        response = OpenAi.text(question)
+        response = OpenAi.text(event.pattern_match.group(1).strip()
         await msg.edit(f"**Q:** {question}\n\n**A:** {response}")
     except Exception as e:
         await msg.edit(f"**Q:** {question}\n\n**A:** `Error: {e}`")
+
+
+@ayra_cmd(pattern="img( (.*)|$)")
+async def imge(event):
+    question = event.pattern_match.group(2)
+    if not question:
+        await event.eor("`Mohon berikan pertanyaan untuk menggunakan AI.`")
+        return
+    msg = await event.eor("`Processing...`")
+    try:
+        response = OpenAi.photo(event.pattern_match.group(1).strip()
+        await event.client.send_photo(event.chat_id, response, reply_to=event.message.id)
+        await msg.delete()
+    except Exception as error:
+        await event.eor(error)
