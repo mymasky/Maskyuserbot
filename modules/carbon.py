@@ -216,7 +216,7 @@ async def crbn(event):
         except IndexError:
             return await eor(xxxx, get_string("carbon_2"), time=30
                              )
-    xx = await Carbon(code)
+    xx = await make_carbon(code)
     await xxxx.delete()
     await event.reply(get_string("carbon_1").format(from_user),
                       file=xx,
