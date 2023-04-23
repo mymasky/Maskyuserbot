@@ -19,8 +19,6 @@ from asyncio import gather
 from io import *
 from . import *
 
-Error: OpenAi.text() takes 1 positional argument but 2 were given
-
 class OpenAi:
     def text(self, question):
         OPENAI_API = udB.get_key("OPENAI_API")
