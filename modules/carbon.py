@@ -18,7 +18,7 @@ from telethon.utils import get_display_name
 from io import BytesIO
 import aiohttp
 from secrets import choice
-from . import eor, get_string, ayra_cmd, async_searcher
+from . import eor, get_string, ayra_cmd
 
 def vcmention(user):
     full_name = get_display_name(user)
@@ -177,39 +177,20 @@ all_col = [
     "White",
 ]
 
-async def Carbon(
-    code,
-    base_url="https://rayso-api-desvhu-33.koyeb.app/generate",
-    file_name="ayra",
-    download=False,
-    rayso=False,
-    **kwargs,
-):
-    # if rayso:
-    kwargs["text"] = code
-    kwargs["theme"] = kwargs.get("theme", "meadow")
-    kwargs["darkMode"] = kwargs.get("darkMode", True)
-    kwargs["title"] = kwargs.get("title", "Ayra")
-    # else:
-    #    kwargs["code"] = code
-    con = await async_searcher(base_url, post=True, json=kwargs, re_content=True)
-    if not download:
-        file = BytesIO(con)
-        file.name = file_name + ".jpg"
-    else:
-        file = file_name + ".jpg"
-        with open(file, "wb") as f:
-            f.write(con)
-    return file
-    
-    
+
+async def make_carbon(code):
+    url = "https://carbonara.solopov.dev/api/cook"
+    async with ClientSession().post(url, json={"code": code}) as resp:
+        image = BytesIO(await resp.read())
+    image.name = "carbon.png"
+    return image
+
+
 def vcmention(user):
     full_name = get_display_name(user)
     if not isinstance(user, types.User):
         return full_name
     return f"[{full_name}](tg://user?id={user.id})"
-
-
 
 
 
@@ -236,38 +217,6 @@ async def crbn(event):
                              )
     xx = await Carbon(code=code, file_name="carbon_ayiin", backgroundColor=col)
     await xxxx.delete()
-    await event.reply(get_string("carbon_1").format(from_user),
-                      file=xx,
-                      )
-
-
-@ayra_cmd(pattern="ccarbon ?(.*)")
-async def ccrbn(event):
-    from_user = vcmention(event.sender)
-    match = event.pattern_match.group(1).strip()
-    if not match:
-        return await eor(event, get_string("carbon_3")
-                         )
-    msg = await eor(event, get_string("com_1"))
-    if event.reply_to_msg_id:
-        temp = await event.get_reply_message()
-        if temp.media:
-            b = await event.client.download_media(temp)
-            with open(b) as a:
-                code = a.read()
-            os.remove(b)
-        else:
-            code = temp.message
-    else:
-        try:
-            match = match.split(" ", maxsplit=1)
-            code = match[1]
-            match = match[0]
-        except IndexError:
-            return await eor(msg, get_string("carbon_2"), time=30
-                             )
-    xx = await Carbon(code=code, backgroundColor=match)
-    await msg.delete()
     await event.reply(get_string("carbon_1").format(from_user),
                       file=xx,
                       )
