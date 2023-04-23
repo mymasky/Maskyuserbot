@@ -18,10 +18,9 @@ async def cek(event):
     url = f"http://muslimsalat.com/{LOKASI}.json?key=bd099c5825cbedb9aa934e255a81a5fc"
     request = requests.get(url)
     if request.status_code != 200:
-        return await eor(event, get_string("adzan1").format(LOKASI), time=120
-                               )
+        return await eor(event, get_string("adzan1").format(LOKASI))
     result = json.loads(request.text)
-    catresult = f"<b>Jadwal Shalat Hari Ini:</b>\
+    catresult = f"""<b>Jadwal Shalat Hari Ini:</b>\
             \n<b>📆 Tanggal </b><code>{result['items'][0]['date_for']}</code>\
             \n<b>📍 Kota</b> <code>{result['query']}</code> | <code>{result['country']}</code>\
             \n\n<b>Terbit  : </b><code>{result['items'][0]['shurooq']}</code>\
@@ -30,5 +29,5 @@ async def cek(event):
             \n<b>Ashar  : </b><code>{result['items'][0]['asr']}</code>\
             \n<b>Maghrib : </b><code>{result['items'][0]['maghrib']}</code>\
             \n<b>Isya : </b><code>{result['items'][0]['isha']}</code>\
-    "
-    await eor(event, catresult, "html")
+    """
+    await eor(event, catresult)
