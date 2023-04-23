@@ -63,10 +63,16 @@ from . import (
 )
 from ._inline import something
 
+
+def black_aja():
+    return udB.get_key("GBLACKLISTS") or {}
+
+
 def list_bl(chat):
-    ok = get_stuff()
+    ok = black_aja()
     if ok.get(int(chat)):
         return "".join(f"**๏ {z}**\n" for z in ok[chat])
+
 
 @ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gcast(event):
