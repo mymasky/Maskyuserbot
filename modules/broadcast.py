@@ -208,7 +208,7 @@ async def ungblacker(event):
 
 @ayra_cmd(pattern="blchat")
 async def chatbl(event):
-    for x in event.client.iter_dialogs():
+    async for x in event.client.iter_dialogs():
         if x.is_group:
             id = x.id
     x = list_bl(id)
