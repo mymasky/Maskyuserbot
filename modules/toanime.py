@@ -16,7 +16,7 @@
 
 import asyncio
 import time
-from telethon.tl.types import
+
 from telethon.tl.functions.contacts import (
     BlockRequest,
     GetBlockedRequest,
