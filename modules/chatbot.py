@@ -10,14 +10,15 @@
 ๏ **Perintah:** `ai` <balas pesan/berikan pertanyaan>
 ◉ **Keterangan:** Sangat berguna untuk kebutuhan.
 """
+import io
+from io import *
 import os
 import requests
 import openai
 import shutil
-from telethon.errors import MessageNotModifiedError
 from asyncio import gather
-from io import *
-from . import *
+from telethon.errors import MessageNotModifiedError
+from . import ayra_cmd
 
 
 class OpenAi:
@@ -48,7 +49,7 @@ async def openai(event):
         return
     msg = await event.eor("`Processing...`")
     try:
-        response = OpenAi().text(question)
+        response = OpenAi.text(question)
         await msg.edit(f"**Q:** {question}\n\n**A:** {response}")
     except Exception as e:
         await msg.edit(f"**Q:** {question}\n\n**A:** `Error: {e}`")
