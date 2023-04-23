@@ -56,6 +56,7 @@ from . import (
     inline_mention,
     ayra_bot,
     ayra_cmd,
+    udB,
 )
 from ._inline import something
 
@@ -89,7 +90,7 @@ async def gcast(event):
     for x in dialog:
         if x.is_group:
             chat = x.entity.id
-            chat_blacklist = get_stuff()
+            chat_blacklist = udB.get_key("GBLACKLISTS")
             if (
                 chat not in chat_blacklist and
                 chat not in NOSPAM_CHAT and
