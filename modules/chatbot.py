@@ -18,29 +18,39 @@ from telethon.errors import MessageNotModifiedError
 from asyncio import gather
 from io import *
 from . import *
-from .database.ai import *
 
+
+class OpenAi:
+    def text(question):
+        OPENAI_API = udB.get_key("OPENAI_API")
+        response = openai.Completion.create(
+            model="text-davinci-003",
+            prompt=f"Q: {question}\nA:",
+            temperature=0,
+            max_tokens=500,
+            top_p=1.0,
+            frequency_penalty=0.0,
+            presence_penalty=0.0,
+            api_key=OPENAI_API
+        )
+        return response.choices[0].text
+
+    def photo(question):
+        OPENAI_API = udB.get_key("OPENAI_API")
+        api_key=OPENAI_API
+        response = openai.Image.create(prompt=question, n=1, size="1024x1024")
+        return response["data"][0]["url"]
+        
 
 @ayra_cmd(pattern="ai( (.*)|$)")
 async def openai(event):
-    OPENAI_API = "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"
-    question = event.message.text.split(" ", maxsplit=1)[1]
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {OPENAI_API}",
-    }
-
-    json_data = {
-        "model": "text-davinci-003",
-        "prompt": question,
-        "max_tokens": 500,
-        "temperature": 0,
-    }
+    question = event.pattern_match.group(2)
+    if not question:
+        await event.eor("`Mohon berikan pertanyaan untuk menggunakan AI.`")
+        return
     msg = await event.eor("`Processing...`")
     try:
-        response = (await requests.post("https://api.openai.com/v1/completions", headers=headers, json=json_data)).json()
-        await msg.edit(response["choices"][0]["text"])
-    except MessageNotModifiedError:
-        pass
-    except Exception:
-        await msg.eor("`Data tidak ditemukan, pastikan OPENAI_API valid...`")
+        response = OpenAi().text(question)
+        await msg.edit(f"**Q:** {question}\n\n**A:** {response}")
+    except Exception as e:
+        await msg.edit(f"**Q:** {question}\n\n**A:** `Error: {e}`")
