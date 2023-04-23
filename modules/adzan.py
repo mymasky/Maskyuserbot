@@ -20,14 +20,15 @@ async def cek(event):
     if request.status_code != 200:
         return await eor(event, get_string("adzan1").format(LOKASI))
     result = json.loads(request.text)
-    catresult = f"""<b>Jadwal Shalat Hari Ini:</b>\
-            \n<b>📆 Tanggal </b><code>{result['items'][0]['date_for']}</code>\
-            \n<b>📍 Kota</b> <code>{result['query']}</code> | <code>{result['country']}</code>\
-            \n\n<b>Terbit  : </b><code>{result['items'][0]['shurooq']}</code>\
-            \n<b>Subuh : </b><code>{result['items'][0]['fajr']}</code>\
-            \n<b>Zuhur  : </b><code>{result['items'][0]['dhuhr']}</code>\
-            \n<b>Ashar  : </b><code>{result['items'][0]['asr']}</code>\
-            \n<b>Maghrib : </b><code>{result['items'][0]['maghrib']}</code>\
-            \n<b>Isya : </b><code>{result['items'][0]['isha']}</code>\
+    catresult = f"""
+<b>Jadwal Shalat Hari Ini:</b>
+<b>📆 Tanggal </b><code>{result['items'][0]['date_for']}</code>
+<b>📍 Kota</b> <code>{result['query']}</code> | <code>{result['country']}</code>
+<b>Terbit  : </b><code>{result['items'][0]['shurooq']}</code>
+<b>Subuh : </b><code>{result['items'][0]['fajr']}</code>
+<b>Zuhur  : </b><code>{result['items'][0]['dhuhr']}</code>
+<b>Ashar  : </b><code>{result['items'][0]['asr']}</code>
+<b>Maghrib : </b><code>{result['items'][0]['maghrib']}</code>
+<b>Isya : </b><code>{result['items'][0]['isha']}</code>
     """
     await eor(event, catresult)
