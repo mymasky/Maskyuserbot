@@ -288,7 +288,7 @@ async def abs_rmbg(event):
     RMBG_API = udB.get_key("RMBG_API")
     if not RMBG_API:
         return await event.eor(
-            "Ambil RMBG_API Anda [Disini](https://www.remove.bg/) kemudian ketik {HNDLR}setdb RMBG_API <api_key>.",
+            "Ambil RMBG_API Anda [Disini](https://www.remove.bg/) kemudian ketik setdb RMBG_API <api_key>.",
         )
     match = event.pattern_match.group(1).strip()
     reply = await event.get_reply_message()
@@ -301,7 +301,7 @@ async def abs_rmbg(event):
             dl = await reply.download_media()
     else:
         return await eod(
-            event, f"Gunakan format : `{HNDLR}rmbg` <balas ke foto>."
+            event, f"Gunakan format : `rmbg` <balas ke foto>."
         )
     if not (dl and dl.endswith(("webp", "jpg", "png", "jpeg"))):
         os.remove(dl)
