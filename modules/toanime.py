@@ -24,6 +24,24 @@ from telethon.tl.functions.contacts import (
 )
 from . import *
 
+
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/Ayra/_misc/_decorators.py", line 113, in wrapp
+    await dec(ay)
+  File "/root/Ayra/modules/toanime.py", line 42, in convert_image
+    await event.client.send_file(
+  File "/usr/local/lib/python3.10/dist-packages/telethon/client/uploads.py", line 364, in send_file
+    result += await self._send_album(
+  File "/usr/local/lib/python3.10/dist-packages/telethon/client/uploads.py", line 484, in _send_album
+    result = await self(request)
+  File "/usr/local/lib/python3.10/dist-packages/telethon/client/users.py", line 32, in __call__
+    return await self._call(self._sender, request, ordered=ordered)
+  File "/usr/local/lib/python3.10/dist-packages/telethon/client/users.py", line 92, in _call
+    result = await future
+telethon.errors.rpcerrorlist.MediaEmptyError: The provided media object is invalid or the current account may not be able to send it (such as games as users) (caused by SendMultiMediaRequest)
+
+
 @ayra_cmd(pattern="toanime")
 async def convert_image(event):
     if not event.reply_to_msg_id:
@@ -41,7 +59,7 @@ async def convert_image(event):
             get_photo.append(InputMediaPhoto(Toanime.photo))
         await event.client.send_file(
             event.chat_id,
-            get_photo,
+            file=get_photo,
             reply_to=event.message.id,
         )
         await event.client.delete_messages(
