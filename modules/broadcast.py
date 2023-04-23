@@ -12,6 +12,12 @@
 
 ๏ **Perintah:** `gucast`
 ◉ **Keterangan:** Kirim pesan ke semua pengguna pribadi.
+
+๏ **Perintah:** `addbl`
+◉ **Keterangan:** Tambahkan grup ke dalam anti gcast.
+
+๏ **Perintah:** `delbl`
+◉ **Keterangan:** Hapus grup dari daftar anti gcast.
 """
 import asyncio
 import os
@@ -209,6 +215,7 @@ async def gblacker(event, type_):
         chat_id = event.chat_id
     if type_ == "add":
         add_gblacklist(chat_id)
+        await event.eor(f"Ditambahkan ke BLGCAST: \n{type_}ed
     elif type_ == "remove":
         rem_gblacklist(chat_id)
-    await event.eor(f"Global Broadcasts: \n{type_}ed {chat_id}")
+        await event.eor(f"Dihapus dari BLGCAST: \n{type_}ed {chat_id}")
