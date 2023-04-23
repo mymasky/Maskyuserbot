@@ -67,10 +67,10 @@ from ._inline import something
 def black_aja():
     return udB.get_key("GBLACKLISTS") or {}
 
-def list_bl(chat):
+def list_bl(id):
     ok = black_aja()
-    if str(chat) in ok:
-        return "".join(f"**๏ {z}**\n" for z in ok[str(chat)])
+    if id in ok:
+        return "".join(f"**๏ {z}**\n" for z in ok[]
 
 @ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gcast(event):
@@ -208,8 +208,8 @@ async def ungblacker(event):
 
 @ayra_cmd(pattern="blchat")
 async def chatbl(event):
-    chat = event.chat_id
-    x = list_bl(chat)
+    id = event.chat_id
+    x = list_bl(id)
     if x:
         sd = "**❏ Daftar Blacklist Gcast**\n\n"
         return await event.eor(sd + x)
