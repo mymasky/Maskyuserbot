@@ -1,6 +1,6 @@
-# Important Requirements here.
-
+httpx[http2]
 aiohttp
+httpx
 https://github.com/New-dev0/Telethon/archive/diamond.zip
 python-decouple
 pymongo
@@ -29,7 +29,6 @@ pyrogram
 py-Ayra==8.2.8
 akinator
 apscheduler
-aiohttp
 beautifulsoup4
 bs4
 colour
