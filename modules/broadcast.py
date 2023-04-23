@@ -41,6 +41,7 @@ from Ayra.dB.gcast_blacklist_db import (
     add_gblacklist,
     is_gblacklisted,
     rem_gblacklist,
+    get_stuff,
 )
 from Ayra.fns.tools import create_tl_btn, format_btn, get_msg_button
 
@@ -88,8 +89,9 @@ async def gcast(event):
     for x in dialog:
         if x.is_group:
             chat = x.entity.id
+            chat_blacklist = get_stuff()
             if (
-                chat not in is_gblacklisted(chat) and
+                chat not in chat_blacklist and
                 chat not in NOSPAM_CHAT and
                 (
                   event.text[2:7] != "admin" or
