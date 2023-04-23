@@ -208,13 +208,13 @@ async def chatbl(event):
 
 
 async def gblacker(event, type_):
-    try:
-        chat_id = int(event.text.split(maxsplit=1)[1])
-        try:
-            chat_id = (await event.client.get_entity(chat_id)).id
-        except Exception as e:
-            return await event.eor(f"**ERROR**\n`{str(e)}`")
-    except IndexError:
+    args = event.text.split()
+    if len(args) > 2:
+        return await event.eor("**Gunakan Format:**\n `delbl` or `addbl`")
+    chat_id = None
+    if len(args) == 2:
+        chat_id = int(args[1])
+    else:
         chat_id = event.chat_id
     if type_ == "add":
         add_gblacklist(chat_id)
