@@ -49,7 +49,7 @@ async def _(e):
         return await xx.edit(f"Error: `{y}`")
     with open("neo.txt", "r") as neo:
         p = (neo.read()).replace("\n\n", "")
-    haa = await make_carbon(code)
+    haa = await make_carbon(p)
     await e.reply(file=haa)
     await xx.delete()
     remove("neo.txt")
@@ -79,7 +79,7 @@ async def _(event):
             or event.chat.creator
             or event.chat.default_banned_rights.embed_links
         ):
-            li = await make_carbon(code)
+            li = await make_carbon(stdout)
             url = f"https://graph.org{uf(li)[-1]}"
             OUT = f"[\xad]({url}){OUT}"
             out = "**• OUTPUT:**"
