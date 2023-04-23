@@ -1,5 +1,6 @@
 httpx[http2]
 aiohttp
+openai
 httpx
 https://github.com/New-dev0/Telethon/archive/diamond.zip
 python-decouple
