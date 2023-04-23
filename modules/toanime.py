@@ -16,7 +16,7 @@
 
 import asyncio
 import time
-
+from telethon.tl.types import *
 from telethon.tl.functions.contacts import (
     BlockRequest,
     GetBlockedRequest,
@@ -44,3 +44,7 @@ async def convert_image(event):
             get_photo,
             reply_to=event.message.id,
         )
+        await event.client.delete_messages(
+                Toanime.chat_id,
+                ba.id,
+            )
