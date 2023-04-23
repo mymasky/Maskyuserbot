@@ -24,7 +24,7 @@ from .database.ai import *
 @ayra_cmd(pattern="ai( (.*)|$)")
 async def openai(event):
     OPENAI_API = "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"
-    question = event.pattern_match.group(2)
+    question = event.message.text.split(" ", maxsplit=1)[1]
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {OPENAI_API}",
