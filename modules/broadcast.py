@@ -60,6 +60,7 @@ from . import (
 from ._inline import something
 
 
+
 @ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gcast(event):
     text, btn, reply = "", None, None
@@ -89,7 +90,7 @@ async def gcast(event):
     for x in dialog:
         if x.is_group:
             chat = x.entity.id
-            if chat
+            if chat:
                 not in is_gblacklisted(chat)
                 and not in NOSPAM_CHAT
                 and (event.text[2:7] != "admin" or (x.entity.admin_rights or x.entity.creator)):
