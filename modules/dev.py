@@ -15,6 +15,7 @@ from pprint import pprint
 
 from telethon.utils import get_display_name
 from Ayra import _ignore_eval
+from .anu import *
 
 from . import *
 
@@ -48,7 +49,7 @@ async def _(e):
         return await xx.edit(f"Error: `{y}`")
     with open("neo.txt", "r") as neo:
         p = (neo.read()).replace("\n\n", "")
-    haa = await Carbon(code=p, file_name="neofetch", backgroundColor=choice(all_col))
+    haa = await make_carbon(code)
     await e.reply(file=haa)
     await xx.delete()
     remove("neo.txt")
@@ -78,12 +79,7 @@ async def _(event):
             or event.chat.creator
             or event.chat.default_banned_rights.embed_links
         ):
-            li = await Carbon(
-                code=stdout,
-                file_name="bash",
-                download=True,
-                backgroundColor=choice(all_col),
-            )
+            li = await make_carbon(code)
             url = f"https://graph.org{uf(li)[-1]}"
             OUT = f"[\xad]({url}){OUT}"
             out = "**• OUTPUT:**"
