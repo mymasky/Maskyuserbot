@@ -16,7 +16,12 @@
 
 import asyncio
 import time
-from telethon.tl.types import *
+from telethon.tl.types import
+from telethon.tl.functions.contacts import (
+    BlockRequest,
+    GetBlockedRequest,
+    UnblockRequest,
+)
 from . import *
 
 @ayra_cmd(pattern="toanime")
