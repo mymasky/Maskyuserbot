@@ -70,7 +70,7 @@ def black_aja():
 def list_bl(id):
     ok = black_aja()
     if id in ok:
-        return "".join(f"**๏ {z}**\n" for z in ok[]
+        return "".join(f"**๏ {z}**\n" for z in ok[])
 
 @ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gcast(event):
