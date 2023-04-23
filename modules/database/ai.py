@@ -1,10 +1,10 @@
 
 import openai
-
+from .. import udB
 
 class OpenAi:
     def text(self, question):
-        OPENAI_API = "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"
+        OPENAI_API = udB.get_key("OPENAI_API")
         openai.api_key = OPENAI_API
         response = openai.Completion.create(
             model="text-davinci-003",
@@ -18,6 +18,7 @@ class OpenAi:
         return response.choices[0].text
 
     def photo(self, question):
+        OPENAI_API = udB.get_key("OPENAI_API")
         openai.api_key = OPENAI_API
         response = openai.Image.create(prompt=question, n=1, size="1024x")
         return response["data"][0]["url"]
