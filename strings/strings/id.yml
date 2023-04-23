@@ -484,7 +484,7 @@ prof_2: "`Menghapus Obrolan Ini dari Pemfilteran Kata-Kata Tidak Senonoh!`"
 
 # notes
 notes_1: "`Gunakan Perintah ini dengan Balasan dan kata untuk menggunakan catatan.`"
-notes_2: "Berhasil Menyimpan Catatan `#{}`"
+notes_2: "Berhasil Menyimpan Catatan `{}`"
 notes_3: "`Beri saya handler catatan yang ingin Anda hapus.`"
 notes_4: "Catatan Yang Ditemukan Dalam Obrolan Ini\n\n"
 notes_5: "Tidak Ada Catatan Yang Ditemukan Di Sini"
