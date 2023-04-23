@@ -7,7 +7,7 @@
 """
 ✘ **Bantuan Untuk Fonts**
 
-๏ **Perintah:** `font`
+๏ **Perintah:** `font` <balas ke pesan>
 ◉ **Keterangan:** Buat teks dengan kostum font.
 """
 
