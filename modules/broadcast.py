@@ -90,10 +90,7 @@ async def gcast(event):
     for x in dialog:
         if x.is_group:
             chat = x.entity.id
-            if chat:
-                not in is_gblacklisted(chat)
-                and not in NOSPAM_CHAT
-                and (event.text[2:7] != "admin" or (x.entity.admin_rights or x.entity.creator)):
+            if chat not in is_gblacklisted(chat) and not in NOSPAM_CHAT and (event.text[2:7] != "admin" or (x.entity.admin_rights or x.entity.creator)):
                 try:
                     if btn:
                         bt = create_tl_btn(btn)
