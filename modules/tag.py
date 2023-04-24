@@ -58,40 +58,30 @@ async def _(event):
         if event.reply_to_msg_id:
             msg = await event.get_reply_message()
             participants = [msg.sender]
-            if text:
-                text = f"{text}\n\n"
         else:
             participants = await event.client.get_participants(chat)
+        tags = []
         jumlah = []
         for participant in participants:
             if not FlagContainer.is_active:
                 break
+            tags.append(f"👤 [{participant.first_name}](tg://user?id={participant.id})\n")
             jumlah.append(participant)
             if len(jumlah) == 5:
-                tags = list(
-                    map(
-                        lambda m: f"👤 [{m.first_name}](tg://user?id={m.id})\n",
-                        jumlah,
-                    ),
-                )
                 if text:
-                    tags.insert(0, text)
+                    tags.append(text)
                 await event.client.send_message(event.chat_id, "".join(tags))
                 await asyncio.sleep(2)
+                tags = []
                 jumlah = []
         if len(jumlah) > 0:
-            tags = list(
-                map(
-                    lambda m: f"👤 [{m.first_name}](tg://user?id={m.id})\n",
-                    jumlah,
-                ),
-            )
             if text:
-                tags.insert(0, text)
+                tags.append(text)
             await event.client.send_message(event.chat_id, "".join(tags))
             await asyncio.sleep(2)
     finally:
         FlagContainer.is_active = False
+
 
 
 
