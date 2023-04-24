@@ -53,7 +53,7 @@ def user_list(l, n):
     groups_only=True,
 )
 async def _(e):
-    chat = event.chat_id
+    chat = e.chat_id
     try:
         ajg = await e.eor("`Processing...`")
         await e.client(stopvc(await get_call(e)))
@@ -69,7 +69,7 @@ async def _(e):
     groups_only=True,
 )
 async def _(e):
-    chat = event.chat_id
+    chat = e.chat_id
     try:
         ajg = await e.eor("`Processing...`")
         await e.client(startvc(e.chat_id))
