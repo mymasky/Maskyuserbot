@@ -41,7 +41,7 @@ async def imge(event):
     msg = await event.eor("`Processing...`")
     try:
         response = OpenAi().photo(question)
-        await event.client.send_photo(event.chat_id, response, reply_to=event.message.id)
+        await event.client.send_file(event.chat_id, response, reply_to=event.message.id)
         await msg.delete()
     except Exception as error:
         await event.eor(str(error))
