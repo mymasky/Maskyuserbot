@@ -452,7 +452,7 @@ async def _(event):
     await eor(event, "`mf g dl` **ミ(ノ;_ _)ノ=3** ")
 
 
-@register(outgoing=True, pattern=r"^cinta(?: |$)(.*)")
+@ayra_cmd(pattern=r"^cinta(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
