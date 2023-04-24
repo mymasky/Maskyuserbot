@@ -5,7 +5,21 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
+
+
+import aiofiles
+import aiohttp
 import asyncio
+import hashlib
+import os
+import os.path
+import re
+import shlex
+import time
+from os.path import basename
+from typing import Optional, Tuple, Union
+from urllib.request import urlretrieve
+
 import os
 import re
 import traceback
@@ -76,6 +90,21 @@ STUFF = {}
 # Feel Free to Add Any other...
 
 NOSPAM_CHAT = [-1001599474353, -1001692751821, -1001473548283, -1001459812644, -1001433238829, -1001476936696, -1001327032795, -1001294181499, -1001419516987, -1001209432070, -1001296934585, -1001481357570, -1001459701099, -1001109837870, -1001485393652, -1001354786862, -1001109500936, -1001387666944, -1001390552926, -1001752592753, -1001777428244, -1001771438298, -1001287188817, -1001812143750, -1001883961446, -1001753840975, -1001896051491, -1001578091827, -1001284445583]
+
+async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
+    """run command in terminal"""
+    args = shlex.split(cmd)
+    process = await asyncio.create_subprocess_exec(
+        *args, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+    )
+    stdout, stderr = await process.communicate()
+    return (
+        stdout.decode("utf-8", "replace").strip(),
+        stderr.decode("utf-8", "replace").strip(),
+        process.returncode,
+        process.pid,
+    )
+
 
 KANGING_STR = [
     "Plagiat hehe...",
