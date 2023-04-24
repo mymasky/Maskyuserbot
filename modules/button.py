@@ -6,8 +6,8 @@ from telegraph import upload_file as uf
 from telethon.utils import pack_bot_file_id
 from telethon import Button
 from . import HNDLR, get_string, mediainfo, ayra_cmd
-from ._inline import something
 
+from ._inline import something
 
 def get_msg_button(texts: str):
     btn = []
@@ -20,13 +20,20 @@ def get_msg_button(texts: str):
         txt = txt.replace(z, "")
 
     return txt.strip(), btn
-
+    
+    
 def create_tl_btn(button: list):
     btn = []
     for z in button:
-        kk = [Button.url(x, y.strip()) for x, y in z]
-        btn.append(kk)
+        if len(z) > 1:
+            kk = [Button.url(*x.strip().split("|")) for x in z]
+            btn.append(kk)
+        else:
+            kk = [Button.url(*z[0][1].strip().split("|"))]
+            btn.append(kk)
     return btn
+
+
 
 def format_btn(buttons: list):
     txt = ""
