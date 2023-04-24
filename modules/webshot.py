@@ -9,9 +9,6 @@
 
 ๏ **Perintah:** `webshot` <link>
 ◉ **Keterangan:** Dapatkan screenshot dari link tersebut
-
-๏ **Perintah:** `image` <berikan teks/balas file>
-◉ **Keterangan:** Jadikan sebuah gambar.
 """
 
 import asyncio
