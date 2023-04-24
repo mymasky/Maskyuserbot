@@ -65,6 +65,7 @@ from ._inline import something
 
 @ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gcast(event):
+    chat_blacklist = None
     text, btn, reply = "", None, None
     if xx := event.pattern_match.group(2):
         msg, btn = get_msg_button(event.text.split(maxsplit=1)[1])
@@ -89,7 +90,7 @@ async def gcast(event):
             chat = x.id
             chat_blacklist = udB.get_key("GBLACKLISTS")
             if (
-                chat not in is_gblacklisted(chat) and
+                chat not in chat_blacklist and
                 chat not in NOSPAM_CHAT and
                 (
                   event.text[2:7] != "admin" or
