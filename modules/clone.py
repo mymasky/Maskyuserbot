@@ -40,7 +40,7 @@ async def impostor(event):
         return
     xx = await eor(event, "**Ni GC Support Anjeng**")
     if "restore" in Ajg:
-        await eor(event, ("`Processing...`")
+        await eor(event, "`Processing...`")
         if not STORAGE.userObj:
             return await xx.edit("**Anda Harus Mengclone Dia Dulu Sebelum Kembali **")
         await updateProfile(event, STORAGE.userObj, restore=True)
