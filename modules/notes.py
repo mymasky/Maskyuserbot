@@ -23,6 +23,7 @@
 ◉ **Contoh:**
 Kirim ke
 [Dana|https://link.dana]
+[Qris|https://link.qris|same]
 """
 import os
 
