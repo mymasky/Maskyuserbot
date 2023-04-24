@@ -53,11 +53,14 @@ def user_list(l, n):
     groups_only=True,
 )
 async def _(e):
+    chat = event.chat_id
     try:
+        ajg = await e.eor("`Processing...`")
         await e.client(stopvc(await get_call(e)))
-        await e.eor(get_string("vct_4"))
+        await asyncio.sleep(1)
+        await ajg.edit(f"**❏ Obrolan Suara Diakhiri**\n**└ Chat ID** : `{chat}`")
     except Exception as ex:
-        await e.eor(f"`{ex}`")
+        await ajg.edit(f"`{ex}`")
 
 
 @ayra_cmd(
@@ -66,12 +69,14 @@ async def _(e):
     groups_only=True,
 )
 async def _(e):
+    chat = event.chat_id
     try:
+        ajg = await e.eor("`Processing...`")
         await e.client(startvc(e.chat_id))
         await asyncio.sleep(1)
-        await e.eor(get_string("vct_1"))
+        await ajg.edit(f"**❏ Obrolan Suara Aktif**\n**└ Chat ID** : `{chat}`")
     except Exception as ex:
-        await e.eor(f"`{ex}`")
+        await ajg.edit(f"`{ex}`")
 
 @ayra_cmd(
     pattern="[vV][c][t][i][t][l][e](?: |$)(.*)",
