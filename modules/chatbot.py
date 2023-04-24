@@ -7,8 +7,11 @@
 """
 ✘ **Bantuan Untuk Chatbot**
 
-๏ **Perintah:** `ai` <balas pesan/berikan pertanyaan>
+๏ **Perintah:** `ai` <berikan pertanyaan>
 ◉ **Keterangan:** Sangat berguna untuk kebutuhan.
+
+๏ **Perintah:** `img` <query>
+◉ **Keterangan:** Mencari gambar menggunakan ai.
 """
 
 from telethon.errors import MessageNotModifiedError
