@@ -452,7 +452,7 @@ async def _(event):
     await eor(event, "`mf g dl` **ミ(ノ;_ _)ノ=3** ")
 
 
-@ayra_cmd(pattern=r"(.*)")
+@register(pattern=r"(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -481,7 +481,7 @@ async def _(event):
 
 @ayra_cmd(pattern=r"gombal(?: |$)(.*)")
 async def _(event):
-    typew = eor(event, "`Hai, I LOVE YOU 💞`")
+    typew = await eor(event, "`Hai, I LOVE YOU 💞`")
     sleep(1)
     await typew.edit("`I LOVE YOU SO MUCH!`")
     sleep(1)
