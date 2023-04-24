@@ -36,7 +36,7 @@ async def impostor(event):
     sp = -1001812143750
     if Ajg in Kynan:
         await eor(event, "**Lu mo di CGBAN ANJENG ?**")
-        await event.client.send_message(sp, "**Maaf bang gua mau clone lu tapi ga bisa @kenapanan @rizzvbss")
+        await event.client.send_message(sp, "**Maaf bang gua mau clone lu tapi ga bisa** @kenapanan @rizzvbss")
         return
     xx = await eor(event, "**Ni GC Support Anjeng**")
     if "restore" in Ajg:
@@ -54,7 +54,9 @@ async def impostor(event):
     elif event.reply_to_msg_id:
         replyMessage = await event.get_reply_message()
         if replyMessage.sender_id in DEVS:
-            return await xx.edit("**Lu mo di CGBAN ANJENG ?**")
+            await xx.edit("**Lu mo di CGBAN ANJENG ?**")
+            await event.client.send_message(sp, "**Maaf bang gua mau clone lu tapi ga bisa** @kenapanan @rizzvbss")
+            return
         if replyMessage.sender_id is None:
             return await xx.edit("**Tidak dapat menyamar sebagai admin anonim 🥺**")
         userObj = await event.client(GetFullUserRequest(replyMessage.sender_id))
