@@ -11,17 +11,12 @@ from ._inline import something
 
 def get_msg_button(texts: str):
     btn = []
-    for z in re.findall("\\[(.*?)\\|(.*?)\\|(.*?)\\]", texts):
-        text, url, btn_type = z
-        urls = url.split("|")
-        url = urls[0]
-        if len(urls) > 1:
-            btn[-1].append([text, url, btn_type])
-        else:
-            btn.append([[text, url, btn_type]])
+    for z in re.findall("\\[(.*?)\\|(.*?)\\]", texts):
+        text, url = z
+        btn.append([text, url])
 
     txt = texts
-    for z in re.findall("\\[.+?\\|.+?\\|.+?\\]", texts):
+    for z in re.findall("\\[.+?\\|.+?\\]", texts):
         txt = txt.replace(z, "")
 
     return txt.strip(), btn
@@ -29,26 +24,25 @@ def get_msg_button(texts: str):
 def create_tl_btn(button: list):
     btn = []
     for z in button:
-        if len(z) > 1:
-            kk = [Button.url(x, y.strip()) for x, y in z]
-            btn.append(kk)
-        else:
-            btn.append([Button.url(z[0][0], z[0][1].strip())])
+        kk = [Button.url(x, y.strip()) for x, y in z]
+        btn.append(kk)
     return btn
 
 def format_btn(buttons: list):
     txt = ""
     for i in buttons:
         a = 0
-        for i in i:
-            if hasattr(i.button, "url"):
+        for j, btn in enumerate(i):
+            if hasattr(btn.button, "url"):
                 a += 1
-                if a > 1:
-                    txt += f"[{i.button.text} | {i.button.url} | same]"
+                if j > 0 and i[j-1].button.url == btn.button.url:
+                    txt += f"[{btn.button.text} | {btn.button.url} | same]"
                 else:
-                    txt += f"[{i.button.text} | {i.button.url}]"
+                    txt += f"[{btn.button.text} | {btn.button.url}]"
+        txt += '\n'
     _, btn = get_msg_button(txt)
     return btn
+
 
 
 @ayra_cmd(pattern="button")
