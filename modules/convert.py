@@ -44,6 +44,11 @@
 import os
 import time
 import random
+import asyncio
+import io
+import os
+
+from PIL import Image
 
 try:
     import cv2
