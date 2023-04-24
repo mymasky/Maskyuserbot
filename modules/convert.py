@@ -173,7 +173,7 @@ async def cevir(event):
             os.remove(indir)
             os.remove("output.mp3")
         else:
-            await xxx.edit("**Efek tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** `bengek/robot/jedug/fast/echo")
+            await xxx.eor("**Efek tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** `bengek/robot/jedug/fast/echo")
     elif ajg == "mp3":
         rep_msg = await event.get_reply_message()
         if not event.is_reply or not rep_msg.video:
@@ -185,7 +185,7 @@ async def cevir(event):
             f"ffmpeg -y -i '{video}' -vn -b:a 128k -c:a libmp3lame out.mp3"
         )
         await gif.communicate()
-        await xx.edit("**Efek yang Anda tentukan tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** `bengek/robot/jedug/fast/echo`")
+        await xx.eor("**Efek yang Anda tentukan tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** `bengek/robot/jedug/fast/echo`")
         try:
             await event.client.send_file(
                 event.chat_id,
@@ -195,12 +195,12 @@ async def cevir(event):
             )
         except BaseException:
             os.remove(video)
-            return await xx.edit("**Gagal Convert...**")
+            return await xx.eor("**Gagal Convert...**")
         await xx.delete()
         os.remove("out.mp3")
         os.remove(video)
     else:
-        await xx.edit("**Perintah tidak diketahui! ketik** `{}help convert` **bila butuh bantuan**")
+        await xx.eor("**Perintah tidak diketahui! ketik** `{}help convert` **bila butuh bantuan**")
         return
 
 
