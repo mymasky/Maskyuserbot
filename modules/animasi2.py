@@ -65,7 +65,7 @@ async def koc(e):
 
 @ayra_cmd(pattern="huh(?: |$)(.*)")
 async def _(event):
-    aa = await edit_or_reply(event, "`\n(\\_/)`"
+    aa = await eor(event, "`\n(\\_/)`"
                              "`\n(●_●)`"
                              "`\n />❤️ **Ini Buat Kamu**`")
     sleep(3)
