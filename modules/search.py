@@ -48,20 +48,20 @@ async def gitsearch(event):
     if not usrname:
         return await event.eor(get_string("srch_1"))
     url = f"https://api.github.com/users/{usrname}"
-    ult = await async_searcher(url, re_json=True)
+    ay = await async_searcher(url, re_json=True)
     try:
-        uname = ult["login"]
-        uid = ult["id"]
+        uname = ay["login"]
+        uid = ay["id"]
         upic = f"https://avatars.githubusercontent.com/u/{uid}"
-        ulink = ult["html_url"]
-        uacc = ult["name"]
-        ucomp = ult["company"]
-        ublog = ult["blog"]
-        ulocation = ult["location"]
-        ubio = ult["bio"]
-        urepos = ult["public_repos"]
-        ufollowers = ult["followers"]
-        ufollowing = ult["following"]
+        ulink = ay["html_url"]
+        uacc = ay["name"]
+        ucomp = ay["company"]
+        ublog = ay["blog"]
+        ulocation = ay["location"]
+        ubio = ay["bio"]
+        urepos = ay["public_repos"]
+        ufollowers = ay["followers"]
+        ufollowing = ay["following"]
     except BaseException:
         return await event.eor(get_string("srch_2"))
     fullusr = f"""
@@ -99,7 +99,7 @@ async def google(event):
         url = res["link"]
         des = res["description"]
         out += f" 👉🏻  [{text}]({url})\n`{des}`\n\n"
-    omk = f"**Google Search Query:**\n`{inp}`\n\n**Results:**\n{out}"
+    omk = f"**Google Search Query:**\n`{inp}`\n\n**Resays:**\n{out}"
     await x.eor(omk, link_preview=False)
 
 
@@ -130,7 +130,7 @@ async def reverse(event):
     reply = await event.get_reply_message()
     if not reply:
         return await event.eor("`Reply to an Image`")
-    ult = await event.eor(get_string("com_1"))
+    ay = await event.eor(get_string("com_1"))
     dl = await reply.download_media()
     file = await con.convert(dl, convert_to="png")
     img = Image.open(file)
@@ -153,7 +153,7 @@ async def reverse(event):
     alls = div.find("a")
     link = alls["href"]
     text = alls.text
-    await ult.edit(f"`Dimension ~ {x} : {y}`\nSauce ~ [{text}](google.com{link})")
+    await ay.edit(f"`Dimension ~ {x} : {y}`\nSauce ~ [{text}](google.com{link})")
     images = await get_google_images(text)
     for z in images[:2]:
         try:
