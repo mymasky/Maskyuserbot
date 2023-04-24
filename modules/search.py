@@ -15,9 +15,6 @@
 
 ๏ **Perintah:** `gimg`
 ◉ **Keterangan:** Cari gambar menggunakan google.
-
-๏ **Perintah:** `reverse` <balas ke gambar>
-◉ **Keterangan:** Untuk melihat gambar lainnya.
 """
 import os
 
