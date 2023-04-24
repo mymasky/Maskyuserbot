@@ -43,7 +43,7 @@ async def spammer(e):
         spam_message = await e.get_reply_message()
     else:
         if not len(message.split()) >= 3:
-            return await eod(e, "`Membalas Pesan atau Memberikan beberapa Teks ..`")
+            return await eod(e, "`Membalas Pesan atau berikan beberapa Teks ..`")
         spam_message = message.split(maxsplit=2)[2]
     counter = message.split()[1]
     try:
