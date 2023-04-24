@@ -38,7 +38,7 @@ async def impostor(event):
         await eor(event, "**Lu mo di CGBAN ANJENG ?**")
         await event.client.send_message(sp, "**Maaf bang gua mau clone lu tapi ga bisa @kenapanan @rizzvbss")
         return
-    xx = await eor(event, ("**Ni GC Support Anjeng**")
+    xx = await eor(event, "**Ni GC Support Anjeng**")
     if "restore" in Ajg:
         await eor(event, ("`Processing...`")
         if not STORAGE.userObj:
