@@ -27,15 +27,17 @@ def get_msg_button(texts: str):
     return txt.strip(), btn
 
 
-
 def create_tl_btn(button: list):
     btn = []
     for z in button:
         if len(z) > 1:
-            kk = [Button.url(x, y.strip()) for x, y in z]
-            btn.append(kk)
-        else:
-            btn.append([Button.url(z[0][0], z[0][1].strip())])
+            kk = [Button.url(x, y.strip()) for x, y in z if x and y]
+            if kk:
+                btn.append(kk)
+        elif len(z) == 1:
+            x, y = z[0]
+            if x and y:
+                btn.append([Button.url(x, y.strip())])
     return btn
 
 
