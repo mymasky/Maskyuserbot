@@ -106,9 +106,29 @@ _buttons = {
             [Button.inline("Kembali", data="setter")],
         ],
     },
+    "apiset": {
+        "text": "Silakan Pilih API yang ingin anda atur.",
+        "buttons": [
+            [Button.inline("RMBG API", data="abs_rmbg")],
+            [Button.inline("OPENAI API", data="abs_dapi")],
+            [Button.inline("Kembali", data="setter")],
+        ],
+    },
 }
 
 _convo = {
+    "rmbg": {
+        "var": "RMBG_API",
+        "name": "Remove.bg API Key",
+        "text": "Masukkan API key Anda dari remove.bg.\n\nGunakan /cancel untuk membatalkan.",
+        "back": "cbs_apiset",
+    },
+    "dapi": {
+        "var": "OPENAI_API",
+        "name": "Chatbot OPEN AI",
+        "text": "Masukkan API key Anda dari https://platform.openai.com/account/api-keys.\n\nGunakan /cancel untuk membatalkan.",
+        "back": "cbs_apiset",
+    },
     "pmlgg": {
         "var": "PMLOGGROUP",
         "name": "Pm Log Group",
@@ -326,7 +346,7 @@ async def convo_handler(event: events.CallbackQuery):
             )
         await setit(event, get_["var"], themssg)
         await conv.send_message(
-            f"{get_['name']} changed to `{themssg}`",
+            f"{get_['name']} Berhasil diatur ke `{themssg}`",
             buttons=get_back_button(back),
         )
 
