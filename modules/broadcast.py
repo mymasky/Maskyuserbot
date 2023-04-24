@@ -21,6 +21,12 @@
 
 ๏ **Perintah:** `blchat`
 ◉ **Keterangan:** Melihat daftar anti gcast.
+
+◉ **Notes:** Bisa menggunakan media apapun serta menggunakan button.
+◉ **Contoh:**
+Kirim ke
+[Dana|https://link.dana]
+[Qris|https://link.qris|same]
 """
 import asyncio
 import os
