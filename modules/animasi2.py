@@ -78,7 +78,7 @@ async def _(event):
                   "`\n💔<\\  **Terimakasih**`")
 
 
-@register(outgoing=True, pattern=r"^ceritacinta(?: |$)(.*)")
+@ayra_cmd(pattern=r"^ceritacinta(?: |$)(.*)")
 async def _(event):
 
     if event.fwd_from:
@@ -118,7 +118,7 @@ async def _(event):
             await event.edit(animation_chars[i % 103])
 
 
-@register(outgoing=True, pattern=r"^canda(?: |$)(.*)")
+@ayra_cmd(pattern=r"^canda(?: |$)(.*)")
 async def _(event):
 
     if event.fwd_from:
@@ -161,7 +161,7 @@ async def _(ayiin):
                      "`\n💖<\\  *Tapi Bo'ong Hiyahiyahiya`")
 
 
-@register(outgoing=True, pattern=r"^owner(?: |$)(.*)")
+@ayra_cmd(pattern=r"^owner(?: |$)(.*)")
 async def _(event):
 
     if event.fwd_from:
