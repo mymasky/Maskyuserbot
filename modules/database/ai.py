@@ -20,6 +20,6 @@ class OpenAi:
     def photo(self, question):
         OPENAI_API = udB.get_key("OPENAI_API")
         openai.api_key = OPENAI_API
-        response = openai.Image.create(prompt=question, n=1, size="1024x")
+        response = openai.Image.create(prompt=question, n=1, size="1024x1024")
         return response["data"][0]["url"]
 
