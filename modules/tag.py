@@ -51,37 +51,47 @@ async def _(event):
         return
     try:
         FlagContainer.is_active = True
-        args = event.pattern_match.groups()
+        args = e.text.split(" ", 1)
         text = args[1] if args[1] else None
         chat = await event.get_input_chat()
         await event.delete()
-        if event.reply_to_msg_id:
-            msg = await event.get_reply_message()
+        if event.reply_to:
+            text = await event.get_reply_message()
             participants = [msg.sender]
+            if text:
+                text = f"{text}\n\n"
         else:
             participants = await event.client.get_participants(chat)
-        tags = []
         jumlah = []
         for participant in participants:
             if not FlagContainer.is_active:
                 break
-            tags.append(f"👤 [{participant.first_name}](tg://user?id={participant.id})\n")
             jumlah.append(participant)
             if len(jumlah) == 5:
+                tags = list(
+                    map(
+                        lambda m: f"👤 [{m.first_name}](tg://user?id={m.id})\n",
+                        jumlah,
+                    ),
+                )
                 if text:
-                    tags.append(text)
+                    tags.insert(text)
                 await event.client.send_message(event.chat_id, "".join(tags))
                 await asyncio.sleep(2)
-                tags = []
                 jumlah = []
         if len(jumlah) > 0:
+            tags = list(
+                map(
+                    lambda m: f"👤 [{m.first_name}](tg://user?id={m.id})\n",
+                    jumlah,
+                ),
+            )
             if text:
-                tags.append(text)
+                tags.insert(text)
             await event.client.send_message(event.chat_id, "".join(tags))
             await asyncio.sleep(2)
     finally:
         FlagContainer.is_active = False
-
 
 
 
