@@ -89,7 +89,7 @@ async def gcast(event):
             chat = x.id
             chat_blacklist = udB.get_key("GBLACKLISTS")
             if (
-                chat_blacklist is not None and chat not in chat_blacklist and
+                chat not in chat_blacklist and
                 chat not in NOSPAM_CHAT and
                 (
                   event.text[2:7] != "admin" or
