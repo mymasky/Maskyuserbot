@@ -13,42 +13,46 @@ def get_msg_button(texts: str):
     btn = []
     for z in re.findall("\\[(.*?)\\|(.*?)\\]", texts):
         text, url = z
-        btn.append([text, url])
+        urls = url.split("|")
+        url = urls[0]
+        if len(urls) > 1:
+            btn[-1].append({"text": text, "url": url, "same": True})
+        else:
+            btn.append([{"text": text, "url": url, "same": False}])
 
     txt = texts
     for z in re.findall("\\[.+?\\|.+?\\]", texts):
         txt = txt.replace(z, "")
 
     return txt.strip(), btn
-    
-    
+
+
+
 def create_tl_btn(button: list):
     btn = []
     for z in button:
         if len(z) > 1:
-            kk = [Button.url(*x.strip().split("|")) for x in z]
+            kk = [Button.url(x, y.strip()) for x, y in z]
             btn.append(kk)
         else:
-            kk = [Button.url(*z[0][1].strip().split("|"))]
-            btn.append(kk)
+            btn.append([Button.url(z[0][0], z[0][1].strip())])
     return btn
-
 
 
 def format_btn(buttons: list):
     txt = ""
     for i in buttons:
         a = 0
-        for j, btn in enumerate(i):
-            if hasattr(btn.button, "url"):
+        for i in i:
+            if hasattr(i.button, "url"):
                 a += 1
-                if j > 0 and i[j-1].button.url == btn.button.url:
-                    txt += f"[{btn.button.text} | {btn.button.url} | same]"
+                if a > 1:
+                    txt += f"[{i.button.text} | {i.button.url} | same]"
                 else:
-                    txt += f"[{btn.button.text} | {btn.button.url}]"
-        txt += '\n'
+                    txt += f"[{i.button.text} | {i.button.url}]"
     _, btn = get_msg_button(txt)
     return btn
+
 
 
 
