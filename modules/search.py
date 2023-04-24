@@ -34,9 +34,6 @@ except ImportError:
     cv2 = None
 from telethon.tl.types import DocumentAttributeAudio
 
-from Ayra.fns.misc import google_search
-from Ayra.fns.tools import get_google_images, saavn_search
-
 from . import *
 
 
