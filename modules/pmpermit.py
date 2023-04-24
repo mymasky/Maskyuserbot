@@ -61,6 +61,7 @@ WARN_MSGS = {}
 U_WARNS = {}
 PMPIC = udB.get_key("PMPIC")
 LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
+DISABLE_PMDEL = udB.get_key("DISABLE_PMDEL") or True
 UND = get_string("pmperm_1")
 UNS = get_string("pmperm_2")
 NO_REPLY = get_string("pmperm_3")
