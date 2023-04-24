@@ -47,6 +47,11 @@ OWNER_ID = ayra_bot.uid
 
 LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
 
+from .database.strg import Storage
+
+def STORAGE(n):
+    return Storage(Path("data") / n)
+
 """
 def inline_pic():
     INLINE_PIC = udB.get_key("INLINE_PIC")
