@@ -37,7 +37,7 @@ from telethon.tl.types import DocumentAttributeAudio
 from Ayra.fns.misc import google_search
 from Ayra.fns.tools import get_google_images, saavn_search
 
-from . import LOGS, async_searcher, con, eod, fast_download, get_string, ayra_cmd
+from . import *
 
 
 @ayra_cmd(
