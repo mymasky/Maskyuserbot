@@ -35,6 +35,9 @@ if Owner_info_msg is None:
 
 _settings = [
     [
+        Button.inline("API Keys", data="cbs_apiset"),
+    ],
+    [
         Button.inline("Lainnya", data="cbs_otvars"),
         Button.inline("PM Permit", data="cbs_ppmset"),
     ],
@@ -43,14 +46,12 @@ _settings = [
 
 _start = [
     [
-        Button.inline("Bahasa 🌐", data="lang"),
         Button.inline("Pengaturan ⚙️", data="setter"),
     ],
     [
-        Button.inline("Sᴛᴀᴛs ✨", data="stat"),
-        Button.inline("Bʀᴏᴀᴅᴄᴀsᴛ 📻", data="bcast"),
+        Button.inline("Stats ✨", data="stat"),
+        Button.inline("Broadcast 📻", data="bcast"),
     ],
-    [Button.inline("TɪᴍᴇZᴏɴᴇ 🌎", data="tz")],
 ]
 
 
