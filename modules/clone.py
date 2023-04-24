@@ -44,7 +44,7 @@ async def impostor(event):
         if not STORAGE.userObj:
             return await xx.edit("**Anda Harus Mengclone Dia Dulu Sebelum Kembali **")
         await updateProfile(event, STORAGE.userObj, restore=True)
-        return await xx.edit("**Kembali ke akun anda.**"))
+        return await xx.edit("**Kembali ke akun anda.**")
     if Ajg:
         try:
             user = await event.client.get_entity(Ajg)
