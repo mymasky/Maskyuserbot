@@ -11,8 +11,9 @@
 ๏ **Perintah:** `toaudio` <balas file>
 ◉ **Keterangan:** Extrak Audio Dari Video.
 
-๏ **Perintah:** `convert` <gif/img/stiker/webm> <balas ke file>
-◉ **Keterangan:** Convert.
+๏ **Perintah:** `convert` <foto/audio/mp3/gif/voice> <balas ke file>
+◉ **Keterangan:** Convert. convert `audio` dengan efek.
+ **List Efek :** `bengek`, `jedug`, `echo`, `robot`
 
 ๏ **Perintah:** `glitch <balas ke gambar>`
 ◉ **Keterangan:** Memberikan gif glitchy.
@@ -44,8 +45,6 @@ import os
 import time
 import random
 
-from . import LOGS
-
 try:
     import cv2
 except ImportError:
@@ -60,42 +59,8 @@ except ImportError:
 from telegraph import upload_file as uf
 from datetime import datetime as dt
 
-from Ayra.fns.tools import set_attributes
+from . import *
 
-from . import (
-    AyConfig,
-    ayra_cmd,
-    bash,
-    con,
-    downloader,
-    get_paste,
-    get_string,
-    udB,
-    uploader,
-)
-
-opn = []
-
-from . import (
-    LOGS,
-    AyConfig,
-    ayra_cmd,
-    bash,
-    downloader,
-    eod,
-    con,
-    eor,
-    genss,
-    get_string,
-    udB,
-    uploader,
-    humanbytes,
-    get_paste,
-    mediainfo,
-    stdr,
-    time_formatter,
-    uploader,
-)
 opn = []
 
 conv_keys = {
@@ -108,6 +73,8 @@ conv_keys = {
     "json": "json",
     "tgs": "tgs",
 }
+
+"""
 @ayra_cmd(
     pattern="(C|c)onvert( (.*)|$)",
 )
@@ -133,73 +100,125 @@ async def uconverter(event):
         )
         os.remove(file)
     await xx.delete()
+"""
 
-@ayra_cmd(pattern="makevoice$")
-async def vnc(e):
-    if not e.reply_to:
-        return await eod(e, get_string("audiotools_1"))
-    r = await e.get_reply_message()
-    if not mediainfo(r.media).startswith(("video")):
-        return await eod(e, get_string("spcltool_1"))
-    xxx = await e.eor(get_string("com_1"))
-    file, _ = await e.client.fast_downloader(
-        r.document,
-    )
-    await xxx.edit(get_string("audiotools_2"))
-    await bash(
-        f"ffmpeg -i '{file.name}' -map 0:a -codec:a libopus -b:a 100k -vbr on out.opus"
-    )
+@ayra_cmd(pattern="convert ?(foto|audio|gif|voice|photo|mp3)? ?(.*)")
+async def cevir(event):
+    ajg = event.pattern_match.group(1)
     try:
-        await e.client.send_message(
-            e.chat_id, file="out.opus", force_document=False, reply_to=r
+        if len(ajg) < 1:
+            await eod(event, "**Perintah tidak diketahui! ketik** `{}help convert` **bila butuh bantuan**",
+                      time=30,
+                      )
+            return
+    except BaseException:
+        await eod(event, "**Perintah tidak diketahui! ketik** `{}help convert` **bila butuh bantuan**",
+                  time=30,
+                  )
+        return
+    if ajg in ["foto", "photo"]:
+        rep_msg = await event.get_reply_message()
+        if not event.is_reply or not rep_msg.sticker:
+            await eod(event, "`Balas ke stikers...`")
+            return
+        xxnx = await eor(event, "`Processing...`")
+        foto = io.BytesIO()
+        foto = await event.client.download_media(rep_msg.sticker, foto)
+        im = Image.open(foto).convert("RGB")
+        im.save("sticker.png", "png")
+        await event.client.send_file(
+            event.chat_id,
+            "sticker.png",
+            reply_to=rep_msg,
         )
-    except Exception as er:
-        LOGS.exception(er)
-        return await xxx.edit("`Gagal Mengonversi Audio...`")
-    await xxx.delete()
-    os.remove(file.name)
-    os.remove("out.opus")
+        await xxnx.delete()
+        os.remove("sticker.png")
+    elif ajg in ["sound", "audio"]:
+        EFEKTLER = ["bengek", "robot", "jedug", "fast", "echo"]
+        efekt = event.pattern_match.group(2)
+        if len(efekt) < 1:
+            return await eod(
+                event, "**Efek tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** `bengek/robot/jedug/fast/echo",
+                time=30,
+            )
+        rep_msg = await event.get_reply_message()
+        if not event.is_reply or not (rep_msg.voice or rep_msg.audio):
+            return await eod(event, "`Balas ke Audio...`")
+        xxx = await eor(event, "`Processing...`")
+        if efekt in EFEKTLER:
+            indir = await rep_msg.download_media()
+            KOMUT = {
+                "bengek": '-filter_complex "rubberband=pitch=1.5"',
+                "robot": "-filter_complex \"afftfilt=real='hypot(re,im)*sin(0)':imag='hypot(re,im)*cos(0)':win_size=512:overlap=0.75\"",
+                "jedug": '-filter_complex "acrusher=level_in=8:level_out=18:bits=8:mode=log:aa=1"',
+                "fast": "-filter_complex \"afftfilt=real='hypot(re,im)*cos((random(0)*2-1)*2*3.14)':imag='hypot(re,im)*sin((random(1)*2-1)*2*3.14)':win_size=128:overlap=0.8\"",
+                "echo": '-filter_complex "aecho=0.8:0.9:500|1000:0.2|0.1"',
+            }
+            ses = await asyncio.create_subprocess_shell(
+                f"ffmpeg -i '{indir}' {KOMUT[efekt]} output.mp3"
+            )
+            await ses.communicate()
+            await event.client.send_file(
+                event.chat_id,
+                "output.mp3",
+                thumb="resources/extras/logo.jpg",
+                reply_to=rep_msg,
+            )
+            await xxx.delete()
+            os.remove(indir)
+            os.remove("output.mp3")
+        else:
+            await xxx.edit("**Efek tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** `bengek/robot/jedug/fast/echo")
+    elif ajg == "mp3":
+        rep_msg = await event.get_reply_message()
+        if not event.is_reply or not rep_msg.video:
+            return await eod(event, "**Harap balas ke Video!**")
+        xx = await eor(event, "`Processing...`")
+        video = io.BytesIO()
+        video = await event.client.download_media(rep_msg.video)
+        gif = await asyncio.create_subprocess_shell(
+            f"ffmpeg -y -i '{video}' -vn -b:a 128k -c:a libmp3lame out.mp3"
+        )
+        await gif.communicate()
+        await xx.edit("**Efek yang Anda tentukan tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** `bengek/robot/jedug/fast/echo`")
+        try:
+            await event.client.send_file(
+                event.chat_id,
+                "out.mp3",
+                thumb="resources/extras/logo.jpg",
+                reply_to=rep_msg,
+            )
+        except BaseException:
+            os.remove(video)
+            return await xx.edit("**Gagal Convert...**")
+        await xx.delete()
+        os.remove("out.mp3")
+        os.remove(video)
+    else:
+        await xx.edit("**Perintah tidak diketahui! ketik** `{}help convert` **bila butuh bantuan**")
+        return
 
 
-@ayra_cmd(pattern="(T|t)oaudio$")
-async def ex_aud(e):
-    reply = await e.get_reply_message()
-    if not (reply and reply.media and mediainfo(reply.media).startswith("video")):
-        return await e.eor(get_string("audiotools_8"))
-    name = reply.file.name or "video.mp4"
-    vfile = reply.media.document
-    msg = await e.eor(get_string("com_1"))
-    c_time = time.time()
-    file = await downloader(
-        f"resources/downloads/{name}",
-        vfile,
-        msg,
-        c_time,
-        f"Mengunduh {name}...",
+@ayra_cmd(pattern="toaudio$")
+async def makevoice(event):
+    if not event.reply_to:
+        return await eod(event, "**Mohon Balas Ke Audio atau video**")
+    msg = await event.get_reply_message()
+    if not event.is_reply or not (msg.audio or msg.video):
+        return await eod(event, "**Mohon Balas Ke Audio atau video**")
+    xxnx = await eor(event, "`Processing...`")
+    dl = msg.file.name
+    file = await msg.download_media(dl)
+    await xxnx.edit("`Tunggu Sebentar...`")
+    await runcmd(
+        f"ffmpeg -i '{file}' -map 0:a -codec:a libopus -b:a 100k -vbr on yins.opus"
     )
-
-    out_file = f"{file.name}.aac"
-    cmd = f"ffmpeg -i {file.name} -vn -acodec copy {out_file}"
-    o, err = await bash(cmd)
-    os.remove(file.name)
-    attributes = await set_attributes(out_file)
-
-    f_time = time.time()
-    try:
-        fo = await uploader(out_file, out_file, f_time, msg, f"Mengunggah {out_file}...")
-
-    except FileNotFoundError:
-        return await eor(msg, get_string("audiotools_9"))
-    await e.client.send_file(
-        e.chat_id,
-        fo,
-        caption=get_string("audiotools_10"),
-        thumb=AyConfig.thumb,
-        attributes=attributes,
-        reply_to=e.reply_to_msg_id,
+    await event.client.send_message(
+        event.chat_id, file="ayra.opus", force_document=False, reply_to=msg
     )
-    await msg.delete()
-
+    await xxnx.delete()
+    os.remove(file)
+    os.remove("ayra.opus")
 
 @ayra_cmd(pattern="(G|g)litch$")
 async def _(e):
