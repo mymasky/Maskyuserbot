@@ -9,6 +9,7 @@ from . import HNDLR, get_string, mediainfo, ayra_cmd
 
 from ._inline import something
 
+
 def get_msg_button(texts: str):
     btn = []
     for z in re.findall("\\[(.*?)\\|(.*?)\\]", texts):
@@ -16,9 +17,9 @@ def get_msg_button(texts: str):
         urls = url.split("|")
         url = urls[0]
         if len(urls) > 1:
-            btn[-1].append({"text": text, "url": url, "same": True})
+            btn[-1].append([text, url])
         else:
-            btn.append([{"text": text, "url": url, "same": False}])
+            btn.append([[text, url]])
 
     txt = texts
     for z in re.findall("\\[.+?\\|.+?\\]", texts):
@@ -27,23 +28,14 @@ def get_msg_button(texts: str):
     return txt.strip(), btn
 
 
-
 def create_tl_btn(button: list):
     btn = []
     for z in button:
         if len(z) > 1:
-            kk = [Button.url(x, y.strip()) for x, y in z if x and y]
-            if kk:
-                btn.append(kk)
-        elif len(z) == 1:
-            if len(z[0]) == 2:
-                x, y = z[0]
-                if x and y:
-                    btn.append([Button.url(x, y.strip())])
-            else:
-                x, y, _ = z[0]
-                if x and y:
-                    btn.append([Button.url(x, y.strip())])
+            kk = [Button.url(x, y.strip()) for x, y in z]
+            btn.append(kk)
+        else:
+            btn.append([Button.url(z[0][0], z[0][1].strip())])
     return btn
 
 
@@ -59,10 +51,8 @@ def format_btn(buttons: list):
                 else:
                     txt += f"[{i.button.text} | {i.button.url}]"
     _, btn = get_msg_button(txt)
-    return btn
-
-
-
+    return button
+    
 
 @ayra_cmd(pattern="button")
 async def butt(event):
