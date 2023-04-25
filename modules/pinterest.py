@@ -33,7 +33,7 @@ async def pinterest(e):
     if not m:
         return await e.eor("`Berikan tautan pinterest.`", time=3)
     soup = await async_searcher(
-        "https://www.expertstool.com/download-pinterest-video/",
+        "https://www.expertsphp.com/slideshare-downloader/",
         data={"url": m},
         post=True,
     )
