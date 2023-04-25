@@ -388,6 +388,7 @@ async def updava(event):
     await event.delete()
     await asst.send_file(
         udB.get_key("LOG_CHANNEL"),
+        piic,
         caption="• **Pembaruan tersedia** •",
         force_document=False,
         buttons=Button.inline("Changelog", data="changes"),
