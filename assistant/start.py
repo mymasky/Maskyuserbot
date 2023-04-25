@@ -36,6 +36,7 @@ if Owner_info_msg is None:
 _settings = [
     [
         Button.inline("API Keys", data="cbs_apiset"),
+        Button.inline("PM Bot", data="cbs_chatbot"),
     ],
     [
         Button.inline("Lainnya", data="cbs_otvars"),
