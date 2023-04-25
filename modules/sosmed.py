@@ -7,7 +7,7 @@
 """
 ✘ **Bantuan Untuk Sosmed**
 
-๏ **Perintah:** `sosmed` <berikan link/balas link>
+๏ **Perintah:** `fb`|`ig`|`tt`|`yt`|`tw` <berikan link/balas link>
 ◉ **Keterangan:** Download Video Facebook, Youtube, Tiktok, Instagram, Twitter.
 """
 
@@ -23,10 +23,10 @@ except ImportError:
     WebShot = None
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from . import ayra_cmd, eor
+from . import *
 
 
-@ayra_cmd(pattern="sosmed(?: |$)(.*)")
+@ayra_cmd(pattern="(fb|tw|yt|tt|ig)(?: |$)(.*)")
 async def _(event):
     xxnx = event.pattern_match.group(1)
     if xxnx:
@@ -58,11 +58,7 @@ async def _(event):
             video = await conv.get_response()
             text = await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
-        await event.client.send_file(
-            event.chat_id,
-            video,
-            caption=f"**Upload By: {inline_mention(event.sender)}**",
-        )
+        await event.client.send_file(event.chat_id, video, caption=f"**Upload By: {inline_mention(event.sender)}**")
         await event.client.delete_messages(
             conv.chat_id, [msg_start.id, r.id, msg.id, details.id, video.id, text.id]
         )
