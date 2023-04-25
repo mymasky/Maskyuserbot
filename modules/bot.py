@@ -5,8 +5,6 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
-from . import get_help
-
 
 
 import os
@@ -26,7 +24,7 @@ from Ayra.version import __version__ as AyraVer
 from Ayra.dB import DEVS
 from Ayra.kynan import register
 from . import *
-from .music import *
+
 
 try:
     from git import Repo
