@@ -26,4 +26,6 @@
 ◉ **Keterangan:** Mencari gambar menggunakan ai.
 
 **Note :** Mengaktifkan fitur `addai` akan membuat akun anda menjadi bot jadi ketika anda memberikan `addai` kepada pengguna maka akun anda akan otomatis menjawab pesan pengguna tersebut didalam grup yang sama.
+
+Kamu dapat mengatur PM Bot melalui Bot Kamu, jika selesai menyetel sesuatu lakukan `restart`.
 """
