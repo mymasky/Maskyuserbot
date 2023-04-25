@@ -14,7 +14,7 @@ from pytz import timezone as tz
 from telethon import Button, events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.utils import get_display_name
-
+from modules.database import KeyManager
 from strings import get_string
 
 from . import *
@@ -81,11 +81,12 @@ async def closet(lol):
 @asst_cmd(pattern="start( (.*)|$)", forwards=False, func=lambda x: not x.is_group)
 async def ayra(event):
     args = event.pattern_match.group(1).strip()
-    if not is_added(event.sender_id) and event.sender_id not in owner_and_sudos():
-        add_user(event.sender_id)
+    keym = KeyManager("BOT_USERS", cast=list)
+    if not keym.contains(event.sender_id) and event.sender_id not in owner_and_sudos():
+        keym.add(event.sender_id)
         kak_uiw = udB.get_key("OFF_START_LOG")
         if not kak_uiw or kak_uiw != True:
-            msg = f"{inline_mention(event.sender)} `[{event.sender_id}]` memulai Bot Anda [Assistant bot](@{asst.me.username})."
+            msg = f"{inline_mention(event.sender)} `[{event.sender_id}]` Memulai bot anda [Assistant bot](@{asst.me.username})."
             buttons = [[Button.inline("Info", "itkkstyo")]]
             if event.sender.username:
                 buttons[0].append(
@@ -98,7 +99,7 @@ async def ayra(event):
             )
     if event.sender_id not in SUDO_M.fullsudos:
         ok = ""
-        me = inline_mention(ayra_bot.me)
+        me = inline_mention(ultroid_bot.me)
         mention = inline_mention(event.sender)
         if args and args != "set":
             await get_stored_file(event, args)
@@ -124,7 +125,7 @@ async def ayra(event):
         name = get_display_name(event.sender)
         if args == "set":
             await event.reply(
-                "Silakan pilih .",
+                "Pilih dari opsi di bawah ini ",
                 buttons=_settings,
             )
         elif args:
