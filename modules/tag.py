@@ -58,7 +58,7 @@ async def _(event):
         if event.reply_to:
             text = await event.get_reply_message()
         else:
-            text = args[1]
+            text = str(args[3])
         tags = list(
             map(
                 lambda m: f"👤 [{m.first_name}](tg://user?id={m.id})\n",
