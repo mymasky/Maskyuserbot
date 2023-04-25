@@ -11,8 +11,6 @@
 
 import os
 
-from Ayra.dB.botchat_db import *
-from Ayra.fns.helper import inline_mention
 from telethon.errors.rpcerrorlist import UserNotParticipantError
 from telethon.tl.custom import Button
 from telethon.tl.functions.channels import GetFullChannelRequest
@@ -20,11 +18,12 @@ from telethon.tl.functions.messages import GetFullChatRequest
 from telethon.tl.types import Channel, Chat
 from telethon.utils import get_display_name
 
-from modules.database import KeyManager
+from Ayra.dB.asst_fns import *
+from Ayra.dB.botchat_db import *
+from Ayra.fns.helper import inline_mention
 
 from . import *
 
-botb = KeyManager("BOTBLS", cast=list)
 FSUB = udB.get_key("PMBOT_FSUB")
 CACHE = {}
 # --------------------------------------- Incoming -------------------------------------------- #
@@ -67,7 +66,7 @@ async def on_new_mssg(event):
                             uri = CACHE[chat]
                     BTTS.append(Button.url(get_display_name(TAHC_), uri))
                 except Exception as er:
-                    LOGS.exception(f"Error PM Bot Wajib Join!\n - {chat} \n{er}")
+                    LOGS.exception(f"Error On PmBot Force Sub!\n - {chat} \n{er}")
         if MSG and BTTS:
             return await event.reply(MSG, buttons=BTTS)
     xx = await event.forward_to(OWNER_ID)
@@ -93,7 +92,7 @@ async def on_out_mssg(event):
             k = await asst.get_entity(to_user)
             photu = await event.client.download_profile_photo(k.id)
             await event.reply(
-                f"• **Nama :** {get_display_name(k)}\n• **ID :** `{k.id}`\n• **Link :** {inline_mention(k)}",
+                f"• **Name :** {get_display_name(k)}\n• **ID :** `{k.id}`\n• **Link :** {inline_mention(k)}",
                 file=photu,
             )
             if photu:
