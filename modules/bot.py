@@ -170,17 +170,6 @@ async def lol(ayra):
     )
 
 
-"""
-@ayra_cmd(pattern="ping$", incoming=True, from_users=DEVS, chats=[], type=["official", "assistant"])
-async def _(event):
-    start = time.time()
-    x = await event.eor("Pong !")
-    end = round((time.time() - start) * 1000)
-    uptime = time_formatter((time.time() - start_time) * 1000)
-    await x.edit(get_string("ping").format(end, uptime))
-"""
-
-
 async def get_readable_time(seconds: int) -> str:
     count = 0
     up_time = ""
@@ -206,7 +195,7 @@ async def get_readable_time(seconds: int) -> str:
     return up_time
 
 
-@ayra_cmd(pattern="ping", chats=[], type=["official", "assistant"])
+@ayra_cmd(pattern="ping$")
 @register(incoming=True, from_users=DEVS, pattern=r"^Cping$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
