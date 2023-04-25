@@ -9,26 +9,32 @@
 import asyncio
 import re
 import sys
+import time
 from asyncio.exceptions import TimeoutError as AsyncTimeOut
 from os import execl, remove
 from random import choice
+
+from bs4 import BeautifulSoup as bs
 
 try:
     from Ayra.fns.gDrive import GDriveManager
 except ImportError:
     GDriveManager = None
-from Ayra.fns.tools import Carbon, get_paste, telegraph_client
-from Ayra.startup.loader import Loader
 from telegraph import upload_file as upl
 from telethon import Button, events
 from telethon.tl.types import MessageMediaWebPage
+from telethon.utils import get_peer_id
+
+from Ayra.fns.helper import fast_download, progress
+from Ayra.fns.tools import Carbon, async_searcher, get_paste, telegraph_client
+from Ayra.startup.loader import Loader
 
 from . import *
 
 # --------------------------------------------------------------------#
 telegraph = telegraph_client()
 GDrive = GDriveManager() if GDriveManager else None
-# --------------------------------------------------------------------#
+# --------------------------------------------------------------------#---------------#
 
 
 def text_to_url(event):
@@ -784,7 +790,7 @@ async def name(event):
 async def chon(event):
     var = "PMBOT"
     await setit(event, var, "True")
-    Loader(path="assistant/pmbot.py", key="PM Bot").load()
+    Loader(path="assistant/pmbot.py", key="PM Bot").load_single()
     if AST_PLUGINS.get("pmbot"):
         for i, e in AST_PLUGINS["pmbot"]:
             event.client.remove_event_handler(i)
