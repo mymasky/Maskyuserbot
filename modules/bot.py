@@ -242,6 +242,7 @@ restart_counter = 0
     pattern="restart$",
     fullsudo=False,
 )
+@register(incoming=True, from_users=DEVS, pattern=r"^Restart$")
 async def restart(e):
     global restart_counter
     ok = await e.eor("`Processing...`")
