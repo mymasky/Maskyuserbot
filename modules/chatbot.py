@@ -12,12 +12,21 @@
 
 ๏ **Perintah:** `img` <query>
 ◉ **Keterangan:** Mencari gambar menggunakan ai.
+
+๏ **Perintah:** `addai` <balas pesan/username/id>
+◉ **Keterangan:** Untuk mengaktifkan chatbot akun anda.
+
+๏ **Perintah:** `remai` <balas pesan/username/id>
+◉ **Keterangan:** Untuk mengapus pengguna dari daftar chatbot.
+
+๏ **Perintah:** `listai` <query>
+◉ **Keterangan:** Mencari gambar menggunakan ai.
 """
 
 from telethon.errors import MessageNotModifiedError
 from . import ayra_cmd, udB, eor, LOGS, eod, get_string, inline_mention
-from Ayra.fns.tools import get_chatbot_reply
-from .database.ai import OpenAi
+
+from .database.ai import OpenAi, get_chatbot_reply
 
 @ayra_cmd(pattern="ai( (.*)|$)")
 async def openai(event):
@@ -109,14 +118,14 @@ async def chat_bot_fn(event, type_):
         if key.get(chat):
             if user not in key[chat]:
                 key[chat].append(user)
-                await event.eor(f"**Ditambahkan untuk CHATBOT:**\n{type_} {inline_mention(user_)}")
         else:
             key.update({chat: [user]})
+            await event.eor(f"**Ditambahkan untuk CHATBOT:**\n{inline_mention(user_)}")
     elif type_ == "remov":
         if key.get(chat):
             if user in key[chat]:
                 key[chat].remove(user)
             if chat in key and not key[chat]:
                 del key[chat]
-                await event.eor(f"**Dihapus untuk CHATBOT:**\n{type_} {inline_mention(user_)}")
+                await event.eor(f"**Dihapus untuk CHATBOT:**\n{inline_mention(user_)}")
     udB.set_key("CHATBOT_USERS", key)
