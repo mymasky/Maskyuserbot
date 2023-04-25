@@ -12,7 +12,7 @@ import time
 from datetime import datetime
 from platform import python_version as pyver
 from random import choice
-
+from telethon.tl.functions import PingRequest
 from telethon import __version__
 from telethon.errors.rpcerrorlist import (
     BotMethodInvalidError,
@@ -46,7 +46,7 @@ alive_txt = """
   ◈ Telethon - {}
 """
 
-in_alive = "<b>{}</b>\n\n<b>╼┅━━━━━━━━━━━┅╾</b>\n<b>❏ 𝙰𝚈𝚁𝙰-𝚅𝙴𝚁𝚂𝙸𝙾𝙽 :</b> <code>{}</code>\n<b>├ 𝙿𝚈-𝙰𝚈𝚁𝙰 :</b> <code>{}</code>\n<b>├ 𝙿𝚈𝚃𝙷𝙾𝙽 :</b> <code>{}</code>\n<b>├ 𝚄𝙿𝚃𝙸𝙼𝙴 :</b> <code>{}</code>\n<b>├ 𝙱𝚁𝙰𝙽𝙲𝙷</b> {}\n<b>╰ 𝙰𝚈𝚁𝙰-𝚄𝚂𝙴𝚁𝙱𝙾𝚃</b>\n<b>╼┅━━━━━━━━━━━┅╾</b>"
+in_alive = "<b>{}</b>\n\n<b>AyraUserbot</b>\n<b>        status :</b> <code>{}</code>\n<b>        expires_on :</b> <code>{}</code>\n<b>        ping_dc :</b> <code>{}</code>\n<b>        peer_users :</b> <code>{}</code>\n<b>        peer_groups :</b> <code>{}</code>\n<b>        ayra_version :</b> <code>{}</code>\n<b>        py_ayra :</b> <code>{}</code>\n<b>        ayra_uptime :</b> <code>{}</code>"
 
 absen = [
     "**𝙃𝙖𝙙𝙞𝙧 𝙙𝙤𝙣𝙜 𝙏𝙤𝙙** 😁",
@@ -89,6 +89,24 @@ async def naya(naya):
 async def lol(ayra):
     match = ayra.pattern_match.group(1).strip()
     inline = True
+    users = 0
+    groups = 0
+    expired_date = "__no_expired__"
+    remaining_days = "__no_expired__"
+    async for dialog in event.client.iter_dialogs():
+        if dialog.is_private:
+            users += 1
+        elif dialog.is_group or dialog.is_channel:
+            group += 1
+    if event.client.uid in DEVS:
+        status = "__ayra_premium__[DEVS]"
+        remaining_days = "__no_expired__"
+    else:
+        status = "__ayra_premium__[OWNER]"
+    me = await event.client.get_me()
+    await event.client.send_message('me', 'Ping!')
+    response = await event.client.get_response(event)
+    ping = (datetime.now() - start).microseconds / 1000
     if match not in ["n", "no_inline"]:
         try:
             res = await ayra.client.inline_query(asst.me.username, "alive")
@@ -112,11 +130,16 @@ async def lol(ayra):
         parse = "html"
         als = in_alive.format(
             OWNER_NAME,
+            status,
+            remaining_days,
+            ping,
+            users,
+            groups,
             f"{ayra_version} [{HOSTED_ON}]",
             AyraVer,
-            pyver(),
+#            pyver(),
             uptime,
-            kk,
+#            kk,
         )
 
         if _e := udB.get_key("ALIVE_EMOJI"):
