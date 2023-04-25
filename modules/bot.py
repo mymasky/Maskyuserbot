@@ -237,18 +237,18 @@ async def cmds(event):
 heroku_api = Var.HEROKU_API
 restart_counter = 0
 
-
 @ayra_cmd(
     pattern="restart$",
     fullsudo=False,
 )
 async def restart(e):
-    global restart_counte
-    ok = await e.eor(get_string("bot_5"))
-    call_back()
+    global restart_counter
+    ok = await e.eor("`Processing...`")
+    # call_back()
     who = "bot" if e.client._bot else "user"
     udB.set_key("_RESTART", f"{who}_{e.chat_id}_{ok.id}")
     if heroku_api and restart_counter < 10:
+        restart_counter += 1
         return await restart(ok)
     await bash("git pull && pip3 install -r requirements.txt")
     if len(sys.argv) > 1:
