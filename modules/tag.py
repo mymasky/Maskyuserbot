@@ -80,7 +80,7 @@ async def _(event):
                 if text:
                     tags.append(str(text))
                 await event.client.send_message(event.chat_id, "".join(tags))
-                await asyncio.sleep(2)
+                await asyncio.sleep(5)
             elif not FlagContainer.is_active:
                 break
     finally:
