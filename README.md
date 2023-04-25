@@ -35,7 +35,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak
 
  • `cd Ayra`
 
- • `pip3 install requirements.txt`
+ • `bash installer.sh`
 
  • `nano .env`
   - isi vars API_ID, API_HASH, MONGO_URI, DAN SESSION
