@@ -12,15 +12,6 @@
 
 ๏ **Perintah:** `img` <query>
 ◉ **Keterangan:** Mencari gambar menggunakan ai.
-
-๏ **Perintah:** `addai` <balas pesan/username/id>
-◉ **Keterangan:** Untuk mengaktifkan chatbot akun anda.
-
-๏ **Perintah:** `remai` <balas pesan/username/id>
-◉ **Keterangan:** Untuk mengapus pengguna dari daftar chatbot.
-
-๏ **Perintah:** `listai` <query>
-◉ **Keterangan:** Mencari gambar menggunakan ai.
 """
 
 from . import LOGS, ayra_cmd, eod, inline_mention, udB
