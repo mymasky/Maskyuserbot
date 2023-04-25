@@ -237,6 +237,7 @@ async def cmds(event):
 heroku_api = Var.HEROKU_API
 restart_counter = 0
 
+
 @ayra_cmd(
     pattern="restart$",
     fullsudo=False,
