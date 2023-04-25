@@ -75,7 +75,7 @@ async def _(event):
                     ),
                 )
                 if text:
-                    tags.insert(text)
+                    tags.insert(0, text)
                 await event.client.send_message(event.chat_id, "".join(tags))
                 await asyncio.sleep(2)
                 jumlah = []
@@ -87,7 +87,7 @@ async def _(event):
                 ),
             )
             if text:
-                tags.insert(text)
+                tags.insert(0, text)
             await event.client.send_message(event.chat_id, "".join(tags))
             await asyncio.sleep(2)
     finally:
