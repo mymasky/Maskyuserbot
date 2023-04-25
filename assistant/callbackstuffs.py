@@ -70,7 +70,7 @@ _buttons = {
                 Button.inline("PM Media", data="pmmed"),
             ],
             [
-                Button.inline("Aᴜᴛᴏ Aᴘᴘʀᴏᴠᴇ", data="cbs_apauto"),
+                Button.inline("Auto Approve PM", data="cbs_apauto"),
                 Button.inline("PM Logger", data="pml"),
             ],
             [
@@ -98,6 +98,21 @@ _buttons = {
             [Button.inline("Kembali", data="setter")],
         ],
     },
+    "chatbot": {
+        "text": "Dari Fitur Ini Anda dapat mengobrol dengan pengguna melalui Bot Asisten Anda.",
+        "buttons": [
+            [
+                Button.inline("Chat Bot On", data="onchbot"),
+                Button.inline("Chat Bot Off", data="ofchbot"),
+            ],
+            [
+                Button.inline("Bot Welcome", data="bwel"),
+                Button.inline("Bot Welcome Media", data="botmew"),
+            ],
+            [Button.inline("Bot Info Text", data="botinfe")],
+            [Button.inline("Wajib Join", data="pmfs")],
+            [Button.inline("Kembali", data="setter")],
+        ],
     "apiset": {
         "text": "Silakan Pilih API yang ingin anda atur.",
         "buttons": [
@@ -660,4 +675,125 @@ async def pmofff(event):
     await event.edit(
         "PMPermit Dimatikan!!",
         buttons=[[Button.inline("Kembali", data="cbs_ppmset")]],
+    )
+
+
+@callback("botmew", owner=True)
+async def hhh(e):
+    async with e.client.conversation(e.chat_id) as conv:
+        await conv.send_message("Kirim media apapun untuk mengatur Bot Welcome")
+        msg = await conv.get_response()
+        if not msg.media or msg.text.startswith("/"):
+            return await conv.send_message(
+                "Dibatalkan!", buttons=get_back_button("cbs_chatbot")
+            )
+        udB.set_key("STARTMEDIA", msg.file.id)
+        await conv.send_message("Berhasil Di Setel!", buttons=get_back_button("cbs_chatbot"))
+
+
+@callback("botinfe", owner=True)
+async def hhh(e):
+    async with e.client.conversation(e.chat_id) as conv:
+        await conv.send_message(
+            "Kirim pesan untuk disetel ke Bot Info, saat pengguna menekan tombol Info di Sambutan Bot!\n\nKetik `setdb BOT_INFO_START False` untuk menghapus tombol Info atau /cancel untuk batalkan.."
+        )
+        msg = await conv.get_response()
+        if msg.media or msg.text.startswith("/"):
+            return await conv.send_message(
+                "Dibatalkan!", buttons=get_back_button("cbs_chatbot")
+            )
+        udB.set_key("BOT_INFO_START", msg.text)
+        await conv.send_message("Berhasil Di Setel!", buttons=get_back_button("cbs_chatbot"))
+
+
+@callback("pmfs", owner=True)
+async def heheh(event):
+    Ll = []
+    err = ""
+    async with event.client.conversation(event.chat_id) as conv:
+        await conv.send_message(
+            "Kirim ID Obrolan, yang ingin Anda gunakan untuk **Wajib Join** . Sebelum pengguna menggunakan Bot Anda\n\n• Kirim /clear untuk menonaktifkan **Wajib Join** PM Bot..\nKirim /cancel untuk batalkan.."
+        )
+        await conv.send_message(
+            "Contoh ID Obrolan: \n`-1001234567\n-100778888`\n\nUntuk Banyak Obrolan."
+        )
+        try:
+            msg = await conv.get_response()
+        except AsyncTimeOut:
+            return await conv.send_message("**Waktu habis!**\nMulai dari /start kembali.")
+        if not msg.text or msg.text.startswith("/"):
+            timyork = "Dibatalkan!"
+            if msg.text == "/clear":
+                udB.del_key("PMBOT_FSUB")
+                timyork = "Berhasil Diatur! Wajib Join Dimatikan\nKetik `restart` !"
+            return await conv.send_message(
+                "Dibatalkan!", buttons=get_back_button("cbs_chatbot")
+            )
+        for chat in msg.message.split("\n"):
+            if chat.startswith("-") or chat.isdigit():
+                chat = int(chat)
+            try:
+                CHSJSHS = await event.client.get_entity(chat)
+                Ll.append(get_peer_id(CHSJSHS))
+            except Exception as er:
+                err += f"**{chat}** : {er}\n"
+        if err:
+            return await conv.send_message(err)
+        udB.set_key("PMBOT_FSUB", str(Ll))
+        await conv.send_message(
+            "Berhasil Diatur!\nKetik `restart` !", buttons=get_back_button("cbs_chatbot")
+        )
+
+
+@callback("bwel", owner=True)
+async def name(event):
+    await event.delete()
+    pru = event.sender_id
+    var = "STARTMSG"
+    name = "Pesan Bot Welcome:"
+    async with event.client.conversation(pru) as conv:
+        await conv.send_message(
+            "**Pesan Bot Welcome**\nMasukkan pesan yang ingin Anda tampilkan ketika seseorang memulai asisten Anda Bot.\Anda Dapat menggunakan `{me}` , `{mention}` sebagai parameter\nGunakan /cancel untuk membatalkan.",
+        )
+        response = conv.wait_event(events.NewMessage(chats=pru))
+        response = await response
+        themssg = response.message.message
+        if themssg == "/cancel":
+            return await conv.send_message(
+                "Dibatalkan!!",
+                buttons=get_back_button("cbs_chatbot"),
+            )
+        await setit(event, var, themssg)
+        await conv.send_message(
+            f"{name} Diatur Ke {themssg}",
+            buttons=get_back_button("cbs_chatbot"),
+        )
+
+
+@callback("onchbot", owner=True)
+async def chon(event):
+    var = "PMBOT"
+    await setit(event, var, "True")
+    Loader(path="assistant/pmbot.py", key="PM Bot").load()
+    if AST_PLUGINS.get("pmbot"):
+        for i, e in AST_PLUGINS["pmbot"]:
+            event.client.remove_event_handler(i)
+        for i, e in AST_PLUGINS["pmbot"]:
+            event.client.add_event_handler(i, events.NewMessage(**e))
+    await event.edit(
+        "Berhasil Diaktifkan! Sekarang Anda Dapat Mengobrol Dengan Orang Melalui Bot Ini",
+        buttons=[Button.inline("Kembali", data="cbs_chatbot")],
+    )
+
+
+@callback("ofchbot", owner=True)
+async def chon(event):
+    var = "PMBOT"
+    await setit(event, var, "False")
+    if AST_PLUGINS.get("pmbot"):
+        for i, e in AST_PLUGINS["pmbot"]:
+            event.client.remove_event_handler(i)
+    await event.edit(
+        "Berhasil Dimatikan! Sekarang Anda Tidak Dapat Mengobrol Dengan Orang Melalui Bot Ini",
+        buttons=[Button.inline("Kembali", data="cbs_chatbot")],
     )
