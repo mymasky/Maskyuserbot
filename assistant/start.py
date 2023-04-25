@@ -7,15 +7,14 @@
 
 from datetime import datetime
 
-from Ayra._misc import SUDO_M, owner_and_sudos
-from Ayra.dB.asst_fns import *
-from Ayra.fns.helper import inline_mention
 from pytz import timezone as tz
 from telethon import Button, events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.utils import get_display_name
 
-from modules.database import KeyManager
+from Ayra._misc import SUDO_M, owner_and_sudos
+from Ayra.dB.asst_fns import *
+from Ayra.fns.helper import inline_mention
 from strings import get_string
 
 from . import *
@@ -30,9 +29,8 @@ if Owner_info_msg is None:
 
 **Message Forwards** - {udB.get_key("PMBOT")}
 
-**◈ ᴀʏʀᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ​ ◈ [v{ayra_version}](https://github.com/naya1503/Ayra), powered by @kynansupport**
+**By Kynan Join @KynanSupport**
 """
-
 
 _settings = [
     [
@@ -82,12 +80,11 @@ async def closet(lol):
 @asst_cmd(pattern="start( (.*)|$)", forwards=False, func=lambda x: not x.is_group)
 async def ayra(event):
     args = event.pattern_match.group(1).strip()
-    keym = KeyManager("BOT_USERS", cast=list)
-    if not keym.contains(event.sender_id) and event.sender_id not in owner_and_sudos():
-        keym.add(event.sender_id)
+    if not is_added(event.sender_id) and event.sender_id not in owner_and_sudos():
+        add_user(event.sender_id)
         kak_uiw = udB.get_key("OFF_START_LOG")
         if not kak_uiw or kak_uiw != True:
-            msg = f"{inline_mention(event.sender)} `[{event.sender_id}]` Memulai bot anda [Assistant bot](@{asst.me.username})."
+            msg = f"{inline_mention(event.sender)} `[{event.sender_id}]` Ada pesan dari [Assistant bot](@{asst.me.username})."
             buttons = [[Button.inline("Info", "itkkstyo")]]
             if event.sender.username:
                 buttons[0].append(
@@ -100,15 +97,15 @@ async def ayra(event):
             )
     if event.sender_id not in SUDO_M.fullsudos:
         ok = ""
-        me = inline_mention(ayra_bot.me)
+        me = inline_mention(Ayra_bot.me)
         mention = inline_mention(event.sender)
         if args and args != "set":
             await get_stored_file(event, args)
         if not udB.get_key("STARTMSG"):
             if udB.get_key("PMBOT"):
-                ok = "Anda dapat mengirim pesan ke Owner Saya!!\n\nKirim Pesan Anda, dan Saya akan sampaikan."
+                ok = "Anda dapat menghubungi Owner saya menggunakan bot ini!!\n\nKirim Pesan Anda, saya akan Kirim ke Owner."
             await event.reply(
-                f"Hey {mention}, Ini Adalah Bot Assisten {me}!\n\n{ok}",
+                f"Hey {mention}, Aku Adalah Ayra Asissten {me}!\n\n{ok}",
                 file=udB.get_key("STARTMEDIA"),
                 buttons=[Button.inline("Info.", data="ownerinfo")]
                 if Owner_info_msg
@@ -126,7 +123,7 @@ async def ayra(event):
         name = get_display_name(event.sender)
         if args == "set":
             await event.reply(
-                "Pilih dari opsi di bawah ini ",
+                "Pilih dari opsi di bawah ini",
                 buttons=_settings,
             )
         elif args:
