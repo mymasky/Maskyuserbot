@@ -170,7 +170,6 @@ async def lol(ayra):
     )
 
 
-
 @ayra_cmd(pattern="ping$", chats=[], type=["official", "assistant"])
 @register(incoming=True, from_users=DEVS, pattern=r"^cping$")
 async def _(event):
@@ -179,7 +178,6 @@ async def _(event):
     end = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
     await x.edit(f"**❏ Pong !!** `{end}ms`\n**╰ Waktu aktif** - `{uptime}`")
-
 
 
 async def get_readable_time(seconds: int) -> str:
