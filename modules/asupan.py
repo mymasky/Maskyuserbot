@@ -44,7 +44,7 @@ async def _(event):
             )
         ]
         await event.client.send_file(
-            event.chat_id, file=choice(asupannya), reply_to=event.reply_to_msg_id
+            event.chat_id, file=choice(asupannya), reply_to=event.reply_to_msg_id, caption=f"**Asupan Nya {inline_mention(event.sender)}..**",
         )
         await xx.delete()
     except Exception:
@@ -64,7 +64,7 @@ async def _(event):
             )
         ]
         await event.client.send_file(
-            event.chat_id, file=choice(bokepnya), reply_to=event.reply_to_msg_id
+            event.chat_id, file=choice(bokepnya), reply_to=event.reply_to_msg_id, caption=f"**Coli Mulu {inline_mention(event.sender)}..**",
         )
         await xx.delete()
     except Exception:
@@ -82,7 +82,7 @@ async def _(event):
             )
         ]
         await event.client.send_file(
-            event.chat_id, file=choice(ayangnya), reply_to=event.reply_to_msg_id
+            event.chat_id, file=choice(ayangnya), reply_to=event.reply_to_msg_id, caption=f"**Ayang Nya {inline_mention(event.sender)}..**",
         )
         await xx.delete()
     except Exception:
