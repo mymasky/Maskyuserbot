@@ -52,7 +52,7 @@ async def _(event):
     try:
         FlagContainer.is_active = True
         args = event.text.split(" ", 1)
-        text = args[1] if args[1] else None
+        text = str(args[1])
         chat = await event.get_input_chat()
         await event.delete()
         if event.reply_to:
