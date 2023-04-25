@@ -7,8 +7,8 @@
 """
 ✘ **Bantuan Untuk Sosmed**
 
-๏ **Perintah:** `sosmed` <link>
-◉ **Keterangan:** Download Video Youtube, Tiktok, Instagram, Twitter Tanpa Watermark.
+๏ **Perintah:** `fb`|`ig`|`tt`|`yt`|`tw` <berikan link/balas link>
+◉ **Keterangan:** Download Video Facebook, Youtube, Tiktok, Instagram, Twitter.
 """
 
 
@@ -26,7 +26,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from . import ayra_cmd, eor
 
 
-@ayra_cmd(pattern="(s|S)osmed(?: |$)(.*)")
+@ayra_cmd(pattern="(fb|tw|yt|tt|ig)(?: |$)(.*)")
 async def _(event):
     xxnx = event.pattern_match.group(1)
     if xxnx:
@@ -38,7 +38,7 @@ async def _(event):
             event,
             "**Berikan Link Pesan atau Reply Link Untuk di Download**",
         )
-    xx = await eor(event, "`Video Sedang Diproses...`")
+    xx = await eor(event, "`Processing...`")
     chat = "@thisvidbot"
     async with event.client.conversation(chat) as conv:
         try:
