@@ -216,7 +216,7 @@ async def makevoice(event):
     file = await msg.download_media(dl)
     await xxnx.edit("`Tunggu Sebentar...`")
     await runcmd(
-        f"ffmpeg -i '{file}' -map 0:a -codec:a libopus -b:a 100k -vbr on yins.opus"
+        f"ffmpeg -i '{file}' -map 0:a -codec:a libopus -b:a 100k -vbr on ayra.opus"
     )
     await event.client.send_file(
         event.chat_id, file="ayra.opus", force_document=False, reply_to=msg
