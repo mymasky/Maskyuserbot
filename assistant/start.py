@@ -85,7 +85,7 @@ async def ayra(event):
         add_user(event.sender_id)
         kak_uiw = udB.get_key("OFF_START_LOG")
         if not kak_uiw or kak_uiw != True:
-            msg = f"{inline_mention(event.sender)} `[{event.sender_id}]` started your [Assistant bot](@{asst.me.username})."
+            msg = f"{inline_mention(event.sender)} `[{event.sender_id}]` memulai Bot Anda [Assistant bot](@{asst.me.username})."
             buttons = [[Button.inline("Info", "itkkstyo")]]
             if event.sender.username:
                 buttons[0].append(
@@ -104,9 +104,9 @@ async def ayra(event):
             await get_stored_file(event, args)
         if not udB.get_key("STARTMSG"):
             if udB.get_key("PMBOT"):
-                ok = "You can contact my master using this bot!!\n\nSend your Message, I will Deliver it To Master."
+                ok = "Anda dapat mengirim pesan ke Owner Saya!!\n\nKirim Pesan Anda, dan Saya akan sampaikan."
             await event.reply(
-                f"Hey there {mention}, this is Ayra Assistant of {me}!\n\n{ok}",
+                f"Hey {mention}, Ini Adalah Bot Assisten {me}!\n\n{ok}",
                 file=udB.get_key("STARTMEDIA"),
                 buttons=[Button.inline("Info.", data="ownerinfo")]
                 if Owner_info_msg
@@ -124,7 +124,7 @@ async def ayra(event):
         name = get_display_name(event.sender)
         if args == "set":
             await event.reply(
-                "Choose from the below options -",
+                "Silakan pilih .",
                 buttons=_settings,
             )
         elif args:
