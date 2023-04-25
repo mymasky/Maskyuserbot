@@ -58,7 +58,11 @@ async def _(event):
             video = await conv.get_response()
             text = await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
-        await event.client.send_file(event.chat_id, video, caption=f"**Upload By: {inline_mention(event.sender)}**")
+        await event.client.send_file(
+            event.chat_id,
+            video,
+            caption=f"**Upload By: {inline_mention(event.sender)}**",
+        )
         await event.client.delete_messages(
             conv.chat_id, [msg_start.id, r.id, msg.id, details.id, video.id, text.id]
         )
