@@ -32,7 +32,7 @@
 ๏ **Perintah:** `nb`
 ◉ **Keterangan:** Cobain aja sendiri.
 
-๏ **Perintah:** `so`
+๏ **Perintah:** `skb`
 ◉ **Keterangan:** Cobain aja sendiri.
 
 ๏ **Perintah:** `sed`
@@ -56,7 +56,7 @@
 ๏ **Perintah:** `gcs`
 ◉ **Keterangan:** Cobain aja sendiri.
 
-๏ **Perintah:** `skb`
+๏ **Perintah:** `skb2`
 ◉ **Keterangan:** Cobain aja sendiri.
 
 ๏ **Perintah:** `virtual`
@@ -170,7 +170,7 @@ async def _(event):
     )
 
 
-@ayra_cmd(pattern=r"so")
+@ayra_cmd(pattern=r"skb")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
@@ -284,7 +284,7 @@ async def _(event):
     await event.delete()
 
 
-@ayra_cmd(pattern=r"[sS][kK][bB]")
+@ayra_cmd(pattern=r"skb2")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
