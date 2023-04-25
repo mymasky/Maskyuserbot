@@ -18,6 +18,7 @@ phlogo
 pokedex.py
 pyfiglet
 pygments
+pymediainfo
 pyjokes
 quotefancy
 shazamio
