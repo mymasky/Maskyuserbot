@@ -97,7 +97,7 @@ async def ayra(event):
             )
     if event.sender_id not in SUDO_M.fullsudos:
         ok = ""
-        me = inline_mention(Ayra_bot.me)
+        me = inline_mention(ayra_bot.me)
         mention = inline_mention(event.sender)
         if args and args != "set":
             await get_stored_file(event, args)
