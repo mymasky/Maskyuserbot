@@ -52,7 +52,6 @@ async def _(event):
     try:
         FlagContainer.is_active = True
         args = event.text.split(" ", 1)
-        text = str(args[1])
         chat = await event.get_input_chat()
         await event.delete()
         if event.reply_to:
@@ -61,6 +60,7 @@ async def _(event):
             if text:
                 text = f"{text}\n\n"
         else:
+            text = str(args[1])
             participants = await event.client.get_participants(chat)
         jumlah = []
         for participant in participants:
