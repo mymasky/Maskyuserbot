@@ -30,7 +30,7 @@ def run_sync(func, *args, **kwargs):
 
 @ayra_cmd(pattern="(v|V)ideo( (.*)|$)")
 async def yt_video(e):
-    infomsg = await e.reply("**🔍 Pencarian...**")
+    infomsg = await e.eor("*Processing...**")
     try:
         search = (
             SearchVideos(
@@ -41,7 +41,7 @@ async def yt_video(e):
         )
         link = f"https://youtu.be/{search[0]['id']}"
     except Exception as error:
-        return await infomsg.edit(f"**🔍 Pencarian...\n\n❌ Error: {error}**")
+        return await infomsg.edit(f"**Pencarian...\n\n❌ Error: {error}**")
     ydl = YoutubeDL(
         {
             "quiet": True,
@@ -52,7 +52,7 @@ async def yt_video(e):
             "geo_bypass": True,
         }
     )
-    await infomsg.edit(f"**📥 Downloader...**")
+    await infomsg.eor(f"**Mulai Mendownload...**")
     try:
         ytdl_data = await run_sync(ydl.extract_info, link, download=True)
         file_path = ydl.prepare_filename(ytdl_data)
@@ -64,7 +64,7 @@ async def yt_video(e):
         views = f"{ytdl_data['view_count']:,}".replace(",", ".")
         thumbs = f"https://img.youtube.com/vi/{videoid}/hqdefault.jpg"
     except Exception as error:
-        return await infomsg.edit(f"**📥 Downloader...\n\n❌ Error: {error}**")
+        return await infomsg.eor(f"**Gagal...\n\n❌ Error: {error}**")
     thumbnail = wget.download(thumbs)
     await e.client.send_file(
         e.chat.id,
@@ -73,7 +73,7 @@ async def yt_video(e):
         file_name=title,
         duration=duration,
         supports_streaming=True,
-        caption="**💡 Informasi {}**\n\n**🏷 Nama:** {}\n**🧭 Durasi:** {}\n**👀 Dilihat:** {}\n**📢 Channel:** {}**".format(
+        caption="**💡 Informasi** {}\n\n**🏷 Nama:** {}\n**🧭 Durasi:** {}\n**👀 Dilihat:** {}\n**📢 Channel:** {}".format(
             "video",
             title,
             duration,
@@ -90,7 +90,7 @@ async def yt_video(e):
 
 @ayra_cmd(pattern="(s|S)ong( (.*)|$)")
 async def yt_audio(e):
-    infomsg = await e.reply("**🔍 Pencarian...**")
+    infomsg = await e.eor("**Processing...**")
     try:
         search = (
             SearchVideos(
@@ -101,7 +101,7 @@ async def yt_audio(e):
         )
         link = f"https://youtu.be/{search[0]['id']}"
     except Exception as error:
-        return await infomsg.edit(f"**🔍 Pencarian...\n\n❌ Error: {error}**")
+        return await infomsg.eor(f"**Pencarian...\n\n❌ Error: {error}**")
     ydl = YoutubeDL(
         {
             "quiet": True,
@@ -112,7 +112,7 @@ async def yt_audio(e):
             "geo_bypass": True,
         }
     )
-    await infomsg.edit(f"**📥 Downloader...**")
+    await infomsg.edit(f"**Mulai Mendownload...**")
     try:
         ytdl_data = await run_sync(ydl.extract_info, link, download=True)
         file_path = ydl.prepare_filename(ytdl_data)
@@ -124,7 +124,7 @@ async def yt_audio(e):
         views = f"{ytdl_data['view_count']:,}".replace(",", ".")
         thumbs = f"https://img.youtube.com/vi/{videoid}/hqdefault.jpg"
     except Exception as error:
-        return await infomsg.edit(f"**📥 Downloader...\n\n❌ Error: {error}**")
+        return await infomsg.edit(f"**Downloader...\n\n❌ Error: {error}**")
     thumbnail = wget.download(thumbs)
     await e.client.send_file(
         e.chat.id,
@@ -132,7 +132,7 @@ async def yt_audio(e):
         thumb=thumbnail,
         file_name=title,
         duration=duration,
-        caption="**💡 Informasi {}**\n\n**🏷 Nama:** {}\n**🧭 Durasi:** {}\n**👀 Dilihat:** {}\n**📢 Channel:** {}**".format(
+        caption="**💡 Informasi** {}\n\n**🏷 Nama:** {}\n**🧭 Durasi:** {}\n**👀 Dilihat:** {}\n**📢 Channel:** {}".format(
             "Audio",
             title,
             duration,
