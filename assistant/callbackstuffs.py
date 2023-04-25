@@ -6,20 +6,27 @@
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 
+import ast
 import asyncio
 import re
 import sys
+import time
+from asyncio.exceptions import TimeoutError as AsyncTimeOut
 from os import execl, remove
 from random import choice
+
+from bs4 import BeautifulSoup as bs
 
 try:
     from Ayra.fns.gDrive import GDriveManager
 except ImportError:
     GDriveManager = None
-from Ayra.fns.tools import Carbon, get_paste, telegraph_client
 from telegraph import upload_file as upl
 from telethon import Button, events
 from telethon.tl.types import MessageMediaWebPage
+from Ayra.fns.helper import fast_download, progress
+from Ayra.fns.tools import Carbon, async_searcher, get_paste, telegraph_client
+from Ayra.startup.loader import Loader
 
 from . import *
 
@@ -689,9 +696,7 @@ async def hhh(e):
                 "Dibatalkan!", buttons=get_back_button("cbs_chatbot")
             )
         udB.set_key("STARTMEDIA", msg.file.id)
-        await conv.send_message(
-            "Berhasil Di Setel!", buttons=get_back_button("cbs_chatbot")
-        )
+        await conv.send_message("Berhasil Di Setel!", buttons=get_back_button("cbs_chatbot"))
 
 
 @callback("botinfe", owner=True)
@@ -706,9 +711,7 @@ async def hhh(e):
                 "Dibatalkan!", buttons=get_back_button("cbs_chatbot")
             )
         udB.set_key("BOT_INFO_START", msg.text)
-        await conv.send_message(
-            "Berhasil Di Setel!", buttons=get_back_button("cbs_chatbot")
-        )
+        await conv.send_message("Berhasil Di Setel!", buttons=get_back_button("cbs_chatbot"))
 
 
 @callback("pmfs", owner=True)
@@ -725,9 +728,7 @@ async def heheh(event):
         try:
             msg = await conv.get_response()
         except AsyncTimeOut:
-            return await conv.send_message(
-                "**Waktu habis!**\nMulai dari /start kembali."
-            )
+            return await conv.send_message("**Waktu habis!**\nMulai dari /start kembali.")
         if not msg.text or msg.text.startswith("/"):
             timyork = "Dibatalkan!"
             if msg.text == "/clear":
@@ -748,8 +749,7 @@ async def heheh(event):
             return await conv.send_message(err)
         udB.set_key("PMBOT_FSUB", str(Ll))
         await conv.send_message(
-            "Berhasil Diatur!\nKetik `restart` !",
-            buttons=get_back_button("cbs_chatbot"),
+            "Berhasil Diatur!\nKetik `restart` !", buttons=get_back_button("cbs_chatbot")
         )
 
 
@@ -761,7 +761,7 @@ async def name(event):
     name = "Pesan Bot Welcome:"
     async with event.client.conversation(pru) as conv:
         await conv.send_message(
-            "**Pesan Bot Welcome**\nMasukkan pesan yang ingin Anda tampilkan ketika seseorang memulai asisten Anda Bot.\\Anda Dapat menggunakan `{me}` , `{mention}` sebagai parameter\nGunakan /cancel untuk membatalkan.",
+            "**Pesan Bot Welcome**\nMasukkan pesan yang ingin Anda tampilkan ketika seseorang memulai asisten Anda Bot.\Anda Dapat menggunakan `{me}` , `{mention}` sebagai parameter\nGunakan /cancel untuk membatalkan.",
         )
         response = conv.wait_event(events.NewMessage(chats=pru))
         response = await response
