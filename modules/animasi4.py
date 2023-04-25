@@ -22,6 +22,7 @@
 ◉ **Keterangan:** Coba sendiri.
 """
 from time import sleep
+
 from . import *
 
 
@@ -208,5 +209,3 @@ async def _(event):
         "⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁\n"
         "⠀⠀⠛⢿⣿⣿⣿⣿⣿⣿⡿⠟\n",
     )
-
-
