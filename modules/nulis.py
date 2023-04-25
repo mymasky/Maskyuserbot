@@ -28,7 +28,9 @@ async def handwrite(event):
     req = requests.get(f"https://api.sdbots.tk/write?text={text}").url
     try:
         await event.client.send_file(
-            event.chat.id, req, caption=f"**Ditulis Oleh: {inline_mention(event.sender)}**"
+            event.chat.id,
+            req,
+            caption=f"**Ditulis Oleh: {inline_mention(event.sender)}**",
         )
     except ChatSendMediaForbiddenError:
         await m.edit("Dilarang mengirim media digrup ini 😥!")
