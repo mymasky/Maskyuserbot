@@ -113,6 +113,7 @@ _buttons = {
             [Button.inline("Wajib Join", data="pmfs")],
             [Button.inline("Kembali", data="setter")],
         ],
+    },
     "apiset": {
         "text": "Silakan Pilih API yang ingin anda atur.",
         "buttons": [
