@@ -272,7 +272,7 @@ heroku_api = Var.HEROKU_API
 
 
 @ayra_cmd(
-    pattern="(r|R)estart$",
+    pattern="restart$",
     fullsudo=False,
 )
 async def restart(e):
@@ -283,7 +283,10 @@ async def restart(e):
     if heroku_api:
         return await restart(ok)
     await bash("git pull && pip3 install -r requirements.txt")
-    os.execl(sys.executable, sys.executable, "-m", "Ayra")
+    if len(sys.argv) > 1:
+        os.execl(sys.executable, sys.executable, "main.py")
+    else:
+        os.execl(sys.executable, sys.executable, "-m", "Ayra")
 
 
 @ayra_cmd(
