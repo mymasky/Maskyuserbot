@@ -232,7 +232,7 @@ async def _(event):
     await event.delete()
 
 
-@ayra_cmd(pattern="(S|s)okab$")
+@ayra_cmd(pattern="sokab$")
 async def _(event):
     await event.client.send_message(
         event.chat_id,
