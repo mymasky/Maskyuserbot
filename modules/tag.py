@@ -56,7 +56,7 @@ async def _(event):
         await event.delete()
         if event.reply_to:
             text = await event.get_reply_message()
-            participants = [msg.sender]
+            participants = [text.sender]
             if text:
                 text = f"{text}\n\n"
         else:
