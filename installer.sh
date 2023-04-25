@@ -41,33 +41,6 @@ install_requirements(){
     pip3 install -q --no-cache-dir -r $DIR/requirements.txt
 }
 
-railways_dep(){
-    if [ $RAILWAY_STATIC_URL ]
-        then
-            echo -e "Installing YouTube dependency... "
-            pip3 install -q yt-dlp
-    fi
-}
-
-misc_install(){
-    if [ $OKTETO_TOKEN ]
-        then
-            echo -e "Installing Okteto-CLI... "
-            curl https://get.okteto.com -sSfL | sh
-    elif [ $VCBOT ]
-        then
-            if [ -d $DIR/vcbot ]
-                then
-                    cd $DIR/vcbot
-                    git pull
-            else
-                echo -e "Cloning VCBOT.."
-                git clone https://github.com/Ayra/VcBot $DIR/vcbot
-            fi
-            pip3 install pytgcalls>=3.0.0.dev22 && pip3 install av -q --no-binary av
-    fi
-}
-
 dep_install(){
     echo -e "\n\nInstalling DB Requirement..."
     if [ $MONGO_URI ]
@@ -85,9 +58,7 @@ dep_install(){
 main(){
     (clone_repo)
     (install_requirements)
-    (railways_dep)
     (dep_install)
-    (misc_install)
 }
 
 main
