@@ -7,7 +7,7 @@
 """
 ✘ **Bantuan Untuk Sosmed**
 
-๏ **Perintah:** `fb`|`ig`|`tt`|`yt`|`tw` <berikan link/balas link>
+๏ **Perintah:** `sosmed` <berikan link/balas link>
 ◉ **Keterangan:** Download Video Facebook, Youtube, Tiktok, Instagram, Twitter.
 """
 
@@ -26,7 +26,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from . import ayra_cmd, eor
 
 
-@ayra_cmd(pattern="(fb|tw|yt|tt|ig)(?: |$)(.*)")
+@ayra_cmd(pattern="sosmed(?: |$)(.*)")
 async def _(event):
     xxnx = event.pattern_match.group(1)
     if xxnx:
