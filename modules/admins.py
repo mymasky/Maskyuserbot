@@ -237,7 +237,7 @@ async def kck(ayra):
     await xx.edit(text)
 
 
-@ayra_cmd(pattern="(Pin|pin)", manager=True, require="pin_messages", fullsudo=False)
+@ayra_cmd(pattern="pin", manager=True, require="pin_messages", fullsudo=False)
 async def pin(msg):
     if not msg.is_reply:
         return await eor(msg, get_string("pin_1"))
