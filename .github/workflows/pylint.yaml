@@ -20,12 +20,12 @@ jobs:
         run: |
           autopep8 --verbose --in-place --recursive --aggressive --aggressive assistant/*.py
           autopep8 --verbose --in-place --recursive --aggressive --aggressive assistant/manager/*.py
-          autopep8 --verbose --in-place --recursive --aggressive --aggressive plugins/*.py
+          autopep8 --verbose --in-place --recursive --aggressive --aggressive modules/*.py
       - name: Remove unused imports and variables
         run: |
           autoflake --in-place --recursive --remove-all-unused-imports --remove-unused-variables --ignore-init-module-imports assistant/*.py
           autoflake --in-place --recursive --remove-all-unused-imports --remove-unused-variables --ignore-init-module-imports assistant/manager/*.py
-          autoflake --in-place --recursive --remove-all-unused-imports --remove-unused-variables --ignore-init-module-imports plugins/*.py
+          autoflake --in-place --recursive --remove-all-unused-imports --remove-unused-variables --ignore-init-module-imports modules/*.py
       - name: lint with isort and black
         run: |
           isort assistant/*.py
