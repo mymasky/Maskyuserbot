@@ -19,6 +19,7 @@ pokedex.py
 pyfiglet
 pygments
 pymediainfo
+pyultroid
 pyjokes
 quotefancy
 shazamio
