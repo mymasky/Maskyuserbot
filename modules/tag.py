@@ -45,57 +45,7 @@ async def cancel_all(event):
     await event.reply("✅ Berhasil membatalkan tagall.")
 
 
-@ayra_cmd(pattern="^(all|All)(?: (.+)|)$")
-async def _(event):
-    if event.fwd_from or FlagContainer.is_active:
-        return
-    try:
-        FlagContainer.is_active = True
-        args = event.text.split(" ", 1)
-        chat = await event.get_input_chat()
-        await event.delete()
-        if event.reply_to:
-            text = await event.get_reply_message()
-            participants = [text.sender]
-            if text:
-                text = f"{text}\n\n"
-        else:
-            text = str(args[1])
-            participants = await event.client.get_participants(chat)
-        jumlah = []
-        for participant in participants:
-            if not FlagContainer.is_active:
-                break
-            jumlah.append(participant)
-            if len(jumlah) == 5:
-                tags = list(
-                    map(
-                        lambda m: f"👤 [{m.first_name}](tg://user?id={m.id})\n",
-                        jumlah,
-                    ),
-                )
-                if text:
-                    tags.insert(0, text)
-                await event.client.send_message(event.chat_id, "".join(tags))
-                await asyncio.sleep(2)
-                jumlah = []
-        if len(jumlah) > 0:
-            tags = list(
-                map(
-                    lambda m: f"👤 [{m.first_name}](tg://user?id={m.id})\n",
-                    jumlah,
-                ),
-            )
-            if text:
-                tags.insert(0, text)
-            await event.client.send_message(event.chat_id, "".join(tags))
-            await asyncio.sleep(2)
-    finally:
-        FlagContainer.is_active = False
 
-
-
-"""
 @ayra_cmd(pattern="[aA][lL][lL](?: |$)(.*)")
 async def _(event):
     if event.fwd_from or FlagContainer.is_active:
@@ -103,9 +53,12 @@ async def _(event):
     try:
         FlagContainer.is_active = True
         args = event.message.text.split(" ", 1)
-        text = args[1] if len(args) > 1 else None
         chat = await event.get_input_chat()
         await event.delete()
+        if event.reply_to:
+            text = await event.get_reply_message()
+        else:
+            text = args[1]
         tags = list(
             map(
                 lambda m: f"👤 [{m.first_name}](tg://user?id={m.id})\n",
@@ -133,6 +86,5 @@ async def _(event):
                 break
     finally:
         FlagContainer.is_active = False
-"""
 
 
