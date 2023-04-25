@@ -45,6 +45,13 @@ async def cancel_all(event):
     await event.reply("✅ Berhasil membatalkan tagall.")
 
 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/Ayra/_misc/_decorators.py", line 113, in wrapp
+    await dec(ay)
+  File "/root/Ayra/modules/tag.py", line 83, in _
+    await event.client.send_message(event.chat_id, "".join(tags))
+TypeError: sequence item 5: expected str instance, Message found
+
 
 @ayra_cmd(pattern="[aA][lL][lL](?: |$)(.*)")
 async def _(event):
@@ -79,7 +86,7 @@ async def _(event):
                 )
                 jumlah = []
                 if text:
-                    tags.append(text)
+                    tags.append(str(text))
                 await event.client.send_message(event.chat_id, "".join(tags))
                 await asyncio.sleep(2)
             elif not FlagContainer.is_active:
