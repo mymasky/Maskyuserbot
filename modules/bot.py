@@ -6,6 +6,7 @@
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 
+
 import os
 import sys
 import time
@@ -13,9 +14,6 @@ from datetime import datetime
 from platform import python_version as pyver
 from random import choice
 
-from Ayra.dB import DEVS
-from Ayra.kynan import register
-from Ayra.version import __version__ as AyraVer
 from telethon import __version__
 from telethon.errors.rpcerrorlist import (
     BotMethodInvalidError,
@@ -23,6 +21,7 @@ from telethon.errors.rpcerrorlist import (
 )
 
 from . import *
+
 
 try:
     from git import Repo
@@ -32,35 +31,8 @@ except ImportError:
 
 from telethon.utils import resolve_bot_file_id
 
-from . import (
-    ATRA_COL,
-    LOGS,
-    OWNER_NAME,
-    Button,
-    Carbon,
-    Telegraph,
-    Var,
-    allcmds,
-    asst,
-    ayra_cmd,
-    ayra_version,
-    bash,
-    call_back,
-    callback,
-    def_logs,
-    eor,
-    get_string,
-    heroku_logs,
-    in_pattern,
-    restart,
-    shutdown,
-    start_time,
-    time_formatter,
-    udB,
-    updater,
-)
 
-piic = "https://graph.org/file/02f9ca4617cec58377b9d.jpg"
+piic ="https://graph.org/file/02f9ca4617cec58377b9d.jpg"
 
 buttons = [
     [
@@ -104,19 +76,18 @@ absen = [
 async def alive(event):
     text = alive_txt.format(ayra_version, AyraVer, __version__)
     await event.answer(text, alert=True)
-
+    
 
 @register(incoming=True, from_users=DEVS, pattern=r"^Absen$")
 async def kynanabsen(ganteng):
     await ganteng.reply(choice(absen))
 
-
 @register(incoming=True, from_users=DEVS, pattern=r"^Kynan")
 async def naya(naya):
     await naya.reply("**Kynan Punya Nya Naya**🤩")
 
-
-@ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
+@ayra_cmd(
+    pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
 async def lol(ayra):
     match = ayra.pattern_match.group(1).strip()
     inline = True
@@ -200,7 +171,6 @@ async def lol(ayra):
         buttons=buttons if inline else None,
     )
 
-
 """
 @ayra_cmd(pattern="ping$", incoming=True, from_users=DEVS, chats=[], type=["official", "assistant"])
 async def _(event):
@@ -211,7 +181,6 @@ async def _(event):
     await x.edit(get_string("ping").format(end, uptime))
 """
 
-
 async def get_readable_time(seconds: int) -> str:
     count = 0
     up_time = ""
@@ -220,7 +189,9 @@ async def get_readable_time(seconds: int) -> str:
 
     while count < 4:
         count += 1
-        remainder, result = divmod(seconds, 60) if count < 3 else divmod(seconds, 24)
+        remainder, result = divmod(
+            seconds, 60) if count < 3 else divmod(
+            seconds, 24)
         if seconds == 0 and remainder == 0:
             break
         time_list.append(int(result))
@@ -256,7 +227,6 @@ async def _(ping):
         f"**├ 𝚄𝙿𝚃𝙸𝙼𝙴 :** `{uptime}` \n"
         f"**╰ 𝙾𝚆𝙽𝙴𝚁 :** [{user.first_name}](tg://user?id={user.id})" % (duration)
     )
-
 
 @ayra_cmd(
     pattern="cmds$",
@@ -328,7 +298,7 @@ async def inline_alive(ayra):
     if isinstance(pic, list):
         pic = choice(pic)
     uptime = time_formatter((time.time() - start_time) * 1000)
-    udB.get_key("ALIVE_TEXT") or get_string("bot_1")
+    header = udB.get_key("ALIVE_TEXT") or get_string("bot_1")
     y = Repo().active_branch
     xx = Repo().remotes[0].config_reader.get("url")
     rep = xx.replace(".git", f"/tree/{y}")
