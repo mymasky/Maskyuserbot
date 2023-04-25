@@ -55,7 +55,7 @@ async def _(event):
         if event.reply_to:
             text = await event.get_reply_message()
         else:
-            text = str(args[1])
+            text = args[1]
         chat = await event.get_input_chat()
         await event.delete()
         tags = list(
@@ -78,7 +78,7 @@ async def _(event):
                 )
                 jumlah = []
                 if text:
-                    tags.append(str(text))
+                    tags.append(text)
                 await event.client.send_message(event.chat_id, "".join(tags))
                 await asyncio.sleep(2)
             elif not FlagContainer.is_active:
