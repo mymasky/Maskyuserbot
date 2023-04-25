@@ -24,7 +24,7 @@ import os
 from telethon.tl.functions.account import UpdateProfileRequest
 from telethon.tl.functions.photos import DeletePhotosRequest, UploadProfilePhotoRequest
 
-from . import eod, eor, get_string, mediainfo, ayra_cmd
+from . import ayra_cmd, eod, eor, get_string, mediainfo
 
 TMP_DOWNLOAD_DIRECTORY = "resources/downloads/"
 

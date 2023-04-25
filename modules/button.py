@@ -1,12 +1,11 @@
-
 import os
 import re
 
 from telegraph import upload_file as uf
-from telethon.utils import pack_bot_file_id
 from telethon import Button
-from . import HNDLR, get_string, mediainfo, ayra_cmd
+from telethon.utils import pack_bot_file_id
 
+from . import HNDLR, ayra_cmd, get_string, mediainfo
 from ._inline import something
 
 
@@ -52,7 +51,7 @@ def format_btn(buttons: list):
                     txt += f"[{i.button.text} | {i.button.url}]"
     _, btn = get_msg_button(txt)
     return button
-    
+
 
 @ayra_cmd(pattern="button")
 async def butt(event):

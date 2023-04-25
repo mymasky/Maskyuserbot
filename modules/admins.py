@@ -54,20 +54,16 @@
 ◉ **Keterangan:** Keluar dari grup tersebut.
 """
 
-import asyncio
-
-from telethon.errors import BadRequestError
-from telethon.errors.rpcerrorlist import ChatNotModifiedError, UserIdInvalidError
-from telethon.tl.functions.channels import *
-from telethon.tl.functions.messages import *
-from telethon.tl.types import InputMessagesFilterPinned
-from telethon.utils import get_display_name
 
 from Ayra.dB import DEVS
 from Ayra.kynan import register
-from Ayra.fns.admins import ban_time
+from telethon.errors import BadRequestError
+from telethon.errors.rpcerrorlist import UserIdInvalidError
+from telethon.tl.functions.channels import *
+from telethon.tl.functions.messages import *
 
 from . import *
+
 
 @ayra_cmd(
     pattern="[pP][r][o][m][o][t][e]( (.*)|$)",
@@ -379,7 +375,10 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="[sS][e][t][g][p][i][c]( (.*)|$)", admins_only=True, manager=True, require="change_info"
+    pattern="[sS][e][t][g][p][i][c]( (.*)|$)",
+    admins_only=True,
+    manager=True,
+    require="change_info",
 )
 async def _(ayra):
     if not ayra.is_reply:
@@ -418,7 +417,10 @@ async def _(ayra):
 
 
 @ayra_cmd(
-    pattern="[dD][e][l][g][p][i][c]( (.*)|$)", admins_only=True, manager=True, require="change_info"
+    pattern="[dD][e][l][g][p][i][c]( (.*)|$)",
+    admins_only=True,
+    manager=True,
+    require="change_info",
 )
 async def _(ayra):
     match = ayra.pattern_match.group(1).strip()
@@ -431,7 +433,8 @@ async def _(ayra):
     except Exception as E:
         text = str(E)
     return await ayra.eor(text, time=5)
-    
+
+
 @ayra_cmd(
     pattern="[dD][e][l]",
     manager=True,
@@ -442,7 +445,8 @@ async def delete_it(delme):
         return
     await msg_src.try_delete()
     await delme.try_delete()
-    
+
+
 @ayra_cmd(pattern="[kK][i][c][k][m][e]", fullsudo=False)
 async def leave(ayra):
     await ayra.eor(f"`{ayra.client.me.first_name} has left this group, bye!!.`")

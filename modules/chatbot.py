@@ -23,10 +23,9 @@
 ◉ **Keterangan:** Mencari gambar menggunakan ai.
 """
 
-from telethon.errors import MessageNotModifiedError
-from . import ayra_cmd, udB, eor, LOGS, eod, get_string, inline_mention
-
+from . import LOGS, ayra_cmd, eod, inline_mention, udB
 from .database.ai import OpenAi, get_chatbot_reply
+
 
 @ayra_cmd(pattern="ai( (.*)|$)")
 async def openai(event):
@@ -51,7 +50,9 @@ async def imge(event):
     msg = await event.eor("`Processing...`")
     try:
         response = OpenAi().photo(question)
-        await event.client.send_file(event.chat_id, file=response, reply_to=event.message.id)
+        await event.client.send_file(
+            event.chat_id, file=response, reply_to=event.message.id
+        )
         await msg.delete()
     except Exception as error:
         await event.eor(str(error))
@@ -65,7 +66,9 @@ async def im_lonely_chat_with_me(event):
         try:
             message = event.text.split(" ", 1)[1]
         except IndexError:
-            return await eod(event, "Balas ke pesan pengguna atau beri saya id/username", time=10)
+            return await eod(
+                event, "Balas ke pesan pengguna atau beri saya id/username", time=10
+            )
     reply_ = await get_chatbot_reply(message=message)
     await event.eor(reply_)
 
@@ -110,7 +113,8 @@ async def chat_bot_fn(event, type_):
     if not user_:
         return await eod(
             event,
-            "Balas ke pesan pengguna atau beri saya id/username untuk menambahkan ChatBot AI!")
+            "Balas ke pesan pengguna atau beri saya id/username untuk menambahkan ChatBot AI!",
+        )
     key = udB.get_key("CHATBOT_USERS") or {}
     chat = event.chat_id
     user = user_.id

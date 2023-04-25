@@ -13,9 +13,8 @@
 ๏ **Perintah:** `unlock` <msgs/media/sticker/gif/games/inline/polls/invites/pin/changeinfo>
 ◉ **Keterangan:** Unlock Pengaturan gunakan di Grup .
 """
-from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
-
 from Ayra.fns.admins import lock_unlock
+from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
 
 from . import ayra_cmd
 

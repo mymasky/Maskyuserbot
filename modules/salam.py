@@ -22,10 +22,9 @@
 """
 
 from time import sleep
-from . import (
-    eor,
-    ayra_cmd,
-)
+
+from . import ayra_cmd
+
 
 @ayra_cmd(pattern="[aA][sS][sS]")
 async def _(event):
@@ -35,12 +34,13 @@ async def _(event):
 @ayra_cmd(pattern="[aA][sS]")
 async def _(event):
     await event.eor("**Assalamu'alaikum**")
-    
+
+
 @ayra_cmd(pattern="[wW][sS]")
 async def _(event):
     await event.eor("**Wa'alaikumussalam**")
 
-    
+
 @ayra_cmd(pattern="[kK][sS]")
 async def _(event):
     xx = await event.eor(f"**Hy kaa 🥺**")
@@ -50,7 +50,7 @@ async def _(event):
 
 @ayra_cmd(pattern="[jJ][wW][sS]")
 async def _(event):
-    xx = await event.eor(event,f"**Astaghfirullah, Jawab salam dong**")
+    xx = await event.eor(event, f"**Astaghfirullah, Jawab salam dong**")
     sleep(2)
     await xx.edit("**Assalamu'alaikum**")
 
@@ -60,7 +60,8 @@ async def _(event):
     xx = await event.eor(f"**Bismillah, 3x**")
     sleep(2)
     await xx.edit("**Assalamu'alaikum Bisa Kali**")
-    
+
+
 @ayra_cmd(pattern="[kK][gG]")
 async def _(event):
     xx = await event.eor(f"**Lu Ngapah Begitu ?**")

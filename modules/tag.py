@@ -15,8 +15,6 @@
 """
 
 import asyncio
-import re
-from secrets import choice
 
 from . import *
 
@@ -38,6 +36,7 @@ async def _(event):
     await event.client.send_message(
         chat, mentions, reply_to=event.message.reply_to_msg_id
     )
+
 
 @ayra_cmd(pattern="(b|B)atal(?: |$)")
 async def cancel_all(event):
@@ -85,5 +84,3 @@ async def _(event):
                 break
     finally:
         FlagContainer.is_active = False
-
-

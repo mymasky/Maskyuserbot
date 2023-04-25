@@ -23,8 +23,6 @@
 from telethon.errors import ChatAdminRequiredError as no_admin
 from telethon.tl.functions.channels import (
     CreateChannelRequest,
-    DeleteChannelRequest,
-    EditPhotoRequest,
     GetFullChannelRequest,
     UpdateUsernameRequest,
 )
@@ -44,8 +42,7 @@ from telethon.tl.types import (
     UserStatusRecently,
 )
 
-from . import HNDLR, LOGS, asst, con, get_string, mediainfo, os, types, udB, ayra_cmd
-
+from . import LOGS, asst, ayra_cmd, types
 
 
 @ayra_cmd(

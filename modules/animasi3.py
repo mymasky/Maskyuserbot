@@ -39,9 +39,10 @@
 """
 
 import asyncio
-from secrets import choice
 from time import sleep
+
 from . import *
+
 
 @ayra_cmd(pattern="bulan$")
 async def _(event):
@@ -707,7 +708,6 @@ async def _(event):
     )
 
 
-
 @ayra_cmd(pattern="ajg(?: |$)(.*)")
 async def _(event):
     await eor(
@@ -1066,5 +1066,3 @@ async def _(event):
     await typew.edit(str(number) + "%   ████████████████▌")
     sleep(1)
     await typew.edit("`Target Berhasil Tersantet Online 🥴`")
-
-

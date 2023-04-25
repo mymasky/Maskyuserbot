@@ -31,7 +31,7 @@ from PIL import Image
 from telethon.tl.types import MessageMediaDocument as doc
 from telethon.tl.types import MessageMediaPhoto as photu
 
-from . import check_filename, get_string, ayra_bot, ayra_cmd
+from . import ayra_bot, ayra_cmd, check_filename, get_string
 
 
 @ayra_cmd(pattern="(q|Q)rcode( (.*)|$)")

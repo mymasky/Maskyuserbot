@@ -6,9 +6,6 @@
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
 
-
-import aiofiles
-import aiohttp
 import asyncio
 import hashlib
 import os
@@ -16,43 +13,42 @@ import os.path
 import re
 import shlex
 import time
+import traceback
 from os.path import basename
+from random import choice
+from time import time
+from traceback import format_exc
 from typing import Optional, Tuple, Union
 from urllib.request import urlretrieve
 
-import os
-import re
-import traceback
-from time import time
-import time
-from random import choice
-from traceback import format_exc
-
+import aiofiles
+import aiohttp
 import requests
-from telethon import events
-from telethon.utils import get_display_name
-from telethon import Button, events
-from telethon.tl import functions, types  # pylint:ignore
-
-from pytgcalls import GroupCallFactory
-from pytgcalls.exceptions import GroupCallNotFoundError
-
-from Ayra import *
-from Ayra.configs import Var
-from Ayra.kynan import *
+from Ayra._misc import owner_and_sudos, sudoers
 from Ayra._misc._assistant import asst_cmd, callback, in_pattern
 from Ayra._misc._decorators import ayra_cmd, compile_pattern
-from Ayra._misc import owner_and_sudos, sudoers
-from Ayra.fns.admins import admin_check
 from Ayra._misc._wrappers import eod, eor
-from Ayra.dB import DEVS, AYRA_IMAGES
-from Ayra.fns.ytdl import get_videos_link
+from Ayra.configs import Var
+from Ayra.dB import AYRA_IMAGES, DEVS
+from Ayra.fns.admins import admin_check
 from Ayra.fns.helper import *
 from Ayra.fns.info import *
 from Ayra.fns.misc import *
 from Ayra.fns.tools import *
-from Ayra.version import ayra_version, __version__ as AyraVer
+from Ayra.fns.ytdl import get_videos_link
+from Ayra.kynan import *
+from Ayra.version import __version__ as AyraVer
+from Ayra.version import ayra_version
+from pytgcalls import GroupCallFactory
+from pytgcalls.exceptions import GroupCallNotFoundError
+from telethon import Button, events
+from telethon.tl import functions, types  # pylint:ignore
+from telethon.utils import get_display_name
+
+from Ayra import *
 from strings import get_help, get_string
+
+from .database.strg import Storage
 
 Redis = udB.get_key
 con = TgConverter
@@ -62,10 +58,10 @@ OWNER_ID = ayra_bot.uid
 
 LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
 
-from .database.strg import Storage
 
 def STORAGE(n):
     return Storage(Path("data") / n)
+
 
 """
 def inline_pic():
@@ -90,7 +86,38 @@ STUFF = {}
 # Considerably, there can be many
 # Feel Free to Add Any other...
 
-NOSPAM_CHAT = [-1001599474353, -1001692751821, -1001473548283, -1001459812644, -1001433238829, -1001476936696, -1001327032795, -1001294181499, -1001419516987, -1001209432070, -1001296934585, -1001481357570, -1001459701099, -1001109837870, -1001485393652, -1001354786862, -1001109500936, -1001387666944, -1001390552926, -1001752592753, -1001777428244, -1001771438298, -1001287188817, -1001812143750, -1001883961446, -1001753840975, -1001896051491, -1001578091827, -1001284445583]
+NOSPAM_CHAT = [
+    -1001599474353,
+    -1001692751821,
+    -1001473548283,
+    -1001459812644,
+    -1001433238829,
+    -1001476936696,
+    -1001327032795,
+    -1001294181499,
+    -1001419516987,
+    -1001209432070,
+    -1001296934585,
+    -1001481357570,
+    -1001459701099,
+    -1001109837870,
+    -1001485393652,
+    -1001354786862,
+    -1001109500936,
+    -1001387666944,
+    -1001390552926,
+    -1001752592753,
+    -1001777428244,
+    -1001771438298,
+    -1001287188817,
+    -1001812143750,
+    -1001883961446,
+    -1001753840975,
+    -1001896051491,
+    -1001578091827,
+    -1001284445583,
+]
+
 
 async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
     """run command in terminal"""

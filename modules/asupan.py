@@ -1,4 +1,3 @@
-
 """
 ✘ **Bantuan Untuk Asupan**
 
@@ -29,7 +28,7 @@
 
 from secrets import choice
 
-from telethon.tl.types import InputMessagesFilterVideo, InputMessagesFilterVoice, InputMessagesFilterPhotos
+from telethon.tl.types import InputMessagesFilterPhotos, InputMessagesFilterVideo
 
 from . import *
 
@@ -55,9 +54,7 @@ async def _(event):
 @ayra_cmd(pattern="[Bb][o][k][e][p]$")
 async def _(event):
     if event.chat_id in NOSPAM_CHAT:
-        return await eor(
-            event, "**Perintah ini Dilarang digunakan di Group ini**"
-        )
+        return await eor(event, "**Perintah ini Dilarang digunakan di Group ini**")
     xx = await eor(event, "`Tunggu Sebentar...`")
     try:
         bokepnya = [
@@ -90,7 +87,8 @@ async def _(event):
         await xx.delete()
     except Exception:
         await xx.edit("**Tidak bisa menemukan ayang.**")
-        
+
+
 @ayra_cmd(pattern="(ppcp|Ppcp)$")
 async def _(event):
     xx = await eor(event, "`Tunggu Sebentar...`")
@@ -107,6 +105,7 @@ async def _(event):
         await xx.delete()
     except Exception:
         await xx.edit("**Tidak bisa menemukan ppcp.**")
+
 
 @ayra_cmd(pattern="(Ppcp2|ppcp2)$")
 async def _(event):
@@ -125,6 +124,7 @@ async def _(event):
     except Exception:
         await xx.edit("**Tidak bisa menemukan ppcp2.**")
 
+
 @ayra_cmd(pattern="(Anime|anime)$")
 async def _(event):
     xx = await eor(event, "`Tunggu Sebentar...`")
@@ -141,6 +141,7 @@ async def _(event):
         await xx.delete()
     except Exception:
         await xx.edit("**Tidak bisa menemukan anime.**")
+
 
 @ayra_cmd(pattern="(anime2|Anime2)$")
 async def _(event):
@@ -176,4 +177,3 @@ async def _(event):
         await xx.delete()
     except Exception:
         await xx.edit("**Tidak bisa menemukan desahan cowo.**")
-

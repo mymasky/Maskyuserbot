@@ -19,13 +19,12 @@
 ๏ **Perintah:** `undmute` <balas pesan/berikan username>
 ◉ **Keterangan:** Suarakan pengguna yang dibisukan dalam obrolan saat ini.
 """
+from Ayra.dB.mute_db import is_muted, mute, unmute
+from Ayra.fns.admins import ban_time
 from telethon import events
 from telethon.utils import get_display_name
 
-from Ayra.dB.mute_db import is_muted, mute, unmute
-from Ayra.fns.admins import ban_time
-
-from . import asst, eod, get_string, inline_mention, ayra_bot, ayra_cmd
+from . import asst, ayra_bot, ayra_cmd, eod, get_string, inline_mention
 
 
 @ayra_bot.on(events.NewMessage(incoming=True))
@@ -50,7 +49,9 @@ async def startmute(event):
         reply = await event.get_reply_message()
         userid = reply.sender_id
         if reply.out or userid in [ayra_bot.me.id, asst.me.id]:
-            return await xx.eor("`Anda tidak dapat membisukan diri sendiri atau bot asisten Anda.`")
+            return await xx.eor(
+                "`Anda tidak dapat membisukan diri sendiri atau bot asisten Anda.`"
+            )
     elif event.is_private:
         userid = event.chat_id
     else:
@@ -169,7 +170,10 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="[mM][u][t][e]( (.*)|$)", admins_only=True, manager=True, require="ban_users"
+    pattern="[mM][u][t][e]( (.*)|$)",
+    admins_only=True,
+    manager=True,
+    require="ban_users",
 )
 async def _(e):
     xx = await e.eor("`Bentar...`")

@@ -12,71 +12,27 @@
 
 """
 
-import calendar
-import html
-import io
 import os
-import pathlib
-import time
-from datetime import datetime as dt
 
 try:
     from PIL import Image
 except ImportError:
     Image = None
 
-from Ayra._misc._assistant import asst_cmd
-from Ayra.dB.gban_mute_db import is_gbanned
-from Ayra.fns.tools import get_chat_and_msgid
 
 try:
     from telegraph import upload_file as uf
 except ImportError:
     uf = None
 
-from telethon.errors.rpcerrorlist import ChatForwardsRestrictedError, UserBotError
-from telethon.events import NewMessage
-from telethon.tl.custom import Dialog
-from telethon.tl.functions.channels import (
-    GetAdminedPublicChannelsRequest,
-    InviteToChannelRequest,
-    LeaveChannelRequest,
-)
-from telethon.tl.functions.contacts import GetBlockedRequest
-from telethon.tl.functions.messages import AddChatUserRequest, GetAllStickersRequest
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import Channel, Chat, InputMediaPoll, Poll, PollAnswer, User
-from telethon.utils import get_peer_id
 
-from . import (
-    HNDLR,
-    LOGS,
-    Image,
-    ReTrieveFile,
-    Telegraph,
-    asst,
-    async_searcher,
-    bash,
-    check_filename,
-    eod,
-    eor,
-    get_chat_info,
-    get_paste,
-    get_string,
-    inline_mention,
-    json_parser,
-    mediainfo,
-    udB,
-    ayra_cmd,
-)
+from . import LOGS, asst, ayra_cmd, get_paste
 
 # =================================================================#
 
 TMP_DOWNLOAD_DIRECTORY = "resources/downloads/"
 
 _copied_msg = {}
-
-
 
 
 @ayra_cmd(pattern="(p|P)aste( (.*)|$)", manager=False, allow_all=True)

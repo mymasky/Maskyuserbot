@@ -39,7 +39,9 @@ async def _(event):
     elif "|" in input_str:
         lan, text = input_str.split("|")
     else:
-        await event.eor("Gunakan format : {HNDLR}tts <kode bahasa> <teks/balas ke pesan>.")
+        await event.eor(
+            "Gunakan format : {HNDLR}tts <kode bahasa> <teks/balas ke pesan>."
+        )
         return
     text = text.strip()
     lan = lan.strip()

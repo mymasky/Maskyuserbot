@@ -46,43 +46,35 @@
 
 """
 
-import re,os, asyncio
-from telethon.tl import types
-from telethon.errors.rpcerrorlist import ChatSendMediaForbiddenError
-from pytgcalls.exceptions import NotConnectedError
-
 import asyncio
 import os
 import re
-import traceback
-from time import time
 import time
-from random import choice
+from time import time
 from traceback import format_exc
 
-import requests
-from telethon import events
-from telethon.utils import get_display_name
-from telethon import Button, events
-from telethon.tl import functions, types  # pylint:ignore
 from aiohttp import ClientSession
-from pytgcalls import GroupCallFactory
-from pytgcalls.exceptions import GroupCallNotFoundError
-
-from Ayra import *
-from Ayra._misc._assistant import asst_cmd, callback, in_pattern
+from Ayra._misc import owner_and_sudos
 from Ayra._misc._decorators import ayra_cmd, compile_pattern
-from Ayra._misc import owner_and_sudos, sudoers
 from Ayra.fns.admins import admin_check
-from Ayra._misc._wrappers import eod, eor
-from Ayra.dB import DEVS, AYRA_IMAGES
-from Ayra.fns.ytdl import get_videos_link
 from Ayra.fns.helper import *
 from Ayra.fns.info import *
 from Ayra.fns.misc import *
 from Ayra.fns.tools import *
-from Ayra.version import ayra_version, __version__ as AyraVer
-from strings import get_help, get_string
+from Ayra.fns.ytdl import get_videos_link
+from Ayra.version import __version__ as AyraVer
+from pytgcalls import GroupCallFactory
+from pytgcalls.exceptions import GroupCallNotFoundError, NotConnectedError
+from telethon import events
+from telethon.errors.rpcerrorlist import (
+    ChatSendMediaForbiddenError,
+    MessageIdInvalidError,
+)
+from telethon.tl import functions, types  # pylint:ignore
+from youtubesearchpython import VideosSearch
+
+from Ayra import *
+from strings import get_string
 
 Redis = udB.get_key
 con = TgConverter
@@ -92,14 +84,6 @@ OWNER_ID = ayra_bot.uid
 aiosession = ClientSession()
 LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
 
-from Ayra.dB.vc_sudos import add_vcsudo, del_vcsudo, get_vcsudos, is_vcsudo
-from telethon.errors.rpcerrorlist import ChatSendMediaForbiddenError, MessageIdInvalidError
-
-from yt_dlp import YoutubeDL
-
-from youtubesearchpython import VideosSearch
-
-from strings import get_string
 
 StartTime = time.time()
 
@@ -125,7 +109,8 @@ class Player:
             self.group_call = CLIENTS[chat]
         else:
             _client = GroupCallFactory(
-                vcClient, GroupCallFactory.MTPROTO_CLIENT_TYPE.TELETHON,
+                vcClient,
+                GroupCallFactory.MTPROTO_CLIENT_TYPE.TELETHON,
             )
             self.group_call = _client.get_group_call()
             CLIENTS.update({chat: self.group_call})
@@ -497,7 +482,8 @@ async def play_music_(event):
         else:
             song = input
     if not (reply or song):
-        return await xx.eor("Harap tentukan nama lagu atau balas ke file audio !", time=5
+        return await xx.eor(
+            "Harap tentukan nama lagu atau balas ke file audio !", time=5
         )
     await xx.eor(get_string("vcbot_20"), parse_mode="md")
     if reply and reply.media and mediainfo(reply.media).startswith(("audio", "video")):
@@ -608,7 +594,7 @@ async def resumer(event):
     await aySongs.group_call.set_pause(False)
     await event.eor(get_string("vcbot_13"))
 
-    
+
 @ayra_cmd("(A|a)ddauth", from_users=owner_and_sudos(), vc_auth=False)
 async def auth_group(event):
     try:
@@ -659,8 +645,8 @@ async def listVc(e):
             title = "No Info"
         text += f"∆ <strong>{title}</strong> [ <code>{on}</code> ] : <code>{st}</code>"
     await e.eor(text, parse_mode="html")
-    
-    
+
+
 @ayra_cmd("(l|L)istplay")
 async def lstqueue(event):
     if len(event.text.split()) > 1:
@@ -708,8 +694,8 @@ async def rejoiner(event):
     except NotConnectedError:
         return await event.eor(get_string("vcbot_6"))
     await event.eor(get_string("vcbot_5"))
-    
-    
+
+
 @ayra_cmd("(S|s)kip")
 async def skipper(event):
     if len(event.text.split()) > 1:
@@ -722,8 +708,8 @@ async def skipper(event):
         chat = event.chat_id
     aySongs = Player(chat, event)
     await aySongs.play_from_queue()
-    
-    
+
+
 @ayra_cmd("(V|v)play")
 async def video_c(event):
     xx = await event.eor(get_string("com_1"))
@@ -785,4 +771,3 @@ async def video_c(event):
     await asyncio.sleep(1)
     await aySongs.group_call.start_video(song, with_audio=True)
     await xx.delete()
-    

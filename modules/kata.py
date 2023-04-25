@@ -63,10 +63,12 @@
 ◉ **Keterangan:** Cobain aja sendiri.
 """
 
-import string
 from time import sleep
-from . import *
+
 from Ayra.kynan import *
+
+from . import *
+
 
 @ayra_cmd(pattern="Riz$")
 @register(incoming=True, from_users=DEVS, pattern=r"^Riz")
@@ -147,7 +149,7 @@ async def _(event):
     )
     await event.delete()
 
-    
+
 @ayra_cmd(pattern="ra$")
 @register(incoming=True, from_users=DEVS, pattern=r"^Ra")
 async def _(event):
@@ -156,7 +158,8 @@ async def _(event):
         "**◈ λʏꝛᴀ ꭙ ᴜꜱᴇꝛʙᴏᴛ​ ◈**",
         reply_to=event.reply_to_msg_id,
     )
-    
+
+
 @ayra_cmd(pattern="riz$")
 @register(incoming=True, from_users=DEVS, pattern=r"^riz")
 async def _(event):
@@ -165,7 +168,7 @@ async def _(event):
         "**Mmuuaahh😘😘**",
         reply_to=event.reply_to_msg_id,
     )
-    
+
 
 @ayra_cmd(pattern=r"(So|so)")
 async def _(event):
@@ -180,9 +183,7 @@ async def _(event):
 @ayra_cmd(pattern=r"(Nb|nb)")
 async def _(event):
     if event.chat_id in NOSPAM_CHAT:
-        return await event.eor(
-            event, "Perintah ini Dilarang digunakan di Group ini"
-        )
+        return await event.eor(event, "Perintah ini Dilarang digunakan di Group ini")
     await event.client.send_message(
         event.chat_id,
         "MAEN BOT MULU ALAY NGENTOTT, KESANNYA NORAK GOBLOK!!!",
@@ -274,9 +275,7 @@ async def _(event):
 @ayra_cmd(pattern=r"[gG][cC][sS]")
 async def _(event):
     if event.chat_id in BLACKLIST_CHAT:
-        return await event.eor(
-            event, "Perintah ini Dilarang digunakan di Group ini"
-        )
+        return await event.eor(event, "Perintah ini Dilarang digunakan di Group ini")
     await event.client.send_message(
         event.chat_id,
         "GC SAMPAH KAYA GINI, BUBARIN AJA GOBLOK!!",
@@ -314,5 +313,3 @@ async def _(event):
     await xx.edit("BHAHAHAHA")
     sleep(1.5)
     await xx.edit("KASIAN MANA MASIH MUDA")
-    
-    

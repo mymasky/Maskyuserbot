@@ -17,32 +17,9 @@
 ◉ **Keterangan:** Buat kutipan dengan jumlah pesan.
 """
 import os
-import time
-from datetime import datetime as dt
 from random import choice
-from shutil import rmtree
 
-import pytz
-from bs4 import BeautifulSoup as bs
-from telethon.tl.types import DocumentAttributeVideo
-
-from Ayra.fns.google_image import googleimagesdownload
-from Ayra.fns.tools import metadata
-
-from . import (
-    HNDLR,
-    AyConfig,
-    async_searcher,
-    bash,
-    downloader,
-    eod,
-    get_string,
-    mediainfo,
-    quotly,
-    ayra_bot,
-    ayra_cmd,
-    uploader,
-)
+from . import ayra_cmd, get_string, quotly
 from .carbon import all_col
 
 File = []

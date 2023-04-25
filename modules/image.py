@@ -281,6 +281,7 @@ async def pixelator(event):
     os.remove("output.jpg")
     os.remove(image)
 
+
 @ayra_cmd(
     pattern="(R|r)mbg($| (.*))",
 )
@@ -300,9 +301,7 @@ async def abs_rmbg(event):
         else:
             dl = await reply.download_media()
     else:
-        return await eod(
-            event, f"Gunakan format : `rmbg` <balas ke foto>."
-        )
+        return await eod(event, f"Gunakan format : `rmbg` <balas ke foto>.")
     if not (dl and dl.endswith(("webp", "jpg", "png", "jpeg"))):
         os.remove(dl)
         return await event.eor(get_string("com_4"))

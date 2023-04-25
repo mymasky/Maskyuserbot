@@ -22,13 +22,7 @@
 import asyncio
 import os
 
-from telethon.errors.rpcerrorlist import ChatAdminRequiredError, FloodWaitError
-from telethon.tl.functions.channels import EditAdminRequest
-from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
-from telethon.tl.types import ChatAdminRights, User
-
 from Ayra.dB import DEVS
-from Ayra.kynan import register
 from Ayra.dB.gban_mute_db import (
     gban,
     gmute,
@@ -38,27 +32,12 @@ from Ayra.dB.gban_mute_db import (
     ungban,
     ungmute,
 )
-from Ayra.dB.gcast_blacklist_db import (
-    add_gblacklist,
-    is_gblacklisted,
-    rem_gblacklist,
-)
-from Ayra.fns.tools import create_tl_btn, format_btn, get_msg_button
+from Ayra.kynan import register
+from telethon.errors.rpcerrorlist import ChatAdminRequiredError, FloodWaitError
+from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
+from telethon.tl.types import User
 
-from . import (
-    HNDLR,
-    LOGS,
-    NOSPAM_CHAT,
-    OWNER_NAME,
-    eod,
-    eor,
-    get_string,
-    inline_mention,
-    ayra_bot,
-    ayra_cmd,
-)
-from ._inline import something
-
+from . import LOGS, OWNER_NAME, ayra_bot, ayra_cmd, eod, get_string, inline_mention
 
 
 @ayra_cmd(pattern="[uU][n][g][b][a][n]( (.*)|$)", fullsudo=False)
@@ -218,7 +197,9 @@ async def _(e):
     elif e.is_private:
         userid = e.chat_id
     else:
-        return await xx.eor("`Balas beberapa pesan atau tambahkan id mereka.`", tome=5, time=5)
+        return await xx.eor(
+            "`Balas beberapa pesan atau tambahkan id mereka.`", tome=5, time=5
+        )
     name = await e.client.get_entity(userid)
     chats = 0
     if userid == ayra_bot.uid:

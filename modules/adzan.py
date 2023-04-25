@@ -7,7 +7,9 @@
 import json
 
 import requests
+
 from . import *
+
 
 @ayra_cmd(pattern="adzan(?:\\s|$)([\\s\\S]*)")
 async def cek(event):

@@ -5,30 +5,11 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
-import base64
-import inspect
-from datetime import datetime
-from html import unescape
-from random import choice
-from re import compile as re_compile
 
-from bs4 import BeautifulSoup as bs
 from telethon import Button
-from telethon.tl.alltlobjects import LAYER, tlobjects
-from telethon.tl.types import DocumentAttributeAudio as Audio
 from telethon.tl.types import InputWebDocument as wb
 
-from Ayra.fns.misc import google_search
-from Ayra.fns.tools import (
-    _webupload_cache,
-    async_searcher,
-    get_ofox,
-    saavn_search,
-    webuploader,
-)
-
 from . import *
-from . import _ayra_cache
 
 SUP_BUTTONS = [
     [
@@ -46,7 +27,6 @@ apis = [
     "QUl6YVN5QkYwenhMbFlsUE1wOXh3TVFxVktDUVJxOERnZHJMWHNn",
     "QUl6YVN5RGRPS253blB3VklRX2xiSDVzWUU0Rm9YakFLSVFWMERR",
 ]
-
 
 
 @in_pattern("repo", owner=True)

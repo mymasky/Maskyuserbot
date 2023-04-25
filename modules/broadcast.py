@@ -29,45 +29,15 @@ Kirim ke
 [Qris|https://link.qris|same]
 """
 import asyncio
-import os
-
-from telethon.errors.rpcerrorlist import ChatAdminRequiredError, FloodWaitError
-from telethon.tl.functions.channels import EditAdminRequest
-from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
-from telethon.tl.types import ChatAdminRights, User
 
 from Ayra.dB import DEVS
-from Ayra.dB.gban_mute_db import (
-    gban,
-    gmute,
-    is_gbanned,
-    is_gmuted,
-    list_gbanned,
-    ungban,
-    ungmute,
-)
-from Ayra.dB.gcast_blacklist_db import (
-    add_gblacklist,
-    is_gblacklisted,
-    rem_gblacklist,
-    list_bl,
-)
+from Ayra.dB.gcast_blacklist_db import add_gblacklist, list_bl, rem_gblacklist
 from Ayra.fns.tools import create_tl_btn, format_btn, get_msg_button
+from telethon.errors.rpcerrorlist import FloodWaitError
 
-from . import (
-    HNDLR,
-    LOGS,
-    NOSPAM_CHAT,
-    OWNER_NAME,
-    eod,
-    eor,
-    get_string,
-    inline_mention,
-    ayra_bot,
-    ayra_cmd,
-    udB,
-)
+from . import HNDLR, NOSPAM_CHAT, ayra_cmd, eor, udB
 from ._inline import something
+
 
 @ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gcast(event):
@@ -96,13 +66,13 @@ async def gcast(event):
             chat_blacklist = udB.get_key("GBLACKLISTS") or []
             chat_blacklist.append(-1001287188817)
             if (
-                chat not in chat_blacklist and
-                chat not in NOSPAM_CHAT and
-                (
-                  event.text[2:7] != "admin" or
-                  (x.entity.admin_rights or x.entity.creator)
+                chat not in chat_blacklist
+                and chat not in NOSPAM_CHAT
+                and (
+                    event.text[2:7] != "admin"
+                    or (x.entity.admin_rights or x.entity.creator)
                 )
-            ):           
+            ):
                 try:
                     if btn:
                         bt = create_tl_btn(btn)
@@ -146,7 +116,7 @@ async def gcast(event):
     text += f"Berhasil di {done} obrolan, kesalahan {er} obrolan"
     if err != "":
         open("gcast-error.log", "w+").write(err)
-        text += f"\Anda dapat melakukan `{HNDLR}ayra gcast-error.log` untuk mengetahui laporan kesalahan."
+        text += f"\\Anda dapat melakukan `{HNDLR}ayra gcast-error.log` untuk mengetahui laporan kesalahan."
     await kk.edit(text)
 
 

@@ -9,25 +9,17 @@
 import asyncio
 import re
 import sys
-import time
-from asyncio.exceptions import TimeoutError as AsyncTimeOut
 from os import execl, remove
 from random import choice
-
-from bs4 import BeautifulSoup as bs
 
 try:
     from Ayra.fns.gDrive import GDriveManager
 except ImportError:
     GDriveManager = None
+from Ayra.fns.tools import Carbon, get_paste, telegraph_client
 from telegraph import upload_file as upl
 from telethon import Button, events
 from telethon.tl.types import MessageMediaWebPage
-from telethon.utils import get_peer_id
-
-from Ayra.fns.helper import fast_download, progress
-from Ayra.fns.tools import Carbon, async_searcher, get_paste, telegraph_client
-from Ayra.startup.loader import Loader
 
 from . import *
 
@@ -230,7 +222,7 @@ async def update(eve):
         await eve.edit("`Berhasil Diperbarui!\nMemulai ulang, harap tunggu...`")
     else:
         await eve.edit(get_string("clst_1"))
-        #call_back()
+        # call_back()
         await bash("git pull && pip3 install -r requirements.txt")
         execl(sys.executable, sys.executable, "-m", "Ayra")
 
@@ -349,6 +341,7 @@ async def convo_handler(event: events.CallbackQuery):
             f"{get_['name']} Berhasil diatur ke `{themssg}`",
             buttons=get_back_button(back),
         )
+
 
 @callback("hhndlr", owner=True)
 async def hndlrr(event):

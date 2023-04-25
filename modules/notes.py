@@ -30,9 +30,10 @@ import os
 from telegraph import upload_file as uf
 from telethon.utils import pack_bot_file_id
 
-from .database.notesdb import *
-from ._inline import something
 from . import *
+from ._inline import something
+from .database.notesdb import *
+
 
 @ayra_cmd(pattern="[sS][a][v][e]( (.*)|$)")
 async def an(e):
@@ -98,14 +99,14 @@ async def notes(e):
     user = e.sender_id
     wrd = (e.pattern_match.group(1).strip()).lower()
     if k := get_notes(user, wrd):
-            msg = k["msg"]
-            media = k["media"]
-            if k.get("button"):
-                btn = create_tl_btn(k["button"])
-                return await something(e, msg, media, btn)
-            await e.client.send_message(
-                e.chat_id, msg, file=media, reply_to=e.reply_to_msg_id or e.id
-            )
+        msg = k["msg"]
+        media = k["media"]
+        if k.get("button"):
+            btn = create_tl_btn(k["button"])
+            return await something(e, msg, media, btn)
+        await e.client.send_message(
+            e.chat_id, msg, file=media, reply_to=e.reply_to_msg_id or e.id
+        )
 
 
 if udB.get_key("NOTE"):

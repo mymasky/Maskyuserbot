@@ -33,20 +33,19 @@
 
 ๏ **Perintah:** `gif` <kata kunci>
 ◉ **Keterangan:** Mencari gif.
-  
+
 ๏ **Perintah:** `size` <balas file>
 ◉ **Keterangan:** Mendapatkan ukuran media.
-  
+
 ๏ **Perintah:** `resize` <number> <number>
 ◉ **Keterangan:** Ubah ukuran media.
 """
 
-import os
-import time
-import random
 import asyncio
 import io
 import os
+import random
+import time
 
 from PIL import Image
 
@@ -61,7 +60,6 @@ except ImportError:
     LOGS.info(f"{__file__}: PIL  not Installed.")
     Image = None
 
-from telegraph import upload_file as uf
 from datetime import datetime as dt
 
 from . import *
@@ -107,19 +105,24 @@ async def uconverter(event):
     await xx.delete()
 """
 
+
 @ayra_cmd(pattern="convert ?(foto|audio|gif|voice|photo|mp3)? ?(.*)")
 async def cevir(event):
     ajg = event.pattern_match.group(1)
     try:
         if len(ajg) < 1:
-            await eod(event, "**Perintah tidak diketahui! ketik** `{}help convert` **bila butuh bantuan**",
-                      time=30,
-                      )
+            await eod(
+                event,
+                "**Perintah tidak diketahui! ketik** `{}help convert` **bila butuh bantuan**",
+                time=30,
+            )
             return
     except BaseException:
-        await eod(event, "**Perintah tidak diketahui! ketik** `{}help convert` **bila butuh bantuan**",
-                  time=30,
-                  )
+        await eod(
+            event,
+            "**Perintah tidak diketahui! ketik** `{}help convert` **bila butuh bantuan**",
+            time=30,
+        )
         return
     if ajg in ["foto", "photo"]:
         rep_msg = await event.get_reply_message()
@@ -143,7 +146,8 @@ async def cevir(event):
         efekt = event.pattern_match.group(2)
         if len(efekt) < 1:
             return await eod(
-                event, "**Efek tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** `bengek/robot/jedug/fast/echo",
+                event,
+                "**Efek tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** `bengek/robot/jedug/fast/echo",
                 time=30,
             )
         rep_msg = await event.get_reply_message()
@@ -173,7 +177,9 @@ async def cevir(event):
             os.remove(indir)
             os.remove("output.mp3")
         else:
-            await xxx.eor("**Efek tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** `bengek/robot/jedug/fast/echo")
+            await xxx.eor(
+                "**Efek tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** `bengek/robot/jedug/fast/echo"
+            )
     elif ajg == "mp3":
         rep_msg = await event.get_reply_message()
         if not event.is_reply or not rep_msg.video:
@@ -185,7 +191,9 @@ async def cevir(event):
             f"ffmpeg -y -i '{video}' -vn -b:a 128k -c:a libmp3lame out.mp3"
         )
         await gif.communicate()
-        await xx.eor("**Efek yang Anda tentukan tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** `bengek/robot/jedug/fast/echo`")
+        await xx.eor(
+            "**Efek yang Anda tentukan tidak ditemukan!**\n**Efek yang dapat Anda gunakan:** `bengek/robot/jedug/fast/echo`"
+        )
         try:
             await event.client.send_file(
                 event.chat_id,
@@ -200,7 +208,9 @@ async def cevir(event):
         os.remove("out.mp3")
         os.remove(video)
     else:
-        await xx.eor("**Perintah tidak diketahui! ketik** `{}help convert` **bila butuh bantuan**")
+        await xx.eor(
+            "**Perintah tidak diketahui! ketik** `{}help convert` **bila butuh bantuan**"
+        )
         return
 
 
@@ -224,6 +234,7 @@ async def makevoice(event):
     await xxnx.delete()
     os.remove(file)
     os.remove("ayra.opus")
+
 
 @ayra_cmd(pattern="(G|g)litch$")
 async def _(e):
@@ -250,8 +261,8 @@ async def _(e):
     await xx.delete()
     os.remove(ok)
     os.remove("ayra.gif")
-    
-    
+
+
 @ayra_cmd(pattern="(bw|Bw|Invert|invert)$")
 async def igif(e):
     match = e.pattern_match.group(1).strip()
@@ -347,7 +358,8 @@ async def vtogif(e):
     os.remove(z)
     os.remove("ayra.gif")
     await xx.delete()
-    
+
+
 @ayra_cmd(pattern="(size|Size)")
 async def size(e):
     r = await e.get_reply_message()
@@ -372,7 +384,8 @@ async def size(e):
     sz = e.pattern_match.group(1).strip()
     if not sz:
         return await eor(
-            f"Berikan Beberapa Ukuran Untuk Diubah Ukurannya, Seperti `resize 720 1080` ", time=5
+            f"Berikan Beberapa Ukuran Untuk Diubah Ukurannya, Seperti `resize 720 1080` ",
+            time=5,
         )
     k = await e.eor(get_string("com_1"))
     if hasattr(r.media, "document"):
@@ -382,7 +395,9 @@ async def size(e):
     sz = sz.split()
     if len(sz) != 2:
         return await eor(
-            k, f"Berikan Beberapa Ukuran Untuk Diubah Ukurannya, Seperti `resize 720 1080` ", time=5
+            k,
+            f"Berikan Beberapa Ukuran Untuk Diubah Ukurannya, Seperti `resize 720 1080` ",
+            time=5,
         )
     x, y = int(sz[0]), int(sz[1])
     im = Image.open(img)

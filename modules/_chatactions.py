@@ -7,11 +7,6 @@
 
 import asyncio
 
-from telethon import events
-from telethon.errors.rpcerrorlist import UserNotParticipantError
-from telethon.tl.functions.channels import GetParticipantRequest
-from telethon.utils import get_display_name
-
 from Ayra.dB import stickers
 from Ayra.dB.forcesub_db import get_forcesetting
 from Ayra.dB.gban_mute_db import is_gbanned
@@ -19,6 +14,10 @@ from Ayra.dB.greetings_db import get_goodbye, get_welcome, must_thank
 from Ayra.dB.nsfw_db import is_profan
 from Ayra.fns.helper import inline_mention
 from Ayra.fns.tools import async_searcher, create_tl_btn, get_chatbot_reply
+from telethon import events
+from telethon.errors.rpcerrorlist import UserNotParticipantError
+from telethon.tl.functions.channels import GetParticipantRequest
+from telethon.utils import get_display_name
 
 try:
     from ProfanityDetector import detector
@@ -224,7 +223,7 @@ async def uname_change(e):
 
 
 async def uname_stuff(id, uname, name):
-    if udB.get_key("USERNAME_LOG") :
+    if udB.get_key("USERNAME_LOG"):
         old_ = udB.get_key("USERNAME_DB") or {}
         old = old_.get(id)
         # Ignore Name Logs

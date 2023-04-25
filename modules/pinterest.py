@@ -12,12 +12,6 @@
 """
 
 
-
-import glob
-import io
-import os
-from asyncio.exceptions import TimeoutError as AsyncTimeout
-
 try:
     import cv2
 except ImportError:
@@ -27,16 +21,10 @@ try:
     from htmlwebshot import WebShot
 except ImportError:
     WebShot = None
-from telethon.errors.rpcerrorlist import MessageTooLongError, YouBlockedUserError
-from telethon.tl.types import (
-    ChannelParticipantAdmin,
-    ChannelParticipantsBots,
-    DocumentAttributeVideo,
-)
 
 from . import *
 
-        
+
 @ayra_cmd(
     pattern="(p|P)ntrst( (.*)|$)",
 )

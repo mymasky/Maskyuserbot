@@ -15,9 +15,10 @@
 
 
 import asyncio
-import time
-from telethon.tl.types import *
+
 from telethon.tl.functions.contacts import *
+from telethon.tl.types import *
+
 from . import *
 
 
@@ -29,12 +30,16 @@ async def convert_image(event):
     if event.reply_to_msg_id:
         cot = await event.eor("**Processing...**")
         await event.client(UnblockRequest(bot))
-        ba = await event.client.forward_messages(bot, event.reply_to_msg_id, event.chat_id)
+        ba = await event.client.forward_messages(
+            bot, event.reply_to_msg_id, event.chat_id
+        )
         await asyncio.sleep(30)
         await ba.delete()
         await cot.delete()
         get_photo = []
-        async for Toanime in event.client.iter_messages(bot, filter=InputMessagesFilterPhotos, limit=2):
+        async for Toanime in event.client.iter_messages(
+            bot, filter=InputMessagesFilterPhotos, limit=2
+        ):
             get_photo.append(await Toanime.download_media())
         if get_photo:
             for photo in get_photo:
@@ -44,7 +49,11 @@ async def convert_image(event):
                     reply_to=event.message.id,
                 )
         else:
-            await event.reply("**Tidak dapat menemukan foto untuk dikirim sebagai grup.**")
+            await event.reply(
+                "**Tidak dapat menemukan foto untuk dikirim sebagai grup.**"
+            )
+
+
 #        await event.client.delete_messages(
 #                Toanime.chat_id,
 

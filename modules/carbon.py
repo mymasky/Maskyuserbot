@@ -13,19 +13,22 @@
 """
 
 import os
+from io import BytesIO
+from secrets import choice
+
 from telethon.tl import types
 from telethon.utils import get_display_name
-from io import BytesIO
-import aiohttp
-from secrets import choice
-from . import eor, get_string, ayra_cmd
+
+from . import ayra_cmd, eor, get_string
 from .anu import *
+
 
 def vcmention(user):
     full_name = get_display_name(user)
     if not isinstance(user, types.User):
         return full_name
     return f"[{full_name}](tg://user?id={user.id})"
+
 
 all_col = [
     "Black",
@@ -194,7 +197,6 @@ def vcmention(user):
     return f"[{full_name}](tg://user?id={user.id})"
 
 
-
 @ayra_cmd(pattern="(rc|c)arbon")
 async def crbn(event):
     from_user = vcmention(event.sender)
@@ -214,10 +216,10 @@ async def crbn(event):
         try:
             code = event.text.split(" ", maxsplit=1)[1]
         except IndexError:
-            return await eor(xxxx, get_string("carbon_2"), time=30
-                             )
+            return await eor(xxxx, get_string("carbon_2"), time=30)
     xx = await make_carbon(code)
     await xxxx.delete()
-    await event.reply(get_string("carbon_1").format(from_user),
-                      file=xx,
-                      )
+    await event.reply(
+        get_string("carbon_1").format(from_user),
+        file=xx,
+    )

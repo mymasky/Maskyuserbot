@@ -16,10 +16,12 @@
 import os
 from asyncio import get_event_loop
 from functools import partial
+
 import wget
-from . import *
 from youtubesearchpython import SearchVideos
 from yt_dlp import YoutubeDL
+
+from . import *
 
 
 def run_sync(func, *args, **kwargs):
@@ -30,7 +32,13 @@ def run_sync(func, *args, **kwargs):
 async def yt_video(e):
     infomsg = await e.reply("**🔍 Pencarian...**")
     try:
-        search = SearchVideos(str(e.text.split(None, 1)[1]), offset=1, mode="dict", max_results=1).result().get("search_result")
+        search = (
+            SearchVideos(
+                str(e.text.split(None, 1)[1]), offset=1, mode="dict", max_results=1
+            )
+            .result()
+            .get("search_result")
+        )
         link = f"https://youtu.be/{search[0]['id']}"
     except Exception as error:
         return await infomsg.edit(f"**🔍 Pencarian...\n\n❌ Error: {error}**")
@@ -54,7 +62,7 @@ async def yt_video(e):
         duration = ytdl_data["duration"]
         channel = ytdl_data["uploader"]
         views = f"{ytdl_data['view_count']:,}".replace(",", ".")
-        thumbs = f"https://img.youtube.com/vi/{videoid}/hqdefault.jpg" 
+        thumbs = f"https://img.youtube.com/vi/{videoid}/hqdefault.jpg"
     except Exception as error:
         return await infomsg.edit(f"**📥 Downloader...\n\n❌ Error: {error}**")
     thumbnail = wget.download(thumbs)
@@ -84,7 +92,13 @@ async def yt_video(e):
 async def yt_audio(e):
     infomsg = await e.reply("**🔍 Pencarian...**")
     try:
-        search = SearchVideos(str(e.text.split(None, 1)[1]), offset=1, mode="dict", max_results=1).result().get("search_result")
+        search = (
+            SearchVideos(
+                str(e.text.split(None, 1)[1]), offset=1, mode="dict", max_results=1
+            )
+            .result()
+            .get("search_result")
+        )
         link = f"https://youtu.be/{search[0]['id']}"
     except Exception as error:
         return await infomsg.edit(f"**🔍 Pencarian...\n\n❌ Error: {error}**")
@@ -108,7 +122,7 @@ async def yt_audio(e):
         duration = ytdl_data["duration"]
         channel = ytdl_data["uploader"]
         views = f"{ytdl_data['view_count']:,}".replace(",", ".")
-        thumbs = f"https://img.youtube.com/vi/{videoid}/hqdefault.jpg" 
+        thumbs = f"https://img.youtube.com/vi/{videoid}/hqdefault.jpg"
     except Exception as error:
         return await infomsg.edit(f"**📥 Downloader...\n\n❌ Error: {error}**")
     thumbnail = wget.download(thumbs)

@@ -17,11 +17,10 @@
 ◉ **Keterangan:** Daftar semua pengguna sudo.
 """
 
+from Ayra._misc import sudoers
 from telethon.tl.types import User
 
-from Ayra._misc import sudoers
-
-from . import get_string, inline_mention, udB, ayra_bot, ayra_cmd
+from . import ayra_bot, ayra_cmd, get_string, inline_mention, udB
 
 
 @ayra_cmd(pattern="addsudo( (.*)|$)", fullsudo=False)

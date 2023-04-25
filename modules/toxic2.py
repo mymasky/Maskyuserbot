@@ -19,15 +19,13 @@
 """
 
 from time import sleep
-from . import (
-    eor,
-    ayra_cmd,
-)
+
+from . import ayra_cmd
 
 
 @ayra_cmd(outgoing=True, pattern=r"^(n|N)gentot(?: |$)(.*)")
 async def _(event):
-    xx = await event.eor("**WOYY NGENTOD!!**")
+    await event.eor("**WOYY NGENTOD!!**")
     sleep(1)
     await event.eor("**JANGAN SOK JAGOAN DAH LU**")
     sleep(1)
@@ -46,11 +44,14 @@ async def _(event):
     await event.eor("**SAMA ORANG LAIN**")
     sleep(1)
     await event.eor("**HAHAHAHA**")
+
+
 # Create by myself @localheart
+
 
 @ayra_cmd(outgoing=True, pattern=r"^[gG][oO][bB][lL[oO][kK](g|G)blk(?: |$)(.*)")
 async def _(event):
-    xx = await event.eor("**WOYY GOBLOK!!**")
+    await event.eor("**WOYY GOBLOK!!**")
     sleep(1)
     await event.eor("**KO LU GOBLOK BANGET SIH**")
     sleep(1)
@@ -69,12 +70,14 @@ async def _(event):
     await event.eor("**EHHH SANGE NYA MAU DAPAT YANG CANTIK**")
     sleep(1)
     await event.eor("**HAHAHAHA**")
+
+
 # Create by myself @localheart
 
 
 @ayra_cmd(outgoing=True, pattern=r"^(n|N)gatain(?: |$)(.*)")
 async def _(event):
-    xx = await event.eor("**BABI!!**")
+    await event.eor("**BABI!!**")
     sleep(1)
     await event.eor("**MUKA LU KAYA BABI**")
     sleep(1)
@@ -93,12 +96,14 @@ async def _(event):
     await event.eor("**EHHH SANGE NYA MAU DAPAT YANG CANTIK**")
     sleep(1)
     await event.eor("**HAHAHAHA**")
+
+
 # Create by myself @localheart
 
 
 @ayra_cmd(outgoing=True, pattern=r"^(y|Y)atim(?: |$)(.*)")
 async def _(event):
-    xx = await event.eor("`Hai Anak Kontol 🙈, Jangan Lupa Makan Yaa`")
+    await event.eor("`Hai Anak Kontol 🙈, Jangan Lupa Makan Yaa`")
     sleep(1)
     await event.eor("`Jangan Bilang Lu Ga Dikasih Makan Sama Ortu 😁`")
     sleep(1)
@@ -117,11 +122,14 @@ async def _(event):
     await event.eor("`MAAF YA, CANDAA BEBANNNN xixixi 🙈`")
     sleep(1)
     await event.eor("`Tapi Bo'ong Hiyahiyahiya`")
+
+
 # Create by myself @localheart
+
 
 @ayra_cmd(outgoing=True, pattern=r"^[kK][nN][tT][lL](?: |$)(.*)")
 async def _(event):
-    xx = await event.eor("**KONTOLL**")
+    await event.eor("**KONTOLL**")
     sleep(1.5)
     await event.eor("**LU ANAK KONTOLL**")
     sleep(1.5)

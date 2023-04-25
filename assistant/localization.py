@@ -8,8 +8,8 @@
 import re
 
 from . import (
-    Button,
     AyConfig,
+    Button,
     callback,
     get_back_button,
     get_languages,

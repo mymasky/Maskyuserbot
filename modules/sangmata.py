@@ -13,9 +13,6 @@
 ๏ **Perintah:** `sg` <balas pesan/berikan user id>
 ◉ **Keterangan:** Dapatkan History Pengguna.
 """
-import glob
-import io
-import os
 from asyncio.exceptions import TimeoutError as AsyncTimeout
 
 try:
@@ -27,29 +24,9 @@ try:
     from htmlwebshot import WebShot
 except ImportError:
     WebShot = None
-from telethon.errors.rpcerrorlist import MessageTooLongError, YouBlockedUserError
-from telethon.tl.types import (
-    ChannelParticipantAdmin,
-    ChannelParticipantsBots,
-    DocumentAttributeVideo,
-)
+from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from Ayra.fns.tools import metadata, translate
-
-from . import (
-    HNDLR,
-    LOGS,
-    AyConfig,
-    async_searcher,
-    bash,
-    check_filename,
-    con,
-    eor,
-    fast_download,
-    get_string,
-)
-from . import humanbytes as hb
-from . import inline_mention, is_url_ok, mediainfo, ayra_cmd
+from . import ayra_cmd, get_string
 
 
 @ayra_cmd(
@@ -103,7 +80,7 @@ async def lastname(steal):
                 response = await conv.get_response()
             except YouBlockedUserError:
                 return await lol.edit("Buka Blokir @SangMata_beta_bot dan Coba Lagi.")
-            if (response and response.text == "No"):
+            if response and response.text == "No":
                 await lol.edit("No records found for this user")
                 await steal.client.delete_messages(conv.chat_id, [msg.id, response.id])
             elif response.text.startswith("History"):

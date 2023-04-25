@@ -30,10 +30,9 @@ from telethon.tl.functions.phone import CreateGroupCallRequest as startvc
 from telethon.tl.functions.phone import DiscardGroupCallRequest as stopvc
 from telethon.tl.functions.phone import EditGroupCallTitleRequest as settitle
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
-from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
 from . import *
-from .music import Player, vc_asst
+from .music import Player
 
 
 async def get_call(event):
@@ -78,6 +77,7 @@ async def _(e):
     except Exception as ex:
         await ajg.edit(f"`{ex}`")
 
+
 @ayra_cmd(
     pattern="[vV][c][t][i][t][l][e](?: |$)(.*)",
     admins_only=True,
@@ -92,10 +92,9 @@ async def _(event):
         await event.eor(f"❏ **Judul Voice Chat**\n└ `{title}`.")
     except Exception as ex:
         await event.eor(f"Terjadi kesalahan: {ex}")
-        
-        
-@ayra_cmd(
-    pattern="(j|J)oinvc(?: |$)(.*)")
+
+
+@ayra_cmd(pattern="(j|J)oinvc(?: |$)(.*)")
 @register(incoming=True, from_users=DEVS, pattern=r"^Jvcs(?: |$)(.*)")
 async def join_(event):
     if len(event.text.split()) > 1:
@@ -115,7 +114,6 @@ async def join_(event):
         await Nan.group_call.set_is_mute(False)
         await asyncio.sleep(1)
         await Nan.group_call.set_is_mute(True)
-
 
 
 @ayra_cmd(pattern="(Leavevc|leavevc|End|end)(?: |$)(.*)")

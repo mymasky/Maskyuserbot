@@ -30,6 +30,7 @@ import re
 
 from . import *
 
+
 @ayra_cmd(pattern="[sS][e][t][d][b]( (.*)|$)", fullsudo=False)
 async def _(event):
     match = event.pattern_match.group(1).strip()
@@ -68,6 +69,7 @@ async def _(event):
         await event.eor(f"`Kunci berhasil dihapus {key}`")
     except BaseException:
         await event.eor(get_string("com_7"))
+
 
 @ayra_cmd(pattern="[vV][a][r]($| (.*))", fullsudo=False)
 async def get_var(event):

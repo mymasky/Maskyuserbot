@@ -87,12 +87,13 @@ async def delayspammer(e):
         else:
             spam_message = str(args[3])
     except BaseException:
-        return await e.edit(f"**Penggunaan :** {HNDLR} dspam <waktu delay> <jumlah> <balas pesan>")
+        return await e.edit(
+            f"**Penggunaan :** {HNDLR} dspam <waktu delay> <jumlah> <balas pesan>"
+        )
     await e.delete()
     try:
         for i in range(count):
             await e.respond(spam_message)
             await asyncio.sleep(delay)
     except Exception as u:
-        await e.respond(f"**Error :** `{u}`") 
-
+        await e.respond(f"**Error :** `{u}`")

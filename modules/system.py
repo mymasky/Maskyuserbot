@@ -31,21 +31,14 @@
 import glob
 import io
 import os
-from asyncio.exceptions import TimeoutError as AsyncTimeout
-from telethon.errors.rpcerrorlist import MessageTooLongError, YouBlockedUserError
-from telethon.tl.types import (
-    ChannelParticipantAdmin,
-    ChannelParticipantsBots,
-    DocumentAttributeVideo,
-)
+
+from telethon.errors.rpcerrorlist import MessageTooLongError
+
 try:
     import cv2
 except ImportError:
     cv2 = None
 
-from Ayra.fns.tools import metadata, translate
-
-from . import *
 
 import math
 import shutil
@@ -53,6 +46,7 @@ from random import choice
 
 from Ayra.fns import some_random_headers
 
+from . import *
 
 HEROKU_API = None
 HEROKU_APP_NAME = None

@@ -14,17 +14,17 @@ from os import remove
 from pprint import pprint
 
 from telethon.utils import get_display_name
+
 from Ayra import _ignore_eval
-from .anu import *
 
 from . import *
+from .anu import *
 
 # Used for Formatting Eval Code, if installed
 try:
     import black
 except ImportError:
     black = None
-from random import choice
 
 try:
     from yaml import safe_load

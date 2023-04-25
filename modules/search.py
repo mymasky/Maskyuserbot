@@ -11,7 +11,7 @@
 ◉ **Keterangan:** Cari sesuatu di google.
 
 ๏ **Perintah:** `github`
-◉ **Keterangan:** Cari tahu profile github 
+◉ **Keterangan:** Cari tahu profile github
 
 ๏ **Perintah:** `gimg`
 ◉ **Keterangan:** Cari gambar menggunakan google.

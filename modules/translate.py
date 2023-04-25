@@ -13,10 +13,6 @@
 ◉ **Contoh:** `tr id` <balas ke pesan>
 Ini akan menerjemahkan pesan ke Bahasa Indonesia.
 """
-import glob
-import io
-import os
-from asyncio.exceptions import TimeoutError as AsyncTimeout
 
 try:
     import cv2
@@ -27,29 +23,10 @@ try:
     from htmlwebshot import WebShot
 except ImportError:
     WebShot = None
-from telethon.errors.rpcerrorlist import MessageTooLongError, YouBlockedUserError
-from telethon.tl.types import (
-    ChannelParticipantAdmin,
-    ChannelParticipantsBots,
-    DocumentAttributeVideo,
-)
 
-from Ayra.fns.tools import metadata, translate
+from Ayra.fns.tools import translate
 
-from . import (
-    HNDLR,
-    LOGS,
-    AyConfig,
-    async_searcher,
-    bash,
-    check_filename,
-    con,
-    eor,
-    fast_download,
-    get_string,
-)
-from . import humanbytes as hb
-from . import inline_mention, is_url_ok, mediainfo, ayra_cmd
+from . import HNDLR, LOGS, ayra_cmd, eor
 
 
 @ayra_cmd(pattern=r"^[tT][rR](?: |$)(.*)", manager=False)
@@ -64,9 +41,7 @@ async def _(event):
         previous_message = await event.get_reply_message()
         text = previous_message.message
     else:
-        return await eor(
-            event, f"`{HNDLR}tr <kode bahasa> <balasan pesan>`", time=5
-        )
+        return await eor(event, f"`{HNDLR}tr <kode bahasa> <balasan pesan>`", time=5)
     lan = input or "id"
     try:
         tt = translate(text, lang_tgt=lan)

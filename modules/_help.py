@@ -5,6 +5,8 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
+from Ayra.dB._core import HELP, LIST
+from Ayra.fns.tools import cmd_regex_replace
 from telethon.errors.rpcerrorlist import (
     BotInlineDisabledError,
     BotMethodInvalidError,
@@ -12,15 +14,12 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.tl.custom import Button
 
-from Ayra.dB._core import HELP, LIST
-from Ayra.fns.tools import cmd_regex_replace
-
-from . import HNDLR, LOGS, OWNER_NAME, asst, ayra_cmd, get_string, udB
+from . import HNDLR, LOGS, OWNER_NAME, asst, ayra_cmd, get_string
 
 _main_help_menu = [
     [
         Button.inline(get_string("help_4"), data="uh_Official_"),
-        #Button.inline(get_string("help_5"), data="uh_Addons_"),
+        # Button.inline(get_string("help_5"), data="uh_Addons_"),
     ],
 ]
 

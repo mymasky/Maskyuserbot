@@ -12,12 +12,6 @@
 """
 
 
-
-import glob
-import io
-import os
-from asyncio.exceptions import TimeoutError as AsyncTimeout
-
 try:
     import cv2
 except ImportError:
@@ -27,29 +21,10 @@ try:
     from htmlwebshot import WebShot
 except ImportError:
     WebShot = None
-from telethon.errors.rpcerrorlist import MessageTooLongError, YouBlockedUserError
-from telethon.tl.types import (
-    ChannelParticipantAdmin,
-    ChannelParticipantsBots,
-    DocumentAttributeVideo,
-)
+from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from Ayra.fns.tools import metadata, translate
+from . import ayra_cmd, eor
 
-from . import (
-    HNDLR,
-    LOGS,
-    AyConfig,
-    async_searcher,
-    bash,
-    check_filename,
-    con,
-    eor,
-    fast_download,
-    get_string,
-)
-from . import humanbytes as hb
-from . import inline_mention, is_url_ok, mediainfo, ayra_cmd
 
 @ayra_cmd(pattern="(s|S)osmed(?: |$)(.*)")
 async def _(event):
@@ -88,4 +63,3 @@ async def _(event):
             conv.chat_id, [msg_start.id, r.id, msg.id, details.id, video.id, text.id]
         )
         await xx.delete()
-        

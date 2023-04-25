@@ -66,7 +66,9 @@ UND = get_string("pmperm_1")
 UNS = get_string("pmperm_2")
 NO_REPLY = get_string("pmperm_3")
 
-UNAPPROVED_MSG = "**Pesan Keamanan {ON}!**\n\n{UND}\n\nAnda Punya {warn}/{twarn} peringatan!"
+UNAPPROVED_MSG = (
+    "**Pesan Keamanan {ON}!**\n\n{UND}\n\nAnda Punya {warn}/{twarn} peringatan!"
+)
 if udB.get_key("PM_TEXT"):
     UNAPPROVED_MSG = (
         "**Pesan Keamanan dari {ON}!**\n\n"
@@ -240,7 +242,10 @@ if udB.get_key("PMSETTING"):
             if user.id in LASTMSG:
                 prevmsg = LASTMSG[user.id]
                 if event.text != prevmsg:
-                    if "Pesan Keamanan" in event.text or "**Pesan Keamanan" in event.text:
+                    if (
+                        "Pesan Keamanan" in event.text
+                        or "**Pesan Keamanan" in event.text
+                    ):
                         return
                     await delete_pm_warn_msgs(user.id)
                     message_ = UNAPPROVED_MSG.format(
@@ -256,9 +261,7 @@ if udB.get_key("PMSETTING"):
                     )
                     update_pm(user.id, message_, wrn)
                     if inline_pm:
-                        results = await ayra_bot.inline_query(
-                            my_bot, f"ip_{user.id}"
-                        )
+                        results = await ayra_bot.inline_query(my_bot, f"ip_{user.id}")
                         try:
                             _to_delete[user.id] = await results[0].click(
                                 user.id, reply_to=event.id, hide_via=True
@@ -327,9 +330,7 @@ if udB.get_key("PMSETTING"):
                 update_pm(user.id, message_, wrn)
                 if inline_pm:
                     try:
-                        results = await ayra_bot.inline_query(
-                            my_bot, f"ip_{user.id}"
-                        )
+                        results = await ayra_bot.inline_query(my_bot, f"ip_{user.id}")
                         _to_delete[user.id] = await results[0].click(
                             user.id, reply_to=event.id, hide_via=True
                         )
@@ -342,9 +343,7 @@ if udB.get_key("PMSETTING"):
                         caption=message_,
                     )
                 else:
-                    _to_delete[user.id] = await ayra_bot.send_message(
-                        user.id, message_
-                    )
+                    _to_delete[user.id] = await ayra_bot.send_message(user.id, message_)
             LASTMSG.update({user.id: event.text})
             if user.id not in COUNT_PM:
                 COUNT_PM.update({user.id: 1})

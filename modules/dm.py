@@ -11,7 +11,7 @@
 ◉ **Keterangan:** Kirim pesan pribadi ke pengguna.
 """
 
-from . import HNDLR, eod, get_string, ayra_cmd
+from . import HNDLR, ayra_cmd, get_string
 
 
 @ayra_cmd(pattern="[dD][mM]( (.*)|$)", fullsudo=True)
