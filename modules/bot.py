@@ -12,15 +12,16 @@ import time
 from datetime import datetime
 from platform import python_version as pyver
 from random import choice
-
+from telethon.tl.functions import PingRequest
+from telethon.tl.functions.users import GetFullUserRequest
+from telethon.tl.types import Channel, Chat, User
+from telethon.utils import get_peer_id
 from telethon import __version__
 from telethon.errors.rpcerrorlist import (
     BotMethodInvalidError,
     ChatSendMediaForbiddenError,
 )
 from telethon.tl.custom import Dialog
-from telethon.tl.types import Channel, Chat, User
-
 from . import *
 
 try:
@@ -93,12 +94,13 @@ async def lol(ayra):
     inline = True
     users = 0
     groups = 0
+    expired_date = "__no_expired__"
     remaining_days = "__no_expired__"
     dialog: Dialog
     async for dialog in ayra.client.iter_dialogs():
         entity = dialog.entity
         if isinstance(entity, User):
-            pass
+            private_chats += 1
         elif (isinstance(entity, Channel) and entity.megagroup) or isinstance(
             entity, Chat
         ):
@@ -108,9 +110,9 @@ async def lol(ayra):
         remaining_days = "__no_expired__"
     else:
         status = "__ayra_premium__[OWNER]"
-    await ayra.client.get_me()
-    await ayra.client.send_message("me", "Ping!")
-    await ayra.client.get_response(ayra)
+    me = await ayra.client.get_me()
+    await ayra.client.send_message('me', 'Ping!')
+    response = await client(PingRequest())
     ping = (datetime.now() - start).microseconds / 1000
     if match not in ["n", "no_inline"]:
         try:
@@ -142,9 +144,9 @@ async def lol(ayra):
             groups,
             f"{ayra_version} [{HOSTED_ON}]",
             AyraVer,
-            #            pyver(),
+#            pyver(),
             uptime,
-            #            kk,
+#            kk,
         )
 
         if _e := udB.get_key("ALIVE_EMOJI"):
