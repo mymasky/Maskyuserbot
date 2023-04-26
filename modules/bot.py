@@ -12,14 +12,18 @@ import time
 from datetime import datetime
 from platform import python_version as pyver
 from random import choice
-
+from telethon.tl.functions.users import GetMeRequest
 from telethon import __version__
 from telethon.errors.rpcerrorlist import (
     BotMethodInvalidError,
     ChatSendMediaForbiddenError,
 )
 from telethon.tl.functions import PingRequest
-
+from telethon.events import NewMessage
+from telethon.tl.custom import Dialog
+from telethon.tl.functions.users import GetFullUserRequest
+from telethon.tl.types import Channel, Chat, User
+from telethon.utils import get_peer_id
 from . import *
 
 try:
@@ -59,7 +63,7 @@ alive_txt = """
   ◈ Telethon - {}
 """
 
-in_alive = "<b>{}</b>\n\n<b>AyraUserbot</b>\n<b>          status :</b> <code>{}</code>\n<b>          expires_on :</b> <code>{}</code>\n<b>          ping_dc :</b> <code>{}</code>\n<b>          ayra_version :</b> <code>{}</code>\n<b>          py_ayra :</b> <code>{}</code>\n<b>          ayra_uptime :</b> <code>{}</code>"
+in_alive = "<b>{}</b>\n\n<b>AyraUserbot</b>\n<b>          status :</b> <code>{}</code>{}\n<b>          expires_on :</b> <code>{}</code>\n<b>          ping_dc :</b> <code>{}</code>\n<b>          ayra_version :</b> <code>{}</code>\n<b>          py_ayra :</b> <code>{}</code>\n<b>          ayra_uptime :</b> <code>{}</code>"
 
 absen = [
     "**𝙃𝙖𝙙𝙞𝙧 𝙙𝙤𝙣𝙜 𝙏𝙤𝙙** 😁",
@@ -317,19 +321,33 @@ async def _(event):
 
 
 @in_pattern("alive")
-async def inline_alive(event):
+async def inline_alive(event: NewMessage.Event,
+):
     pic = udB.get_key("ALIVE_PIC")
+    me = await event.client(GetMeRequest())
+    user_id = event.me.id
+    private_chats = 0
+    groups = 0
+    dialog: Dialog
     if isinstance(pic, list):
         pic = choice(pic)
+    async for dialog in event.client.iter_dialogs():
+        entity = dialog.entity
+        if isinstance(entity, User):
+            private_chats += 1
+        elif (isinstance(entity, Channel) and entity.megagroup) or isinstance(
+            entity, Chat
+        ):
+            groups += 1
     remaining_days = "no_expired"
-    if event.client.uid in BLACK:
-        status = "ayra_premium<b>[DEVS]</b>"
-        remaining_days = "no_expired"
-    elif event.client.uid in WHITE:
-        status = "ayra_premium<b>[ADMINS]</b>"
+    if event.client.user_id in DEVS:
+        status = "ayra_premium"
+        status1 = "<b>[DEVS]</b>"
         remaining_days = "no_expired"
     else:
-        status = "ayra_premium<b>[OWNER]</b>"
+        status = "ayra_premium"
+        status1 = "<b>[OWNER]</b>"
+        remaining_days = "no_expired"
     start = time.time()
     log = udB.get_key("LOG_CHANNEL")
     await event.client.get_me()
@@ -345,7 +363,10 @@ async def inline_alive(event):
     als = in_alive.format(
         OWNER_NAME,
         status,
+        status1,
         remaining_days,
+        private_chats,
+        groups,
         ping,
         f"{ayra_version} [{HOSTED_ON}]",
         AyraVer,
