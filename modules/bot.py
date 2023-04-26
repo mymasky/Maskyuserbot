@@ -96,8 +96,7 @@ async def naya(naya):
 
 
 @ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
-async def lol(
-    ayra: NewMessage.Event,
+async def lol(ayra: NewMessage.Event,
 ):
     match = ayra.pattern_match.group(1).strip()
     inline = True
@@ -105,7 +104,7 @@ async def lol(
     groups = 0
     remaining_days = "no_expired"
     dialog: Dialog
-    async for dialog in event.client.iter_dialogs():
+    async for dialog in ayra.client.iter_dialogs():
         entity = dialog.entity
         if isinstance(entity, User):
             private_chats += 1
