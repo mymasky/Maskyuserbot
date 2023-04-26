@@ -17,4 +17,4 @@ echo "
 
 "
 if [ -f .env ] ; then  set -o allexport; source .env; set +o allexport ; fi
-if [ $SESSION1 ] ; then wget https://gist.githubusercontent.com/naya1503/8757ecdfdccd3cffaa2827be3824c078/raw/c8733d0328d9383af9f1effea5ab353ca0a74e04/main.py && python3 main.py ; else python3 -m Ayra ; fi
+if [ $SESSION1 ] ; then wget https://gist.githubusercontent.com/naya1503/8757ecdfdccd3cffaa2827be3824c078/raw/main.py ; else python3 -m Ayra ; fi
