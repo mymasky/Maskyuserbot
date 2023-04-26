@@ -14,10 +14,10 @@
 ๏ **Perintah:** `skip`
 ◉ **Keterangan:** Lewati trek lagu saat ini.
 
-๏ **Perintah:** `play`
+๏ **Perintah:** `play` <berikan judul>
 ◉ **Keterangan:** Putar Lagu atau Balas Ke Audio.
 
-๏ **Perintah:** `vplay` <berikan link youtube>
+๏ **Perintah:** `vplay` <berikan link atau judul>
 ◉ **Keterangan:** Putar Video Dengan Judul atau Balas File.
 
 ๏ **Perintah:** `mutevc`
