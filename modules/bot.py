@@ -322,10 +322,10 @@ async def inline_alive(event):
     if isinstance(pic, list):
         pic = choice(pic)
     remaining_days = "no_expired"
-    if ayra.client.uid in BLACK:
+    if event.client.uid in BLACK:
         status = "ayra_premium<b>[DEVS]</b>"
         remaining_days = "no_expired"
-    elif ayra.client.uid in WHITE:
+    elif event.client.uid in WHITE:
         status = "ayra_premium<b>[ADMINS]</b>"
         remaining_days = "no_expired"
     else:
