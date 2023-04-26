@@ -18,7 +18,6 @@ from telethon.errors.rpcerrorlist import (
     BotMethodInvalidError,
     ChatSendMediaForbiddenError,
 )
-from telethon.tl.custom import Dialog
 from telethon.tl.functions import PingRequest
 from telethon.tl.types import Channel, Chat, User
 
@@ -89,7 +88,7 @@ async def lol(ayra):
     private_chats = 0
     groups = 0
     remaining_days = "__no_expired__"
-    #dialog: Dialog
+    # dialog: Dialog
     async with ayra.client.get_dialogs() as dialogs:
         async for dialog in dialogs:
             entity = dialog.entity
@@ -325,7 +324,7 @@ async def inline_alive(event):
     private_chats = 0
     groups = 0
     remaining_days = "__no_expired__"
-    #dialog: Dialog
+    # dialog: Dialog
     async with event.client.get_dialogs() as dialogs:
         async for dialog in dialogs:
             entity = dialog.entity
