@@ -92,7 +92,7 @@ async def lol(ayra):
     #dialog: Dialog
     async with event.client.get_dialogs() as dialogs:
         async for dialog in dialogs:
-        entity = dialog.entity
+            entity = dialog.entity
         if isinstance(entity, User):
             private_chats += 1
         elif (isinstance(entity, Channel) and entity.megagroup) or isinstance(
@@ -328,7 +328,7 @@ async def inline_alive(event):
     #dialog: Dialog
     async with event.client.get_dialogs() as dialogs:
         async for dialog in dialogs:
-        entity = dialog.entity
+            entity = dialog.entity
         if isinstance(entity, User):
             private_chats += 1
         elif (isinstance(entity, Channel) and entity.megagroup) or isinstance(
