@@ -7,8 +7,11 @@
 """
 ✘ **Bantuan Untuk DM**
 
-๏ **Perintah:** `dm` <username/id> <reply/type>`
+๏ **Perintah:** `dm` <berikan pesan/balas pesan> <username/id> <reply/type>`
 ◉ **Keterangan:** Kirim pesan pribadi ke pengguna.
+
+๏ **Perintah:** `send` <balas ke pesan`
+◉ **Keterangan:** Teruskan pesan tersebut ke pengguna.
 """
 
 from . import HNDLR, ayra_cmd, get_string
@@ -17,7 +20,7 @@ from . import HNDLR, ayra_cmd, get_string
 @ayra_cmd(pattern="[dD][mM]( (.*)|$)", fullsudo=True)
 async def dm(e):
     if len(e.text.split()) <= 1:
-        return await e.eor(get_string("dm_1"), time=5)
+        return await e.eor("`Berikan username atau id Obrolan ke mana harus mengirim.`", time=5)
     chat = e.text.split()[1]
     try:
         chat_id = await e.client.parse_id(chat)
@@ -28,12 +31,24 @@ async def dm(e):
     elif e.reply_to:
         msg = await e.get_reply_message()
     else:
-        return await e.eor(get_string("dm_2"), time=5)
+        return await e.eor("`Berikan pesan atau balas ke pesan.`", time=5)
     try:
         _ = await e.client.send_message(chat_id, msg)
-        n_, time = get_string("dm_3"), None
+        n_, time = "**Pesan Berhasil Dikirim**", None
         if not _.is_private:
             n_ = f"[{n_}]({_.message_link})"
         await e.eor(n_, time=time)
     except Exception as m:
-        await e.eor(get_string("dm_4").format(m, HNDLR), time=5)
+        await e.eor("Silakan ketik `help dm` untuk bantuan.",  time=5)
+
+@ayra_cmd(pattern="send( (.*)|$)", fullsudo=False)
+async def _(e):
+    message = e.pattern_match.group(1).strip()
+    if not e.reply_to_msg_id:
+        return await e.eor("`Mohon balas ke pesan...`", time=5)
+    if not message:
+        return await e.eor("`Tidak ada pesan untuk dikirim...`", time=5)
+    msg = await e.get_reply_message()
+    fwd = await msg.forward_to(msg.sender_id)
+    await fwd.reply(message)
+    await e.eor("**Berhasil Dikirim.**", time=5)
