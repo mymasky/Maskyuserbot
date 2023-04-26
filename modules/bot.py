@@ -18,6 +18,7 @@ from telethon.errors.rpcerrorlist import (
     BotMethodInvalidError,
     ChatSendMediaForbiddenError,
 )
+from telethon.tl.custom import Dialog
 from telethon.tl.functions import PingRequest
 from telethon.tl.types import Channel, Chat, User
 
@@ -81,6 +82,14 @@ async def naya(naya):
     await naya.reply("**Kynan Punya Nya Naya**🤩")
 
 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/Ayra/_misc/_decorators.py", line 113, in wrapp
+    await dec(ay)
+  File "/root/Ayra/modules/bot.py", line 93, in lol
+    async with ayra.client.get_dialogs() as dialogs:
+AttributeError: __aenter__
+
+
 @ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
 async def lol(ayra):
     match = ayra.pattern_match.group(1).strip()
@@ -88,8 +97,8 @@ async def lol(ayra):
     private_chats = 0
     groups = 0
     remaining_days = "__no_expired__"
-    # dialog: Dialog
-    async with ayra.client.get_dialogs() as dialogs:
+    dialog: Dialog
+    async with ayra.client.get_dialogs():
         async for dialog in dialogs:
             entity = dialog.entity
         if isinstance(entity, User):
@@ -324,7 +333,7 @@ async def inline_alive(event):
     private_chats = 0
     groups = 0
     remaining_days = "__no_expired__"
-    # dialog: Dialog
+    #dialog: Dialog
     async with event.client.get_dialogs() as dialogs:
         async for dialog in dialogs:
             entity = dialog.entity
