@@ -111,7 +111,7 @@ async def lol(ayra):
         status = "__ayra_premium__[OWNER]"
     await ayra.client.get_me()
     await ayra.client.send_message("me", "Ping!")
-    await client(PingRequest())
+    await ayra.client(PingRequest())
     ping = (datetime.now() - start).microseconds / 1000
     if match not in ["n", "no_inline"]:
         try:
