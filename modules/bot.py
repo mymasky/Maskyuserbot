@@ -96,8 +96,7 @@ async def naya(naya):
 
 
 @ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
-async def lol(
-    ayra: NewMessage.Event,
+async def lol(ayra: NewMessage.Event,
 ):
     match = ayra.pattern_match.group(1).strip()
     inline = True
@@ -113,7 +112,7 @@ async def lol(
             entity, Chat
         ):
             groups += 1
-    if ayra.client.user.id in DEVS:
+    if ayra.sender_id in DEVS:
         status = "ayra_premium"
         status1 = "<b>[DEVS]</b>"
         remaining_days = "no_expired"
