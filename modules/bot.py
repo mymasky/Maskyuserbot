@@ -325,7 +325,7 @@ async def inline_alive(event):
     groups = 0
     remaining_days = "__no_expired__"
     dialog: Dialog
-    async for dialog in event.client.iter_dialogs():
+    async for dialog in event.client.get_dialogs():
         entity = dialog.entity
         if isinstance(entity, User):
             private_chats += 1
