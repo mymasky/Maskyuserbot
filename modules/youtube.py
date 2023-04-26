@@ -134,7 +134,7 @@ async def yt_audio(e):
         file_name=title,
         duration=duration,
         caption="**💡 Informasi** {}\n\n**🏷 Nama:** {}\n**🧭 Durasi:** {}\n**👀 Dilihat:** {}\n**📢 Channel:** {}\n**Upload By: {}**".format(
-            "video",
+            "Audio",
             title,
             duration,
             views,
