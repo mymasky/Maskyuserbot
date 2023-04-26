@@ -96,7 +96,8 @@ async def naya(naya):
 
 
 @ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
-async def lol(ayra: NewMessage.Event,
+async def lol(
+    ayra: NewMessage.Event,
 ):
     match = ayra.pattern_match.group(1).strip()
     inline = True
