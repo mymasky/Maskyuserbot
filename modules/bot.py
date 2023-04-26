@@ -350,7 +350,7 @@ async def inline_alive(
         status1 = "<b>[OWNER]</b>"
         remaining_days = "no_expired"
     start = time.time()
-    log = udB.get_key("LOG_CHANNEL")
+    udB.get_key("LOG_CHANNEL")
     await event.client(PingRequest(ping_id=0))
     ping = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
