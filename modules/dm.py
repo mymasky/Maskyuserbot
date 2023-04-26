@@ -14,13 +14,15 @@
 ◉ **Keterangan:** Teruskan pesan tersebut ke pengguna.
 """
 
-from . import HNDLR, ayra_cmd, get_string
+from . import ayra_cmd
 
 
 @ayra_cmd(pattern="[dD][mM]( (.*)|$)", fullsudo=True)
 async def dm(e):
     if len(e.text.split()) <= 1:
-        return await e.eor("`Berikan username atau id Obrolan ke mana harus mengirim.`", time=5)
+        return await e.eor(
+            "`Berikan username atau id Obrolan ke mana harus mengirim.`", time=5
+        )
     chat = e.text.split()[1]
     try:
         chat_id = await e.client.parse_id(chat)
@@ -38,8 +40,9 @@ async def dm(e):
         if not _.is_private:
             n_ = f"[{n_}]({_.message_link})"
         await e.eor(n_, time=time)
-    except Exception as m:
-        await e.eor("Silakan ketik `help dm` untuk bantuan.",  time=5)
+    except Exception:
+        await e.eor("Silakan ketik `help dm` untuk bantuan.", time=5)
+
 
 @ayra_cmd(pattern="send( (.*)|$)", fullsudo=False)
 async def _(e):
