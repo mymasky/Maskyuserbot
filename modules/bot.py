@@ -104,15 +104,14 @@ async def lol(ayra):
     else:
         status = "__ayra_premium__[OWNER]"
     start = time.time()
+    log = udB.get_key("LOG_CHANNEL")
     await ayra.client.get_me()
-    await ayra.client.send_message("me", "Ping!")
+    await ayra.client.send_message(log, "Ping!")
     await ayra.client(PingRequest(ping_id=0))
     ping = round((time.time() - start) * 1000)
     if match not in ["n", "no_inline"]:
         try:
-            res = await ayra.client.inline_query(
-                asst.me.username, "alive", cache_time=10
-            )
+            res = await ayra.client.inline_query(asst.me.username, "alive", cache_time=10)
             return await res[0].click(ayra.chat_id)
         except BotMethodInvalidError:
             pass
@@ -340,8 +339,9 @@ async def inline_alive(ayra):
     else:
         status = "__ayra_premium__[OWNER]"
     start = time.time()
+    log = udB.get_key("LOG_CHANNEL")
     await ayra.client.get_me()
-    await ayra.client.send_message("me", "Ping!")
+    await ayra.client.send_message(log, "Ping!")
     await ayra.client(PingRequest(ping_id=0))
     ping = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
