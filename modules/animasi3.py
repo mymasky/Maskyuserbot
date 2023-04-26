@@ -39,7 +39,6 @@
 """
 
 import asyncio
-from secrets import choice
 from time import sleep
 
 from . import *
