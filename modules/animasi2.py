@@ -25,7 +25,7 @@
 
 import asyncio
 from time import sleep
-
+from telethon import events
 from . import *
 
 
@@ -73,7 +73,7 @@ async def _(event):
     await aa.edit("`\n(\\_/)`" "`\n(●_●)`" "`\n💔<\\  **Terimakasih**`")
 
 
-@ayra_cmd(pattern=r"^ceritacinta(?: |$)(.*)")
+@ayra_bot.on(events.NewMessage(pattern=r"\.$(.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -110,7 +110,7 @@ async def _(event):
             await event.edit(animation_chars[i % 103])
 
 
-@ayra_cmd(pattern=r"^canda(?: |$)(.*)")
+@ayra_bot.on(events.NewMessage(pattern=r"\.$(.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -146,7 +146,7 @@ async def _(ayiin):
     await ayiin.edit("`\n(\\_/)`" "`\n(●_●)`" "`\n💖<\\  *Tapi Bo'ong Hiyahiyahiya`")
 
 
-@ayra_cmd(pattern=r"^owner(?: |$)(.*)")
+@ayra_bot.on(events.NewMessage(pattern=r"\.$(.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
