@@ -338,7 +338,7 @@ async def inline_alive(
 ):
     pic = udB.get_key("ALIVE_PIC")
     remaining_days = "no_expired"
-    if event.user.id in DEVS:
+    if event.sender_id in DEVS:
         status = "ayra_premium"
         status1 = "<b>[DEVS]</b>"
         remaining_days = "no_expired"
