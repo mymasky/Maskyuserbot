@@ -21,8 +21,8 @@ from telethon.errors.rpcerrorlist import (
 from telethon.events import NewMessage
 from telethon.tl.custom import Dialog
 from telethon.tl.functions import PingRequest
-from telethon.tl.functions.account import GetSelfRequest
 from telethon.tl.types import Channel, Chat, User
+from telethon.tl.functions.users import GetFullUserRequest
 
 from . import *
 
@@ -325,7 +325,7 @@ async def inline_alive(
     event: NewMessage.Event,
 ):
     pic = udB.get_key("ALIVE_PIC")
-    await event.client(GetSelfRequest())
+    await event.client(GetFullUserRequest())
     event.me.id
     private_chats = 0
     groups = 0
@@ -350,7 +350,7 @@ async def inline_alive(
         status1 = "<b>[OWNER]</b>"
         remaining_days = "no_expired"
     start = time.time()
-    udB.get_key("LOG_CHANNEL")
+    log = udB.get_key("LOG_CHANNEL")
     await event.client(PingRequest(ping_id=0))
     ping = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
