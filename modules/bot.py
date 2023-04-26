@@ -326,7 +326,28 @@ async def inline_alive(ayra):
     pic = udB.get_key("ALIVE_PIC")
     if isinstance(pic, list):
         pic = choice(pic)
-
+    private_chats = 0
+    groups = 0
+    remaining_days = "__no_expired__"
+    dialog: Dialog
+    async for dialog in ayra.client.iter_dialogs():
+        entity = dialog.entity
+        if isinstance(entity, User):
+            private_chats += 1
+        elif (isinstance(entity, Channel) and entity.megagroup) or isinstance(
+            entity, Chat
+        ):
+            groups += 1
+    if ayra.client.uid in DEVS:
+        status = "__ayra_premium__[DEVS]"
+        remaining_days = "__no_expired__"
+    else:
+        status = "__ayra_premium__[OWNER]"
+    start = time.time()
+    await ayra.client.get_me()
+    await ayra.client.send_message("me", "Ping!")
+    await ayra.client(PingRequest(ping_id=0))
+    ping = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
     udB.get_key("ALIVE_TEXT") or get_string("bot_1")
     y = Repo().active_branch
