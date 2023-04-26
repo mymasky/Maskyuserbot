@@ -355,17 +355,17 @@ async def inline_alive(ayra):
     rep = xx.replace(".git", f"/tree/{y}")
     kk = f"<a href={rep}>{y}</a>"
     als = in_alive.format(
-            OWNER_NAME,
-            status,
-            remaining_days,
-            ping,
-            private_chats,
-            groups,
-            f"{ayra_version} [{HOSTED_ON}]",
-            AyraVer,
-            uptime,
-        )
-        
+        OWNER_NAME,
+        status,
+        remaining_days,
+        ping,
+        private_chats,
+        groups,
+        f"{ayra_version} [{HOSTED_ON}]",
+        AyraVer,
+        uptime,
+    )
+
     if _e := udB.get_key("ALIVE_EMOJI"):
         als = als.replace("", _e)
     builder = ayra.builder
