@@ -109,10 +109,11 @@ async def lol(ayra):
         remaining_days = "__no_expired__"
     else:
         status = "__ayra_premium__[OWNER]"
+    start = time.time()
     await ayra.client.get_me()
     await ayra.client.send_message("me", "Ping!")
     await ayra.client(PingRequest(ping_id=0))
-    ping = (datetime.now() - start).microseconds / 1000
+    ping = round((time.time() - start) * 1000)
     if match not in ["n", "no_inline"]:
         try:
             res = await ayra.client.inline_query(asst.me.username, "alive")
