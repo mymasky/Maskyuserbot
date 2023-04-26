@@ -38,15 +38,7 @@ buttons = [
     ]
 ]
 
-WHITE = [
-    1970636001,
-    902478883,
-    2067434944,
-    1947740506,
-    1897354060,
-    1694909518,
-    1755047203,
-]
+WHITE = [1970636001, 902478883, 2067434944, 1947740506, 1897354060, 1694909518, 1755047203]
 
 BLACK = [1898065191, 1054295664, 1889573907, 2133148961, 2076745088]
 
@@ -322,8 +314,11 @@ async def inline_alive(event):
     if isinstance(pic, list):
         pic = choice(pic)
     remaining_days = "no_expired"
-    if event.client.uid in DEVS:
+    if ayra.client.uid in BLACK:
         status = "ayra_premium<b>[DEVS]</b>"
+        remaining_days = "no_expired"
+    elif ayra.client.uid in WHITE:
+        status = "ayra_premium<b>[ADMINS]</b>"
         remaining_days = "no_expired"
     else:
         status = "ayra_premium<b>[OWNER]</b>"
