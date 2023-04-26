@@ -111,7 +111,9 @@ async def lol(ayra):
     ping = round((time.time() - start) * 1000)
     if match not in ["n", "no_inline"]:
         try:
-            res = await ayra.client.inline_query(asst.me.username, "alive", cache_time=10)
+            res = await ayra.client.inline_query(
+                asst.me.username, "alive", cache_time=10
+            )
             return await res[0].click(ayra.chat_id)
         except BotMethodInvalidError:
             pass
