@@ -18,9 +18,7 @@ from telethon.errors.rpcerrorlist import (
     BotMethodInvalidError,
     ChatSendMediaForbiddenError,
 )
-from telethon.tl.custom import Dialog
 from telethon.tl.functions import PingRequest
-from telethon.tl.types import Channel, Chat, User
 
 from . import *
 
@@ -86,8 +84,6 @@ async def naya(naya):
 async def lol(ayra):
     match = ayra.pattern_match.group(1).strip()
     inline = True
-    private_chats = 0
-    groups = 0
     remaining_days = "no_expired"
     if ayra.client.uid in DEVS:
         status = "ayra_premium<b>[DEVS]</b>"
@@ -310,8 +306,6 @@ async def inline_alive(event):
     pic = udB.get_key("ALIVE_PIC")
     if isinstance(pic, list):
         pic = choice(pic)
-    private_chats = 0
-    groups = 0
     remaining_days = "no_expired"
     if event.client.uid in DEVS:
         status = "ayra_premium<b>[DEVS]</b>"
