@@ -66,7 +66,7 @@ from . import *
 
 
 @ayra_cmd(
-    pattern="[pP][r][o][m][o][t][e]( (.*)|$)",
+    pattern="promote( (.*)|$)",
     admins_only=True,
     manager=True,
     require="add_admins",
@@ -109,7 +109,7 @@ async def prmte(ayra):
 
 
 @ayra_cmd(
-    pattern="[dD][e][m][o][t][e]( (.*)|$)",
+    pattern="demote( (.*)|$)",
     admins_only=True,
     manager=True,
     require="add_admins",
@@ -139,7 +139,7 @@ async def dmote(ayra):
 
 
 @ayra_cmd(
-    pattern="[bB][a][n]( (.*)|$)",
+    pattern="ban( (.*)|$)",
     admins_only=True,
     manager=True,
     require="ban_users",
@@ -169,7 +169,7 @@ async def bban(ayra):
 
 
 @ayra_cmd(
-    pattern="[uU][n][b][a][n]( (.*)|$)",
+    pattern="unban( (.*)|$)",
     admins_only=True,
     manager=True,
     require="ban_users",
@@ -199,7 +199,7 @@ async def uunban(ayra):
 
 
 @ayra_cmd(
-    pattern="[kK][i][c][k]( (.*)|$)",
+    pattern="kick( (.*)|$)",
     manager=True,
     require="ban_users",
     fullsudo=False,
@@ -256,7 +256,7 @@ async def pin(msg):
 
 
 @ayra_cmd(
-    pattern="[uU][n][p][i][n]($| (.*))",
+    pattern="unpin($| (.*))",
     manager=True,
     require="pin_messages",
     fullsudo=False,
@@ -278,7 +278,7 @@ async def unp(ayra):
     await xx.edit("`Pesan Berhasil Dihapus Dari Sematan !`")
 
 
-@ayra_cmd(pattern="[pP][u][r][g][e]( (.*)|$)", manager=True, require="delete_messages")
+@ayra_cmd(pattern="purge( (.*)|$)", manager=True, require="delete_messages")
 async def fastpurger(purg):
     match = purg.pattern_match.group(1).strip()
     try:
@@ -313,7 +313,7 @@ async def fastpurger(purg):
 
 
 @ayra_cmd(
-    pattern="[pP][u][r][g][e][m][e]( (.*)|$)",
+    pattern="purgeme( (.*)|$)",
 )
 @register(incoming=True, pattern=r"^\.cpurgeme( (.*)|$)", from_users=DEVS)
 async def fastpurgerme(purg):
@@ -356,7 +356,7 @@ async def fastpurgerme(purg):
 
 
 @ayra_cmd(
-    pattern="[pP][u][r][g][e][a][l][l]",
+    pattern="purgeall",
 )
 async def _(e):
     if not e.is_reply:
@@ -375,7 +375,7 @@ async def _(e):
 
 
 @ayra_cmd(
-    pattern="[sS][e][t][g][p][i][c]( (.*)|$)",
+    pattern="setgpic( (.*)|$)",
     admins_only=True,
     manager=True,
     require="change_info",
@@ -417,7 +417,7 @@ async def _(ayra):
 
 
 @ayra_cmd(
-    pattern="[dD][e][l][g][p][i][c]( (.*)|$)",
+    pattern="delgpic( (.*)|$)",
     admins_only=True,
     manager=True,
     require="change_info",
@@ -436,7 +436,7 @@ async def _(ayra):
 
 
 @ayra_cmd(
-    pattern="[dD][e][l]",
+    pattern="del",
     manager=True,
 )
 async def delete_it(delme):
@@ -447,7 +447,7 @@ async def delete_it(delme):
     await delme.try_delete()
 
 
-@ayra_cmd(pattern="[kK][i][c][k][m][e]", fullsudo=False)
+@ayra_cmd(pattern="kickme", fullsudo=False)
 async def leave(ayra):
     await ayra.eor(f"`{ayra.client.me.first_name} has left this group, bye!!.`")
     await ayra.client(LeaveChannelRequest(ayra.chat_id))
