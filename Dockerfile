@@ -1,6 +1,6 @@
 FROM theteamultroid/ultroid:main
 
-COPY installer.sh .
+COPY installer.sh
 
 RUN bash installer.sh
 
