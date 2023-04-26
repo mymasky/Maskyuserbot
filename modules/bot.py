@@ -89,8 +89,9 @@ async def lol(ayra):
     private_chats = 0
     groups = 0
     remaining_days = "__no_expired__"
-    dialog: Dialog
-    async for dialog in ayra.client.iter_dialogs():
+    #dialog: Dialog
+    async with event.client.get_dialogs() as dialogs:
+        async for dialog in dialogs:
         entity = dialog.entity
         if isinstance(entity, User):
             private_chats += 1
@@ -324,8 +325,9 @@ async def inline_alive(event):
     private_chats = 0
     groups = 0
     remaining_days = "__no_expired__"
-    dialog: Dialog
-    async for dialog in event.client.get_dialogs():
+    #dialog: Dialog
+    async with event.client.get_dialogs() as dialogs:
+        async for dialog in dialogs:
         entity = dialog.entity
         if isinstance(entity, User):
             private_chats += 1
