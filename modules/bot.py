@@ -96,22 +96,31 @@ async def naya(naya):
 
 
 @ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
-async def lol(ayra):
+async def lol(ayra: NewMessage.Event,
+):
     match = ayra.pattern_match.group(1).strip()
     inline = True
+    private_chats = 0
+    groups = 0
     remaining_days = "no_expired"
-    if ayra.client.uid in BLACK:
-        status = "ayra_premium<b>[DEVS]</b>"
-        remaining_days = "no_expired"
-    elif ayra.client.uid in BLACK:
-        status = "ayra_premium<b>[ADMINS]</b>"
+    dialog: Dialog
+    async for dialog in event.client.iter_dialogs():
+        entity = dialog.entity
+        if isinstance(entity, User):
+            private_chats += 1
+        elif (isinstance(entity, Channel) and entity.megagroup) or isinstance(
+            entity, Chat
+        ):
+            groups += 1
+    if event.user.id in DEVS:
+        status = "ayra_premium"
+        status1 = "<b>[DEVS]</b>"
         remaining_days = "no_expired"
     else:
-        status = "ayra_premium<b>[OWNER]</b>"
+        status = "ayra_premium"
+        status1 = "<b>[OWNER]</b>"
+        remaining_days = "no_expired"
     start = time.time()
-    log = udB.get_key("LOG_CHANNEL")
-    await ayra.client.get_me()
-    await ayra.client.send_message(log, "Ping!")
     await ayra.client(PingRequest(ping_id=0))
     ping = round((time.time() - start) * 1000)
     if match not in ["n", "no_inline"]:
@@ -138,7 +147,10 @@ async def lol(ayra):
         als = in_alive.format(
             OWNER_NAME,
             status,
+            status1,
             remaining_days,
+            private_chats,
+            groups,
             ping,
             f"{ayra_version} [{HOSTED_ON}]",
             AyraVer,
@@ -324,19 +336,6 @@ async def inline_alive(
     event: NewMessage.Event,
 ):
     pic = udB.get_key("ALIVE_PIC")
-    private_chats = 0
-    groups = 0
-    dialog: Dialog
-    if isinstance(pic, list):
-        pic = choice(pic)
-    async for dialog in event.client.iter_dialogs():
-        entity = dialog.entity
-        if isinstance(entity, User):
-            private_chats += 1
-        elif (isinstance(entity, Channel) and entity.megagroup) or isinstance(
-            entity, Chat
-        ):
-            groups += 1
     remaining_days = "no_expired"
     if event.user.id in DEVS:
         status = "ayra_premium"
@@ -361,8 +360,6 @@ async def inline_alive(
         status,
         status1,
         remaining_days,
-        private_chats,
-        groups,
         ping,
         f"{ayra_version} [{HOSTED_ON}]",
         AyraVer,
