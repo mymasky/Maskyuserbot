@@ -92,14 +92,14 @@ async def naya(naya):
 async def lol(ayra):
     match = ayra.pattern_match.group(1).strip()
     inline = True
-    users = 0
+    private_chats = 0
     groups = 0
     remaining_days = "__no_expired__"
     dialog: Dialog
     async for dialog in ayra.client.iter_dialogs():
         entity = dialog.entity
         if isinstance(entity, User):
-            pass
+            private_chats += 1
         elif (isinstance(entity, Channel) and entity.megagroup) or isinstance(
             entity, Chat
         ):
@@ -139,7 +139,7 @@ async def lol(ayra):
             status,
             remaining_days,
             ping,
-            users,
+            private_chats,
             groups,
             f"{ayra_version} [{HOSTED_ON}]",
             AyraVer,
