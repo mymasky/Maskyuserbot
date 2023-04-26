@@ -326,7 +326,7 @@ async def inline_alive(ayra):
     pic = udB.get_key("ALIVE_PIC")
     if isinstance(pic, list):
         pic = choice(pic)
-    
+
     uptime = time_formatter((time.time() - start_time) * 1000)
     udB.get_key("ALIVE_TEXT") or get_string("bot_1")
     y = Repo().active_branch
