@@ -72,12 +72,6 @@ absen = [
 ]
 
 
-@callback("alive")
-async def alive(event):
-    text = alive_txt.format(ayra_version, AyraVer, __version__)
-    await event.answer(text, alert=True)
-
-
 @register(incoming=True, from_users=DEVS, pattern=r"^Absen$")
 async def kynanabsen(ganteng):
     await ganteng.reply(choice(absen))
@@ -116,7 +110,7 @@ async def lol(ayra):
     ping = round((time.time() - start) * 1000)
     if match not in ["n", "no_inline"]:
         try:
-            res = await ayra.client.inline_query(asst.me.username, "alive")
+            res = await ayra.client.inline_query(asst.me.username, "alive", cache_time=10)
             return await res[0].click(ayra.chat_id)
         except BotMethodInvalidError:
             pass
@@ -321,7 +315,7 @@ async def _(event):
     await event.try_delete()
 
 
-@callback("alive", owner=True)
+@callback("alive")
 async def inline_alive(ayra):
     pic = udB.get_key("ALIVE_PIC")
     if isinstance(pic, list):
