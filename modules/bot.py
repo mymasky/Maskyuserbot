@@ -49,7 +49,7 @@ alive_txt = """
   ◈ Telethon - {}
 """
 
-in_alive = "<b>AyraUserbot</b>\n\n<b>{}</b>\n<b>        status :</b> <code>{}</code>\n<b>        expires_on :</b> <code>{}</code>\n<b>        ping_dc :</b> <code>{}</code>\n<b>        peer_users :</b> <code>{}</code>\n<b>        peer_groups :</b> <code>{}</code>\n<b>        ayra_version :</b> <code>{}</code>\n<b>        py_ayra :</b> <code>{}</code>\n<b>        ayra_uptime :</b> <code>{}</code>"
+in_alive = "<b>{}</b>\n\n<b>AyraUserbot</b>\n<b>        status :</b> <code>{}</code>\n<b>        expires_on :</b> <code>{}</code>\n<b>        ping_dc :</b> <code>{}</code>\n<b>        peer_users :</b> <code>{}</code>\n<b>        peer_groups :</b> <code>{}</code>\n<b>        ayra_version :</b> <code>{}</code>\n<b>        py_ayra :</b> <code>{}</code>\n<b>        ayra_uptime :</b> <code>{}</code>"
 
 absen = [
     "**𝙃𝙖𝙙𝙞𝙧 𝙙𝙤𝙣𝙜 𝙏𝙤𝙙** 😁",
@@ -316,8 +316,8 @@ async def _(event):
     await event.try_delete()
 
 
-@callback("alive")
-async def inline_alive(ayra):
+@in_pattern("alive")
+async def inline_alive(event):
     pic = udB.get_key("ALIVE_PIC")
     if isinstance(pic, list):
         pic = choice(pic)
@@ -325,7 +325,7 @@ async def inline_alive(ayra):
     groups = 0
     remaining_days = "__no_expired__"
     dialog: Dialog
-    async for dialog in ayra.client.iter_dialogs():
+    async for dialog in event.client.iter_dialogs():
         entity = dialog.entity
         if isinstance(entity, User):
             private_chats += 1
@@ -333,16 +333,16 @@ async def inline_alive(ayra):
             entity, Chat
         ):
             groups += 1
-    if ayra.client.uid in DEVS:
+    if event.client.uid in DEVS:
         status = "__ayra_premium__[DEVS]"
         remaining_days = "__no_expired__"
     else:
         status = "__ayra_premium__[OWNER]"
     start = time.time()
     log = udB.get_key("LOG_CHANNEL")
-    await ayra.client.get_me()
-    await ayra.client.send_message(log, "Ping!")
-    await ayra.client(PingRequest(ping_id=0))
+    await event.client.get_me()
+    await event.client.send_message(log, "Ping!")
+    await event.client(PingRequest(ping_id=0))
     ping = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
     udB.get_key("ALIVE_TEXT") or get_string("bot_1")
@@ -388,7 +388,7 @@ async def inline_alive(ayra):
                         buttons=buttons,
                     )
                 ]
-            return await ayra.answer(results)
+            return await event.answer(results)
         except BaseException as er:
             LOGS.info(er)
     result = [
@@ -396,7 +396,7 @@ async def inline_alive(ayra):
             "Alive", text=als, parse_mode="html", link_preview=False, buttons=buttons
         )
     ]
-    await ayra.answer(result)
+    await event.answer(result)
 
 
 @ayra_cmd(pattern=r"^[uU][pP][dD][aA][tT][eE](?: |$)(.*)")
