@@ -21,6 +21,7 @@ from telethon.errors.rpcerrorlist import (
 from telethon.events import NewMessage
 from telethon.tl.custom import Dialog
 from telethon.tl.functions import PingRequest
+from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import Channel, Chat, User
 
 from . import *
@@ -338,7 +339,7 @@ async def inline_alive(
         ):
             groups += 1
     remaining_days = "no_expired"
-    if event.client.user in DEVS:
+    if event.user.id in DEVS:
         status = "ayra_premium"
         status1 = "<b>[DEVS]</b>"
         remaining_days = "no_expired"
