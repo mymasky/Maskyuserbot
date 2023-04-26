@@ -18,7 +18,9 @@ from telethon.errors.rpcerrorlist import (
     BotMethodInvalidError,
     ChatSendMediaForbiddenError,
 )
+from telethon.tl.custom import Dialog
 from telethon.tl.functions import PingRequest
+from telethon.tl.types import Channel, Chat, User
 
 from . import *
 
@@ -47,7 +49,7 @@ alive_txt = """
   ◈ Telethon - {}
 """
 
-in_alive = "<b>{}</b>\n\n<b>AyraUserbot</b>\n<b>          status :</b> <code>{}</code>\n<b>          expires_on :</b> <code>{}</code>\n<b>          ping_dc :</b> <code>{}</code>\n<b>\n<b>          ayra_version :</b> <code>{}</code>\n<b>          py_ayra :</b> <code>{}</code>\n<b>          ayra_uptime :</b> <code>{}</code>"
+in_alive = "<b>{}</b>\n\n<b>AyraUserbot</b>\n<b>          status :</b> <code>{}</code>\n<b>          expires_on :</b> <code>{}</code>\n<b>          ping_dc :</b> <code>{}</code>\n<b>          ayra_version :</b> <code>{}</code>\n<b>          py_ayra :</b> <code>{}</code>\n<b>          ayra_uptime :</b> <code>{}</code>"
 
 absen = [
     "**𝙃𝙖𝙙𝙞𝙧 𝙙𝙤𝙣𝙜 𝙏𝙤𝙙** 😁",
@@ -84,6 +86,8 @@ async def naya(naya):
 async def lol(ayra):
     match = ayra.pattern_match.group(1).strip()
     inline = True
+    private_chats = 0
+    groups = 0
     remaining_days = "no_expired"
     if ayra.client.uid in DEVS:
         status = "ayra_premium<b>[DEVS]</b>"
@@ -306,6 +310,8 @@ async def inline_alive(event):
     pic = udB.get_key("ALIVE_PIC")
     if isinstance(pic, list):
         pic = choice(pic)
+    private_chats = 0
+    groups = 0
     remaining_days = "no_expired"
     if event.client.uid in DEVS:
         status = "ayra_premium<b>[DEVS]</b>"
