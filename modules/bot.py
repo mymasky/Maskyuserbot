@@ -321,7 +321,7 @@ async def _(event):
     await event.try_delete()
 
 
-@in_pattern("alive", owner=True)
+@callback("alive", owner=True)
 async def inline_alive(ayra):
     pic = udB.get_key("ALIVE_PIC")
     if isinstance(pic, list):
