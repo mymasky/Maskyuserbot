@@ -64,10 +64,10 @@ async def _(e):
             query = int(query)
         logi = await ayra_bot.get_entity(query)
         if not isinstance(logi, types.User):
-            raise ValueError("Invalid Username.")
+            raise ValueError("**Username tidak ditemukan.")
     except IndexError:
         sur = e.builder.article(
-            title="Give Username",
+            title="Usernsme",
             description="You Didn't Type Username or id.",
             text="You Didn't Type Username or id.",
         )
@@ -86,8 +86,8 @@ async def _(e):
         sur = e.builder.article(title="Type ur msg", text="You Didn't Type Your Msg")
         return await e.answer([sur])
     button = [
-        Button.inline("Secret Msg", data=f"dd_{e.id}"),
-        Button.inline("Delete Msg", data=f"del_{e.id}"),
+        Button.inline("Pesan Rahasia", data=f"dd_{e.id}"),
+        Button.inline("Hapus Pesan", data=f"del_{e.id}"),
     ]
     us = logi.username or logi.first_name
     sur = e.builder.article(
@@ -176,7 +176,7 @@ async def _(e):
         if e.sender_id in buddhhu[ids]:
             await e.answer(buddhhu[ids][-1], alert=True)
         else:
-            await e.answer("Not For You", alert=True)
+            await e.answer("Bukan Untuk Anda", alert=True)
     else:
         await e.answer(get_string("wspr_2"), alert=True)
 
