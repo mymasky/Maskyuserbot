@@ -49,7 +49,7 @@ alive_txt = """
   ◈ Telethon - {}
 """
 
-in_alive = "<b>{}</b>\n\n<b>AyraUserbot</b>\n<b>        status :</b> <code>{}</code>\n<b>        expires_on :</b> <code>{}</code>\n<b>        ping_dc :</b> <code>{}</code>\n<b>        peer_users :</b> <code>{}</code>\n<b>        peer_groups :</b> <code>{}</code>\n<b>        ayra_version :</b> <code>{}</code>\n<b>        py_ayra :</b> <code>{}</code>\n<b>        ayra_uptime :</b> <code>{}</code>"
+in_alive = "<b>AyraUserbot</b>\n\n<b>{}</b>\n<b>        status :</b> <code>{}</code>\n<b>        expires_on :</b> <code>{}</code>\n<b>        ping_dc :</b> <code>{}</code>\n<b>        peer_users :</b> <code>{}</code>\n<b>        peer_groups :</b> <code>{}</code>\n<b>        ayra_version :</b> <code>{}</code>\n<b>        py_ayra :</b> <code>{}</code>\n<b>        ayra_uptime :</b> <code>{}</code>"
 
 absen = [
     "**𝙃𝙖𝙙𝙞𝙧 𝙙𝙤𝙣𝙜 𝙏𝙤𝙙** 😁",
@@ -144,9 +144,7 @@ async def lol(ayra):
             groups,
             f"{ayra_version} [{HOSTED_ON}]",
             AyraVer,
-            #            pyver(),
             uptime,
-            #            kk,
         )
 
         if _e := udB.get_key("ALIVE_EMOJI"):
