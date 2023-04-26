@@ -325,7 +325,6 @@ async def inline_alive(
     event: NewMessage.Event,
 ):
     pic = udB.get_key("ALIVE_PIC")
-    await event.client(GetFullUserRequest(event.me.id))
     private_chats = 0
     groups = 0
     dialog: Dialog
