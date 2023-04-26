@@ -12,18 +12,18 @@ import time
 from datetime import datetime
 from platform import python_version as pyver
 from random import choice
-from telethon.tl.functions.users import GetMeRequest
+
 from telethon import __version__
 from telethon.errors.rpcerrorlist import (
     BotMethodInvalidError,
     ChatSendMediaForbiddenError,
 )
-from telethon.tl.functions import PingRequest
 from telethon.events import NewMessage
 from telethon.tl.custom import Dialog
-from telethon.tl.functions.users import GetFullUserRequest
+from telethon.tl.functions import PingRequest
+from telethon.tl.functions.users import GetMeRequest
 from telethon.tl.types import Channel, Chat, User
-from telethon.utils import get_peer_id
+
 from . import *
 
 try:
@@ -321,11 +321,12 @@ async def _(event):
 
 
 @in_pattern("alive")
-async def inline_alive(event: NewMessage.Event,
+async def inline_alive(
+    event: NewMessage.Event,
 ):
     pic = udB.get_key("ALIVE_PIC")
-    me = await event.client(GetMeRequest())
-    user_id = event.me.id
+    await event.client(GetMeRequest())
+    event.me.id
     private_chats = 0
     groups = 0
     dialog: Dialog
