@@ -18,8 +18,18 @@ from git import Repo
 from telethon import Button
 from telethon.tl.types import InputWebDocument, Message
 from telethon.utils import resolve_bot_file_id
-
-from . import HNDLR, LOGS, InlinePlugin, asst, get_string, split_list, start_time, udB
+from . import HNDLR as PREF
+from . import (
+    HNDLR,
+    LOGS,
+    OWNER_NAME,
+    InlinePlugin,
+    asst,
+    get_string,
+    split_list,
+    start_time,
+    udB,
+)
 from ._help import _main_help_menu
 
 # ================================================#
@@ -90,7 +100,6 @@ async def setting(event):
         get_string("inline_4").format(
             len(HELP.get("Official", [])),
             len(z),
-            i,
         ),
         link_preview=False,
         buttons=[
@@ -237,7 +246,6 @@ async def opner(event):
         get_string("inline_4").format(
             len(HELP.get("Official", [])),
             len(z),
-            i,
         ),
         buttons=_main_help_menu,
         link_preview=False,
