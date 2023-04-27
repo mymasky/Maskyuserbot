@@ -19,7 +19,7 @@ from telethon import Button
 from telethon.tl.types import InputWebDocument, Message
 from telethon.utils import resolve_bot_file_id
 
-from . import HNDLR, LOGS, InlinePlugin, asst, get_string, split_list, start_time, udB
+from . import HNDLR, LOGS, InlinePlugin, asst, get_string, split_list, start_time, udB, OWNER_NAME
 from ._help import _main_help_menu
 
 # ================================================#
@@ -113,6 +113,7 @@ _strings = {"Official": helps, "Addons": zhelps, "VCBot": get_string("inline_6")
 
 @callback(re.compile("uh_(.*)"), owner=False)
 async def help_func(ayra):
+    i = HNDLR
     key, count = ayra.data_match.group(1).decode("utf-8").split("_")
     if key == "VCBot" and HELP.get("VCBot") is None:
         return await ayra.answer(get_string("help_12"), alert=True)
