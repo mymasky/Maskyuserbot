@@ -54,6 +54,7 @@ async def inline_handler(event):
     for x in LIST.values():
         z.extend(x)
     text = get_string("inline_4").format(
+        OWNER_NAME,
         len(HELP.get("Official", [])),
         len(z),
     )
@@ -88,6 +89,7 @@ async def setting(event):
         z.extend(x)
     await event.edit(
         get_string("inline_4").format(
+            OWNER_NAME
             len(HELP.get("Official", [])),
             len(z),
         ),
@@ -120,7 +122,7 @@ async def help_func(ayra):
     if "|" in count:
         _, count = count.split("|")
     count = int(count) if count else 0
-    text = _strings.get(key, "").format(len(HELP.get(key)), i)
+    text = _strings.get(key, "").format(len(OWNER_NAME, HELP.get(key)))
     await ayra.edit(text, buttons=page_num(count, key), link_preview=False)
 
 
