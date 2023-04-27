@@ -89,7 +89,7 @@ async def setting(event):
         z.extend(x)
     await event.edit(
         get_string("inline_4").format(
-            OWNER_NAME
+            OWNER_NAME,
             len(HELP.get("Official", [])),
             len(z),
         ),
