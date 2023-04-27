@@ -14,8 +14,9 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.tl.custom import Button
 
-from . import HNDLR, LOGS, asst, ayra_cmd, get_string
+from . import HNDLR
 from . import HNDLR as PREF
+from . import LOGS, asst, ayra_cmd, get_string
 
 _main_help_menu = [
     [
