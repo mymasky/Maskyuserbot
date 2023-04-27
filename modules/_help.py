@@ -14,9 +14,8 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.tl.custom import Button
 
-from . import HNDLR
+from . import HNDLR, LOGS, asst, ayra_cmd, get_string
 from . import HNDLR as PREF
-from . import LOGS, asst, ayra_cmd, get_string
 
 _main_help_menu = [
     [
@@ -85,11 +84,11 @@ async def _help(ayra):
             z = []
             for x in LIST.values():
                 z.extend(x)
-            len(z) + 10
+            cmd = len(z) + 10
             return await ayra.reply(
                 get_string("inline_4").format(
                     len(HELP["Official"]),
-                    PREF,
+                    cmd,
                 ),
                 buttons=_main_help_menu,
             )
