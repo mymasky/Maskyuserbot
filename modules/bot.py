@@ -440,7 +440,7 @@ async def _(e):
         )
 
 
-@callback("updtavail", owner=True)
+@callback("updtavail", owner=False)
 async def updava(event):
     await event.delete()
     await asst.send_file(
