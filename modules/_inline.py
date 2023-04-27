@@ -18,18 +18,8 @@ from git import Repo
 from telethon import Button
 from telethon.tl.types import InputWebDocument, Message
 from telethon.utils import resolve_bot_file_id
-from . import HNDLR as PREF
-from . import (
-    HNDLR,
-    LOGS,
-    OWNER_NAME,
-    InlinePlugin,
-    asst,
-    get_string,
-    split_list,
-    start_time,
-    udB,
-)
+
+from . import HNDLR, LOGS, InlinePlugin, asst, get_string, split_list, start_time, udB
 from ._help import _main_help_menu
 
 # ================================================#
