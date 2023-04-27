@@ -29,6 +29,7 @@ from . import (
     split_list,
     start_time,
     udB,
+    i,
 )
 from ._help import _main_help_menu
 
@@ -66,7 +67,7 @@ async def inline_handler(event):
     text = get_string("inline_4").format(
         len(HELP.get("Official", [])),
         len(z),
-        HNDLR,
+        i,
     )
     result = await event.builder.article(
         title="Ayra Help Menu", text=text, buttons=_main_help_menu
@@ -101,7 +102,7 @@ async def setting(event):
         get_string("inline_4").format(
             len(HELP.get("Official", [])),
             len(z),
-            HNDLR,
+            i,
         ),
         link_preview=False,
         buttons=[
@@ -131,7 +132,7 @@ async def help_func(ayra):
     if "|" in count:
         _, count = count.split("|")
     count = int(count) if count else 0
-    text = _strings.get(key, "").format(len(HELP.get(key)), HNDLR)
+    text = _strings.get(key, "").format(len(HELP.get(key)), i)
     await ayra.edit(text, buttons=page_num(count, key), link_preview=False)
 
 
@@ -246,9 +247,9 @@ async def opner(event):
         z.extend(x)
     await event.edit(
         get_string("inline_4").format(
-            OWNER_NAME,
             len(HELP.get("Official", [])),
             len(z),
+            i,
         ),
         buttons=_main_help_menu,
         link_preview=False,
