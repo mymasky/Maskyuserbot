@@ -22,14 +22,13 @@ from telethon.utils import resolve_bot_file_id
 from . import (
     HNDLR,
     LOGS,
-    OWNER_NAME,
     InlinePlugin,
     asst,
     get_string,
+    i,
     split_list,
     start_time,
     udB,
-    i,
 )
 from ._help import _main_help_menu
 
