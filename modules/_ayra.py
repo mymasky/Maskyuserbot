@@ -12,7 +12,6 @@ from telethon.errors import (
 )
 
 from . import LOG_CHANNEL, LOGS, Button, asst, ayra_cmd, eor, get_string
-from . import HNDLR as i
 
 REPOMSG = """
 ◈ **ᴀʏʀᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ​** ◈\n
