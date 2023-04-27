@@ -19,7 +19,6 @@ from . import HNDLR, LOGS, asst, ayra_cmd, get_string
 _main_help_menu = [
     [
         Button.inline(get_string("help_4"), data="uh_Official_"),
-        # Button.inline(get_string("help_5"), data="uh_Addons_"),
     ],
 ]
 
@@ -86,6 +85,7 @@ async def _help(ayra):
             cmd = len(z) + 10
             return await ayra.reply(
                 get_string("inline_4").format(
+                    OWNER_NAME,
                     len(HELP["Official"]),
                     cmd,
                 ),
