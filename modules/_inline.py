@@ -19,17 +19,7 @@ from telethon import Button
 from telethon.tl.types import InputWebDocument, Message
 from telethon.utils import resolve_bot_file_id
 
-from . import (
-    HNDLR,
-    LOGS,
-    OWNER_NAME,
-    InlinePlugin,
-    asst,
-    get_string,
-    split_list,
-    start_time,
-    udB,
-)
+from . import HNDLR, LOGS, InlinePlugin, asst, get_string, split_list, start_time, udB, OWNER_NAME
 from ._help import _main_help_menu
 
 # ================================================#
@@ -131,7 +121,7 @@ async def help_func(ayra):
     if "|" in count:
         _, count = count.split("|")
     count = int(count) if count else 0
-    text = _strings.get(key, "").format(len(OWNER_NAME, HELP.get(key)))
+    text = _strings.get(key, "").format(OWNER_NAME, len(HELP.get(key)))
     await ayra.edit(text, buttons=page_num(count, key), link_preview=False)
 
 
