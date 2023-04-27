@@ -18,10 +18,18 @@ from git import Repo
 from telethon import Button
 from telethon.tl.types import InputWebDocument, Message
 from telethon.utils import resolve_bot_file_id
-
-from . import HNDLR
-from . import HNDLR as i
-from . import LOGS, InlinePlugin, asst, get_string, split_list, start_time, udB
+from . import HNDLR as PREF
+from . import (
+    HNDLR,
+    LOGS,
+    OWNER_NAME,
+    InlinePlugin,
+    asst,
+    get_string,
+    split_list,
+    start_time,
+    udB,
+)
 from ._help import _main_help_menu
 
 # ================================================#
@@ -58,7 +66,6 @@ async def inline_handler(event):
     text = get_string("inline_4").format(
         len(HELP.get("Official", [])),
         len(z),
-        i,
     )
     result = await event.builder.article(
         title="Ayra Help Menu", text=text, buttons=_main_help_menu
