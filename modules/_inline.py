@@ -113,7 +113,6 @@ _strings = {"Official": helps, "Addons": zhelps, "VCBot": get_string("inline_6")
 
 @callback(re.compile("uh_(.*)"), owner=False)
 async def help_func(ayra):
-    i = HNDLR
     key, count = ayra.data_match.group(1).decode("utf-8").split("_")
     if key == "VCBot" and HELP.get("VCBot") is None:
         return await ayra.answer(get_string("help_12"), alert=True)
