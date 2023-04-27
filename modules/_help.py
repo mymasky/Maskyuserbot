@@ -14,7 +14,8 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.tl.custom import Button
 
-from . import HNDLR, LOGS, asst, ayra_cmd, get_string
+from . import HNDLR, LOGS, asst, ayra_cmd, get_string, i
+from . import HNDLR as i
 
 _main_help_menu = [
     [
@@ -67,7 +68,7 @@ async def _help(ayra):
                         if best_match:
                             text += f"\nDid you mean `{best_match}`?"
                         return await ayra.eor(text)
-                    output = f"**Command** `{plug}` **found in plugin** - `{file}`\n"
+                    output = f"**Perintah** `{plug}` **ditemukan dalam** - `{file}`\n"
                     if file in HELP["Official"]:
                         for i in HELP["Official"][file]:
                             output += i
@@ -87,7 +88,7 @@ async def _help(ayra):
             return await ayra.reply(
                 get_string("inline_4").format(
                     len(HELP["Official"]),
-                    HNDLR,
+                    i,
                 ),
                 buttons=_main_help_menu,
             )
