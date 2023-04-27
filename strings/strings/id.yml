@@ -157,7 +157,7 @@ autopic_5: "AUTOPIC Berhenti!"
 
 # inline
 riz_1: "**𝙰𝚈𝚁𝙰-𝚄𝚂𝙴𝚁𝙱𝙾𝚃**"
-inline_1: "**❏ Menu Bantuan**\n**╰ Prefix :** {}"
+inline_1: "**❏ Menu Bantuan Fitur**\n**╰ Prefix :** {}"
 inline_2: "**{}\n\n๏ Tambahan : {}**"
 inline_3: "**{}\n\n๏ Tambahan : {}\n\n Ketik `.setdb ADDONS True` Kemudian Restart.**"
 inline_4: "**❏ Menu Bantuan**\n**├ Fitur :** {}\n**╰ Prefix :** {}"
