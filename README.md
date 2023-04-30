@@ -89,4 +89,4 @@ Ayra is licensed under [GNU Affero General Public License](https://www.gnu.org/l
 * [MarshalX](https://github.com/MarshalX) for [PyTgCalls.](https://github.com/MarshalX/tgcalls)
 
 > Recode By
-* [![↻ꝛɪᴢ ꭙ](https://img.shields.io/static/v1?label=↻ꝛɪᴢ&message=ꭙ&color=critical)](https://t.me/rizzvbss)
+* [![Rizky Ananda M.](https://img.shields.io/static/v1?label=↻ꝛɪᴢ&message=ꭙ&color=critical)](https://t.me/rizzvbss)
