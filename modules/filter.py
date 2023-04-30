@@ -8,13 +8,13 @@
 """
 ✘ **Bantuan Untuk Filter**
 
-๏ **Perintah:** `addfilter` <balas pesan> <kata kunci>
+๏ **Perintah:** `addfil` <balas pesan> <kata kunci>
 ◉ **Keterangan:** Tambahkan filter digrup.
 
-๏ **Perintah:** `remfilter` <kata kunci>
+๏ **Perintah:** `delfil` <kata kunci>
 ◉ **Keterangan:** Hapus filter digrup.
 
-๏ **Perintah:** `listfilter`
+๏ **Perintah:** `filters`
 ◉ **Keterangan:** Lihat daftar filter digrup.
 """
 
@@ -31,7 +31,7 @@ from . import ayra_bot, ayra_cmd, events, get_string, mediainfo, udB
 from ._inline import something
 
 
-@ayra_cmd(pattern="(A|a)ddfilter( (.*)|$)")
+@ayra_cmd(pattern="addfil( (.*)|$)")
 async def af(e):
     wrd = (e.pattern_match.group(1).strip()).lower()
     wt = await e.get_reply_message()
@@ -70,7 +70,7 @@ async def af(e):
     ayra_bot.add_handler(filter_func, events.NewMessage())
 
 
-@ayra_cmd(pattern="(R|r)emfilter( (.*)|$)")
+@ayra_cmd(pattern="delfil( (.*)|$)")
 async def rf(e):
     wrd = (e.pattern_match.group(1).strip()).lower()
     chat = e.chat_id
@@ -80,7 +80,7 @@ async def rf(e):
     await e.eor(get_string("flr_5").format(wrd))
 
 
-@ayra_cmd(pattern="(L|l)istfilter$")
+@ayra_cmd(pattern="filters")
 async def lsnote(e):
     if x := list_filter(e.chat_id):
         sd = "Filter Ditemukan Dalam Obrolan Ini Adalah\n\n"
