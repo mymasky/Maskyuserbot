@@ -5,7 +5,7 @@
   <b>ᴀʏʀᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ​</b>
 </h1>
 
-<b>A stable pluggable Telegram userbot + Voice & Video Call music bot, based on Telethon.</b>
+<b>A stable pluggable Telegram userbot + Voice & Video Call music bot, based on Telethon and Pyrogram</b>
 
 <a href="https://github.com/naya1503/Ayra/commits"> <img src="https://img.shields.io/github/last-commit/naya1503/Ayra?color=red&logo=github&logoColor=blue&style=for-the-badge" /></a>
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/naya1503/Ayra)
