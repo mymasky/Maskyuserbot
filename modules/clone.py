@@ -76,14 +76,19 @@ async def impostor(event):
 
 
 async def updateProfile(event, userObj, restore=False):
-    firstName = (
-        "Deleted Account"
-        if userObj.user.first_name is None
-        else userObj.user.first_name
-    )
-    lastName = "" if userObj.user.last_name is None else userObj.user.last_name
-    userAbout = userObj.about if userObj.about is not None else ""
-    userAbout = "" if len(userAbout) > 70 else userAbout
+    try:
+        firstName = (
+            "Deleted Account"
+            if userObj.user.first_name is None
+            else userObj.user.first_name
+        )
+        lastName = "" if userObj.user.last_name is None else userObj.user.last_name
+        userAbout = userObj.about if userObj.about is not None else ""
+        userAbout = "" if len(userAbout) > 70 else userAbout
+    except AttributeError:
+        LOGS.info("User object does not have expected structure.")
+        return
+
     if restore:
         userPfps = await event.client.get_profile_photos("me")
         userPfp = userPfps[0]
