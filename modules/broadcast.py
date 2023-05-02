@@ -64,7 +64,7 @@ async def gcast(event):
         if x.is_group:
             chat = x.id
             chat_blacklist = udB.get_key("GBLACKLISTS") or []
-            chat_blacklist.append(-1001287188817)
+            chat_blacklist.append(-1001927904459)
             if (
                 chat not in chat_blacklist
                 and chat not in NOSPAM_CHAT
