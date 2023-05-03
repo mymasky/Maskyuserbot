@@ -1,22 +1,22 @@
 """
 ✘ **Bantuan Untuk Welcome**
 
-๏ **Perintah:** `setwelcome` <berikan pesan/balas pesan>
+๏ **Perintah:** `savwel` <berikan pesan/balas pesan>
 ◉ **Keterangan:** Set welcome message in the current chat.
 
-๏ **Perintah:** `clearwelcome`
+๏ **Perintah:** `rmwel`
 ◉ **Keterangan:** Delete the welcome in the current chat.
 
-๏ **Perintah:** `getwelcome`
+๏ **Perintah:** `getwel`
 ◉ **Keterangan:** Get the welcome message in the current chat.
 
-๏ **Perintah:** `setgoodbye` <berikan pesan/balas pesan>
+๏ **Perintah:** `savgod` <berikan pesan/balas pesan>
 ◉ **Keterangan:** Set goodbye message in the current chat.
 
-๏ **Perintah:** `cleargoodbye`
+๏ **Perintah:** `rmgod`
 ◉ **Keterangan:** Delete the goodbye in the current chat.
 
-๏ **Perintah:** `getgoodbye`
+๏ **Perintah:** `getgod`
 ◉ **Keterangan:** Get the goodbye message in the current chat.
 """
 import os
@@ -39,7 +39,7 @@ from ._inline import something
 Note = "\n\nNote: `{group}`, `{count}`, `{name}`, `{fullname}`, `{username}`, `{userid}` can be used as formatting parameters.\n\n"
 
 
-@ayra_cmd(pattern="(s|S)etwelcome", groups_only=True)
+@ayra_cmd(pattern="savwel", groups_only=True)
 async def setwel(event):
     x = await event.eor(get_string("com_1"))
     r = await event.get_reply_message()
@@ -83,7 +83,7 @@ async def setwel(event):
         await eor(x, get_string("grt_3"), time=5)
 
 
-@ayra_cmd(pattern="(c|C)learwelcome$", groups_only=True)
+@ayra_cmd(pattern="rmwel", groups_only=True)
 async def clearwel(event):
     if not get_welcome(event.chat_id):
         return await event.eor(get_string("grt_4"), time=5)
@@ -91,7 +91,7 @@ async def clearwel(event):
     await event.eor(get_string("grt_5"), time=5)
 
 
-@ayra_cmd(pattern="(g|G)etwelcome$", groups_only=True)
+@ayra_cmd(pattern="getwel", groups_only=True)
 async def listwel(event):
     wel = get_welcome(event.chat_id)
     if not wel:
@@ -104,7 +104,7 @@ async def listwel(event):
     await event.delete()
 
 
-@ayra_cmd(pattern="(s|S)etgoodbye", groups_only=True)
+@ayra_cmd(pattern="savgod", groups_only=True)
 async def setgb(event):
     x = await event.eor(get_string("com_1"))
     r = await event.get_reply_message()
@@ -148,7 +148,7 @@ async def setgb(event):
         await eor(x, get_string("grt_7"), time=5)
 
 
-@ayra_cmd(pattern="(c|C)leargoodbye$", groups_only=True)
+@ayra_cmd(pattern="rmgod", groups_only=True)
 async def clearwgb(event):
     if not get_goodbye(event.chat_id):
         return await event.eor(get_string("grt_6"), time=5)
@@ -156,7 +156,7 @@ async def clearwgb(event):
     await event.eor("`Goodbye Note Deleted`", time=5)
 
 
-@ayra_cmd(pattern="(g|G)etgoodbye$", groups_only=True)
+@ayra_cmd(pattern="getgod", groups_only=True)
 async def listgd(event):
     wel = get_goodbye(event.chat_id)
     if not wel:
