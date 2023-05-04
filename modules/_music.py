@@ -1,36 +1,24 @@
-
 import asyncio
 import os
-import re
-import traceback
 from time import time
 from traceback import format_exc
 
+from Ayra._misc import owner_and_sudos
+from Ayra._misc._decorators import compile_pattern
+from Ayra.fns.admins import admin_check
+from Ayra.fns.helper import bash, downloader, time_formatter
+from Ayra.fns.ytdl import get_videos_link
+from Ayra.version import __version__ as AyVer
 from pytgcalls import GroupCallFactory
 from pytgcalls.exceptions import GroupCallNotFoundError
-from telethon.errors.rpcerrorlist import (
-    ParticipantJoinMissingError,
-    ChatSendMediaForbiddenError,
-)
-from Ayra import HNDLR, LOGS, asst, udB, vcClient
-from Ayra._misc._decorators import compile_pattern
-from Ayra.fns.helper import (
-    bash,
-    downloader,
-    inline_mention,
-    mediainfo,
-    time_formatter,
-)
-from Ayra.fns.admins import admin_check
-from Ayra.fns.tools import is_url_ok
-from Ayra.fns.ytdl import get_videos_link
-from Ayra._misc import owner_and_sudos, sudoers
-from Ayra._misc._assistant import in_pattern
-from Ayra._misc._wrappers import eod, eor
-from Ayra.version import __version__ as AyVer
 from telethon import events
-from telethon.tl import functions, types
-from telethon.utils import get_display_name
+from telethon.errors.rpcerrorlist import (
+    ChatSendMediaForbiddenError,
+    ParticipantJoinMissingError,
+)
+from telethon.tl import functions
+
+from Ayra import HNDLR, LOGS, asst, udB, vcClient
 
 try:
     from yt_dlp import YoutubeDL
@@ -39,11 +27,10 @@ except ImportError:
     LOGS.error("'yt-dlp' not found!")
 
 try:
-   from youtubesearchpython import VideosSearch
+    from youtubesearchpython import VideosSearch
 except ImportError:
     VideosSearch = None
 
-from strings import get_string
 
 asstUserName = asst.me.username
 LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
@@ -66,7 +53,8 @@ class Player:
             self.group_call = CLIENTS[chat]
         else:
             _client = GroupCallFactory(
-                vcClient, GroupCallFactory.MTPROTO_CLIENT_TYPE.TELETHON,
+                vcClient,
+                GroupCallFactory.MTPROTO_CLIENT_TYPE.TELETHON,
             )
             self.group_call = _client.get_group_call()
             CLIENTS.update({chat: self.group_call})
