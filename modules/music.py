@@ -58,22 +58,22 @@
 
 """
 
-import os
+from . import *
+from ._music import *
+from pytgcalls.exceptions import NotConnectedError
 import re
-
-from Ayra.fns.helper import *
+import os
+from telethon.tl import functions, types
+from telethon.errors.rpcerrorlist import (
+    ChatSendMediaForbiddenError,
+    ParticipantJoinMissingError,
+    MessageIdInvalidError,
+)
+from Ayra.dB.vc_sudos import *
 from Ayra.fns.info import *
 from Ayra.fns.misc import *
 from Ayra.fns.tools import *
-from pytgcalls.exceptions import NotConnectedError
-from telethon.errors.rpcerrorlist import (
-    ChatSendMediaForbiddenError,
-    MessageIdInvalidError,
-)
-
-from . import *
-from ._music import *
-
+from Ayra.fns.helper import *
 
 @vc_asst("play")
 async def play_music_(event):
