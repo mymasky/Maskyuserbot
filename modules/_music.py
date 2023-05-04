@@ -153,7 +153,7 @@ class Player:
             del CLIENTS[self._chat]
             await vcClient.send_message(
                 self._current_chat,
-                f"❏ <b>Berhasil Turun Voice Chat</b>\n└ <b>Chat ID:</b> <code>`{chat_id}`</code>",
+                f"❏ <b>Berhasil Turun Voice Chat</b>\n└ <b>Chat ID:</b> <code>{chat_id}</code>",
                 parse_mode="html",
             )
         except Exception as er:
@@ -171,7 +171,7 @@ class Player:
         if done:
             await vcClient.send_message(
                 self._current_chat,
-                f"❏ <b>Berhasil Bergabung Voice Chat</b>\n└ <b>Chat ID:</b> <code>`{chat_id}`</code>",
+                f"❏ <b>Berhasil Bergabung Voice Chat</b>\n└ <b>Chat ID:</b> <code>{chat_id}</code>",
                 parse_mode="html",
             )
 
