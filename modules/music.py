@@ -276,9 +276,6 @@ async def lstqueue(event):
     await event.eor(f"• <strong>Queue:</strong>\n\n{q}", parse_mode="html")
 
 
-
-
-
 @vc_asst("rejoin")
 async def rejoiner(event):
     if len(event.text.split()) > 1:
@@ -443,14 +440,13 @@ async def _(e):
     try:
         add_vcsudo(userid)
         await xx.eor(
-            
             f"[{name}](tg://user?id={userid})` is added to Voice Chat Bot Users.`",
             time=5,
         )
     except Exception as ex:
         return await xx.eor(f"`{ex}`", time=5)
-        
-        
+
+
 @vc_asst("ytplaylist")
 async def live_stream(e):
     xx = await e.eor(get_string("com_1"))
