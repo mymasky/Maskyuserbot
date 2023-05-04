@@ -30,7 +30,7 @@ def run_sync(func, *args, **kwargs):
 
 @ayra_cmd(pattern="(v|V)ideo( (.*)|$)")
 async def yt_video(e):
-    infomsg = await e.eor("*Processing...**")
+    infomsg = await e.eor("`Processing...`")
     try:
         search = (
             SearchVideos(
@@ -52,7 +52,7 @@ async def yt_video(e):
             "geo_bypass": True,
         }
     )
-    await infomsg.eor(f"**Mulai Mendownload...**")
+    await infomsg.eor(f"Mulai Mendownload...")
     try:
         ytdl_data = await run_sync(ydl.extract_info, link, download=True)
         file_path = ydl.prepare_filename(ytdl_data)
@@ -91,7 +91,7 @@ async def yt_video(e):
 
 @ayra_cmd(pattern="(s|S)ong( (.*)|$)")
 async def yt_audio(e):
-    infomsg = await e.eor("**Processing...**")
+    infomsg = await e.eor("`Processing...`")
     try:
         search = (
             SearchVideos(
@@ -113,7 +113,7 @@ async def yt_audio(e):
             "geo_bypass": True,
         }
     )
-    await infomsg.edit(f"**Mulai Mendownload...**")
+    await infomsg.edit(f"Mulai Mendownload...")
     try:
         ytdl_data = await run_sync(ydl.extract_info, link, download=True)
         file_path = ydl.prepare_filename(ytdl_data)
