@@ -59,7 +59,7 @@ async def _(event):
 async def set_env(event):
     var_name = event.pattern_match.group(1)
     var_value = event.pattern_match.group(2)
-    if not var_name and not var_value:
+    if not var_name or not var_value:
         return await event.eor("Berikan variable dan nilai value untuk ditetapkan!")
     set_key(".env", var_name, var_value)
 
@@ -71,7 +71,8 @@ async def set_env(event):
 @ayra_cmd(pattern=r"delvar (\S+)", fullsudo=False)
 async def del_env(event):
     var_name = event.pattern_match.group(1)
-
+    if not var_name:
+        return await event.eor("Berikan variable untuk dihapus!")
     unset_key(".env", var_name)
     if var_name in os.environ:
         del os.environ[var_name]
