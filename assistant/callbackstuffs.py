@@ -12,7 +12,16 @@ import sys
 from asyncio.exceptions import TimeoutError as AsyncTimeOut
 from os import execl, remove
 from random import choice
+
+from Ayra.fns.tools import Carbon, get_paste, telegraph_client
+from Ayra.startup.loader import Loader
 from dotenv import load_dotenv, set_key, unset_key
+from telegraph import upload_file as upl
+from telethon import Button, events
+from telethon.tl.types import MessageMediaWebPage
+from telethon.utils import get_peer_id
+
+from . import *
 
 load_dotenv(".env")
 
@@ -20,14 +29,7 @@ try:
     from Ayra.fns.gDrive import GDriveManager
 except ImportError:
     GDriveManager = None
-from Ayra.fns.tools import Carbon, get_paste, telegraph_client
-from Ayra.startup.loader import Loader
-from telegraph import upload_file as upl
-from telethon import Button, events
-from telethon.tl.types import MessageMediaWebPage
-from telethon.utils import get_peer_id
 
-from . import *
 
 # --------------------------------------------------------------------#
 telegraph = telegraph_client()
