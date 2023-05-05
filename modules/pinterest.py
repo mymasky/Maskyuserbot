@@ -58,6 +58,7 @@ async def insta(event):
             await event.client.send_file(
                 event.chat_id,
                 response.message.media,
+                caption=f"**Upload By: {inline_mention(event.sender)}**",
             )
             await event.client.send_read_acknowledge(conv.chat_id)
             await event.client(DeleteHistoryRequest(peer=chat, max_id=0))
