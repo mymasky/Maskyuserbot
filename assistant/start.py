@@ -59,10 +59,12 @@ _start = [
 ]
 
 
-@asst_cmd(pattern=r"setvar (\S+)\s+(\S+)", fullsudo=False)
+@asst_cmd(pattern=r"setvar (\S+)\s+(\S+)")
 async def set_env(event):
     var_name = event.pattern_match.group(1)
     var_value = event.pattern_match.group(2)
+    if not var_name and not var_value:
+        return await event.reply("Berikan variable dan nilai value untuk ditetapkan!")
     set_key(".env", var_name, var_value)
 
     os.environ[var_name] = var_value
@@ -70,7 +72,7 @@ async def set_env(event):
     await event.eor(f"Variabel {var_name} berhasil ditambahkan.")
 
 
-@asst_cmd(pattern=r"delvar (\S+)", fullsudo=False)
+@asst_cmd(pattern=r"delvar (\S+)")
 async def del_env(event):
     var_name = event.pattern_match.group(1)
 
