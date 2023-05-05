@@ -41,9 +41,6 @@ if Owner_info_msg is None:
 
 _settings = [
     [
-        Button.inline("Set Variable", data="cbs_setvari"),
-    ],
-    [
         Button.inline("API Keys", data="cbs_apiset"),
         Button.inline("PM Bot", data="cbs_chatbot"),
     ],
@@ -91,7 +88,7 @@ async def set_env(event):
     var_name = event.pattern_match.group(1)
     var_value = event.pattern_match.group(2)
     if not var_name:
-        await event.answer("Berikan variable dan nilai value untuk ditetapkan!")
+        await event.reply("Berikan variable dan nilai value untuk ditetapkan!")
         return
     env_file = ".env"
     env_vars = {}
@@ -104,27 +101,27 @@ async def set_env(event):
                     env_vars[key] = value
 
     if var_name in env_vars:
-        await event.answer(
+        await event.reply(
             f"Variabel {var_name} sudah ada di file .env dengan nilai {env_vars[var_name]}. Tidak dapat menambahkan variabel yang sama."
         )
         return
     set_key(env_file, var_name, var_value)
     os.environ[var_name] = var_value
 
-    await event.answer(f"Variabel {var_name} berhasil ditambahkan.")
+    await event.reply(f"Variabel {var_name} berhasil ditambahkan.")
 
 
 @asst_cmd(pattern=r"delvar (\S+)", owner=True)
 async def del_env(event):
     var_name = event.pattern_match.group(1)
     if not var_name:
-        await event.answer("Berikan variable untuk dihapus!")
+        await event.reply("Berikan variable untuk dihapus!")
         return
     unset_key(".env", var_name)
     if var_name in os.environ:
         del os.environ[var_name]
 
-    await event.answer(f"Variabel {var_name} berhasil dihapus.")
+    await event.reply(f"Variabel {var_name} berhasil dihapus.")
 
 
 @callback("ownerinfo")
