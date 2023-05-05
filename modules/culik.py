@@ -16,38 +16,11 @@
 ◉ **Notes:** Fitur Ini Dilarang Keras Untuk IDC 5 & 6 Karena Akun Anda Akan Ter-Deak.
 """
 
-import asyncio
-import random
-from datetime import datetime
-from secrets import choice
-
 
 from telethon import functions
-from telethon.errors import (
-    ChannelInvalidError,
-    ChannelPrivateError,
-    ChannelPublicGroupNaError,
-)
-from telethon.errors.rpcerrorlist import (
-    UserAlreadyParticipantError,
-    UserNotMutualContactError,
-    UserPrivacyRestrictedError,
-)
-from telethon.tl.functions.channels import (
-    GetFullChannelRequest,
-    GetParticipantsRequest,
-    InviteToChannelRequest,
-)
-from telethon.tl.functions.messages import GetFullChatRequest
-from telethon.tl.types import (
-    ChannelParticipantAdmin,
-    ChannelParticipantsAdmins,
-    ChannelParticipantsBots,
-    InputPeerUser,
-    MessageActionChannelMigrateFrom,
-)
-from . import *
+from telethon.tl.functions.channels import InviteToChannelRequest
 
+from . import *
 
 
 @ayra_cmd(pattern="invite(?: |$)(.*)")
@@ -56,8 +29,11 @@ async def _(event):
         return
     to_add_users = event.pattern_match.group(1)
     if event.is_private:
-        await eor(event, "Gunakan format `invite` pengguna ke grup chat, bukan ke Pesan Pribadi.")
-                  
+        await eor(
+            event,
+            "Gunakan format `invite` pengguna ke grup chat, bukan ke Pesan Pribadi.",
+        )
+
     else:
         if not event.is_channel and event.is_group:
             for user_id in to_add_users.split():
@@ -99,20 +75,18 @@ async def get_users(event):
     restricted = ["@KynanSupport", "@kynansupport"]
     if chat_ajgg in restricted:
         await eor(event, "**Dilarang nyulik member dari sana om.**")
-        await event.client.send_message(
-            -1001812143750, "**Mo nyulik kaga bisa.**")
-        
+        await event.client.send_message(-1001812143750, "**Mo nyulik kaga bisa.**")
+
         return
     if not ajgg:
-        return await eor(
-            event, "`Berikan username grup...`")
-        
+        return await eor(event, "`Berikan username grup...`")
+
     ayraa = await eor(event, "`Processing....`")
     babi = await get_chatinfo(event)
     chat = await event.get_chat()
     if event.is_private:
         return await ayraa.edit("**Tidak bisa Menambahkan Member di sini.**")
-                                
+
     s = 0
     f = 0
     error = "None"
@@ -121,9 +95,12 @@ async def get_users(event):
         try:
             await event.client(InviteToChannelRequest(channel=chat, users=[user.id]))
             s += 1
-            await ayraa.edit(f"`Processing...`\n\n• **Menambahkan** `{s}` **orang** \n• **Gagal Menambahkan** `{f}` **orang**\n\n** Error:** `{error}`")
+            await ayraa.edit(
+                f"`Processing...`\n\n• **Menambahkan** `{s}` **orang** \n• **Gagal Menambahkan** `{f}` **orang**\n\n** Error:** `{error}`"
+            )
         except Exception as e:
             error = str(e)
             f += 1
-    return await ayraa.edit(f"**Terminal Selesai** \n\n• **Berhasil Menambahkan** `{s}` **orang** \n• **Gagal Menambahkan** `{f}` **orang**")
-                            
+    return await ayraa.edit(
+        f"**Terminal Selesai** \n\n• **Berhasil Menambahkan** `{s}` **orang** \n• **Gagal Menambahkan** `{f}` **orang**"
+    )
