@@ -93,24 +93,25 @@ async def set_env(event):
     if not var_name:
         await event.answer("Berikan variable dan nilai value untuk ditetapkan!")
         return
-    env_file = '.env'
+    env_file = ".env"
     env_vars = {}
 
     if os.path.exists(env_file):
-        with open(env_file, 'r') as f:
+        with open(env_file, "r") as f:
             for line in f:
-                if '=' in line:
-                    key, value = line.strip().split('=', 1)
+                if "=" in line:
+                    key, value = line.strip().split("=", 1)
                     env_vars[key] = value
 
     if var_name in env_vars:
-        await event.reply(f"Variabel {var_name} sudah ada di file .env dengan nilai {env_vars[var_name]}. Tidak dapat menambahkan variabel yang sama.")
+        await event.reply(
+            f"Variabel {var_name} sudah ada di file .env dengan nilai {env_vars[var_name]}. Tidak dapat menambahkan variabel yang sama."
+        )
         return
     set_key(env_file, var_name, var_value)
     os.environ[var_name] = var_value
 
     await event.eor(f"Variabel {var_name} berhasil ditambahkan.")
-
 
 
 @callback(pattern=r"delvar (\S+)", owner=True)
