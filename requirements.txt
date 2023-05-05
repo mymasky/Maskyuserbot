@@ -28,7 +28,7 @@ textblob
 wikipedia
 spotdl
 pyrogram
-py-Ayra==8.6.8
+py-Ayra==8.7.0
 akinator
 apscheduler
 beautifulsoup4
