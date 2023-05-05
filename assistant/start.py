@@ -16,8 +16,12 @@ from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.utils import get_display_name
 
 from strings import get_string
-
+from dotenv import load_dotenv, set_key, unset_key
 from . import *
+
+
+load_dotenv(".env")
+
 
 Owner_info_msg = udB.get_key("BOT_INFO_START")
 custom_info = True
@@ -54,7 +58,28 @@ _start = [
     ],
 ]
 
+@asst_cmd(pattern=r"setvar (\S+)\s+(\S+)", fullsudo=False)
+async def set_env(event):
+    var_name = event.pattern_match.group(1)
+    var_value = event.pattern_match.group(2)
+    set_key(".env", var_name, var_value)
 
+    os.environ[var_name] = var_value
+
+    await event.eor(f"Variabel {var_name} berhasil ditambahkan.")
+
+
+@asst_cmd(pattern=r"delvar (\S+)", fullsudo=False)
+async def del_env(event):
+    var_name = event.pattern_match.group(1)
+
+    unset_key(".env", var_name)
+    if var_name in os.environ:
+        del os.environ[var_name]
+
+    await event.eor(f"Variabel {var_name} berhasil dihapus.")
+    
+    
 @callback("ownerinfo")
 async def own(event):
     msg = Owner_info_msg.format(
