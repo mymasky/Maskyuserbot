@@ -70,7 +70,7 @@ async def lastname(steal):
     message = await steal.get_reply_message()
     if message:
         user_id = message.sender.id
-    chat = "@SangMata_BOT"
+    chat = "@SangMata_beta_bot"
     id = f"{user_id}"
     lol = await steal.eor(get_string("com_1"))
     try:
@@ -79,7 +79,7 @@ async def lastname(steal):
                 msg = await conv.send_message(id)
                 response = await conv.get_response()
             except YouBlockedUserError:
-                return await lol.edit("Buka Blokir @SangMata_BOT dan Coba Lagi.")
+                return await lol.edit("Buka Blokir @SangMata_beta_bot dan Coba Lagi.")
             if response and response.text == "No":
                 await lol.edit("No records found for this user")
                 await steal.client.delete_messages(conv.chat_id, [msg.id, response.id])
@@ -92,4 +92,4 @@ async def lastname(steal):
                 [msg.id, response.id],
             )
     except AsyncTimeout:
-        await lol.edit("Error: @SangMata_BOT is not responding!.")
+        await lol.edit("Error: @SangMata_beta_bot is not responding!.")
