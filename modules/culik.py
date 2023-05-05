@@ -18,9 +18,67 @@
 
 
 from telethon import functions
-from telethon.tl.functions.channels import InviteToChannelRequest
+from telethon.errors import (
+    ChannelInvalidError,
+    ChannelPrivateError,
+    ChannelPublicGroupNaError,
+)
+from telethon.errors.rpcerrorlist import (
+    UserAlreadyParticipantError,
+    UserNotMutualContactError,
+    UserPrivacyRestrictedError,
+)
+from telethon.tl.functions.channels import (
+    GetFullChannelRequest,
+    GetParticipantsRequest,
+    InviteToChannelRequest,
+)
+from telethon.tl.functions.messages import GetFullChatRequest, GetHistoryRequest
+from telethon.tl.types import (
+    ChannelParticipantAdmin,
+    ChannelParticipantsAdmins,
+    ChannelParticipantsBots,
+    InputPeerUser,
+    MessageActionChannelMigrateFrom,
+)
 
 from . import *
+
+
+async def get_chatinfo(event):
+    chat = event.pattern_match.group(1)
+    chat_info = None
+    if chat:
+        try:
+            chat = int(chat)
+        except ValueError:
+            pass
+    if not chat:
+        if event.reply_to_msg_id:
+            replied_msg = await event.get_reply_message()
+            if replied_msg.fwd_from and replied_msg.fwd_from.channel_id is not None:
+                chat = replied_msg.fwd_from.channel_id
+        else:
+            chat = event.chat_id
+    try:
+        chat_info = await event.client(GetFullChatRequest(chat))
+    except BaseException:
+        try:
+            chat_info = await event.client(GetFullChannelRequest(chat))
+        except ChannelInvalidError:
+            await eor(event, "`Grup tidak ditemukan...`")
+            return None
+        except ChannelPrivateError:
+            await eod(event, "`Sepertinya Grup Private...`")
+                      
+            return None
+        except ChannelPublicGroupNaError:
+            await eod(event, "`Grup tidak ditemukan...`")
+            return None
+        except (TypeError, ValueError):
+            await eod(event, "`Grup tidak ditemukan...`")
+            return None
+    return chat_info
 
 
 @ayra_cmd(pattern="invite(?: |$)(.*)")
