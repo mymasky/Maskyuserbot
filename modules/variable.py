@@ -27,7 +27,7 @@ HNDLR anda menjadi `!`, default nya adalah `.`
 
 import os
 import re
-from dotenv import load_dotenv
+
 from . import *
 
 
@@ -69,6 +69,7 @@ async def _(event):
 
     except BaseException:
         await event.eor(get_string("com_7"))
+
 
 @ayra_cmd(pattern="deldb( (.*)|$)", fullsudo=False)
 async def _(event):
