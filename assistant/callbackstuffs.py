@@ -12,16 +12,7 @@ import sys
 from asyncio.exceptions import TimeoutError as AsyncTimeOut
 from os import execl, remove
 from random import choice
-
-from Ayra.fns.tools import Carbon, get_paste, telegraph_client
-from Ayra.startup.loader import Loader
 from dotenv import load_dotenv, set_key, unset_key
-from telegraph import upload_file as upl
-from telethon import Button, events
-from telethon.tl.types import MessageMediaWebPage
-from telethon.utils import get_peer_id
-
-from . import *
 
 load_dotenv(".env")
 
@@ -29,7 +20,14 @@ try:
     from Ayra.fns.gDrive import GDriveManager
 except ImportError:
     GDriveManager = None
+from Ayra.fns.tools import Carbon, get_paste, telegraph_client
+from Ayra.startup.loader import Loader
+from telegraph import upload_file as upl
+from telethon import Button, events
+from telethon.tl.types import MessageMediaWebPage
+from telethon.utils import get_peer_id
 
+from . import *
 
 # --------------------------------------------------------------------#
 telegraph = telegraph_client()
@@ -823,7 +821,7 @@ async def chon(event):
     )
 
 
-@callback("setvar (\\S+)\\s+(\\S+)", owner=True)
+@callback("setvar", owner=True)
 async def set_env(event):
     var_name = event.pattern_match.group(1)
     var_value = event.pattern_match.group(2)
@@ -851,7 +849,7 @@ async def set_env(event):
     await event.answer(f"Variabel {var_name} berhasil ditambahkan.")
 
 
-@callback("delvar (\\S+)", owner=True)
+@callback("delvar", owner=True)
 async def del_env(event):
     var_name = event.pattern_match.group(1)
     if not var_name:
