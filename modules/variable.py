@@ -63,19 +63,19 @@ async def set_env(event):
 
     os.environ[var_name] = var_value
 
-    await event.eor(
-        f"Variabel {var_name} berhasil ditambahkan."
-    )
+    await event.eor(f"Variabel {var_name} berhasil ditambahkan.")
+
 
 @ayra_cmd(pattern=r"delvar (\S+)", fullsudo=False)
 async def del_env(event):
     var_name = event.pattern_match.group(1)
 
-    unset_key('.env', var_name)
+    unset_key(".env", var_name)
     if var_name in os.environ:
         del os.environ[var_name]
 
     await event.eor(f"Variabel {var_name} berhasil dihapus.")
+
 
 @ayra_cmd(pattern="deldb( (.*)|$)", fullsudo=False)
 async def _(event):
