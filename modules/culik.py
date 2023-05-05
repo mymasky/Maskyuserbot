@@ -23,24 +23,8 @@ from telethon.errors import (
     ChannelPrivateError,
     ChannelPublicGroupNaError,
 )
-from telethon.errors.rpcerrorlist import (
-    UserAlreadyParticipantError,
-    UserNotMutualContactError,
-    UserPrivacyRestrictedError,
-)
-from telethon.tl.functions.channels import (
-    GetFullChannelRequest,
-    GetParticipantsRequest,
-    InviteToChannelRequest,
-)
-from telethon.tl.functions.messages import GetFullChatRequest, GetHistoryRequest
-from telethon.tl.types import (
-    ChannelParticipantAdmin,
-    ChannelParticipantsAdmins,
-    ChannelParticipantsBots,
-    InputPeerUser,
-    MessageActionChannelMigrateFrom,
-)
+from telethon.tl.functions.channels import GetFullChannelRequest, InviteToChannelRequest
+from telethon.tl.functions.messages import GetFullChatRequest
 
 from . import *
 
@@ -70,7 +54,7 @@ async def get_chatinfo(event):
             return None
         except ChannelPrivateError:
             await eod(event, "`Sepertinya Grup Private...`")
-                      
+
             return None
         except ChannelPublicGroupNaError:
             await eod(event, "`Grup tidak ditemukan...`")
