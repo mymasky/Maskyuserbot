@@ -86,7 +86,7 @@ async def restart(e):
 @asst_cmd(pattern=r"setvar (\S+)\s+(\S+)", owner=True)
 async def set_env(event):
     var_name = event.pattern_match.group(1)
-    var_value = event.pattern_match.group(2)
+    var_value = event.pattern_match.group(2).replace("'", "")
     if not var_name:
         await event.reply("Berikan variable dan nilai value untuk ditetapkan!")
         return
