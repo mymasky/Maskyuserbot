@@ -1,5 +1,5 @@
 """
-✘ **Bantuan Untuk Webshot**
+✘ **Bantuan Untuk Adzan**
 
 ๏ **Perintah:** `adzan` <nama kota>
 ◉ **Keterangan:** Dapatkan jadwal adzan.
