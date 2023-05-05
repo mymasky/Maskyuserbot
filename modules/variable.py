@@ -27,10 +27,12 @@ HNDLR anda menjadi `!`, default nya adalah `.`
 
 import os
 import re
+
 from dotenv import load_dotenv, set_key
+
 from . import *
 
-load_dotenv('.env')
+load_dotenv(".env")
 
 
 @ayra_cmd(pattern="setdb( (.*)|$)", fullsudo=False)
@@ -57,12 +59,13 @@ async def _(event):
 async def set_env(event):
     var_name = event.pattern_match.group(1)
     var_value = event.pattern_match.group(2)
-    set_key('.env', var_name, var_value)
+    set_key(".env", var_name, var_value)
 
     os.environ[var_name] = var_value
 
-    await event.eor(f"Variabel {var_name} berhasil ditetapkan dengan nilai {var_value}.")
-
+    await event.eor(
+        f"Variabel {var_name} berhasil ditetapkan dengan nilai {var_value}."
+    )
 
 
 @ayra_cmd(pattern="deldb( (.*)|$)", fullsudo=False)
