@@ -10,7 +10,10 @@
 ๏ **Perintah:** `pntrst` <link>
 ◉ **Keterangan:** Unduh tautan pinterest.
 """
-
+from telethon import events
+from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.tl.functions.contacts import UnblockRequest
+from telethon.tl.functions.messages import DeleteHistoryRequest
 
 try:
     import cv2
@@ -25,22 +28,38 @@ except ImportError:
 from . import *
 
 
-@ayra_cmd(
-    pattern="(p|P)ntrst( (.*)|$)",
-)
-async def pinterest(e):
-    m = e.pattern_match.group(1).strip()
-    if not m:
-        return await e.eor("`Berikan tautan pinterest.`", time=3)
-    soup = await async_searcher(
-        "https://www.expertsphp.com/slideshare-downloader/",
-        data={"url": m},
-        post=True,
-    )
-    try:
-        _soup = bs(soup, "html.parser").find("table").tbody.find_all("tr")
-    except BaseException:
-        return await e.eor("`Tautan salah atau pin pribadi.`", time=5)
-    file = _soup[1] if len(_soup) > 1 else _soup[0]
-    file = file.td.a["href"]
-    await e.client.send_file(e.chat_id, file, caption=f"Pin:- {m}")
+@ayra_cmd(pattern="pntrst(?: |$)(.*)")
+async def insta(event):
+    xxnx = event.pattern_match.group(1)
+    if xxnx:
+        link = xxnx
+    elif event.is_reply:
+        link = await event.get_reply_message()
+    else:
+        return await eod(
+            event, "`Berikan link tautan pinterest...`")
+        
+    xx = await eor(event, "`Processing...`")
+    chat = "@SaveAsbot"
+    async with event.client.conversation(chat) as conv:
+        try:
+            response = conv.wait_event(
+                events.NewMessage(incoming=True, from_users=523131145)
+            )
+            await event.client.send_message(chat, link)
+            response = await response
+        except YouBlockedUserError:
+            await event.client(UnblockRequest(chat))
+            await event.client.send_message(chat, link)
+            response = await response
+        if response.text.startswith("Forward"):
+            await xx.edit("`Mengunggah...`")
+        else:
+            await xx.delete()
+            await event.client.send_file(
+                event.chat_id,
+                response.message.media,
+            )
+            await event.client.send_read_acknowledge(conv.chat_id)
+            await event.client(DeleteHistoryRequest(peer=chat, max_id=0))
+            await xx.delete()
