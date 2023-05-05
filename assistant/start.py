@@ -102,7 +102,7 @@ async def set_env(event):
 
     if var_name in env_vars:
         await event.reply(
-            f"Variabel {var_name} sudah ada di file .env dengan nilai {env_vars[var_name]}. Tidak dapat menambahkan variabel yang sama."
+            f"Variabel {var_name} sudah ada di file .env. Tidak dapat menambahkan variabel yang sama."
         )
         return
     set_key(env_file, var_name, var_value)
