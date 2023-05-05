@@ -13,6 +13,7 @@ from datetime import datetime
 from Ayra._misc import SUDO_M, owner_and_sudos
 from Ayra.dB.asst_fns import *
 from Ayra.fns.helper import inline_mention
+
 from pytz import timezone as tz
 from telethon import Button, events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
@@ -21,6 +22,9 @@ from telethon.utils import get_display_name
 from strings import get_string
 
 from . import *
+
+
+
 
 Owner_info_msg = udB.get_key("BOT_INFO_START")
 custom_info = True
@@ -68,7 +72,7 @@ restart_counter = 0
 @callback("resturt", owner=True)
 async def restart(e):
     global restart_counter
-    ok = await e.reply("`Processing...`")
+    ok = await e.answer("`Processing...`")
     # call_back()
     who = "bot" if e.client._bot else "user"
     udB.set_key("_RESTART", f"{who}_{e.chat_id}_{ok.id}")
