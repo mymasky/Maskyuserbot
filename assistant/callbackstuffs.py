@@ -125,6 +125,14 @@ _buttons = {
             [Button.inline("Kembali", data="setter")],
         ],
     },
+    "setvari": {
+        "text": "Silakan atur variable multi client anda.",
+        "buttons": [
+            [Button.inline("Setvar", data="setvar")],
+            [Button.inline("Delvar", data="delvar")],
+            [Button.inline("Kembali", data="setter")],
+        ],
+    },
 }
 
 _convo = {
