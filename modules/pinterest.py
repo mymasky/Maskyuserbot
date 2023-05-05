@@ -36,9 +36,8 @@ async def insta(event):
     elif event.is_reply:
         link = await event.get_reply_message()
     else:
-        return await eod(
-            event, "`Berikan link tautan pinterest...`")
-        
+        return await eod(event, "`Berikan link tautan pinterest...`")
+
     xx = await eor(event, "`Processing...`")
     chat = "@SaveAsbot"
     async with event.client.conversation(chat) as conv:
