@@ -27,11 +27,11 @@ HNDLR anda menjadi `!`, default nya adalah `.`
 
 import os
 import re
-
+from dotenv import load_dotenv
 from . import *
 
 
-@ayra_cmd(pattern="[sS][e][t][d][b]( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="setdb( (.*)|$)", fullsudo=False)
 async def _(event):
     match = event.pattern_match.group(1).strip()
     if not match:
@@ -51,7 +51,26 @@ async def _(event):
         await event.eor(get_string("com_7"))
 
 
-@ayra_cmd(pattern="[dD][e][l][d][b]( (.*)|$)", fullsudo=False)
+@ayra_cmd(pattern="setvar( (.*)|$)", fullsudo=False)
+async def _(event):
+    match = event.pattern_match.group(1).strip()
+    if not match:
+        return await event.eor("Berikan kunci dan nilai untuk ditetapkan!")
+    try:
+        delim = " " if re.search("[|]", match) is None else " | "
+        data = match.split(delim, maxsplit=1)
+        if data[0] in ["--extend", "-e"]:
+            data = data[1].split(maxsplit=1)
+            data[1] = f"{os.getenv(data[0], '')} {data[1]}"
+        udB.set_key(data[0], data[1])
+        await event.eor(
+            f"**Pasangan Nilai Kunci DB Diperbarui\nKunci :** `{data[0]}`\n**Value :** `{data[1]}`"
+        )
+
+    except BaseException:
+        await event.eor(get_string("com_7"))
+
+@ayra_cmd(pattern="deldb( (.*)|$)", fullsudo=False)
 async def _(event):
     key = event.pattern_match.group(1).strip()
     if not key:
