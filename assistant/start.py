@@ -69,7 +69,7 @@ restart_counter = 0
 @callback("resturt", owner=True)
 async def restart(e):
     global restart_counter
-    ok = await e.answer("`Processing...`")
+    ok = await e.reply("`Processing...`")
     # call_back()
     who = "bot" if e.client._bot else "user"
     udB.set_key("_RESTART", f"{who}_{e.chat_id}_{ok.id}")
