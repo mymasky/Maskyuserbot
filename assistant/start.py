@@ -5,8 +5,13 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
-from datetime import datetime
 
+import os
+import sys
+import time
+from datetime import datetime
+from platform import python_version as pyver
+from random import choice
 from Ayra._misc import SUDO_M, owner_and_sudos
 from Ayra.dB.asst_fns import *
 from Ayra.fns.helper import inline_mention
@@ -58,6 +63,26 @@ _start = [
     ],
 ]
 
+heroku_api = Var.HEROKU_API
+restart_counter = 0
+
+@asst_cmd(
+    pattern="restart$",
+)
+async def restart(e):
+    global restart_counter
+    ok = await e.reply("`Processing...`")
+    # call_back()
+    who = "bot" if e.client._bot else "user"
+    udB.set_key("_RESTART", f"{who}_{e.chat_id}_{ok.id}")
+    if heroku_api and restart_counter < 10:
+        restart_counter += 1
+        return await restart(ok)
+    await bash("git pull && pip3 install -r requirements.txt")
+    if len(sys.argv) > 1:
+        os.execl(sys.executable, sys.executable, "main.py")
+    else:
+        os.execl(sys.executable, sys.executable, "-m", "Ayra")
 
 @asst_cmd(pattern=r"setvar (\S+)\s+(\S+)")
 async def set_env(event):
