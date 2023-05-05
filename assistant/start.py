@@ -8,10 +8,8 @@
 
 import os
 import sys
-import time
 from datetime import datetime
-from platform import python_version as pyver
-from random import choice
+
 from Ayra._misc import SUDO_M, owner_and_sudos
 from Ayra.dB.asst_fns import *
 from Ayra.fns.helper import inline_mention
@@ -66,6 +64,7 @@ _start = [
 heroku_api = Var.HEROKU_API
 restart_counter = 0
 
+
 @asst_cmd(
     pattern="restart$",
 )
@@ -83,6 +82,7 @@ async def restart(e):
         os.execl(sys.executable, sys.executable, "main.py")
     else:
         os.execl(sys.executable, sys.executable, "-m", "Ayra")
+
 
 @asst_cmd(pattern=r"setvar (\S+)\s+(\S+)")
 async def set_env(event):
