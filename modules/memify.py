@@ -13,9 +13,11 @@
 """
 
 
-import textwrap
 import os
-from PIL import Image, ImageFont, ImageDraw
+import textwrap
+
+from PIL import Image, ImageDraw, ImageFont
+
 from . import *
 
 
@@ -24,7 +26,9 @@ async def handler(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.reply("`Berikan Beberapa Teks Untuk Digambar! Dan Membalas sticker/gambar Contoh : `mmf teks`")
+        await event.reply(
+            "`Berikan Beberapa Teks Untuk Digambar! Dan Membalas sticker/gambar Contoh : `mmf teks`"
+        )
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
@@ -44,7 +48,6 @@ async def handler(event):
 async def drawText(image_path, text):
     img = Image.open(image_path)
     os.remove(image_path)
-    shadowcolor = "black"
     i_width, i_height = img.size
     if os.name == "nt":
         fnt = "ariel.ttf"
