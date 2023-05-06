@@ -9,7 +9,6 @@
 import os
 import sys
 import time
-from datetime import datetime
 from platform import python_version as pyver
 from random import choice
 
@@ -240,7 +239,6 @@ async def get_readable_time(seconds: int) -> str:
     up_time += ":".join(time_list)
 
     return up_time
-
 
 
 @ayra_cmd(
