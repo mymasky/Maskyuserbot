@@ -33,7 +33,7 @@ except ImportError:
 
 from telethon.utils import resolve_bot_file_id
 
-piic = "https://graph.org/file/02f9ca4617cec58377b9d.jpg"
+piic = "https://graph.org/file/60408fea8439e6702674d.jpg"
 
 buttons = [
     [
@@ -62,7 +62,7 @@ alive_txt = """
   ◈ Telethon - {}
 """
 
-in_alive = "<b>AyraUserbot</b>\n<b>          status :</b> <code>{}</code>{}\n<b>          expires_on :</b> <code>{}</code>\n<b>          ping_dc :</b> <code>{}</code>\n<b>          ayra_version :</b> <code>{}</code>\n<b>          py_ayra :</b> <code>{}</code>\n<b>          ayra_uptime :</b> <code>{}</code>"
+in_alive = "<b>Naya-Userbot</b>\n<b>          status :</b> <code>{}</code>{}\n<b>          expires_on :</b> <code>{}</code>\n<b>          ping_dc :</b> <code>{}</code>\n<b>          naya_version :</b> <code>{}</code>\n<b>          naya_ayra :</b> <code>{}</code>\n<b>          naya_uptime :</b> <code>{}</code>"
 
 absen = [
     "**𝙃𝙖𝙙𝙞𝙧 𝙙𝙤𝙣𝙜 𝙏𝙤𝙙** 😁",
@@ -114,11 +114,11 @@ async def lol(
         ):
             groups += 1
     if ayra.sender_id in DEVS:
-        status = "ayra_premium"
+        status = "naya_premium"
         status1 = "<b>[DEVS]</b>"
         remaining_days = "no_expired"
     else:
-        status = "ayra_premium"
+        status = "naya_premium"
         status1 = "<b>[OWNER]</b>"
         remaining_days = "no_expired"
     start = time.time()
@@ -208,7 +208,7 @@ async def lol(
 
 
 @ayra_cmd(pattern="ping$", chats=[], type=["official", "assistant"])
-@register(incoming=True, from_users=DEVS, pattern=r"^cping$")
+@register(incoming=True, from_users=DEVS, pattern=r"^Cping$")
 async def _(event):
     start = time.time()
     x = await event.eor("Ping !")
@@ -241,25 +241,6 @@ async def get_readable_time(seconds: int) -> str:
 
     return up_time
 
-
-@register(incoming=True, from_users=DEVS, pattern=r"^Cping$")
-async def _(ping):
-    uptime = await get_readable_time((time.time() - StartTime))
-    start = datetime.now()
-    ping = await eor(ping, "**✧**")
-    await ping.edit("**✧✧**")
-    await ping.edit("**✧✧✧**")
-    await ping.edit("**✧✧✧✧**")
-    await ping.edit("**✧✧✧✧✧**")
-    end = datetime.now()
-    duration = (end - start).microseconds / 1000
-    user = await ping.client.get_me()
-    await ping.edit(
-        f"**❏ 𝙰𝚈𝚁𝙰-𝚄𝚂𝙴𝚁𝙱𝙾𝚃**\n"
-        f"**├ 𝙿𝙸𝙽𝙶𝙴𝚁 :** `%sms`\n"
-        f"**├ 𝚄𝙿𝚃𝙸𝙼𝙴 :** `{uptime}` \n"
-        f"**╰ 𝙾𝚆𝙽𝙴𝚁 :** [{user.first_name}](tg://user?id={user.id})" % (duration)
-    )
 
 
 @ayra_cmd(
@@ -316,11 +297,11 @@ async def _(event):
         with open(file, "r") as f:
             code = f.read()[-2500:]
         file = await Carbon(
-            file_name="ayra-logs",
+            file_name="naya-logs",
             code=code,
             backgroundColor=choice(ATRA_COL),
         )
-        await event.reply("**Ayra Logs.**", file=file)
+        await event.reply("**Naya Logs.**", file=file)
     elif opt == "open":
         with open("ayra.log", "r") as f:
             file = f.read()[-4000:]
@@ -337,11 +318,11 @@ async def inline_alive(
     pic = udB.get_key("ALIVE_PIC")
     remaining_days = "no_expired"
     if event.sender_id in DEVS:
-        status = "ayra_premium"
+        status = "naya_premium"
         status1 = "<b>[DEVS]</b>"
         remaining_days = "no_expired"
     else:
-        status = "ayra_premium"
+        status = "naya_premium"
         status1 = "<b>[OWNER]</b>"
         remaining_days = "no_expired"
     start = time.time()
@@ -418,9 +399,9 @@ async def _(e):
     if m:
         x = await asst.send_file(
             udB.get_key("LOG_CHANNEL"),
-            piic,
+            file=piic,
             caption="• **Pembaruan tersedia** •",
-            force_document=False,
+            force_document=True,
             buttons=Button.inline("Changelog", data="changes"),
         )
         Link = x.message_link
@@ -431,7 +412,7 @@ async def _(e):
         )
     else:
         await xx.edit(
-            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://github.com/naya1503/Ayra/tree/{branch}">[{branch}]</a></strong>',
+            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://github.com/naya1503/Naya-Userbot/tree/{branch}">[{branch}]</a></strong>',
             parse_mode="html",
             link_preview=False,
         )
@@ -442,8 +423,8 @@ async def updava(event):
     await event.delete()
     await asst.send_file(
         udB.get_key("LOG_CHANNEL"),
-        piic,
+        file=piic,
         caption="• **Pembaruan tersedia** •",
-        force_document=False,
+        force_document=True,
         buttons=Button.inline("Changelog", data="changes"),
     )
