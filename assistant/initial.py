@@ -10,10 +10,10 @@ import re
 from . import *
 
 STRINGS = {
-    1: """ **Thanks for Deploying Ayra Userbot!**
+    1: """ **Thanks for Deploying Naya-Userbot!**
 
 • Here, are the Some Basic stuff from, where you can Know, about its Usage.""",
-    2: """🎉** About Ayra**
+    2: """🎉** About Naya-Userbot**
 
  Ayra is Pluggable and powerful Telethon and Pyrogram Userbot, made in Python from Scratch. It is Aimed to Increase Security along with Addition of Other Useful Features.
 
