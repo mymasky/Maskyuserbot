@@ -13,9 +13,8 @@ from io import BytesIO, StringIO
 from os import remove
 from pprint import pprint
 
-from telethon.utils import get_display_name
-
 from Ayra import _ignore_eval
+from telethon.utils import get_display_name
 
 from . import *
 from .anu import *

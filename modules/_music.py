@@ -3,6 +3,7 @@ import os
 from time import time
 from traceback import format_exc
 
+from Ayra import HNDLR, LOGS, asst, udB, vcClient
 from Ayra._misc import owner_and_sudos
 from Ayra._misc._decorators import compile_pattern
 from Ayra.fns.admins import admin_check
@@ -17,8 +18,6 @@ from telethon.errors.rpcerrorlist import (
     ParticipantJoinMissingError,
 )
 from telethon.tl import functions
-
-from Ayra import HNDLR, LOGS, asst, udB, vcClient
 
 try:
     from yt_dlp import YoutubeDL

@@ -24,6 +24,7 @@ from urllib.request import urlretrieve
 import aiofiles
 import aiohttp
 import requests
+from Ayra import *
 from Ayra._misc import owner_and_sudos, sudoers
 from Ayra._misc._assistant import asst_cmd, callback, in_pattern
 from Ayra._misc._decorators import ayra_cmd, compile_pattern
@@ -45,7 +46,6 @@ from telethon import Button, events
 from telethon.tl import functions, types  # pylint:ignore
 from telethon.utils import get_display_name
 
-from Ayra import *
 from strings import get_help, get_string
 
 from .database.strg import Storage
