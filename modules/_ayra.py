@@ -5,13 +5,8 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
-from telethon.errors import (
-    BotMethodInvalidError,
-    ChatSendInlineForbiddenError,
-    ChatSendMediaForbiddenError,
-)
 
-from . import LOG_CHANNEL, LOGS, Button, asst, ayra_cmd, eor, get_string
+from . import LOG_CHANNEL, Button, asst, ayra_cmd, eor, get_string
 
 REPOMSG = """
 ◈ **ᴀʏʀᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ​** ◈\n
@@ -29,7 +24,6 @@ RP_BUTTONS = [
 AYSTRING = """🎇 **Thanks for Deploying Naya-Userbot**
 
 • Here, are the Some Basic stuff from, where you can Know, about its Usage."""
-
 
 
 @ayra_cmd(pattern="repo")
