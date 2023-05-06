@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-REPO="https://github.com/naya1503/Ayra.git"
+REPO="https://github.com/naya1503/Naya-Userbot.git"
 DIR="/root/naya1503"
 
 spinner(){
@@ -31,7 +31,7 @@ clone_repo(){
             fi
             return
     fi
-    echo -e "Cloning Ayra ${BRANCH}... "
+    echo -e "Cloning Naya-Userbot ${BRANCH}... "
     git clone -b $BRANCH $REPO $DIR
 }
 
