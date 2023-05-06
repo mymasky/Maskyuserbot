@@ -13,14 +13,14 @@ from . import *
 
 SUP_BUTTONS = [
     [
-        Button.url("• Repo •", url="https://github.com/naya1503/Ayra"),
+        Button.url("• Repo •", url="https://github.com/naya1503/Naya-Userbot"),
         Button.url("• Support •", url="t.me/kynansupport"),
     ],
 ]
 
 ofox = "https://graph.org/file/231f0049fcd722824f13b.jpg"
 gugirl = "https://graph.org/file/0df54ae4541abca96aa11.jpg"
-aypic = "https://graph.org/file/02f9ca4617cec58377b9d.jpg"
+aypic = "https://graph.org/file/60408fea8439e6702674d.jpg"
 
 apis = [
     "QUl6YVN5QXlEQnNZM1dSdEI1WVBDNmFCX3c4SkF5NlpkWE5jNkZV",
@@ -33,11 +33,11 @@ apis = [
 async def repo(e):
     res = [
         await e.builder.article(
-            title="Ayra Userbot",
+            title="Naya Userbot",
             description="Userbot | Telethon",
             thumb=wb(aypic, 0, "image/jpeg", []),
             text="**◈ ᴀʏʀᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ​ ◈**",
             buttons=SUP_BUTTONS,
         ),
     ]
-    await e.answer(res, switch_pm="Ayra Repo.", switch_pm_param="start")
+    await e.answer(res, switch_pm="Naya-Userbot", switch_pm_param="start")
