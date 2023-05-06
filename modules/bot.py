@@ -62,7 +62,7 @@ alive_txt = """
   ◈ Telethon - {}
 """
 
-in_alive = "<b>{}</b>\n\n<b>AyraUserbot</b>\n<b>          status :</b> <code>{}</code>{}\n<b>          expires_on :</b> <code>{}</code>\n<b>          ping_dc :</b> <code>{}</code>\n<b>          ayra_version :</b> <code>{}</code>\n<b>          py_ayra :</b> <code>{}</code>\n<b>          ayra_uptime :</b> <code>{}</code>"
+in_alive = "<b>AyraUserbot</b>\n<b>          status :</b> <code>{}</code>{}\n<b>          expires_on :</b> <code>{}</code>\n<b>          ping_dc :</b> <code>{}</code>\n<b>          ayra_version :</b> <code>{}</code>\n<b>          py_ayra :</b> <code>{}</code>\n<b>          ayra_uptime :</b> <code>{}</code>"
 
 absen = [
     "**𝙃𝙖𝙙𝙞𝙧 𝙙𝙤𝙣𝙜 𝙏𝙤𝙙** 😁",
@@ -146,7 +146,6 @@ async def lol(
         kk = f"<a href={rep}>{y}</a>"
         parse = "html"
         als = in_alive.format(
-            OWNER_NAME,
             status,
             status1,
             remaining_days,
@@ -164,7 +163,6 @@ async def lol(
         parse = "md"
         als = (get_string("alive_1")).format(
             header,
-            OWNER_NAME,
             f"{ayra_version} [{HOSTED_ON}]",
             AyraVer,
             uptime,
@@ -357,7 +355,6 @@ async def inline_alive(
     rep = xx.replace(".git", f"/tree/{y}")
     kk = f"<a href={rep}>{y}</a>"
     als = in_alive.format(
-        OWNER_NAME,
         status,
         status1,
         remaining_days,
