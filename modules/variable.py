@@ -55,24 +55,40 @@ async def _(event):
         await event.eor(get_string("com_7"))
 
 
-@ayra_cmd(pattern=r"setvar (\S+)\s+(\S+)", fullsudo=False)
-async def set_env(event):
+@ayra_cmd(pattern=r"setvar (\S+)\s+(\S+)")
+async def setset(event):
     var_name = event.pattern_match.group(1)
-    var_value = event.pattern_match.group(2)
+    var_value = event.pattern_match.group(2).replace("'", "")
     if not var_name:
         return await event.eor("Berikan variable dan nilai value untuk ditetapkan!")
-    set_key(".env", var_name, var_value)
+        
+    env_file = ".env"
+    env_vars = {}
 
+    if os.path.exists(env_file):
+        with open(env_file, "r") as f:
+            for line in f:
+                if "=" in line:
+                    key, value = line.strip().split("=", 1)
+                    env_vars[key] = value
+
+    if var_name in env_vars:
+        return await event.eor(
+            f"Variabel {var_name} sudah ada di file .env. Tidak dapat menambahkan variabel yang sama."
+        )
+        
+    set_key(env_file, var_name, var_value)
     os.environ[var_name] = var_value
 
     await event.eor(f"Variabel {var_name} berhasil ditambahkan.")
 
 
-@ayra_cmd(pattern=r"delvar (\S+)", fullsudo=False)
-async def del_env(event):
+@ayra_cmd(pattern=r"delvar (\S+)")
+async def deldel(event):
     var_name = event.pattern_match.group(1)
     if not var_name:
         return await event.eor("Berikan variable untuk dihapus!")
+        
     unset_key(".env", var_name)
     if var_name in os.environ:
         del os.environ[var_name]
