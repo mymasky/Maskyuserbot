@@ -88,14 +88,14 @@ async def logo_gen(event):
         stroke_width=strke,
         stroke_fill="black",
     )
-    await xx.edit("`Done!`")
+    await xx.delete()
     await event.client.send_file(
         event.chat_id,
         file=name,
         caption=f"Logo by [{OWNER_NAME}](tg://user?id={OWNER_ID})",
-        force_document=True,
+        force_document=False,
     )
     os.remove(name)
-    await xx.delete()
+    
     if os.path.exists(bg_):
         os.remove(bg_)
