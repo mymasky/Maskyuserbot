@@ -2,17 +2,17 @@
   <img src="./resources/extras/logo.jpg" alt="Ayra Logo">
 </p>
 <h1 align="center">
-  <b>ᴀʏʀᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ​</b>
+  <b>иᴀʏᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ​</b>
 </h1>
 
 <b>A stable pluggable Telegram userbot + Voice & Video Call music bot, based on Telethon and Pyrogram</b>
 
-<a href="https://github.com/naya1503/Ayra/commits"> <img src="https://img.shields.io/github/last-commit/naya1503/Ayra?color=red&logo=github&logoColor=blue&style=for-the-badge" /></a>
-[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/naya1503/Ayra)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-blue)](https://GitHub.com/naya1503/Ayra/graphs/commit-activity)
-[![CodeQuality](https://img.shields.io/codacy/grade/a723cb464d5a4d25be3152b5d71de82d?color=blue&logo=codacy)](https://app.codacy.com/gh/naya1503/Ayra/dashboard)
-[![GitHub Forks](https://img.shields.io/github/forks/naya1503/Ayra?&logo=github)](https://github.com/naya1503/Ayra/fork)
-[![GitHub Stars](https://img.shields.io/github/stars/naya1503/Ayra?&logo=github)](https://github.com/naya1503/Ayra/stargazers)
+<a href="https://github.com/naya1503/Naya-Userbot/commits"> <img src="https://img.shields.io/github/last-commit/naya1503/Naya-Userbot?color=red&logo=github&logoColor=blue&style=for-the-badge" /></a>
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/naya1503/Naya-Userbot)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-blue)](https://GitHub.com/naya1503/Naya-Userbot/graphs/commit-activity)
+[![CodeQuality](https://img.shields.io/codacy/grade/a723cb464d5a4d25be3152b5d71de82d?color=blue&logo=codacy)](https://app.codacy.com/gh/naya1503/Naya-Userbot/dashboard)
+[![GitHub Forks](https://img.shields.io/github/forks/naya1503/Naya-Userbot?&logo=github)](https://github.com/naya1503/Naya-Userbot/fork)
+[![GitHub Stars](https://img.shields.io/github/stars/naya1503/Naya-Userbot?&logo=github)](https://github.com/naya1503/Naya-Userbot/stargazers)
 ----
 
 ## Disclaimer
@@ -55,9 +55,9 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak
 ### Tutorial Deploy di VPS
 
 
- • `git clone https://github.com/naya1503/Ayra`
+ • `git clone https://github.com/naya1503/Naya-Userbot`
 
- • `cd Ayra`
+ • `cd Naya-Userbot`
 
  • `bash installer.sh`
 
@@ -67,19 +67,19 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak
   - ketik ctrl + S
   - ctrl + X
 
- • `screen -S Ayra`
+ • `screen -S naya`
 
  • `bash start`
 
 </details>
 
-<p><a href="https://heroku.com/deploy?template=https://github.com/naya1503/Ayra"><img src="https://img.shields.io/badge/BUAT DI-HEROKU-aqua?style=plastic&logo=heroku&logoColor=gold"width="300" /></a></p>
+<p><a href="https://heroku.com/deploy?template=https://github.com/naya1503/Naya-Userbot"><img src="https://img.shields.io/badge/BUAT DI-HEROKU-aqua?style=plastic&logo=heroku&logoColor=gold"width="300" /></a></p>
 
 </details>
 
 # License
 [![License](https://www.gnu.org/graphics/agplv3-155x51.png)](LICENSE)   
-Ayra is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) v3 or later.
+Naya-Userbot is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) v3 or later.
 
 ---
 
