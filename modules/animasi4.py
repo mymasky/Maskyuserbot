@@ -28,7 +28,7 @@ from . import *
 
 @ayra_cmd(pattern="sadboy(?: |$)(.*)")
 async def _(event):
-    xx = await edit_or_reply(event, "`Pertama-tama kamu cantik`")
+    xx = await eor(event, "`Pertama-tama kamu cantik`")
     sleep(2)
     await xx.edit("`Kedua kamu manis`")
     sleep(1)
@@ -37,7 +37,7 @@ async def _(event):
 
 @ayra_cmd(pattern="punten(?: |$)(.*)")
 async def _(event):
-    await edit_or_reply(
+    await eor(
         event,
         "`\n┻┳|―-∩`"
         "`\n┳┻|     ヽ`"
@@ -52,7 +52,7 @@ async def _(event):
 
 @ayra_cmd(pattern="pantau(?: |$)(.*)")
 async def _(event):
-    await edit_or_reply(
+    await eor(
         event,
         "`\n┻┳|―-∩`"
         "`\n┳┻|     ヽ`"
@@ -67,7 +67,7 @@ async def _(event):
 
 @ayra_cmd(pattern="frog(?: |$)(.*)")
 async def _(event):
-    await edit_or_reply(
+    await eor(
         event,
         "⠄⠄⠄⠄⠄⣀⣀⣤⣶⣿⣿⣶⣶⣶⣤⣄⣠⣴⣶⣿⣶⣦⣄⠄\n"
         "⠄⣠⣴⣾⣿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦\n"
@@ -89,7 +89,7 @@ async def _(event):
 
 @ayra_cmd(pattern="dfrog(?: |$)(.*)")
 async def _(event):
-    await edit_or_reply(
+    await eor(
         event,
         "⣿⣿⣿⡇⠄⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
         "⣿⣿⣿⡇⠄⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
@@ -111,7 +111,7 @@ async def _(event):
 
 @ayra_cmd(pattern="strump(?: |$)(.*)")
 async def _(event):
-    await edit_or_reply(
+    await eor(
         event,
         "⣿⣿⣿⣿⣿⣿⡿⠿⠛⠋⠉⡉⣉⡛⣛⠿⣿⣿⣿⣿⣿⣿⣿⣿\n"
         "⣿⣿⣿⡿⠋⠁⠄⠄⠄⠄⠄⢀⣸⣿⣿⡿⠿⡯⢙⠿⣿⣿⣿⣿\n"
@@ -133,7 +133,7 @@ async def _(event):
 
 @ayra_cmd(pattern="scina(?: |$)(.*)")
 async def _(event):
-    await edit_or_reply(
+    await eor(
         event,
         "⣿⣿⣿⣿⠟⠋⢁⢁⢁⢁⢁⢁⢁⢁⠈⢻⢿⣿⣿⣿⣿⣿⣿⣿\n"
         "⣿⣿⣿⣿⠃⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⡀⠭⢿⣿⣿⣿⣿\n"
@@ -156,7 +156,7 @@ async def _(event):
 
 @ayra_cmd(pattern="wlcm(?: |$)(.*)")
 async def _(event):
-    await edit_or_reply(
+    await eor(
         event,
         "───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───\n"
         "───█▒▒░░░░░░░░░▒▒█───\n"
@@ -173,7 +173,7 @@ async def _(event):
 
 @ayra_cmd(pattern="gta(?: |$)(.*)")
 async def _(event):
-    await edit_or_reply(
+    await eor(
         event,
         "⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⡀⠀⠀⠀⠀⠀⠀\n"
         "⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀\n"
@@ -191,7 +191,7 @@ async def _(event):
 
 @ayra_cmd(pattern="sthink(?: |$)(.*)")
 async def _(event):
-    await edit_or_reply(
+    await eor(
         event,
         "⠀⠀⠀⠀⢀⣀⣀⣀\n"
         "⠀⠀⠀⠰⡿⠿⠛⠛⠻⠿⣷\n"
