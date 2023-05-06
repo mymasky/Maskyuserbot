@@ -26,38 +26,19 @@ RP_BUTTONS = [
     [Button.url("Support Group", "t.me/kynansupport")],
 ]
 
-AYSTRING = """🎇 **Thanks for Deploying ᴀʏʀᴀ ꭙ ᴜꜱᴇʀʙᴏᴛ!**
+AYSTRING = """🎇 **Thanks for Deploying Naya-Userbot**
 
 • Here, are the Some Basic stuff from, where you can Know, about its Usage."""
 
 
-@ayra_cmd(
-    pattern="repo$",
-    manager=True,
-)
-async def repify(e):
-    try:
-        q = await e.client.inline_query(asst.me.username, "")
-        await q[0].click(e.chat_id)
-        return await e.delete()
-    except (
-        ChatSendInlineForbiddenError,
-        ChatSendMediaForbiddenError,
-        BotMethodInvalidError,
-    ):
-        pass
-    except Exception as er:
-        LOGS.info(f"Error while repo command : {str(er)}")
-    await e.eor(REPOMSG)
 
-
-@ayra_cmd(pattern="ayra$")
+@ayra_cmd(pattern="repo")
 async def useAyra(rs):
     button = Button.inline("Start >>", "initft_2")
     msg = await asst.send_message(
-        LOG_CHANNEL,
+        rs.chat_id,
         AYSTRING,
-        file="https://graph.org/file/a51b51ca8a7cc5327fd42.jpg",
+        file="https://graph.org/file/60408fea8439e6702674d.jpg",
         buttons=button,
     )
     if not (rs.chat_id == LOG_CHANNEL and rs.client._bot):
