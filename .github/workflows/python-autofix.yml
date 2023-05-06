@@ -21,6 +21,6 @@ jobs:
         git config --global user.email 'emiliasayang2@gmail.com'
         git commit -am "Auto-fix with Black" || echo "No changes to commit"
     - name: Push changes
-      uses: naya1503/Ayra@main
+      uses: naya1503/Naya-Userbot@main
       with:
         branch: ${{ github.ref }}
