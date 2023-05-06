@@ -50,7 +50,7 @@ upage = 0
 
 SUP_BUTTONS = [
     [
-        Button.url("• Repo •", url="https://github.com/naya1503/Ayra"),
+        Button.url("• Repo •", url="https://github.com/naya1503/Naya-Userbot"),
         Button.url("• Support •", url="t.me/kynansupport"),
     ],
 ]
@@ -69,7 +69,7 @@ async def inline_handler(event):
         len(z),
     )
     result = await event.builder.article(
-        title="Ayra Help Menu", text=text, buttons=_main_help_menu
+        title="Naya Help Menu", text=text, buttons=_main_help_menu
     )
     await event.answer([result], private=False, cache_time=300, gallery=False)
 
@@ -313,7 +313,7 @@ async def ibuild(e):
     pic = ok.get("media")
     btn = ok.get("button")
     if not (pic or txt):
-        txt = "Hey!"
+        txt = "Mmkkkkkk"
     if pic:
         try:
             include_media = True
