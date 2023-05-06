@@ -96,6 +96,6 @@ async def logo_gen(event):
         force_document=False,
     )
     os.remove(name)
-    
+
     if os.path.exists(bg_):
         os.remove(bg_)
