@@ -24,6 +24,16 @@
             "description": "Session String (telethon or pyrogram) for your telegram user account. The userbot will NOT work without a session string!!",
             "value": ""
         },
+        "REDIS_URI": {
+            "description": "Jangan Di Isi, Ntar otomatis ke isi kalo dah selesai deploy...",
+            "value": "",
+            "required": false
+        },
+        "REDIS_PASSWORD": {
+            "description": "Lah Sama Ini Juga Jir Jangan Di Isi, Ntar otomatis ke isi kalo dah selesai deploy...",
+            "value": "",
+            "required": false
+        },
         "HEROKU_API": {
             "description": "Heroku API token. Mandatory for Heroku Deploy...",
             "value": "",
