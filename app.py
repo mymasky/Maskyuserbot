@@ -13,10 +13,10 @@ heroku_config = heroku_app.config()
 redis_url = os.environ.get("REDISCLOUD_URL")
 if redis_url.startswith("redis://"):
     redis_url = redis_url.replace("redis://", "", 1)
-    redis_uri, redis_password = redis_url.split("@")
-    redis_password = redis_password.split(":")[1]
+    redis_uri_password, redis_host = redis_url.split("@")
+    redis_uri, redis_password = redis_uri_password.split(":")
     
-    heroku_config["REDIS_URI"] = redis_uri
+    heroku_config["REDIS_URI"] = redis_host
     heroku_config["REDIS_PASSWORD"] = redis_password
 
 else:
