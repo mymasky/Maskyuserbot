@@ -73,9 +73,18 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak
 
 </details>
 
-<p><a href="https://heroku.com/deploy?template=https://github.com/naya1503/Naya-Userbot"><img src="https://img.shields.io/badge/BUAT DI-HEROKU-aqua?style=plastic&logo=heroku&logoColor=gold"width="300" /></a></p>
+<details>
+<summary><b>🔗 Deploy di VPS</b></summary>
+<br>
+## Deploy on Heroku
+<h3 align="center">Click The Button</h3>
+<a href="https://dashboard.heroku.com/new?template=https://github.com/naya1503/Naya-Userbot"><img src="https://www.herokucdn.com/deploy/button.svg"></a>
+</div>
 
 </details>
+
+
+
 
 # License
 [![License](https://www.gnu.org/graphics/agplv3-155x51.png)](LICENSE)   
