@@ -250,6 +250,7 @@ async def update(eve):
 async def changes(okk):
     match = okk.data_match.group(1).decode("utf-8")
     await okk.answer(get_string("clst_3"))
+    thumb = "https://graph.org/file/60408fea8439e6702674d.jpg"
     repo = Repo.init()
     button = [[Button.inline("Memperbarui sekarang", data="updatenow")]]
     changelog, tl_chnglog = await gen_chlog(
@@ -269,7 +270,7 @@ async def changes(okk):
                 language="md",
             )
             return await okk.edit(
-                f"**• Ayra Userbot •**{cli}", file=img, buttons=button
+                f"**• Naya Userbot •**{cli}", file=thumb, buttons=button
             )
         except Exception as er:
             LOGS.exception(er)
@@ -277,14 +278,14 @@ async def changes(okk):
     if len(changelog_str) > 1024:
         await okk.edit(get_string("upd_4"))
         await asyncio.sleep(2)
-        with open("ayra_updates.txt", "w+") as file:
+        with open("updates.txt", "w+") as file:
             file.write(tl_chnglog)
         await okk.edit(
             get_string("upd_5"),
-            file="ayra_updates.txt",
+            file="updates.txt",
             buttons=button,
         )
-        remove("ayra_updates.txt")
+        remove("updates.txt")
         return
     await okk.edit(
         changelog_str,
