@@ -25,8 +25,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak
 ```
 
 # DATABASE REQUIRETMENTS CHOOSE ONE :
-- MONGO URI
-- SQL
+- MONGODB
 - REDIS
 
 # Tutorial To Get Redis DB URL and Password
@@ -59,7 +58,8 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak
  • `bash installer.sh`
 
  • `nano .env`
-  - isi vars API_ID, API_HASH, MONGO_URI, DAN SESSION
+  - Jika anda menggunakan mongodb maka isi pada .env MONGO_URI tetapi jika anda menggunakan redis maka isi REDIS_URI dan REDIS_PASSWORD
+  - isi vars .env API_ID, API_HASH, DAN SESSION
   - Jika sudah 
   - ketik ctrl + S
   - ctrl + X
