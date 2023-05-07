@@ -8,7 +8,6 @@ httpx
 python-dotenv
 pytgcalls==3.0.0.dev22
 covid
-emoji==1.6.0
 fonttools
 gtts
 gingerit
