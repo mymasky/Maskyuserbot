@@ -268,7 +268,6 @@ async def restart(e):
         return await restart(ok)
     await bash("git pull && pip3 install -r requirements.txt")
     os.execl(sys.executable, sys.executable, "-m", "Ayra")
-        
 
 
 @ayra_cmd(
