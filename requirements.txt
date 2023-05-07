@@ -41,7 +41,7 @@ htmlwebshot
 lottie
 numpy>=1.21.2
 oauth2client
-opencv-python-headless
+opencv-python-headless==4.5.5.62
 pillow>=7.0.0
 profanitydetector
 psutil
