@@ -74,3 +74,6 @@ speechrecognition
 speedtest-cli
 textblob
 wikipedia
+pyscopg2
+redis
+hiredis
