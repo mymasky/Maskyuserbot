@@ -267,10 +267,8 @@ async def restart(e):
         restart_counter += 1
         return await restart(ok)
     await bash("git pull && pip3 install -r requirements.txt")
-    if len(sys.argv) > 1:
-        os.execl(sys.executable, sys.executable, "main.py")
-    else:
-        os.execl(sys.executable, sys.executable, "-m", "Ayra")
+    os.execl(sys.executable, sys.executable, "-m", "Ayra")
+        
 
 
 @ayra_cmd(
