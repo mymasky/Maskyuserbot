@@ -52,9 +52,6 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak
 <summary><b>🔗 Deploy di VPS</b></summary>
 <br>
 
-### Tutorial Deploy di VPS
-
-
  • `git clone https://github.com/naya1503/Naya-Userbot`
 
  • `cd Naya-Userbot`
@@ -74,11 +71,10 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak
 </details>
 
 <details>
-<summary><b>🔗 Deploy di VPS</b></summary>
+<summary><b>🔗 Deploy on Heroku</b></summary>
 <br>
-## Deploy on Heroku
 <h3 align="center">Click The Button</h3>
-<a href="https://dashboard.heroku.com/new?template=https://github.com/naya1503/Naya-Userbot"><img src="https://www.herokucdn.com/deploy/button.svg"></a>
+<a align="center" href="https://dashboard.heroku.com/new?template=https://github.com/naya1503/Naya-Userbot"><img src="https://www.herokucdn.com/deploy/button.svg"></a>
 </div>
 
 </details>
