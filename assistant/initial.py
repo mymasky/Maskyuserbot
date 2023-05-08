@@ -10,37 +10,33 @@ import re
 from . import *
 
 STRINGS = {
-    1: """ **Thanks for Deploying Naya-Userbot!**
+    1: """ **Terima Kasih Telah Deploy Naya-Userbot!**
 
-• Here, are the Some Basic stuff from, where you can Know, about its Usage.""",
-    2: """🎉** About Naya-Userbot**
+Beberapa Bantuan Untuk Kamu Pelajari.""",
+    2: """🎉** Tentang Naya-Userbot**
 
- Ayra is Pluggable and powerful Telethon and Pyrogram Userbot, made in Python from Scratch. It is Aimed to Increase Security along with Addition of Other Useful Features.
+ Naya-Userbot adalah repo userbot yanh dibuat untuk kekasih saya, userbot ini memiliki beberapa fitur kamu bisa melihat nya dihalaman 4.
 
-❣ Kang by **@Rizzvbss**""",
-    3: """**💡• FAQs •**
+❣ Dibuat oleh **@KynanSupport**""",
+    3: """
 
--> [Username Tracker](https://t.me/UltroidUpdates/24)
--> [Keeping Custom Addons Repo](https://t.me/UltroidUpdates/28)
--> [Disabling Deploy message](https://t.me/UltroidUpdates/27)
--> [Setting up TimeZone](https://t.me/UltroidUpdates/22)
--> [About Inline PmPermit](https://t.me/UltroidUpdates/21)
--> [About Dual Mode](https://t.me/UltroidUpdates/18)
--> [Custom Thumbnail](https://t.me/UltroidUpdates/13)
--> [About FullSudo](https://t.me/UltroidUpdates/11)
--> [Setting Up PmBot](https://t.me/UltroidUpdates/2)
--> [Also Check](https://t.me/UltroidUpdates/14)
+-> Kamu bisa memutar musik melalui userbot ini.
+-> Kamu bisa menggunakan chatgpt atau openai.
+-> Kamu bisa merubah teks menjadi beberapa gaya font.
+-> Kamu convert foto kamu menjadi anime.
+-> Kamu bisa membalas seseorang dari Naya-Userbot Logs ketika kamu di tag oleh seseorang digrup lain.
+-> Kamu bisa menggunakan fitur joinvc untuk menaikkan bot ke dalam obrolan suara
+-> Userbot ini memliki fitur pmpermit inline
+-> Kamu bisa menyimpan catatan apapun dengan media gambar serta button.
+-> Kamu dapat berinteraksi dengan seseorang melali fitur chatbot
 
 **• To Know About Updates**
   - Join @kynansupport.""",
-    4: f"""• `To Know All Available Commands`
+    4: f"""**• Bantuan yang mungkin kamu ingin lihat •**
 
   - `{HNDLR}help`
   - `{HNDLR}cmds`""",
-    5: """• **For Any Other Query or Suggestion**
-  - Move to **@kynansupport**.
-
-• Thanks for Reaching till END.""",
+    5: """• **Selamat Bersenang senang**""",
 }
 
 
