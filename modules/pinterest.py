@@ -29,7 +29,7 @@ from . import *
 
 
 @ayra_cmd(pattern="pntrst(?: |$)(.*)")
-async def insta(event):
+async def pntr(event):
     xxnx = event.pattern_match.group(1)
     if xxnx:
         link = xxnx
