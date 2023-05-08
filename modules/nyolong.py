@@ -55,7 +55,7 @@ async def copay(event):
             await xx.edit("`Mengunggah...`")
         else:
             await xx.delete()
-            await event.client.send_file(
+            await event.client.send_message(
                 event.chat_id,
                 response,
             )
