@@ -5,82 +5,61 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 """
-✘ **Bantuan Untuk Nyolong**
+✘ **Bantuan Untuk Pinterest**
 
 ๏ **Perintah:** `copy` <link>
-◉ **Keterangan:** Colong pesan dari group/channel.
+◉ **Keterangan:** Unduh tautan pinterest.
 """
-
-import os
-
-try:
-    from PIL import Image
-except ImportError:
-    Image = None
-
-from Ayra.fns.tools import get_chat_and_msgid
+from telethon import events
+from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.tl.functions.contacts import UnblockRequest
+from telethon.tl.functions.messages import DeleteHistoryRequest
 
 try:
-    from telegraph import upload_file as uf
+    import cv2
 except ImportError:
-    uf = None
+    cv2 = None
 
-from telethon.errors.rpcerrorlist import ChatForwardsRestrictedError
+try:
+    from htmlwebshot import WebShot
+except ImportError:
+    WebShot = None
 
-from . import ayra_cmd, get_string
-
-# =================================================================#
-
-TMP_DOWNLOAD_DIRECTORY = "resources/downloads/"
-
-_copied_msg = {}
+from . import *
 
 
-@ayra_cmd(pattern="[cC][o][p][y]( ?(.*)|$)")
-async def get_restriced_msg(event):
-    match = event.pattern_match.group(1).strip()
-    if not match:
-        await event.eor("`Berikan tautan!`", time=5)
-        return
-    xx = await event.eor(get_string("com_1"))
-    chat, msg = get_chat_and_msgid(match)
-    if not (chat and msg):
-        return await event.eor(
-            f"{get_string('gms_1')}!\nEg: `https://t.me/c/1313492028/3`"
-        )
-    try:
-        message = await event.client.get_messages(chat, ids=msg)
-    except BaseException as er:
-        return await event.eor(f"**ERROR**\n`{er}`")
-    try:
-        await event.client.send_message(event.chat_id, message)
-        await xx.try_delete()
-        return
-    except ChatForwardsRestrictedError:
-        pass
-    if message.media:
-        thumb = None
-        if message.document.thumbs:
-            thumb = await message.download_media(thumb=-1)
-        media, _ = await event.client.fast_downloader(
-            message.document,
-            show_progress=True,
-            event=xx,
-            message=f"Downloading {message.file.name}...",
-        )
-        await xx.edit("`Uploading...`")
-        uploaded, _ = await event.client.fast_uploader(
-            media.name, event=xx, show_progress=True, to_delete=True
-        )
-        typ = not bool(message.video)
-        await event.reply(
-            message.text,
-            file=uploaded,
-            supports_streaming=typ,
-            force_document=typ,
-            thumb=thumb,
-            attributes=message.document.attributes,
-        )
-        await xx.delete()
-        if thumb:
-            os.remove(thumb)
+@ayra_cmd(pattern="copy(?: |$)(.*)")
+async def copay(event):
+    xxnx = event.pattern_match.group(1)
+    if xxnx:
+        link = xxnx
+    elif event.is_reply:
+        link = await event.get_reply_message()
+    else:
+        return await eod(event, "`Berikan link tautan channel atau grup...`")
+
+    xx = await eor(event, "`Processing...`")
+    chat = "@Nyolongbang_bot"
+    async with event.client.conversation(chat) as conv:
+        try:
+            response = conv.wait_event(
+                events.NewMessage(incoming=True, from_users=6152320759)
+            )
+            await event.client.send_message(chat, link)
+            response = await response
+        except YouBlockedUserError:
+            await event.client(UnblockRequest(chat))
+            await event.client.send_message(chat, link)
+            response = await response
+        if response.text.startswith("Forward"):
+            await xx.edit("`Mengunggah...`")
+        else:
+            await xx.delete()
+            await event.client.send_file(
+                event.chat_id,
+                response.message.media,
+                caption=f"**Upload By: {inline_mention(event.sender)}**",
+            )
+            await event.client.send_read_acknowledge(conv.chat_id)
+            await event.client(DeleteHistoryRequest(peer=chat, max_id=0))
+            await xx.delete()
