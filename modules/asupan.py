@@ -109,7 +109,10 @@ async def _(event):
             )
         ]
         await event.client.send_file(
-            event.chat_id, file=choice(ppcpnya), reply_to=event.reply_to_msg_id, caption=f"**Ppcp Nya {inline_mention(event.sender)}..**",
+            event.chat_id,
+            file=choice(ppcpnya),
+            reply_to=event.reply_to_msg_id,
+            caption=f"**Ppcp Nya {inline_mention(event.sender)}..**",
         )
         await xx.delete()
     except Exception:
@@ -127,7 +130,10 @@ async def _(event):
             )
         ]
         await event.client.send_file(
-            event.chat_id, file=choice(ajgg), reply_to=event.reply_to_msg_id, caption=f"**Ppcp Nya {inline_mention(event.sender)}..**",
+            event.chat_id,
+            file=choice(ajgg),
+            reply_to=event.reply_to_msg_id,
+            caption=f"**Ppcp Nya {inline_mention(event.sender)}..**",
         )
         await xx.delete()
     except Exception:
@@ -145,7 +151,10 @@ async def _(event):
             )
         ]
         await event.client.send_file(
-            event.chat_id, file=choice(nimek), reply_to=event.reply_to_msg_id, caption=f"**Anime Nya {inline_mention(event.sender)}..**",
+            event.chat_id,
+            file=choice(nimek),
+            reply_to=event.reply_to_msg_id,
+            caption=f"**Anime Nya {inline_mention(event.sender)}..**",
         )
         await xx.delete()
     except Exception:
@@ -163,7 +172,10 @@ async def _(event):
             )
         ]
         await event.client.send_file(
-            event.chat_id, file=choice(nimekk), reply_to=event.reply_to_msg_id, caption=f"**Anime Nya {inline_mention(event.sender)}..**",
+            event.chat_id,
+            file=choice(nimekk),
+            reply_to=event.reply_to_msg_id,
+            caption=f"**Anime Nya {inline_mention(event.sender)}..**",
         )
         await xx.delete()
     except Exception:
@@ -181,7 +193,10 @@ async def _(event):
             )
         ]
         await event.client.send_file(
-            event.chat_id, file=choice(papjing), reply_to=event.reply_to_msg_id, caption=f"**Pap Nya {inline_mention(event.sender)}..**",
+            event.chat_id,
+            file=choice(papjing),
+            reply_to=event.reply_to_msg_id,
+            caption=f"**Pap Nya {inline_mention(event.sender)}..**",
         )
         await xx.delete()
     except Exception:
