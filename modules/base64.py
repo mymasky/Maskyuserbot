@@ -19,7 +19,7 @@ import base64
 from . import ayra_cmd
 
 
-@ayra_cmd(pattern="(E|e)ncode ?(.*)")
+@ayra_cmd(pattern="encode ?(.*)")
 async def encod(e):
     match = e.pattern_match.group(1)
     if not match and e.is_reply:
@@ -34,7 +34,7 @@ async def encod(e):
     await e.eor(f"**=>> Encoded Text :** `{match}`\n\n**=>> OUTPUT :**\n`{atc}`")
 
 
-@ayra_cmd(pattern="(D|d)ecode ?(.*)")
+@ayra_cmd(pattern="decode ?(.*)")
 async def encod(e):
     match = e.pattern_match.group(1)
     if not match and e.is_reply:
