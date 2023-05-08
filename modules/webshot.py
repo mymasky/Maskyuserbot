@@ -31,8 +31,6 @@ async def webshot(e):
             e.chat_id,
             full_link,
             caption=f"**Tangkapan layar halaman** {user_link}",
-            force_document=False,
-            supports_streaming=False,
         )
     except Exception as error:
         await e.eor(f"**Terjadi kesalahan:** `{error}`")
