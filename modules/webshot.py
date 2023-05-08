@@ -31,7 +31,7 @@ async def webshot(e):
             e.chat_id,
             full_link,
             caption=f"**Tangkapan layar halaman** {user_link}",
-            force_document=True,
+            force_document=False,
             supports_streaming=False,
         )
     except Exception as error:
