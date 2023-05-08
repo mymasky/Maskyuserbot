@@ -8,7 +8,7 @@
 ✘ **Bantuan Untuk Pinterest**
 
 ๏ **Perintah:** `copy` <link>
-◉ **Keterangan:** Unduh tautan pinterest.
+◉ **Keterangan:** Colong media dari ch private.
 """
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -55,7 +55,7 @@ async def copay(event):
             await xx.edit("`Mengunggah...`")
         else:
             await xx.delete()
-            await event.client.send_message(
+            await event.client.send_file(
                 event.chat_id,
                 response,
             )
