@@ -150,24 +150,9 @@ async def _(event):
     await event.delete()
 
 
-@ayra_cmd(pattern="ra$")
-@register(incoming=True, from_users=DEVS, pattern=r"^Ra")
-async def _(event):
-    await event.client.send_message(
-        event.chat_id,
-        "**◈ λʏꝛᴀ ꭙ ᴜꜱᴇꝛʙᴏᴛ​ ◈**",
-        reply_to=event.reply_to_msg_id,
-    )
-
-
-@ayra_cmd(pattern="riz$")
 @register(incoming=True, from_users=DEVS, pattern=r"^riz")
 async def _(event):
-    await event.client.send_message(
-        event.chat_id,
-        "**Mmuuaahh😘😘**",
-        reply_to=event.reply_to_msg_id,
-    )
+    await event.reply("**Mmuuaahh😘😘**")
 
 
 @ayra_cmd(pattern=r"skb")
