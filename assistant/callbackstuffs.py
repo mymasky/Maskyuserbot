@@ -270,7 +270,7 @@ async def changes(okk):
                 language="md",
             )
             return await okk.edit(
-                f"**• Naya Userbot •**{cli}", file=thumb, buttons=button
+                f"**• Naya Userbot •**{cli}", file=thumb, buttons=button, force_document=True,
             )
         except Exception as er:
             LOGS.exception(er)
