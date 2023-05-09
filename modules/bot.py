@@ -92,7 +92,8 @@ async def kynanabsen(ganteng):
 @register(incoming=True, from_users=DEVS, pattern=r"^Kynan")
 async def naya(naya):
     await naya.reply("**Kynan Punya Nya Naya**🤩")
-    
+
+
 @register(incoming=True, from_users=DEVS, pattern=r"^Naya")
 async def naya(naya):
     await naya.reply("**Naya Punya Nya Kynan**🤩")
