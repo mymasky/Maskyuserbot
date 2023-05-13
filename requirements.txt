@@ -30,7 +30,6 @@ py-Ayra==8.7.4
 akinator
 apscheduler
 beautifulsoup4
-bs4
 colour
 enhancer>=0.3.4
 git+https://github.com/buddhhu/img2html.git@c44170d#egg=img2html
