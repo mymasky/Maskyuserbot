@@ -82,7 +82,6 @@ async def restart_callback(e):
     os.execl(sys.executable, sys.executable, "-m", "Ayra")
 
 
-
 @asst_cmd(pattern=r"setvar (\S+)\s+(\S+)", owner=True)
 async def set_env(event):
     var_name = event.pattern_match.group(1)
