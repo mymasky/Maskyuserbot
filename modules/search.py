@@ -19,7 +19,7 @@
 import os
 
 import requests
-from bs4 import BeautifulSoup as bs
+from beautifulsoup4 import BeautifulSoup as bs
 
 try:
     from PIL import Image
