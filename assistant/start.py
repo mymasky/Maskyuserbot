@@ -77,7 +77,7 @@ async def restart_callback(e):
     udB.set_key("_RESTART", f"{who}_{e.chat_id}_{ok.id}")
     if heroku_api and restart_counter < 10:
         restart_counter += 1
-#        return await restart_callback(e)
+    #        return await restart_callback(e)
     await bash("git pull && pip3 install -r requirements.txt")
     os.execl(sys.executable, sys.executable, "-m", "Ayra")
 
