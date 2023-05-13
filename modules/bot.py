@@ -388,7 +388,7 @@ async def _(e):
         or "soft" in e.pattern_match.group(1).strip()
     ):
         await bash("git pull -f && pip3 install -r requirements.txt")
-        call_back()
+        #call_back()
         await xx.edit(get_string("upd_7"))
         os.execl(sys.executable, "python3", "-m", "Ayra")
          return
