@@ -9,30 +9,18 @@ import os
 import re
 
 from Ayra.dB.botchat_db import tag_add, who_tag
-from telethon.errors.rpcerrorlist import (
-    ChannelPrivateError,
-    ChatWriteForbiddenError,
-    MediaCaptionTooLongError,
-    MediaEmptyError,
-    MessageTooLongError,
-    PeerIdInvalidError,
-    UserNotParticipantError,
-)
-from telethon.tl.types import MessageEntityMention, MessageEntityMentionName, User
+from telethon.errors.rpcerrorlist import (ChannelPrivateError,
+                                          ChatWriteForbiddenError,
+                                          MediaCaptionTooLongError,
+                                          MediaEmptyError, MessageTooLongError,
+                                          PeerIdInvalidError,
+                                          UserNotParticipantError)
+from telethon.tl.types import (MessageEntityMention, MessageEntityMentionName,
+                               User)
 from telethon.utils import get_display_name
 
-from . import (
-    LOG_CHANNEL,
-    LOGS,
-    Button,
-    asst,
-    ayra_bot,
-    callback,
-    events,
-    get_string,
-    inline_mention,
-    udB,
-)
+from . import (LOG_CHANNEL, LOGS, Button, asst, ayra_bot, callback, events,
+               get_string, inline_mention, udB)
 
 CACHE_SPAM = {}
 TAG_EDITS = {}

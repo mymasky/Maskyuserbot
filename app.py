@@ -1,10 +1,12 @@
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
 if os.environ.get("HEROKU_API"):
     from heroku3 import from_key
+
     heroku_api = os.environ.get("HEROKU_API")
     heroku_app_name = os.environ.get("HEROKU_APP_NAME")
     heroku_conn = from_key(heroku_api)
@@ -21,5 +23,4 @@ if os.environ.get("HEROKU_API"):
         heroku_config["REDIS_PASSWORD"] = redis_password
 
 else:
-
     pass

@@ -28,7 +28,8 @@
 
 from secrets import choice
 
-from telethon.tl.types import InputMessagesFilterPhotos, InputMessagesFilterVideo
+from telethon.tl.types import (InputMessagesFilterPhotos,
+                               InputMessagesFilterVideo)
 
 from . import *
 

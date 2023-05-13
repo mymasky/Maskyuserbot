@@ -21,26 +21,16 @@
 """
 
 from telethon.errors import ChatAdminRequiredError as no_admin
-from telethon.tl.functions.channels import (
-    CreateChannelRequest,
-    GetFullChannelRequest,
-    UpdateUsernameRequest,
-)
-from telethon.tl.functions.messages import (
-    CreateChatRequest,
-    ExportChatInviteRequest,
-    GetFullChatRequest,
-)
-from telethon.tl.types import (
-    ChannelParticipantsKicked,
-    User,
-    UserStatusEmpty,
-    UserStatusLastMonth,
-    UserStatusLastWeek,
-    UserStatusOffline,
-    UserStatusOnline,
-    UserStatusRecently,
-)
+from telethon.tl.functions.channels import (CreateChannelRequest,
+                                            GetFullChannelRequest,
+                                            UpdateUsernameRequest)
+from telethon.tl.functions.messages import (CreateChatRequest,
+                                            ExportChatInviteRequest,
+                                            GetFullChatRequest)
+from telethon.tl.types import (ChannelParticipantsKicked, User,
+                               UserStatusEmpty, UserStatusLastMonth,
+                               UserStatusLastWeek, UserStatusOffline,
+                               UserStatusOnline, UserStatusRecently)
 
 from . import LOGS, asst, ayra_cmd, types
 

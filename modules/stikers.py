@@ -43,11 +43,8 @@ except ImportError:
 
 from telethon.errors import PeerIdInvalidError, YouBlockedUserError
 from telethon.tl.functions.messages import UploadMediaRequest
-from telethon.tl.types import (
-    DocumentAttributeFilename,
-    DocumentAttributeSticker,
-    InputPeerSelf,
-)
+from telethon.tl.types import (DocumentAttributeFilename,
+                               DocumentAttributeSticker, InputPeerSelf)
 from telethon.utils import get_input_document
 
 from . import *

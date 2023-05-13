@@ -1,7 +1,8 @@
 
 import openai
-from .. import udB, async_searcher, ayra_bot
-import json
+
+from .. import async_searcher, udB
+
 
 async def get_chatbot_reply(message):
     chatbot_base = "https://kora-api.vercel.app/chatbot/2d94e37d-937f-4d28-9196-bd5552cac68b/{ayra_bot}/envparse/message={}"
@@ -12,6 +13,7 @@ async def get_chatbot_reply(message):
         return (await async_searcher(req_link, re_json=True)).get("reply")
     except Exception:
         LOGS.info(f"**ERROR:**`{format_exc()}`")
+
 
 class OpenAi:
     def text(self, question):
@@ -33,4 +35,3 @@ class OpenAi:
         openai.api_key = OPENAI_API
         response = openai.Image.create(prompt=question, n=1, size="1024x1024")
         return response["data"][0]["url"]
-

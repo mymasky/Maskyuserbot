@@ -20,17 +20,8 @@ from Ayra.dB.pmpermit_db import is_approved
 from telegraph import upload_file as uf
 from telethon import events
 
-from . import (
-    LOG_CHANNEL,
-    NOSPAM_CHAT,
-    Redis,
-    asst,
-    ayra_bot,
-    ayra_cmd,
-    get_string,
-    mediainfo,
-    udB,
-)
+from . import (LOG_CHANNEL, NOSPAM_CHAT, Redis, asst, ayra_bot, ayra_cmd,
+               get_string, mediainfo, udB)
 
 old_afk_msg = []
 

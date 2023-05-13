@@ -19,12 +19,8 @@
 """
 
 
-from Ayra.dB.blacklist_db import (
-    add_blacklist,
-    get_blacklist,
-    list_blacklist,
-    rem_blacklist,
-)
+from Ayra.dB.blacklist_db import (add_blacklist, get_blacklist, list_blacklist,
+                                  rem_blacklist)
 
 from . import ayra_bot, ayra_cmd, events, get_string, udB
 

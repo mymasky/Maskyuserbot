@@ -5,4 +5,3 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 
-from Ayra.dB.notes_db import *

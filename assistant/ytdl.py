@@ -13,10 +13,12 @@ try:
     from PIL import Image
 except ImportError:
     Image = None
-from Ayra.fns.helper import bash, fast_download, humanbytes, numerize, time_formatter
+from Ayra.fns.helper import (bash, fast_download, humanbytes, numerize,
+                             time_formatter)
 from Ayra.fns.ytdl import dler, get_buttons, get_formats
 from telethon import Button
-from telethon.errors.rpcerrorlist import FilePartLengthInvalidError, MediaEmptyError
+from telethon.errors.rpcerrorlist import (FilePartLengthInvalidError,
+                                          MediaEmptyError)
 from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 from telethon.tl.types import InputWebDocument as wb
 

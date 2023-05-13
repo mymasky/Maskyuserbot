@@ -13,10 +13,8 @@ from platform import python_version as pyver
 from random import choice
 
 from telethon import __version__
-from telethon.errors.rpcerrorlist import (
-    BotMethodInvalidError,
-    ChatSendMediaForbiddenError,
-)
+from telethon.errors.rpcerrorlist import (BotMethodInvalidError,
+                                          ChatSendMediaForbiddenError)
 from telethon.events import NewMessage
 from telethon.tl.custom import Dialog
 from telethon.tl.functions import PingRequest

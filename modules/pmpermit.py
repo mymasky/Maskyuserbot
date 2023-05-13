@@ -43,11 +43,8 @@ except ImportError:
     tabulate = None
 from telethon import events
 from telethon.errors import MessageNotModifiedError
-from telethon.tl.functions.contacts import (
-    BlockRequest,
-    GetBlockedRequest,
-    UnblockRequest,
-)
+from telethon.tl.functions.contacts import (BlockRequest, GetBlockedRequest,
+                                            UnblockRequest)
 from telethon.tl.functions.messages import ReportSpamRequest
 from telethon.utils import get_display_name, resolve_bot_file_id
 

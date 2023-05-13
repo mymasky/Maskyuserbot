@@ -18,12 +18,10 @@
 
 
 from telethon import functions
-from telethon.errors import (
-    ChannelInvalidError,
-    ChannelPrivateError,
-    ChannelPublicGroupNaError,
-)
-from telethon.tl.functions.channels import GetFullChannelRequest, InviteToChannelRequest
+from telethon.errors import (ChannelInvalidError, ChannelPrivateError,
+                             ChannelPublicGroupNaError)
+from telethon.tl.functions.channels import (GetFullChannelRequest,
+                                            InviteToChannelRequest)
 from telethon.tl.functions.messages import GetFullChatRequest
 
 from . import *

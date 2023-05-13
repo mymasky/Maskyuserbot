@@ -67,10 +67,8 @@ from Ayra.fns.info import *
 from Ayra.fns.misc import *
 from Ayra.fns.tools import *
 from pytgcalls.exceptions import NotConnectedError
-from telethon.errors.rpcerrorlist import (
-    ChatSendMediaForbiddenError,
-    MessageIdInvalidError,
-)
+from telethon.errors.rpcerrorlist import (ChatSendMediaForbiddenError,
+                                          MessageIdInvalidError)
 
 from . import *
 from ._music import *

@@ -40,7 +40,8 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import Channel, Chat, User
 from telethon.utils import get_peer_id
 
-from . import async_searcher, ayra_cmd, eor, get_chat_info, get_string, inline_mention
+from . import (async_searcher, ayra_cmd, eor, get_chat_info, get_string,
+               inline_mention)
 
 # =================================================================#
 

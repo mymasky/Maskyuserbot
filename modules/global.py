@@ -23,21 +23,15 @@ import asyncio
 import os
 
 from Ayra.dB import DEVS
-from Ayra.dB.gban_mute_db import (
-    gban,
-    gmute,
-    is_gbanned,
-    is_gmuted,
-    list_gbanned,
-    ungban,
-    ungmute,
-)
+from Ayra.dB.gban_mute_db import (gban, gmute, is_gbanned, is_gmuted,
+                                  list_gbanned, ungban, ungmute)
 from Ayra.kynan import register
 from telethon.errors.rpcerrorlist import ChatAdminRequiredError, FloodWaitError
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.types import User
 
-from . import LOGS, OWNER_NAME, ayra_bot, ayra_cmd, eod, get_string, inline_mention
+from . import (LOGS, OWNER_NAME, ayra_bot, ayra_cmd, eod, get_string,
+               inline_mention)
 
 
 @ayra_cmd(pattern="[uU][n][g][b][a][n]( (.*)|$)", fullsudo=False)

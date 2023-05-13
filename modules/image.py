@@ -63,10 +63,8 @@ except ImportError:
     Image = None
     LOGS.info(f"{__file__}: PIL  not Installed.")
 from telegraph import upload_file as upf
-from telethon.errors.rpcerrorlist import (
-    ChatSendMediaForbiddenError,
-    MessageDeleteForbiddenError,
-)
+from telethon.errors.rpcerrorlist import (ChatSendMediaForbiddenError,
+                                          MessageDeleteForbiddenError)
 
 from . import *
 

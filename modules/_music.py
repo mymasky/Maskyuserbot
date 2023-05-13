@@ -13,10 +13,8 @@ from Ayra.version import __version__ as AyVer
 from pytgcalls import GroupCallFactory
 from pytgcalls.exceptions import GroupCallNotFoundError
 from telethon import events
-from telethon.errors.rpcerrorlist import (
-    ChatSendMediaForbiddenError,
-    ParticipantJoinMissingError,
-)
+from telethon.errors.rpcerrorlist import (ChatSendMediaForbiddenError,
+                                          ParticipantJoinMissingError)
 from telethon.tl import functions
 
 try:

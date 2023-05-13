@@ -7,15 +7,8 @@
 
 import re
 
-from . import (
-    AyConfig,
-    Button,
-    callback,
-    get_back_button,
-    get_languages,
-    get_string,
-    udB,
-)
+from . import (AyConfig, Button, callback, get_back_button, get_languages,
+               get_string, udB)
 
 
 @callback("lang", owner=False)
