@@ -1,4 +1,3 @@
-
 import openai
 
 from .. import async_searcher, udB
