@@ -391,7 +391,7 @@ async def _(e):
         #call_back()
         await xx.edit(get_string("upd_7"))
         os.execl(sys.executable, "python3", "-m", "Ayra")
-         return
+        return
     m = await updater()
     branch = (Repo.init()).active_branch
     if m:
