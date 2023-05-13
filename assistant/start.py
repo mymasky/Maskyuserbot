@@ -54,7 +54,7 @@ _settings = [
 _start = [
     [
         Button.inline("Pengaturan ⚙️", data="setter"),
-        Button.inline("Restart ♻️️", data="resturt"),
+        Button.inline("Restart ♻️️", data="restart"),
     ],
     [
         Button.inline("Stats ✨", data="stat"),
