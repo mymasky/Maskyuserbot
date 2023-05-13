@@ -75,6 +75,4 @@ wikipedia
 pyscopg2
 redis
 hiredis
-psycopg2-binary
 asyncio
-prettytable
