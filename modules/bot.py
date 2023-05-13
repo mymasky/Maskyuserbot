@@ -26,7 +26,7 @@ try:
     from git import Repo
 except ImportError:
     LOGS.error("bot: 'gitpython' module not found!")
-    Repo = "https://github.com/naya1503/Naya-Userbot"
+    Repo = None
 
 from telethon.utils import resolve_bot_file_id
 
