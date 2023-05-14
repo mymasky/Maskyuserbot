@@ -32,7 +32,7 @@ from telethon.utils import pack_bot_file_id
 
 from . import *
 from ._inline import something
-from .database.notesdb import *
+from Ayra.dB.notes_db import *
 
 
 @ayra_cmd(pattern="[sS][a][v][e]( (.*)|$)")
