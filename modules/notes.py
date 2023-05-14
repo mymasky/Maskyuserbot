@@ -27,12 +27,12 @@ Kirim ke
 """
 import os
 
+from Ayra.dB.notes_db import *
 from telegraph import upload_file as uf
 from telethon.utils import pack_bot_file_id
 
 from . import *
 from ._inline import something
-from Ayra.dB.notes_db import *
 
 
 @ayra_cmd(pattern="[sS][a][v][e]( (.*)|$)")
