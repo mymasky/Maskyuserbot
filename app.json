@@ -8,7 +8,7 @@
     ],
     "repository": "https://github.com/naya1503/Naya-Userbot",
     "success_url": "https://t.me/rizzvbss",
-    "stack": "heroku-22",
+    "stack": "container",
     "env": {
         "API_ID": {
             "description": "Au ya cek my.telegram.org",
