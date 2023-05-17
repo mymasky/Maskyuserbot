@@ -9,7 +9,7 @@
 
 ๏ **Perintah:** `tg`
 ◉ **Keterangan:** Upload File Atau Teks Ke Telegraph
-"""
+
 
 import os
 import pathlib
@@ -73,3 +73,4 @@ async def telegraphcmd(event):
     await xx.eor(
         f"Pasted to Telegraph : [Telegraph]({makeit['url']})", link_preview=False
     )
+"""
