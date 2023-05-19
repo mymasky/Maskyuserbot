@@ -1,7 +1,7 @@
 
 aiohttp
 openai
-telethon
+https://github.com/New-dev0/Telethon/archive/diamond.zip
 python-decouple
 pymongo
 httpx
