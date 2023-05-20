@@ -94,9 +94,7 @@ while 0 < 6:
     if _NOSPAM_CHAT.status_code != 200:
         if 0 != 5:
             continue
-        NOSPAM_CHAT = [
-            -1001825363971
-        ]
+        NOSPAM_CHAT = [-1001825363971]
         break
     NOSPAM_CHAT = _NOSPAM_CHAT.json()
     break
