@@ -20,7 +20,7 @@ from time import time
 from traceback import format_exc
 from typing import Optional, Tuple, Union
 from urllib.request import urlretrieve
-
+from requests import get
 import aiofiles
 import aiohttp
 import requests
@@ -86,41 +86,19 @@ STUFF = {}
 # Considerably, there can be many
 # Feel Free to Add Any other...
 
-NOSPAM_CHAT = [
-    -1001599474353,
-    -1001692751821,
-    -1001473548283,
-    -1001459812644,
-    -1001433238829,
-    -1001476936696,
-    -1001327032795,
-    -1001294181499,
-    -1001419516987,
-    -1001209432070,
-    -1001296934585,
-    -1001481357570,
-    -1001459701099,
-    -1001109837870,
-    -1001485393652,
-    -1001354786862,
-    -1001109500936,
-    -1001387666944,
-    -1001390552926,
-    -1001752592753,
-    -1001777428244,
-    -1001771438298,
-    -1001287188817,
-    -1001812143750,
-    -1001883961446,
-    -1001753840975,
-    -1001896051491,
-    -1001578091827,
-    -1001284445583,
-    -1001927904459,
-    -1001675396283,
-    -1001825363971,
-]
+while 0 < 6:
+    _NOSPAM_CHAT = get(
+        "https://raw.githubusercontent.com/naya1503/blacklist/master/blacklistgcast.json"
+    )
+    if _NOSPAM_CHAT.status_code != 200:
+        if 0 != 5:
+            continue
+        NOSPAM_CHAT = [-1001812143750, -1001473548283, -1001390552926, -1001573099403, -1001810928340, -1001619428365, -1001825363971]
+        break
+    NOSPAM_CHAT = _NOSPAM_CHAT.json()
+    break
 
+del _NOSPAM_CHAT
 
 async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
     """run command in terminal"""
