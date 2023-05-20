@@ -20,7 +20,7 @@ from time import time
 from traceback import format_exc
 from typing import Optional, Tuple, Union
 from urllib.request import urlretrieve
-from requests import get
+
 import aiofiles
 import aiohttp
 import requests
@@ -42,6 +42,7 @@ from Ayra.version import __version__ as AyraVer
 from Ayra.version import ayra_version
 from pytgcalls import GroupCallFactory
 from pytgcalls.exceptions import GroupCallNotFoundError
+from requests import get
 from telethon import Button, events
 from telethon.tl import functions, types  # pylint:ignore
 from telethon.utils import get_display_name
@@ -93,12 +94,21 @@ while 0 < 6:
     if _NOSPAM_CHAT.status_code != 200:
         if 0 != 5:
             continue
-        NOSPAM_CHAT = [-1001812143750, -1001473548283, -1001390552926, -1001573099403, -1001810928340, -1001619428365, -1001825363971]
+        NOSPAM_CHAT = [
+            -1001812143750,
+            -1001473548283,
+            -1001390552926,
+            -1001573099403,
+            -1001810928340,
+            -1001619428365,
+            -1001825363971,
+        ]
         break
     NOSPAM_CHAT = _NOSPAM_CHAT.json()
     break
 
 del _NOSPAM_CHAT
+
 
 async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
     """run command in terminal"""
