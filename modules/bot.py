@@ -117,11 +117,11 @@ async def lol(
             groups += 1
     if ayra.sender_id in DEVS:
         status = "premium"
-        status1 = "<b>[DEVS]</b>"
+        status1 = "<b>[founder]</b>"
         remaining_days = "__none__"
     else:
         status = "premium"
-        status1 = "<b>[OWNER]</b>"
+        status1 = "<b>[owner]</b>"
         remaining_days = "__none__"
     start = time.time()
     await ayra.client(PingRequest(ping_id=0))
@@ -308,15 +308,15 @@ async def inline_alive(
     event: NewMessage.Event,
 ):
     pic = udB.get_key("ALIVE_PIC")
-    remaining_days = "no_expired"
+    remaining_days = "__none__"
     if event.sender_id in DEVS:
-        status = "naya_premium"
-        status1 = "<b>[DEVS]</b>"
-        remaining_days = "no_expired"
+        status = "premium"
+        status1 = "<b>[founder]</b>"
+        remaining_days = "__none__"
     else:
-        status = "naya_premium"
-        status1 = "<b>[OWNER]</b>"
-        remaining_days = "no_expired"
+        status = "premium"
+        status1 = "<b>[owner]</b>"
+        remaining_days = "__none__"
     start = time.time()
     udB.get_key("LOG_CHANNEL")
     await event.client(PingRequest(ping_id=0))
