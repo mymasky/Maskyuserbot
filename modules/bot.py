@@ -59,7 +59,7 @@ alive_txt = """
   ◈ Telethon - {}
 """
 
-in_alive = "<b>Naya-Userbot</b>\n<b>          status :</b> <code>{}</code>{}\n<b>          expires_on :</b> <code>{}</code>\n<b>          ping_dc :</b> <code>{}</code>\n<b>          naya_version :</b> <code>{}</code>\n<b>          nayalibs_version :</b> <code>{}</code>\n<b>          naya_uptime :</b> <code>{}</code>"
+in_alive = "<b>Naya-Userbot</b>\n<b>     status :</b> <code>{}</code>{}\n<b>        expires_on :</b> <code>{}</code>\n<b>      ping_dc :</b> <code>{}</code>\n<b>       version :</b> <code>{}</code>\n<b>       nayalibs :</b> <code>{}</code>\n<b>       uptime :</b> <code>{}</code>"
 
 absen = [
     "**𝙃𝙖𝙙𝙞𝙧 𝙙𝙤𝙣𝙜 𝙏𝙤𝙙** 😁",
@@ -105,7 +105,7 @@ async def lol(
     inline = True
     private_chats = 0
     groups = 0
-    remaining_days = "no_expired"
+    remaining_days = "__none__"
     dialog: Dialog
     async for dialog in ayra.client.iter_dialogs():
         entity = dialog.entity
@@ -116,13 +116,13 @@ async def lol(
         ):
             groups += 1
     if ayra.sender_id in DEVS:
-        status = "naya_premium"
+        status = "premium"
         status1 = "<b>[DEVS]</b>"
-        remaining_days = "no_expired"
+        remaining_days = "__none__"
     else:
-        status = "naya_premium"
+        status = "premium"
         status1 = "<b>[OWNER]</b>"
-        remaining_days = "no_expired"
+        remaining_days = "__none__"
     start = time.time()
     await ayra.client(PingRequest(ping_id=0))
     ping = round((time.time() - start) * 1000)
