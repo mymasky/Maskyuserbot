@@ -62,16 +62,6 @@ alive_txt = """
 in_alive = "<b>Naya-Userbot</b>\n<b>     status :</b> <code>{}</code>{}\n<b>       expired_on :</b> <code>{}</code>\n<b>       ping_dc :</b> <code>{}</code>\n<b>       version :</b> <code>{}</code>\n<b>       nayalibs :</b> <code>{}</code>\n<b>       uptime :</b> <code>{}</code>"
 
 absen = [
-    "**𝙃𝙖𝙙𝙞𝙧 𝙙𝙤𝙣𝙜 𝙏𝙤𝙙** 😁",
-    "**𝙃𝙖𝙙𝙞𝙧 𝙆𝙖𝙠𝙖 𝙂𝙖𝙣𝙩𝙚𝙣𝙜** 😉",
-    "**𝙂𝙪𝙖 𝙃𝙖𝙙𝙞𝙧 𝘾𝙤𝙣𝙩𝙤𝙡** 😁",
-    "**𝙂𝙪𝙖 𝙃𝙖𝙙𝙞𝙧 𝙂𝙖𝙣𝙩𝙚𝙣𝙜** 🥵",
-    "**𝙃𝙖𝙙𝙞𝙧 𝙉𝙜𝙖𝙗** 😎",
-    "**𝙂𝙪𝙖 𝙃𝙖𝙙𝙞𝙧 𝘼𝙗𝙖𝙣𝙜** 🥺",
-    "**𝙎𝙞 𝘾𝙖𝙠𝙚𝙥 𝙃𝙖𝙙𝙞𝙧 𝘽𝙖𝙣𝙜** 😎",
-    "**Hadir kak maap telat** 🥺",
-    "**Hadir Tuan** 🙏🏻",
-    "**Hadir Majikan** 🙏🏻",
     "**Hadir Sayang** 😳",
     "**Hadir Bro Kynan** 😁",
     "**Maaf ka habis nemenin ka Kynan** 🥺",
@@ -79,6 +69,8 @@ absen = [
     "**Hadir Kynan Sayang** 😘",
     "**Hadir Kynan Akuuuuhhh** ☺️",
     "**Hadir Kynan brother Aku** 🥰",
+    "**Sokap bet lu**",
+    "**Apasi Bawel** 🥰",
 ]
 
 
