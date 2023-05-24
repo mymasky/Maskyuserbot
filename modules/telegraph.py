@@ -1,5 +1,3 @@
-
-
 # Ayra - UserBot
 # Copyright (C) 2021-2022 senpai80
 #
