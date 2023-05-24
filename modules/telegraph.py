@@ -1,4 +1,4 @@
-"""
+
 
 # Ayra - UserBot
 # Copyright (C) 2021-2022 senpai80
@@ -6,12 +6,12 @@
 # This file is a part of < https://github.com/senpai80/Ayra/ >
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
-
+"""
 ✘ **Bantuan Untuk Telegraph**
 
 ๏ **Perintah:** `tg`
 ◉ **Keterangan:** Upload File Atau Teks Ke Telegraph
-
+"""
 
 import os
 import pathlib
@@ -75,4 +75,3 @@ async def telegraphcmd(event):
     await xx.eor(
         f"Pasted to Telegraph : [Telegraph]({makeit['url']})", link_preview=False
     )
-"""
