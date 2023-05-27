@@ -21,7 +21,7 @@ def get_msg_button(texts: str):
             btn.append([[text, url]])
 
     txt = texts
-    for z in re.findall("\\[.+?\\|.+?\\]", texts):
+    for z in re.findall("\\[.+?\\|.+?\\]", txt):
         txt = txt.replace(z, "")
 
     return txt.strip(), btn

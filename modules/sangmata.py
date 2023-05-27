@@ -35,8 +35,7 @@ from . import ayra_cmd, get_string
 )
 async def _(event):
     ayra = event
-    match = event.pattern_match.group(1).strip()
-    if match:
+    if match := event.pattern_match.group(1).strip():
         try:
             ids = await event.client.parse_id(match)
         except Exception as er:

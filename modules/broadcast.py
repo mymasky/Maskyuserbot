@@ -177,8 +177,7 @@ async def ungblacker(event):
 @ayra_cmd(pattern="blchat")
 async def chatbl(event):
     id = event.chat_id
-    xx = list_bl(id)
-    if xx:
+    if xx := list_bl(id):
         sd = "**❏ Daftar Blacklist Gcast**\n\n"
         return await event.eor(sd + xx)
     await event.eor("**Belum ada daftar**")
@@ -189,10 +188,7 @@ async def gblacker(event, type_):
     if len(args) > 2:
         return await event.eor("**Gunakan Format:**\n `delbl` or `addbl`")
     chat_id = None
-    if len(args) == 2:
-        chat_id = int(args[1])
-    else:
-        chat_id = event.chat_id
+    chat_id = int(args[1]) if len(args) == 2 else event.chat_id
     if type_ == "add":
         add_gblacklist(chat_id)
         await event.eor(f"**Ditambahkan ke BL-GCAST**\n`{chat_id}`")

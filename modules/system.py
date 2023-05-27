@@ -230,8 +230,8 @@ async def _(e):
     files = glob.glob(files)
     if not files:
         return await e.eor("`Direktori Kosong atau Salah.`", time=5)
-    folders = []
     allfiles = []
+    folders = []
     for file in sorted(files):
         if os.path.isdir(file):
             folders.append(f"📂 {file}")
@@ -268,13 +268,7 @@ async def _(e):
                 foc += 1
             else:
                 if hb(int(os.path.getsize(name))):
-                    text += (
-                        emoji
-                        + f" `{nam}`"
-                        + "  `"
-                        + hb(int(os.path.getsize(name)))
-                        + "`\n"
-                    )
+                    text += f"{emoji} `{nam}`  `{hb(int(os.path.getsize(name)))}" + "`\n"
                     fls += int(os.path.getsize(name))
                 else:
                     text += f"{emoji} `{nam}`" + "\n"

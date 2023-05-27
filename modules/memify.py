@@ -37,7 +37,7 @@ async def handler(event):
     file = await event.client.download_media(reply_message)
     msg = await event.eor("`Processing...`")
     text = str(event.pattern_match.group(1)).strip()
-    if len(text) < 1:
+    if not text:
         return await msg.eor("`Berikan pesan...`")
     meme = await drawText(file, text)
     await event.client.send_file(event.chat_id, file=meme, force_document=False)
@@ -49,10 +49,7 @@ async def drawText(image_path, text):
     img = Image.open(image_path)
     os.remove(image_path)
     i_width, i_height = img.size
-    if os.name == "nt":
-        fnt = "ariel.ttf"
-    else:
-        fnt = "./resources/fonts/default.ttf"
+    fnt = "ariel.ttf" if os.name == "nt" else "./resources/fonts/default.ttf"
     m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
     if ";" in text:
         upper_text, lower_text = text.split(";")

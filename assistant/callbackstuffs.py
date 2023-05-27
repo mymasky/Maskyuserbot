@@ -250,7 +250,6 @@ async def update(eve):
 async def changes(okk):
     match = okk.data_match.group(1).decode("utf-8")
     await okk.answer(get_string("clst_3"))
-    thumb = "https://graph.org/file/60408fea8439e6702674d.jpg"
     repo = Repo.init()
     button = [[Button.inline("Memperbarui sekarang", data="updatenow")]]
     changelog, tl_chnglog = await gen_chlog(
@@ -258,6 +257,7 @@ async def changes(okk):
     )
     cli = "\n\nKlik tombol di bawah untuk memperbarui!"
     if not match:
+        thumb = "https://graph.org/file/60408fea8439e6702674d.jpg"
         try:
             if len(tl_chnglog) > 700:
                 tl_chnglog = f"{tl_chnglog[:700]}..."
@@ -335,10 +335,10 @@ async def _(e):
 @callback(re.compile("cbs_(.*)"), owner=True)
 async def _edit_to(event):
     match = event.data_match.group(1).decode("utf-8")
-    data = _buttons.get(match)
-    if not data:
+    if data := _buttons.get(match):
+        await event.edit(data["text"], buttons=data["buttons"], link_preview=False)
+    else:
         return
-    await event.edit(data["text"], buttons=data["buttons"], link_preview=False)
 
 
 @callback(re.compile("abs_(.*)"), owner=True)
@@ -529,10 +529,7 @@ async def set_wrns(event):
             buttons=get_back_button("cbs_pmcstm"),
         )
     else:
-        await event.edit(
-            f"Error",
-            buttons=get_back_button("cbs_pmcstm"),
-        )
+        await event.edit("Error", buttons=get_back_button("cbs_pmcstm"))
 
 
 @callback("pmmed", owner=True)

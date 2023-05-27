@@ -147,15 +147,10 @@ async def uptd_plugin(event):
     if not help_:
         help_ = f"{file} has no Detailed Help!"
     help_ += "\n© @KynanSupport"
-    buttons = []
     data = f"uh_{key}_"
     if index is not None:
         data += f"|{index}"
-    buttons.append(
-        [
-            Button.inline("❮", data=data),
-        ]
-    )
+    buttons = [[Button.inline("❮", data=data)]]
     try:
         await event.edit(help_, buttons=buttons)
     except Exception as er:
