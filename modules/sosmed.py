@@ -28,8 +28,7 @@ from . import *
 
 @ayra_cmd(pattern="sosmed(?: |$)(.*)")
 async def _(event):
-    xxnx = event.pattern_match.group(1)
-    if xxnx:
+    if xxnx := event.pattern_match.group(1):
         d_link = xxnx
     elif event.is_reply:
         d_link = await event.get_reply_message()

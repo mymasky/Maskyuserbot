@@ -56,12 +56,14 @@ async def _help(ayra):
                     if not file:
                         # the enter command/plugin name is not found
                         text = f"`{plug}` is not a valid plugin!"
-                        best_match = None
-                        for _ in compare_strings:
-                            if plug in _ and not _.startswith("_"):
-                                best_match = _
-                                break
-                        if best_match:
+                        if best_match := next(
+                            (
+                                _
+                                for _ in compare_strings
+                                if plug in _ and not _.startswith("_")
+                            ),
+                            None,
+                        ):
                             text += f"\nDid you mean `{best_match}`?"
                         return await ayra.eor(text)
                     output = f"**Perintah** `{plug}` **ditemukan dalam** - `{file}`\n"

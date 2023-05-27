@@ -424,9 +424,7 @@ async def _(ayra):
 )
 async def _(ayra):
     match = ayra.pattern_match.group(1).strip()
-    chat = ayra.chat_id
-    if not ayra.client._bot and match:
-        chat = match
+    chat = match if not ayra.client._bot and match else ayra.chat_id
     try:
         await ayra.client(EditPhotoRequest(chat, types.InputChatPhotoEmpty()))
         text = "`Foto Obrolan Dihapus..`"

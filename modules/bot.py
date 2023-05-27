@@ -107,14 +107,8 @@ async def lol(
             entity, Chat
         ):
             groups += 1
-    if ayra.sender_id in DEVS:
-        status = "premium"
-        status1 = "<b>[founder]</b>"
-        remaining_days = None
-    else:
-        status = "premium"
-        status1 = "<b>[owner]</b>"
-        remaining_days = None
+    status1 = "<b>[founder]</b>" if ayra.sender_id in DEVS else "<b>[owner]</b>"
+    remaining_days = None
     start = time.time()
     await ayra.client(PingRequest(ping_id=0))
     ping = round((time.time() - start) * 1000)
@@ -133,6 +127,7 @@ async def lol(
     uptime = time_formatter((time.time() - start_time) * 1000)
     if inline:
         parse = "html"
+        status = "premium"
         als = in_alive.format(
             status,
             status1,
@@ -222,7 +217,7 @@ async def get_readable_time(seconds: int) -> str:
     for x in range(len(time_list)):
         time_list[x] = str(time_list[x]) + time_suffix_list[x]
     if len(time_list) == 4:
-        up_time += time_list.pop() + ", "
+        up_time += f"{time_list.pop()}, "
 
     time_list.reverse()
     up_time += ":".join(time_list)
@@ -301,14 +296,9 @@ async def inline_alive(
 ):
     pic = udB.get_key("ALIVE_PIC")
     remaining_days = None
-    if event.sender_id in DEVS:
-        status = "premium"
-        status1 = "<b>[founder]</b>"
-        remaining_days = None
-    else:
-        status = "premium"
-        status1 = "<b>[owner]</b>"
-        remaining_days = None
+    status1 = "<b>[founder]</b>" if event.sender_id in DEVS else "<b>[owner]</b>"
+    remaining_days = None
+    status = "premium"
     start = time.time()
     udB.get_key("LOG_CHANNEL")
     await event.client(PingRequest(ping_id=0))

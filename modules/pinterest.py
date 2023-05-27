@@ -30,8 +30,7 @@ from . import *
 
 @ayra_cmd(pattern="pntrst(?: |$)(.*)")
 async def pntr(event):
-    xxnx = event.pattern_match.group(1)
-    if xxnx:
+    if xxnx := event.pattern_match.group(1):
         link = xxnx
     elif event.is_reply:
         link = await event.get_reply_message()

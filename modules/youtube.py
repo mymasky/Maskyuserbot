@@ -52,7 +52,7 @@ async def yt_video(e):
             "geo_bypass": True,
         }
     )
-    await infomsg.eor(f"Mulai Mendownload...")
+    await infomsg.eor("Mulai Mendownload...")
     try:
         ytdl_data = await run_sync(ydl.extract_info, link, download=True)
         file_path = ydl.prepare_filename(ytdl_data)
@@ -73,14 +73,7 @@ async def yt_video(e):
         file_name=title,
         duration=duration,
         supports_streaming=True,
-        caption="**💡 Informasi** {}\n\n**🏷 Nama:** {}\n**🧭 Durasi:** {}\n**👀 Dilihat:** {}\n**📢 Channel:** {}\n**Upload By: {}**".format(
-            "video",
-            title,
-            duration,
-            views,
-            channel,
-            ayra_bot.full_name,
-        ),
+        caption=f'**💡 Informasi** {"video"}\n\n**🏷 Nama:** {title}\n**🧭 Durasi:** {duration}\n**👀 Dilihat:** {views}\n**📢 Channel:** {channel}\n**Upload By: {ayra_bot.full_name}**',
         reply_to=e.reply_to_msg_id,
     )
     await infomsg.delete()
@@ -113,7 +106,7 @@ async def yt_audio(e):
             "geo_bypass": True,
         }
     )
-    await infomsg.edit(f"Mulai Mendownload...")
+    await infomsg.edit("Mulai Mendownload...")
     try:
         ytdl_data = await run_sync(ydl.extract_info, link, download=True)
         file_path = ydl.prepare_filename(ytdl_data)
@@ -133,14 +126,7 @@ async def yt_audio(e):
         thumb=thumbnail,
         file_name=title,
         duration=duration,
-        caption="**💡 Informasi** {}\n\n**🏷 Nama:** {}\n**🧭 Durasi:** {}\n**👀 Dilihat:** {}\n**📢 Channel:** {}\n**Upload By: {}**".format(
-            "Audio",
-            title,
-            duration,
-            views,
-            channel,
-            ayra_bot.full_name,
-        ),
+        caption=f'**💡 Informasi** {"Audio"}\n\n**🏷 Nama:** {title}\n**🧭 Durasi:** {duration}\n**👀 Dilihat:** {views}\n**📢 Channel:** {channel}\n**Upload By: {ayra_bot.full_name}**',
         reply_to=e.reply_to_msg_id,
     )
     await infomsg.delete()

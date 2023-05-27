@@ -20,10 +20,7 @@ from . import *
 @ayra_cmd(pattern=r"(N|n)ulis( (.*)|$)")
 async def handwrite(event):
     reply_msg = await event.get_reply_message()
-    if reply_msg:
-        text = reply_msg.text
-    else:
-        text = event.pattern_match.group(3)
+    text = reply_msg.text if reply_msg else event.pattern_match.group(3)
     m = await event.reply("`Processing...`")
     req = requests.get(f"https://api.sdbots.tk/write?text={text}").url
     try:

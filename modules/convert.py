@@ -313,7 +313,7 @@ async def gifs(ayra):
         except IndexError:
             pass
     if not get:
-        return await ayra.eor(f"`gif <query>`")
+        return await ayra.eor("`gif <query>`")
     m = await ayra.eor(get_string("com_2"))
     gifs = await ayra.client.inline_query("gif", get)
     if not n:
@@ -384,7 +384,7 @@ async def size(e):
     sz = e.pattern_match.group(1).strip()
     if not sz:
         return await eor(
-            f"Berikan Beberapa Ukuran Untuk Diubah Ukurannya, Seperti `resize 720 1080` ",
+            "Berikan Beberapa Ukuran Untuk Diubah Ukurannya, Seperti `resize 720 1080` ",
             time=5,
         )
     k = await e.eor(get_string("com_1"))
@@ -396,7 +396,7 @@ async def size(e):
     if len(sz) != 2:
         return await eor(
             k,
-            f"Berikan Beberapa Ukuran Untuk Diubah Ukurannya, Seperti `resize 720 1080` ",
+            "Berikan Beberapa Ukuran Untuk Diubah Ukurannya, Seperti `resize 720 1080` ",
             time=5,
         )
     x, y = int(sz[0]), int(sz[1])

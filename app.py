@@ -21,6 +21,3 @@ if os.environ.get("HEROKU_API"):
 
         heroku_config["REDIS_URI"] = redis_host
         heroku_config["REDIS_PASSWORD"] = redis_password
-
-else:
-    pass

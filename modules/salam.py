@@ -43,27 +43,27 @@ async def _(event):
 
 @ayra_cmd(pattern="[kK][sS]")
 async def _(event):
-    xx = await event.eor(f"**Hy kaa 🥺**")
+    xx = await event.eor("**Hy kaa 🥺**")
     sleep(2)
     await xx.edit("**Assalamualaikum...**")
 
 
 @ayra_cmd(pattern="[jJ][wW][sS]")
 async def _(event):
-    xx = await event.eor(event, f"**Astaghfirullah, Jawab salam dong**")
+    xx = await event.eor(event, "**Astaghfirullah, Jawab salam dong**")
     sleep(2)
     await xx.edit("**Assalamu'alaikum**")
 
 
 @ayra_cmd(pattern="3x")
 async def _(event):
-    xx = await event.eor(f"**Bismillah, 3x**")
+    xx = await event.eor("**Bismillah, 3x**")
     sleep(2)
     await xx.edit("**Assalamu'alaikum Bisa Kali**")
 
 
 @ayra_cmd(pattern="[kK][gG]")
 async def _(event):
-    xx = await event.eor(f"**Lu Ngapah Begitu ?**")
+    xx = await event.eor("**Lu Ngapah Begitu ?**")
     sleep(2)
     await xx.edit("**Keren Lu Begitu ?**")
