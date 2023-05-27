@@ -29,9 +29,7 @@ async def convert_image(event):
     bot = "@qq_neural_anime_bot"
     cot = await event.eor("**Processing...**")
     await event.client(UnblockRequest(bot))
-    ba = await event.client.forward_messages(
-        bot, event.reply_to_msg_id, event.chat_id
-    )
+    ba = await event.client.forward_messages(bot, event.reply_to_msg_id, event.chat_id)
     await asyncio.sleep(30)
     await ba.delete()
     await cot.delete()
@@ -48,9 +46,7 @@ async def convert_image(event):
                 reply_to=event.message.id,
             )
     else:
-        await event.reply(
-            "**Tidak dapat menemukan foto untuk dikirim sebagai grup.**"
-        )
+        await event.reply("**Tidak dapat menemukan foto untuk dikirim sebagai grup.**")
 
 
 #        await event.client.delete_messages(

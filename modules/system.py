@@ -268,7 +268,9 @@ async def _(e):
                 foc += 1
             else:
                 if hb(int(os.path.getsize(name))):
-                    text += f"{emoji} `{nam}`  `{hb(int(os.path.getsize(name)))}" + "`\n"
+                    text += (
+                        f"{emoji} `{nam}`  `{hb(int(os.path.getsize(name)))}" + "`\n"
+                    )
                     fls += int(os.path.getsize(name))
                 else:
                     text += f"{emoji} `{nam}`" + "\n"
