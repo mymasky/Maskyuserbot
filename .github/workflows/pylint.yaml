@@ -1,27 +1,37 @@
-name: Auto Fix
-on: [push]
+name: PyLint
+on:
+  push:
+    branches: [ dev ]
+    paths:
+    - "**.py"
 jobs:
-  python-auto-fix:
+  PEP8:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v1
         with:
-          python-version: '3.x'
-      - name: Install Dependencies
+          python-version: 3.8
+          cache: "pip"
+      - name: Install Python lint libraries
+        run: pip install autopep8 autoflake isort black
+      - name: Check for showstoppers
         run: |
-          python -m pip install --upgrade pip
-          pip install black isort autoflake
-          pip freeze > github-action.txt
-      - name: Auto Fix
+          autopep8 --verbose --in-place --recursive --aggressive --aggressive sky/modules/*.py
+      - name: Remove unused imports and variables
         run: |
-          black --exclude=venv .
-          isort --skip-glob='**/venv/**' .
-          autoflake --in-place --recursive --remove-all-unused-imports --remove-unused-variables --ignore-init-module-imports .
-      - name: Code Analysis
-        uses: stefanzweifel/git-auto-commit-action@v4
+          autoflake --in-place --recursive --remove-all-unused-imports --remove-unused-variables --ignore-init-module-imports sky/modules/*.py
+      - name: lint with isort and black
+        run: |
+          isort sky/modules/*.py
+          black --fast sky/modules/*.py
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Auto Fix"
-          commit_options: "--no-verify"
+          commit_message: 'pylint: auto fixes'
+          commit_options: '--no-verify'
+          repository: .
+          commit_user_name: naya1503
+          commit_user_email: emiliasayang2@gmail.com
+          commit_author: Naya <emiliasayang2@gmail.com>
+          
