@@ -242,15 +242,10 @@ restart_counter = 0
 )
 @register(incoming=True, from_users=DEVS, pattern=r"^Restart$")
 async def restart(e):
-    global restart_counter
     ok = await e.eor("`Processing...`")
-    # call_back()
-    who = "bot" if e.client._bot else "user"
     udB.set_key("_RESTART", f"{who}_{e.chat_id}_{ok.id}")
-    if heroku_api and restart_counter < 10:
-        restart_counter += 1
-        return await restart(ok)
     await bash("git pull && pip3 install -r requirements.txt")
+    await e.eor("Done.")
     os.execl(sys.executable, sys.executable, "-m", "Ayra")
 
 
