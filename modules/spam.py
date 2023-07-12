@@ -25,7 +25,7 @@ import asyncio
 from . import *
 
 
-@ayra_cmd(pattern="(t|T)spam")
+@ayra_cmd(pattern="(t|T)spam", fullsudo=False)
 async def tmeme(e):
     tspam = str(e.text[7:])
     message = tspam.replace(" ", "")
@@ -34,7 +34,7 @@ async def tmeme(e):
     await e.delete()
 
 
-@ayra_cmd(pattern="(s|S)pam")
+@ayra_cmd(pattern="(s|S)pam", fullsudo=False)
 async def spammer(e):
     message = e.text
     if e.reply_to:
@@ -76,7 +76,7 @@ async def bigspam(e):
     await e.delete()
 
 
-@ayra_cmd(pattern="(d|D)spam?(.*)")
+@ayra_cmd(pattern="(d|D)spam?(.*)", fullsudo=False)
 async def delayspammer(e):
     try:
         args = e.text.split(" ", 3)
