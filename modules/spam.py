@@ -52,8 +52,11 @@ async def spammer(e):
             return await eod(e, "`Gunakan bigspam`")
     except BaseException:
         return await eod(e, "`Gunakan dalam Format yang Tepat`")
-    await asyncio.wait([e.respond(spam_message) for _ in range(counter)])
+    
+    tasks = [asyncio.create_task(e.respond(spam_message)) for _ in range(counter)]
+    await asyncio.wait(tasks)
     await e.delete()
+
 
 
 @ayra_cmd(pattern="(b|B)spam", fullsudo=True)
