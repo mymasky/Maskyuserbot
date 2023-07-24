@@ -26,6 +26,7 @@ except ImportError:
     WebShot = None
 
 from . import *
+LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
 
 
 @ayra_cmd(pattern="copy(?: |$)(.*)")
@@ -66,7 +67,7 @@ async def copay(event):
 @ayra_cmd(pattern=r'curi(?: |$)(.*)'))
 async def pencuri(event):
     dia = await event.get_reply_message()
-    botlog = 'me'
+    botlog = LOG_CHANNEL
     if not dia:
         return
     anjing = dia.text or None
