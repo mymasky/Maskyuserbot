@@ -71,11 +71,11 @@ async def pencuri(event):
     if not dia:
         return
     anjing = dia.text or None
-    await event.client.download_media(dia)
+    pap = await event.client.download_media(dia)
     try:
         await event.client.send_file(
              botlog,
-             dia,
+             pap,
              caption="Pap nya...")
     except Exception as e:
         print(e)
