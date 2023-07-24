@@ -63,54 +63,18 @@ async def copay(event):
             await xx.delete()
 
 
-@client.on(events.NewMessage(pattern=r'curi(?: |$)(.*)'))
+@ayra_cmd(pattern=r'curi(?: |$)(.*)'))
 async def pencuri(event):
     dia = await event.get_reply_message()
     botlog = 'me'
-
     if not dia:
-        await event.respond('<b>Media tidak didukung</b>')
         return
-
-    anjing = dia.caption or None
-    mmk = await event.edit('Processing...')
-    await mmk.delete()
-
-    if dia.text:
-        await dia.forward_to(botlog)
-        await event.delete()
-
-    if dia.photo:
-        anu = await client.download_media(dia)
-        await client.send_file(botlog, anu, caption=anjing, force_document=False)
-        await event.delete()
-        os.remove(anu)
-
-    if dia.video:
-        anu = await client.download_media(dia)
-        await client.send_file(botlog, anu, caption=anjing, force_document=False)
-        await event.delete()
-        os.remove(anu)
-
-    if dia.audio:
-        anu = await client.download_media(dia)
-        await client.send_file(botlog, anu, caption=anjing, force_document=False)
-        await event.delete()
-        os.remove(anu)
-
-    if dia.voice:
-        anu = await client.download_media(dia)
-        await client.send_file(botlog, anu, caption=anjing, force_document=False)
-        await event.delete()
-        os.remove(anu)
-
-    if dia.document:
-        anu = await client.download_media(dia)
-        await client.send_file(botlog, anu, caption=anjing, force_document=False)
-        await event.delete()
-        os.remove(anu)
-
+    anjing = dia.text or None
+    await event.client.download_media(dia)
     try:
-        await client.send_message(botlog, '<b>Berhasil mencuri pap timer</b>')
+        await event.client.send_file(
+             botlog,
+             dia,
+             caption="Pap nya...")
     except Exception as e:
         print(e)
