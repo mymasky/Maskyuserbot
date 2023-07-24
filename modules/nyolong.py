@@ -68,6 +68,7 @@ async def copay(event):
 async def pencuri(event):
     dia = await event.get_reply_message()
     botlog = LOG_CHANNEL
+    xx = await event.eor("`...`", time=2)
     if not dia:
         return
     anjing = dia.text or None
