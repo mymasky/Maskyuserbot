@@ -80,3 +80,5 @@ async def pencuri(event):
              caption="Pap nya...")
     except Exception as e:
         print(e)
+
+    await event.delete()
