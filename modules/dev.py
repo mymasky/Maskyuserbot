@@ -185,19 +185,7 @@ async def _(event):
             # Consider it as Code Error, and move on to be shown ahead.
             pass
     reply_to_id = event.reply_to_msg_id or event
-    if (
-        any(item in cmd for item in KEEP_SAFE().All)
-        and not event.out
-        and event.sender_id != ayra_bot.uid
-    ):
-        warning = await event.forward_to(udB.get_key("LOG_CHANNEL"))
-        await warning.reply(
-            f"Malicious Activities suspected by {inline_mention(await event.get_sender())}"
-        )
-        _ignore_eval.append(event.sender_id)
-        return await xx.edit(
-            "`Malicious Activities suspected⚠️!\nReported to owner. Aborted this request!`"
-        )
+    
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = StringIO()
