@@ -9,6 +9,9 @@
 
 ๏ **Perintah:** `copy` <link>
 ◉ **Keterangan:** Colong media dari ch private.
+
+๏ **Perintah:** `curi` <balas pesan>
+◉ **Keterangan:** Curi pap timer.
 """
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -80,5 +83,3 @@ async def pencuri(event):
              caption="Pap nya...")
     except Exception as e:
         print(e)
-
-    await event.delete()
