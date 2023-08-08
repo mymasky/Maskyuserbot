@@ -139,7 +139,12 @@ async def gucast(event):
     kk = await event.eor("`Sebentar Kalo Limit Jangan Salahin Kynan Ya...`")
     er = 0
     done = 0
-    async for x in event.client.iter_dialogs():
+    if event.client._dialogs:
+        dialog = event.client._dialogs
+    else:
+        dialog = await event.client.get_dialogs()
+        event.client._dialogs.extend(dialog)
+    for x in dialog:
         if x.is_user and not x.entity.bot:
             chat = x.id
             if chat not in DEVS:
