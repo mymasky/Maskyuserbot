@@ -10,7 +10,6 @@ pytgcalls==3.0.0.dev24
 covid
 fonttools
 gtts
-gingerit
 jikanpy
 git+https://github.com/New-dev0/AsyncLyricsExtractor.git
 phlogo
