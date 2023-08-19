@@ -1,4 +1,4 @@
-FROM theteamultroid/ultroid:main
+FROM python:3.10
 
 COPY installer.sh .
 
