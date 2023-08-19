@@ -261,7 +261,8 @@ async def _(event):
 async def parse_buttons(event):
     y, x = event.chat, event.sender
     where_n, who_n = get_display_name(y), get_display_name(x)
-    where_l = event.message_link
+    where_l = f"https://t.me/{event.chat.username}/{event.message.id}"
+
     buttons = [[Button.url(where_n, where_l)]]
     if isinstance(x, User) and x.username:
         try:
