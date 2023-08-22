@@ -71,6 +71,27 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak
 </details>
 
 <details>
+<summary><b>🔗 Deploy Via Docker</b></summary>
+<br>
+
+ • `git clone https://github.com/naya1503/Naya-Userbot`
+
+ • `cd Naya-Userbot`
+
+ • `nano .env`
+  - Jika anda menggunakan mongodb maka isi pada .env MONGO_URI tetapi jika anda menggunakan redis maka isi REDIS_URI dan REDIS_PASSWORD
+  - isi vars .env API_ID, API_HASH, DAN SESSION
+  - Jika sudah 
+  - ketik ctrl + S
+  - ctrl + X
+
+ • `docker build . -t naya`
+
+ • `docker run --name naya-userbot --env-file .env naya`
+
+</details>
+
+<details>
 <summary><b>🔗 Deploy on Heroku</b></summary>
 <br>
 • Silakan isi vars yang diperlukan API_ID, API_HASH, SESSION, HEROKU_API dan HEROKU_APP_NAME
