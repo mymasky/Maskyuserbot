@@ -18,6 +18,28 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.functions.messages import DeleteHistoryRequest
 
+from telethon.errors.rpcerrorlist import ChatForwardsRestrictedError, UserBotError
+from telethon.events import NewMessage
+from telethon.tl.custom import Dialog
+from telethon.tl.functions.channels import (
+    GetAdminedPublicChannelsRequest,
+    InviteToChannelRequest,
+    LeaveChannelRequest,
+)
+from telethon.tl.functions.contacts import GetBlockedRequest
+from telethon.tl.functions.messages import AddChatUserRequest, GetAllStickersRequest
+from telethon.tl.functions.users import GetFullUserRequest
+from telethon.tl.types import (
+    Channel,
+    Chat,
+    InputMediaPoll,
+    Poll,
+    PollAnswer,
+    TLObject,
+    User,
+)
+from telethon.utils import get_peer_id
+
 try:
     import cv2
 except ImportError:
