@@ -244,7 +244,7 @@ restart_counter = 0
 async def restart(e):
     ok = await e.eor("`Processing...`")
     udB.set_key("_RESTART", f"{who}_{e.chat_id}_{ok.id}")
-    await bash("git pull && pip3 install -r requirements.txt")
+    await bash("git pull")
     await e.eor("Done.")
     os.execl(sys.executable, sys.executable, "-m", "Ayra")
 
