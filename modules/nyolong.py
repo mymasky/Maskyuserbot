@@ -18,28 +18,6 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.functions.messages import DeleteHistoryRequest
 
-from telethon.errors.rpcerrorlist import ChatForwardsRestrictedError, UserBotError
-from telethon.events import NewMessage
-from telethon.tl.custom import Dialog
-from telethon.tl.functions.channels import (
-    GetAdminedPublicChannelsRequest,
-    InviteToChannelRequest,
-    LeaveChannelRequest,
-)
-from telethon.tl.functions.contacts import GetBlockedRequest
-from telethon.tl.functions.messages import AddChatUserRequest, GetAllStickersRequest
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import (
-    Channel,
-    Chat,
-    InputMediaPoll,
-    Poll,
-    PollAnswer,
-    TLObject,
-    User,
-)
-from telethon.utils import get_peer_id
-
 try:
     import cv2
 except ImportError:
@@ -55,53 +33,38 @@ LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
 
 
 @ayra_cmd(pattern="copy(?: |$)(.*)")
-async def get_restriced_msg(event):
-    match = event.pattern_match.group(1).strip()
-    if not match:
-        await event.eor("`Berikan link yang valid`", time=5)
-        return
-    xx = await event.eor(get_string("com_1"))
-    chat, msg = get_chat_and_msgid(match)
-    if not (chat and msg):
-        return await event.eor(
-            f"{get_string('gms_1')}!\nEg: `https://t.me/asdasd/3 or `https://t.me/c/1313492028/3`"
-        )
-    try:
-        message = await event.client.get_messages(chat, ids=msg)
-    except BaseException as er:
-        return await event.eor(f"**ERROR**\n`{er}`")
-    try:
-        await event.client.send_message(event.chat_id, message)
-        await xx.try_delete()
-        return
-    except ChatForwardsRestrictedError:
-        pass
-    if message.media:
-        thumb = None
-        if message.document.thumbs:
-            thumb = await message.download_media(thumb=-1)
-        media, _ = await event.client.fast_downloader(
-            message.document,
-            show_progress=False,
-            event=xx,
-            message=f"Downloading {message.file.name}...",
-        )
-        await xx.edit("`Uploading...`")
-        uploaded, _ = await event.client.fast_uploader(
-            media.name, event=xx, show_progress=False, to_delete=True
-        )
-        typ = not bool(message.video)
-        await event.reply(
-            message.text,
-            file=uploaded,
-            supports_streaming=typ,
-            force_document=typ,
-            thumb=thumb,
-            attributes=message.document.attributes,
-        )
-        await xx.delete()
-        if thumb:
-            os.remove(thumb)
+async def copay(event):
+    if xxnx := event.pattern_match.group(1):
+        link = xxnx
+    elif event.is_reply:
+        link = await event.get_reply_message()
+    else:
+        return await eod(event, "`Berikan link tautan channel atau grup...`")
+
+    xx = await eor(event, "`Processing...`")
+    chat = "@Nyolongbang_bot"
+    async with event.client.conversation(chat) as conv:
+        try:
+            response = conv.wait_event(
+                events.NewMessage(incoming=True, from_users=6152320759)
+            )
+            await event.client.send_message(chat, link)
+            response = await response
+        except YouBlockedUserError:
+            await event.client(UnblockRequest(chat))
+            await event.client.send_message(chat, link)
+            response = await response
+        if response.text.startswith("Forward"):
+            await xx.edit("`Mengunggah...`")
+        else:
+            await xx.delete()
+            await event.client.send_file(
+                event.chat_id,
+                response.message,
+            )
+            await event.client.send_read_acknowledge(conv.chat_id)
+            await event.client(DeleteHistoryRequest(peer=chat, max_id=0))
+            await xx.delete()
 
 
 @ayra_cmd(pattern=r"curi(?: |$)(.*)")
