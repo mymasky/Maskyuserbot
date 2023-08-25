@@ -60,6 +60,9 @@ _start = [
         Button.inline("Stats ✨", data="stat"),
         Button.inline("Broadcast 📻", data="bcast"),
     ],
+    [
+        Button.inline("Bahasa 🌐", data="lang"),
+    ],
 ]
 
 import os

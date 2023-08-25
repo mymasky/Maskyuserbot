@@ -1,7 +1,7 @@
 
 aiohttp
 openai
-https://github.com/New-dev0/Telethon/archive/diamond.zip
+https://github.com/New-dev0/Telethon/archive/platy.zip
 python-decouple
 pymongo
 httpx
@@ -25,7 +25,7 @@ speedtest-cli
 textblob
 wikipedia
 spotdl
-py-Ayra==1.9.3
+py-Ayra==1.9.4
 akinator
 apscheduler
 beautifulsoup4
