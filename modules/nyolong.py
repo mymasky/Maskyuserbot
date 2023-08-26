@@ -14,7 +14,7 @@
 ◉ **Keterangan:** Curi pap timer.
 """
 
-from telethon.errors.rpcerrorlist import ChatForwardsRestrictedError, UserBotError
+from telethon.errors.rpcerrorlist import ChatForwardsRestrictedError, UserBotError, MediaEmptyError
 from telethon.events import NewMessage
 from telethon.tl.custom import Dialog
 from telethon.tl.functions.channels import (
@@ -70,6 +70,8 @@ async def get_restriced_msg(event):
         await xx.try_delete()
         return
     except ChatForwardsRestrictedError:
+        pass
+    except MediaEmptyError:
         pass
     if message.media:
         thumb = None
