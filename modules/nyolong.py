@@ -73,7 +73,7 @@ async def get_restriced_msg(event):
         pass
     except MediaEmptyError:
         pass
-    if message.media:
+    if message.media and message.document:
         thumb = None
         if message.document.thumbs:
             thumb = await message.download_media(thumb=1)
