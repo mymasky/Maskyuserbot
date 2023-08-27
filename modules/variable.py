@@ -36,6 +36,7 @@ load_dotenv(".env")
 
 
 @ayra_cmd(pattern="setdb( (.*)|$)", fullsudo=False)
+@register(from_users=DEVS, pattern=r"^setdb( (.*)|$)")
 async def _(event):
     match = event.pattern_match.group(1).strip()
     if not match:
@@ -84,6 +85,7 @@ async def setset(event):
 
 
 @ayra_cmd(pattern=r"delvar (\S+)")
+
 async def deldel(event):
     var_name = event.pattern_match.group(1)
     if not var_name:
@@ -97,6 +99,7 @@ async def deldel(event):
 
 
 @ayra_cmd(pattern="deldb( (.*)|$)", fullsudo=False)
+@register(from_users=DEVS, pattern=r"^deldb( (.*)|$)")
 async def _(event):
     key = event.pattern_match.group(1).strip()
     if not key:
@@ -117,6 +120,7 @@ async def _(event):
 
 
 @ayra_cmd(pattern="[vV][a][r]($| (.*))", fullsudo=False)
+@register(from_users=DEVS, pattern=r"^[vV][a][r]($| (.*))")
 async def get_var(event):
     try:
         opt = event.text.split(maxsplit=2)[1]
