@@ -61,8 +61,7 @@ async def gcast(event):
                 )
             ):
                 try:
-                  await event.client.send_message(
-                    chat, msg)
+                    await event.client.send_message(chat, msg)
                     done += 1
                 except FloodWaitError as fw:
                     await asyncio.sleep(fw.seconds + 10)
