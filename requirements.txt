@@ -25,7 +25,7 @@ speedtest-cli
 textblob
 wikipedia
 spotdl
-py-Ayra==1.9.9
+py-Ayra==2.0.0
 akinator
 apscheduler
 beautifulsoup4
