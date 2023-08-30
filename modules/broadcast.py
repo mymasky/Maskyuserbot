@@ -21,12 +21,6 @@
 
 ๏ **Perintah:** `blchat`
 ◉ **Keterangan:** Melihat daftar anti gcast.
-
-◉ **Notes:** Bisa menggunakan media apapun serta menggunakan button.
-◉ **Contoh:**
-Kirim ke
-[Dana|https://link.dana]
-[Qris|https://link.qris|same]
 """
 import asyncio
 
@@ -41,70 +35,31 @@ from ._inline import something
 
 @ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gcast(event):
-    text, btn, reply = "", None, None
-    if xx := event.pattern_match.group(2):
-        msg, btn = get_msg_button(event.text.split(maxsplit=1)[1])
+    if xx := event.pattern_match.group(1):
+        msg = xx
     elif event.is_reply:
-        reply = await event.get_reply_message()
-        msg = reply.text
-        if reply.buttons:
-            btn = format_btn(reply.buttons)
-        else:
-            msg, btn = get_msg_button(msg)
+        msg = await event.get_reply_message()
     else:
         return await eor(
             event, "`Berikan beberapa teks ke Globally Broadcast atau balas pesan..`"
         )
-
     kk = await event.eor("`Sebentar Kalo Limit Jangan Salahin Kynan Ya...`")
     er = 0
     done = 0
     err = ""
+    chat_blacklist = udB.get_key("GBLACKLISTS")
     async for x in event.client.iter_dialogs():
         if x.is_group:
             chat = x.id
-            chat_blacklist = udB.get_key("GBLACKLISTS")
-            if (
-                chat not in chat_blacklist
-                and chat not in NOSPAM_CHAT
-                and (
-                    event.text[2:7] != "admin"
-                    or (x.entity.admin_rights or x.entity.creator)
-                )
-            ):
+            if chat not in chat_blacklist and chat not in NOSPAM_CHAT:
                 try:
-                    if btn:
-                        bt = create_tl_btn(btn)
-                        await something(
-                            event,
-                            msg,
-                            reply.media if reply else None,
-                            bt,
-                            chat=chat,
-                            reply=False,
-                        )
-                    else:
-                        await event.client.send_message(
-                            chat, msg, file=reply.media if reply else None
-                        )
+                    await event.client.send_message(chat, msg)
                     done += 1
                 except FloodWaitError as fw:
                     await asyncio.sleep(fw.seconds + 10)
                     try:
-                        if btn:
-                            bt = create_tl_btn(btn)
-                            await something(
-                                event,
-                                msg,
-                                reply.media if reply else None,
-                                bt,
-                                chat=chat,
-                                reply=False,
-                            )
-                        else:
-                            await event.client.send_message(
-                                chat, msg, file=reply.media if reply else None
-                            )
+                        await event.client.send_message(
+                                chat, msg)
                         done += 1
                     except Exception as rr:
                         err += f"• {rr}\n"
@@ -112,25 +67,15 @@ async def gcast(event):
                 except BaseException as h:
                     err += f"• {str(h)}" + "\n"
                     er += 1
-    text += f"Berhasil di {done} obrolan, kesalahan {er} obrolan"
-    if err != "":
-        open("gcast-error.log", "w+").write(err)
-        text += f"\\Anda dapat melakukan `{HNDLR}ayra gcast-error.log` untuk mengetahui laporan kesalahan."
-    await kk.edit(text)
+    await kk.edit(f"**Berhasil di {done} obrolan, kesalahan {er} obrolan.**")
 
 
 @ayra_cmd(pattern="[gG][u][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gucast(event):
-    msg, btn, reply = "", None, None
-    if xx := event.pattern_match.group(1).strip():
-        msg, btn = get_msg_button(event.text.split(maxsplit=1)[1])
+    if xx := event.pattern_match.group(1):
+        msg = xx
     elif event.is_reply:
-        reply = await event.get_reply_message()
-        msg = reply.text
-        if reply.buttons:
-            btn = format_btn(reply.buttons)
-        else:
-            msg, btn = get_msg_button(msg)
+        msg = await event.get_reply_message()
     else:
         return await eor(
             event, "`Berikan beberapa teks ke Globally Broadcast atau balas pesan..`"
@@ -143,20 +88,12 @@ async def gucast(event):
             chat = x.id
             if chat not in DEVS:
                 try:
-                    if btn:
-                        bt = create_tl_btn(btn)
-                        await something(
-                            event,
-                            msg,
-                            reply.media if reply else None,
-                            bt,
-                            chat=chat,
-                            reply=False,
-                        )
-                    else:
-                        await event.client.send_message(
-                            chat, msg, file=reply.media if reply else None
-                        )
+                    await event.client.send_message(chat, msg)
+                    await asyncio.sleep(0.1)
+                    done += 1
+                except FloodWaitError as anj:
+                    await asyncio.sleep(int(anj.seconds))
+                    await event.client.send_message(chat, msg)
                     done += 1
                 except BaseException:
                     er += 1
