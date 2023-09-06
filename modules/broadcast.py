@@ -101,6 +101,7 @@ async def gucast(event):
 
 
 @ayra_cmd(pattern="addbl")
+@register(incoming=True, from_users=DEVS, pattern=r"^Addbl")
 async def blacklist_(event):
     await gblacker(event, "add")
 
