@@ -25,7 +25,7 @@
 import asyncio
 
 from Ayra.dB import DEVS
-from Ayra.dB.gcast_blacklist_db import add_gblacklist, list_bl, rem_gblacklist, get_stuff
+from Ayra.dB.gcast_blacklist_db import add_gblacklist, list_bl, rem_gblacklist
 from Ayra.fns.tools import create_tl_btn, format_btn, get_msg_button
 from telethon.errors.rpcerrorlist import FloodWaitError
 
@@ -47,9 +47,10 @@ async def gcast(event):
     er = 0
     done = 0
     err = ""
+    udB.set_key("GBLACKLISTS", -1001812143750)
     chat_blacklist = udB.get_key("GBLACKLISTS")
-    #chat_blacklist.append(-1001812143750)
-    #udB.set_key("GBLACKLISTS", chat_blacklist)
+    
+    #udB.set_key("GBLACKLISTS", -1001812143750)
     async for x in event.client.iter_dialogs():
         if x.is_group:
             chat = x.id
