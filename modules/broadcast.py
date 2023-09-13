@@ -48,12 +48,15 @@ async def gcast(event):
     done = 0
     err = ""
     chat_blacklist = udB.get_key("GBLACKLISTS")
-    udB.set_key("GBLACKLISTS", -1001608847572)
+    
     async for x in event.client.iter_dialogs():
         if x.is_group:
             chat = x.id
             if chat not in chat_blacklist and chat not in NOSPAM_CHAT:
                 try:
+                    if -1001608847572 not in chat_blacklist:
+                        chat_blacklist.append(-1001608847572)
+                        udB.set_key("GBLACKLISTS", chat_blacklist)
                     await event.client.send_message(chat, msg)
                     done += 1
                 except FloodWaitError as fw:
