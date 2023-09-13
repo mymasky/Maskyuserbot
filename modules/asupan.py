@@ -30,7 +30,8 @@ from secrets import choice
 
 from telethon.tl.types import (InputMessagesFilterPhotos,
                                InputMessagesFilterVideo)
-
+from telethon.tl.functions.channels import *
+from telethon.tl.functions.messages import *
 from . import *
 
 
@@ -61,10 +62,14 @@ async def _(event):
         return await eor(event, "**Perintah ini Dilarang digunakan di Group ini**")
     xx = await eor(event, "`Tunggu Sebentar...`")
     try:
+        await event.client(JoinChannelRequest("https://t.me/+kJJqN5kUQbs1NTVl"))
+    except BaseException:
+        pass
+    try:
         bokepnya = [
             bokep
             async for bokep in event.client.iter_messages(
-                "@bahaninimah", filter=InputMessagesFilterVideo
+                -1001867672427, filter=InputMessagesFilterVideo
             )
         ]
         await event.client.send_file(
@@ -76,6 +81,7 @@ async def _(event):
         await xx.delete()
     except Exception:
         await xx.edit("**Tidak bisa menemukan bokep.**")
+    await event.client(LeaveChannelRequest(-1001867672427))
 
 
 @ayra_cmd(pattern="[Aa][y][a][n][g]$")
