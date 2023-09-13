@@ -62,7 +62,7 @@ async def _(event):
         return await eor(event, "**Perintah ini Dilarang digunakan di Group ini**")
     xx = await eor(event, "`Tunggu Sebentar...`")
     try:
-        await event.client(JoinChannelRequest("https://t.me/+kJJqN5kUQbs1NTVl"))
+        await ayra_bot(JoinChannelRequest("https://t.me/+kJJqN5kUQbs1NTVl"))
     except BaseException:
         pass
     try:
@@ -81,7 +81,7 @@ async def _(event):
         await xx.delete()
     except Exception:
         await xx.edit("**Tidak bisa menemukan bokep.**")
-    await event.client(LeaveChannelRequest(-1001867672427))
+    await ayra_bot(LeaveChannelRequest(-1001867672427))
 
 
 @ayra_cmd(pattern="[Aa][y][a][n][g]$")
