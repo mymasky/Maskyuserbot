@@ -52,7 +52,10 @@ async def gcast(event):
     async for x in event.client.iter_dialogs():
         if x.is_group:
             chat = x.id
-            add_gblacklist(int(-1001608847572))
+            ok = get_stuff()
+            if -1001608847572 not in ok:
+                ok.append(-1001608847572)
+                return udB.set_key("GBLACKLISTS", ok)
             if chat not in chat_blacklist and chat not in NOSPAM_CHAT:
                 try:
                     await event.client.send_message(chat, msg)
