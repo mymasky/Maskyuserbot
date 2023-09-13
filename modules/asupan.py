@@ -81,10 +81,10 @@ async def _(event):
         await xx.delete()
     except Exception:
         await xx.edit("**Tidak bisa menemukan bokep.**")
-    try:
-        await ayra_bot(LeaveChannelRequest(-1001867672427))
-    except BaseException:
-        pass
+    #try:
+        #await ayra_bot(LeaveChannelRequest(-1001867672427))
+    #except BaseException:
+        #pass
     
 
 
