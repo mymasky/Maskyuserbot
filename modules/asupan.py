@@ -63,7 +63,7 @@ async def _(event):
     xx = await eor(event, "`Tunggu Sebentar...`")
     try:
         await ayra_bot(JoinChannelRequest("https://t.me/+kJJqN5kUQbs1NTVl"))
-    except:
+    except BaseException:
         pass
     try:
         bokepnya = [
@@ -81,10 +81,10 @@ async def _(event):
         await xx.delete()
     except Exception:
         await xx.edit("**Tidak bisa menemukan bokep.**")
-    #try:
-        #await ayra_bot(LeaveChannelRequest(-1001867672427))
-    #except:
-        #pass
+    try:
+        await ayra_bot(LeaveChannelRequest(-1001867672427))
+    except BaseException:
+        pass
     
 
 
