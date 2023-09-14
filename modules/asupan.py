@@ -62,14 +62,10 @@ async def _(event):
         return await eor(event, "**Perintah ini Dilarang digunakan di Group ini**")
     xx = await eor(event, "`Tunggu Sebentar...`")
     try:
-        await ayra_bot(JoinChannelRequest("https://t.me/+kJJqN5kUQbs1NTVl"))
-    except BaseException:
-        pass
-    try:
         bokepnya = [
             bokep
             async for bokep in event.client.iter_messages(
-                -1001867672427, filter=InputMessagesFilterVideo
+                "@JFMNI", filter=InputMessagesFilterVideo
             )
         ]
         await event.client.send_file(
