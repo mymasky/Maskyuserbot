@@ -7,12 +7,12 @@
 
 <b>A stable pluggable Telegram userbot + Voice & Video Call music bot, based on Telethon and Pyrogram</b>
 
-<a href="https://github.com/naya1503/Naya-Userbot/commits"> <img src="https://img.shields.io/github/last-commit/naya1503/Naya-Userbot?color=red&logo=github&logoColor=blue&style=for-the-badge" /></a>
-[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/naya1503/Naya-Userbot)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-blue)](https://GitHub.com/naya1503/Naya-Userbot/graphs/commit-activity)
-[![CodeQuality](https://img.shields.io/codacy/grade/a723cb464d5a4d25be3152b5d71de82d?color=blue&logo=codacy)](https://app.codacy.com/gh/naya1503/Naya-Userbot/dashboard)
-[![GitHub Forks](https://img.shields.io/github/forks/naya1503/Naya-Userbot?&logo=github)](https://github.com/naya1503/Naya-Userbot/fork)
-[![GitHub Stars](https://img.shields.io/github/stars/naya1503/Naya-Userbot?&logo=github)](https://github.com/naya1503/Naya-Userbot/stargazers)
+<a href="https://github.com/mymasky/Maskyuserbot/commits"> <img src="https://img.shields.io/github/last-commit/mymasky/Maskyuserbot?color=red&logo=github&logoColor=blue&style=for-the-badge" /></a>
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/mymasky/Maskyuserbot)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-Yes-blue)](https://GitHub.com/mymasky/Maskyuserbot/graphs/commit-activity)
+[![CodeQuality](https://img.shields.io/codacy/grade/a723cb464d5a4d25be3152b5d71de82d?color=blue&logo=codacy)](https://app.codacy.com/gh/mymasky/Maskyuserbot/dashboard)
+[![GitHub Forks](https://img.shields.io/github/forks/mymasky/Maskyuserbot?&logo=github)](https://github.com/mymasky/Maskyuserbot/fork)
+[![GitHub Stars](https://img.shields.io/github/stars/mymasky/Maskyuserbot?&logo=github)](https://github.com/mymasky/Maskyuserbot/stargazers)
 ----
 
 ## Disclaimer
@@ -51,7 +51,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak
 <summary><b>🔗 Deploy di VPS</b></summary>
 <br>
 
- • `git clone https://github.com/naya1503/Naya-Userbot`
+ • `git clone https://github.com/mymasky/Maskyuserbot`
 
  • `cd Naya-Userbot`
 
@@ -74,7 +74,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak
 <summary><b>🔗 Deploy Via Docker</b></summary>
 <br>
 
- • `git clone https://github.com/naya1503/Naya-Userbot`
+ • `git clone https://github.com/mymasky/Maskyuserbot`
 
  • `cd Naya-Userbot`
 
@@ -97,7 +97,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan userbot ini dengan bijak
 • Silakan isi vars yang diperlukan API_ID, API_HASH, SESSION, HEROKU_API dan HEROKU_APP_NAME
 
 <h3 align="center">Click The Button</h3>
-<a align="center" href="https://dashboard.heroku.com/new?template=https://github.com/naya1503/Naya-Userbot"><img src="https://www.herokucdn.com/deploy/button.svg"></a>
+<a align="center" href="https://dashboard.heroku.com/new?template=https://github.com/mymasky/Maskyuserbot"><img src="https://www.herokucdn.com/deploy/button.svg"></a>
 </div>
 
 </details>
