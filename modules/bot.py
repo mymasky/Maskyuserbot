@@ -30,11 +30,11 @@ except ImportError:
 
 from telethon.utils import resolve_bot_file_id
 
-piic = "https://graph.org/file/60408fea8439e6702674d.jpg"
+piic = "https://telegra.ph//file/0acc220f0ea06abcd5847.jpg"
 
 buttons = [
     [
-        Button.url(get_string("bot_4"), "t.me/kynansupport"),
+        Button.url(get_string("bot_4"), "t.me/GroupMasky"),
     ]
 ]
 
@@ -59,16 +59,16 @@ alive_txt = """
   ◈ Telethon - {}
 """
 
-in_alive = "<b>Naya-Userbot</b>\n<b>     status :</b> <code>{}</code>{}\n<b>       expired_on :</b> <code>{}</code>\n<b>       ping_dc :</b> <code>{}</code>\n<b>       version :</b> <code>{}</code>\n<b>       nayalibs :</b> <code>{}</code>\n<b>       uptime :</b> <code>{}</code>"
+in_alive = "<b>Masky-Userbot</b>\n<b>     status :</b> <code>{}</code>{}\n<b>       expired_on :</b> <code>{}</code>\n<b>       ping_dc :</b> <code>{}</code>\n<b>       version :</b> <code>{}</code>\n<b>       py-caska :</b> <code>{}</code>\n<b>       uptime :</b> <code>{}</code>"
 
 absen = [
     "**Hadir Sayang** 😳",
-    "**Hadir Bro Kynan** 😁",
-    "**Maaf ka habis nemenin ka Kynan** 🥺",
-    "**Maaf ka habis disuruh Tuan Kynan** 🥺🙏🏻",
-    "**Hadir Kynan Sayang** 😘",
-    "**Hadir Kynan Akuuuuhhh** ☺️",
-    "**Hadir Kynan brother Aku** 🥰",
+    "**Hadir Bro Masky** 😁",
+    "**Maaf ka habis nemenin ka Masky** 🥺",
+    "**Maaf ka habis disuruh Tuan Masky** 🥺🙏🏻",
+    "**Hadir Masky Sayang** 😘",
+    "**Hadir Masky Akuuuuhhh** ☺️",
+    "**Hadir Masky brother Aku** 🥰",
     "**Sokap bet lu**",
     "**Apasi Bawel** 🥰",
 ]
@@ -375,7 +375,7 @@ async def _(e):
         )
     else:
         await xx.edit(
-            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://github.com/naya1503/Naya-Userbot/tree/{branch}">[{branch}]</a></strong>',
+            f'<code>Your BOT is </code><strong>up-to-date</strong><code> with </code><strong><a href="https://github.com/mymasky/Maskyuserbot/tree/{branch}">[{branch}]</a></strong>',
             parse_mode="html",
             link_preview=False,
         )
