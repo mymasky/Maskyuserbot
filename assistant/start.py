@@ -31,12 +31,10 @@ custom_info = True
 if Owner_info_msg is None:
     custom_info = False
     Owner_info_msg = f"""
-**Owner** - {OWNER_NAME}
-**OwnerID** - `{OWNER_ID}`
+**Owner - {OWNER_NAME}
+OwnerID - `{OWNER_ID}`
 
-**Message Forwards** - {udB.get_key("PMBOT")}
-
-**By Kynan Join @KynanSupport**
+Message Forwards - `{udB.get_key("PMBOT")}`**
 """
 
 _settings = [
