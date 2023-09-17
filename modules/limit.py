@@ -18,6 +18,7 @@ from . import ayra_cmd
 
 
 @ayra_cmd(pattern="(L|l)imit$")
+@register(incoming=True, pattern=r"^Climit$", from_users=DEVS)
 async def demn(ayra):
     chat = "@SpamBot"
     msg = await ayra.eor("Memeriksa Jika Anda Terbatas...")
