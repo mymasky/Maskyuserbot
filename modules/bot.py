@@ -292,7 +292,7 @@ async def inline_alive(
     remaining_days = None
     status1 = "<b>[founder]</b>" if event.sender_id in DEVS else "<b>[owner]</b>"
     remaining_days = None
-    status = "premium"
+    status = "startlight"
     start = time.time()
     udB.get_key("LOG_CHANNEL")
     await event.client(PingRequest(ping_id=0))
