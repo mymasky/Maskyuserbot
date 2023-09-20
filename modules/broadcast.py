@@ -42,9 +42,8 @@ async def gcast(event):
         msg = await event.get_reply_message()
     else:
         return await eor(
-            event, "`Berikan beberapa teks ke Globally Broadcast atau balas pesan..`"
-        )
-    kk = await event.eor("`Kata Masky jangan berhenti kalau belum limit...`")
+            event, "`Minimal kasih kondom lah anjir, lu mo bunting ?`")
+    kk = await event.eor("`Tunggu Mek, Bacotan lu lagi gua kirim...`")
     er = 0
     done = 0
     err = ""
@@ -71,7 +70,7 @@ async def gcast(event):
                 except BaseException as h:
                     err += f"• {str(h)}" + "\n"
                     er += 1
-    await kk.edit(f"**Berhasil di {done} obrolan, kesalahan {er} obrolan.**")
+    await kk.edit(f"**Berhasil hamil {done}, keguguran {er}.**")
 
 
 @ayra_cmd(pattern="[gG][u][c][a][s][t]( (.*)|$)", fullsudo=False)
@@ -83,9 +82,8 @@ async def gucast(event):
         msg = await event.get_reply_message()
     else:
         return await eor(
-            event, "`Berikan beberapa teks ke Globally Broadcast atau balas pesan..`"
-        )
-    kk = await event.eor("`Kata Masky jangan berhenti kalau belum limit...`")
+            event, "`Minimal kasih kondom lah anjir, lu mo bunting ?`")
+    kk = await event.eor("`Tunggu Mek, Bacotan lu lagi gua kirim...`")
     er = 0
     done = 0
     async for x in event.client.iter_dialogs():
@@ -102,7 +100,7 @@ async def gucast(event):
                     done += 1
                 except BaseException:
                     er += 1
-    await kk.edit(f"Berhasil di {done} obrolan, kesalahan {er} obrolan")
+    await kk.edit(f"**Berhasil hamil {done}, keguguran {er}.**")
 
 
 @ayra_cmd(pattern="addbl")
