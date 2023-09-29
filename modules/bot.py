@@ -63,14 +63,14 @@ in_alive = "<b>Masky-Userbot</b>\n<b>     status :</b> <code>{}</code>{}\n<b>   
 
 absen = [
     "**Hadir Sayang** 😳",
-    "**Hadir Bro Masky** 😁",
+    "**Masky no counter** 😏",
     "**Maaf ka habis nemenin ka Masky** 🥺",
     "**Maaf ka habis disuruh Tuan Masky** 🥺🙏🏻",
     "**Hadir Masky Sayang** 😘",
     "**Hadir Masky Akuuuuhhh** ☺️",
-    "**Hadir Masky brother Aku** 🥰",
-    "**Sokap bet lu**",
-    "**Apasi Bawel** 🥰",
+    "**Hadir Masky Lopyuufull** 🥰",
+    "**Masky baru bangun ya?**😖",
+    "**Apa Masky sayang?** 🥰",
 ]
 
 
@@ -79,14 +79,14 @@ async def kynanabsen(ganteng):
     await ganteng.reply(choice(absen))
 
 
-@register(incoming=True, from_users=DEVS, pattern=r"^Kynan")
+@register(incoming=True, from_users=DEVS, pattern=r"^Masky")
 async def naya(naya):
-    await naya.reply("**Kynan Punya Nya Naya**🤩")
+    await naya.reply("**Masky di mana ya kak**😖")
 
 
-@register(incoming=True, from_users=DEVS, pattern=r"^Naya")
+@register(incoming=True, from_users=DEVS, pattern=r"^Cas")
 async def naya(naya):
-    await naya.reply("**Naya Punya Nya Kynan**🤩")
+    await naya.reply("**Caska no counter bosss**🤩")
 
 
 @ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
@@ -107,7 +107,7 @@ async def lol(
             entity, Chat
         ):
             groups += 1
-    status1 = "<b>[founder]</b>" if ayra.sender_id in DEVS else "<b>[owner]</b>"
+    status1 = "<b>[SEPUH]</b>" if ayra.sender_id in DEVS else "<b>[Babu]</b>"
     remaining_days = None
     start = time.time()
     await ayra.client(PingRequest(ping_id=0))
@@ -191,7 +191,7 @@ async def lol(
 
 
 @ayra_cmd(pattern="ping$", chats=[], type=["official", "assistant"])
-@register(incoming=True, from_users=DEVS, pattern=r"^Cping$")
+@register(incoming=True, from_users=DEVS, pattern=r"^Crot$")
 async def _(event):
     start = time.time()
     x = await event.eor("Ping !")
