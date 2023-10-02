@@ -391,3 +391,17 @@ async def updava(event):
         force_document=True,
         buttons=Button.inline("Changelog", data="changes"),
     )
+
+
+emoji_categories = [
+        "😭",
+        "🤬",
+        "👀",
+        "😎",
+        "🖕",
+    ]
+
+
+
+async def tes(client: Client, message: Message):
+        await client.send_reaction(message.chat.id, message.id, random.choice(emoji_categories))
