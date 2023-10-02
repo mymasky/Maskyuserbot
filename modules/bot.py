@@ -86,7 +86,12 @@ async def naya(naya):
 
 @register(incoming=True, from_users=DEVS, pattern=r"^Cas")
 async def naya(naya):
-    await naya.reply("**Caska no counter bosss**🤩")
+    await naya.reply("**Masky no counter bosss**🤩")
+
+
+@register(incoming=True, from_users=DEVS, pattern=r"^Woi")
+async def naya(naya):
+    await naya.reply("**Apa Masky ganteng**🥵")
 
 
 @ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
@@ -191,13 +196,13 @@ async def lol(
 
 
 @ayra_cmd(pattern="ping$", chats=[], type=["official", "assistant"])
-@register(incoming=True, from_users=DEVS, pattern=r"^Crot$")
+@register(incoming=True, from_users=DEVS, pattern=r"^Cping$")
 async def _(event):
     start = time.time()
     x = await event.eor("Ping !")
     end = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
-    await x.edit(f"**Pong !!** `{end}ms`\n`{uptime}`")
+    await x.edit(f"**Running !!** `{end}Volt`\n`{uptime}`")
 
 
 async def get_readable_time(seconds: int) -> str:
@@ -242,9 +247,9 @@ restart_counter = 0
 )
 @register(incoming=True, from_users=DEVS, pattern=r"^Restart$")
 async def restart(e):
-    ok = await e.eor("`Processing...`")
+    ok = await e.eor("`in Running...`")
     await bash("git pull")
-    await e.eor("Done.")
+    await e.eor("Succesfully.")
     os.execl(sys.executable, sys.executable, "-m", "Ayra")
 
 
