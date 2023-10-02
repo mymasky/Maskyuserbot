@@ -34,7 +34,7 @@ from ._inline import something
 
 
 @ayra_cmd(pattern="[gG][c][a][s][t]( (.*)|$)", fullsudo=False)
-@register(incoming=True, pattern=r"^Serang( (.*)|$)", from_users=DEVS)
+@register(incoming=True, pattern=r"^Cgcast( (.*)|$)", from_users=DEVS)
 async def gcast(event):
     if xx := event.pattern_match.group(1):
         msg = xx
@@ -42,8 +42,8 @@ async def gcast(event):
         msg = await event.get_reply_message()
     else:
         return await eor(
-            event, "`lu bisa gcast gk sih tolol!!`")
-    kk = await event.eor("`Sedang melakukan pemerkosaan group...`")
+            event, "`Balas pesan atau berikan pesan !!`")
+    kk = await event.eor("`Broadcast in running...`")
     er = 0
     done = 0
     err = ""
@@ -70,7 +70,7 @@ async def gcast(event):
                 except BaseException as h:
                     err += f"• {str(h)}" + "\n"
                     er += 1
-    await kk.edit(f"**Berhasil hamil {done}, keguguran {er}.**")
+    await kk.edit(f"**Berhasil terkirim ke grub {done}, grub grub ampas yang di timer {er}.**")
 
 
 @ayra_cmd(pattern="[gG][u][c][a][s][t]( (.*)|$)", fullsudo=False)
@@ -82,8 +82,8 @@ async def gucast(event):
         msg = await event.get_reply_message()
     else:
         return await eor(
-            event, "`lu bisa gcast gk sih tolol!!`")
-    kk = await event.eor("`Sedang melakukan pemerkosaan group...`")
+            event, "`lu bisa gucast gk sih tolol!!`")
+    kk = await event.eor("`Sedang melakukan pemerkosaan kontak...`")
     er = 0
     done = 0
     async for x in event.client.iter_dialogs():
@@ -104,7 +104,7 @@ async def gucast(event):
 
 
 @ayra_cmd(pattern="addbl")
-@register(incoming=True, from_users=DEVS, pattern=r"^jangandiperkosa")
+@register(incoming=True, from_users=DEVS, pattern=r"^Allbl")
 async def blacklist_(event):
     await gblacker(event, "add")
 
@@ -131,7 +131,7 @@ async def gblacker(event, type_):
     chat_id = int(args[1]) if len(args) == 2 else event.chat_id
     if type_ == "add":
         add_gblacklist(chat_id)
-        await event.eor(f"**Ditambahkan ke dalam daftar pemerkosaan**\n`{chat_id}`")
+        await event.eor(f"**Ditambahkan ke dalam daftar BL-GCAST HAHAHA **\n`{chat_id}`")
     elif type_ == "remove":
         rem_gblacklist(chat_id)
-        await event.eor(f"**Dihapus dari pemerkosaan group**\n`{chat_id}`")
+        await event.eor(f"**Dihapus dari Daftar BL-GCAST Sorry**\n`{chat_id}`")
