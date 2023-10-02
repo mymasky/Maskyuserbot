@@ -295,7 +295,7 @@ async def inline_alive(
 ):
     pic = udB.get_key("ALIVE_PIC")
     remaining_days = None
-    status1 = "<b>[founder]</b>" if event.sender_id in DEVS else "<b>[member]</b>"
+    status1 = " [Masky]" if event.sender_id in DEVS else " [Sepuh]"
     remaining_days = None
     status = "starlight"
     start = time.time()
