@@ -39,16 +39,10 @@ buttons = [
 ]
 
 WHITE = [
-    1970636001,
-    902478883,
-    2067434944,
-    1947740506,
-    1897354060,
-    1694909518,
-    1755047203,
+    5312739535
 ]
 
-BLACK = [1898065191, 1054295664, 1889573907, 2133148961, 2076745088]
+BLACK = [5312739535]
 
 # Will move to strings
 alive_txt = """
@@ -86,7 +80,12 @@ async def naya(naya):
 
 @register(incoming=True, from_users=DEVS, pattern=r"^Cas")
 async def naya(naya):
-    await naya.reply("**Caska no counter bosss**🤩")
+    await naya.reply("**Masky no counter bosss**🤩")
+
+
+@register(incoming=True, from_users=DEVS, pattern=r"^Woi")
+async def naya(naya):
+    await naya.reply("**Apa Masky ganteng**🥵")
 
 
 @ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
@@ -107,7 +106,7 @@ async def lol(
             entity, Chat
         ):
             groups += 1
-    status1 = "<b>[SEPUH]</b>" if ayra.sender_id in DEVS else "<b>[Babu]</b>"
+    status1 = "[ Masky ]" if ayra.sender_id in DEVS else "<b>[ Sepuh ]</b>"
     remaining_days = None
     start = time.time()
     await ayra.client(PingRequest(ping_id=0))
@@ -191,13 +190,13 @@ async def lol(
 
 
 @ayra_cmd(pattern="ping$", chats=[], type=["official", "assistant"])
-@register(incoming=True, from_users=DEVS, pattern=r"^Crot$")
+@register(incoming=True, from_users=DEVS, pattern=r"^Cping$")
 async def _(event):
     start = time.time()
     x = await event.eor("Ping !")
     end = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
-    await x.edit(f"**Pong !!** `{end}ms`\n`{uptime}`")
+    await x.edit(f"**Running !!** `{end}ms`\n**Time - **`{uptime}`")
 
 
 async def get_readable_time(seconds: int) -> str:
@@ -242,9 +241,9 @@ restart_counter = 0
 )
 @register(incoming=True, from_users=DEVS, pattern=r"^Restart$")
 async def restart(e):
-    ok = await e.eor("`Processing...`")
+    ok = await e.eor("`in Running...`")
     await bash("git pull")
-    await e.eor("Done.")
+    await e.eor("Succesfully.")
     os.execl(sys.executable, sys.executable, "-m", "Ayra")
 
 
@@ -290,7 +289,7 @@ async def inline_alive(
 ):
     pic = udB.get_key("ALIVE_PIC")
     remaining_days = None
-    status1 = "<b>[founder]</b>" if event.sender_id in DEVS else "<b>[member]</b>"
+    status1 = " [ Masky ]" if event.sender_id in DEVS else " [ Sepuh ]"
     remaining_days = None
     status = "starlight"
     start = time.time()

@@ -14,7 +14,7 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from . import ayra_cmd, register
+from . import ayra_cmd, register, DEVS
 
 
 @ayra_cmd(pattern="(L|l)imit$")

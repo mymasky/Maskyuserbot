@@ -25,7 +25,7 @@ speedtest-cli
 textblob
 wikipedia
 spotdl
-py_caska==1.0.1
+py-caska==1.0.3
 akinator
 apscheduler
 beautifulsoup4
