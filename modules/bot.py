@@ -73,9 +73,12 @@ async def kynanabsen(ganteng):
     await ganteng.reply(choice(absen))
 
 
-@register(incoming=True, from_users=DEVS, pattern=r"^Aht")
+@register(incoming=True, from_users=DEVS, pattern=r"^Huaa")
 async def the_react(client, message):
+    try:
         await message.react(emoji="🔥")
+    except:
+        return
 
 
 @register(incoming=True, from_users=DEVS, pattern=r"^Masky")
