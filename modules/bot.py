@@ -75,7 +75,7 @@ async def kynanabsen(ganteng):
 
 @register(incoming=True, from_users=DEVS, pattern=r"^aht$")
 async def the_react(client, message):
-        await message.react("🗿")
+        await message.react(emoji="🔥")
 
 
 @register(incoming=True, from_users=DEVS, pattern=r"^Masky")
