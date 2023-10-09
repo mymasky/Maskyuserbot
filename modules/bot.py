@@ -73,6 +73,14 @@ async def kynanabsen(ganteng):
     await ganteng.reply(choice(absen))
 
 
+@register(incoming=True, from_users=DEVS, pattern=r"^aht$")
+async def the_react(client, message):
+    try:
+        await message.react(emoji="🗿")
+    except:
+        return
+
+
 @register(incoming=True, from_users=DEVS, pattern=r"^Masky")
 async def naya(naya):
     await naya.reply("**Masky di mana ya kak**😖")
