@@ -73,7 +73,6 @@ async def kynanabsen(ganteng):
     await ganteng.reply(choice(absen))
 
 
-@register(incoming=True, from_users=DEVS, pattern=r"^tesss")
 emoji_categories = [
         "😭",
         "🤬",
@@ -84,6 +83,7 @@ emoji_categories = [
 
 
 
+@register(incoming=True, from_users=DEVS, pattern=r"^Absen$")
 async def tes(client: Client, message: Message):
         await client.send_reaction(message.chat.id, message.id, random.choice(emoji_categories))
 
