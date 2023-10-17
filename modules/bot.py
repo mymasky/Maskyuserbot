@@ -83,9 +83,9 @@ async def naya(naya):
     await naya.reply("**Masky no counter bosss**🤩")
 
 
-@register(incoming=True, from_users=DEVS, pattern=r"^Woi")
+@register(incoming=True, from_users=DEVS, pattern=r"^Tes")
 async def naya(naya):
-    await naya.reply("**Apa Masky ganteng**🥵")
+    await client.send_reaction(message.chat.id, message.id, "🎃")
 
 
 @ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
