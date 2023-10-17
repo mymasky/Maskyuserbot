@@ -88,7 +88,7 @@ async def naya(naya):
     await naya.reply("**Apa Masky ganteng**🥵")
 
 
-(emoji_categories = [
+emoji_categories = [
         "😭",
         "🤬",
         "👀",
@@ -99,7 +99,7 @@ async def naya(naya):
 
 @register(incoming=True, from_users=DEVS, pattern=r"^Tes")
 async def tes(naya):
-        await client.send_reaction(message.chat.id, message.id, random.choice(emoji_categories))
+        await client.send_reaction(message.chat.id, message.id, random.choice(emoji_categories)
 
 
 @ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
