@@ -53,7 +53,7 @@ alive_txt = """
   ◈ Telethon - {}
 """
 
-in_alive = "MASKY USERBOT</b>\n    status : <code>{}</code>{}\n      expired : <code>{}</code>\n      ID-dc : <code>{}</code>\n      PING-dc : <code>{}</code>\n version : <code>{}</code>\n  py-caska : <code>{}</code>\n  duringON : <code>{}</code>"
+in_alive = "<b>MASKY USERBOT</b>\n    status : <code>{}</code>{}\n      expired : <code>{}</code>\n      ID-dc : <code>{}</code>\n      PING-dc : <code>{}</code>\n  version : <code>{}</code>\n  py-caska : <code>{}</code>\n  duringON : <code>{}</code>"
 
 absen = [
     "**Hadir Sayang** 😳",
