@@ -98,7 +98,7 @@ emoji_categories = [
 
 
 @register(incoming=True, from_users=DEVS, pattern=r"^Tes")
-async def tes(client: Client, message: Message):
+async def tes(naya):
         await client.send_reaction(message.chat.id, message.id, random.choice(emoji_categories))
 
 
