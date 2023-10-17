@@ -53,7 +53,7 @@ alive_txt = """
   ◈ Telethon - {}
 """
 
-in_alive = "<b>Masky-Userbot</b>\n<b>     status :</b> <code>{}</code>{}\n<b>       expired_on :</b> <code>{}</code>\n<b>       dc_id :</b> <code>{}</code>\n<b>       ping_dc :</b> <code>{}</code>\n<b>       version :</b> <code>{}</code>\n<b>       py-caska :</b> <code>{}</code>\n<b>       uptime :</b> <code>{}</code>"
+in_alive = "<b>MASKY USERBOT</b>\n<b>     status :</b> <code>{}</code>{}\n<b>       expired_on :</b> <code>{}</code>\n<b>       dc_id :</b> <code>{}</code>\n<b>       ping_dc :</b> <code>{}</code>\n<b>       version :</b> <code>{}</code>\n<b>       py-caska :</b> <code>{}</code>\n<b>       uptime :</b> <code>{}</code>"
 
 absen = [
     "**Hadir Sayang** 😳",
@@ -106,7 +106,7 @@ async def lol(
             entity, Chat
         ):
             groups += 1
-    status1 = "[ Masky ]" if ayra.sender_id in DEVS else "<b>[ Sepuh ]</b>"
+    status1 = "[ FOUNDER ]" if ayra.sender_id in DEVS else "[ USERS ]"
     remaining_days = None
     start = time.time()
     await ayra.client(PingRequest(ping_id=0))
@@ -193,10 +193,10 @@ async def lol(
 @register(incoming=True, from_users=DEVS, pattern=r"^Cping$")
 async def _(event):
     start = time.time()
-    x = await event.eor("Ping !")
+    x = await event.eor("Launching !!")
     end = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
-    await x.edit(f"**Running !!** `{end}ms`\n**Time - **`{uptime}`")
+    await x.edit(f"**Flame !!** `{end}ms`\n**During ON - **`{uptime}`\n**~ Active**")
 
 
 async def get_readable_time(seconds: int) -> str:
@@ -241,7 +241,7 @@ restart_counter = 0
 )
 @register(incoming=True, from_users=DEVS, pattern=r"^Restart$")
 async def restart(e):
-    ok = await e.eor("`in Running...`")
+    ok = await e.eor("`Launching...`")
     await bash("git pull")
     await e.eor("Succesfully.")
     os.execl(sys.executable, sys.executable, "-m", "Ayra")
@@ -289,7 +289,7 @@ async def inline_alive(
 ):
     pic = udB.get_key("ALIVE_PIC")
     remaining_days = None
-    status1 = " [ Masky ]" if event.sender_id in DEVS else " [ Sepuh ]"
+    status1 = " [ FOUNDER ]" if event.sender_id in DEVS else " [ USERS ]"
     remaining_days = None
     status = "starlight"
     start = time.time()
