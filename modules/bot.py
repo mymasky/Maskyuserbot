@@ -71,16 +71,6 @@ absen = [
 @register(incoming=True, from_users=DEVS, pattern=r"^Absen$")
 async def kynanabsen(ganteng):
     await ganteng.reply(choice(absen))
-  
-
-emoji_categories = [
-        "😭",
-        "🤬",
-    ]
-
-
-async def maskyabsen(client):
-        await client.send_reaction(message.chat.id, message.id, random.choice(emoji_categories))
 
 
 @register(incoming=True, from_users=DEVS, pattern=r"^Masky")
