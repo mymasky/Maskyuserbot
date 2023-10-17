@@ -88,7 +88,7 @@ async def naya(naya):
     await naya.reply("**Apa Masky ganteng**🥵")
 
 
-emoji_categories = [
+(emoji_categories = [
         "😭",
         "🤬",
         "👀",
