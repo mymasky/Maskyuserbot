@@ -16,7 +16,6 @@ from telethon import __version__
 from telethon.errors.rpcerrorlist import (BotMethodInvalidError,
                                           ChatSendMediaForbiddenError)
 from telethon.events import NewMessage
-from telethon.events import Message
 from telethon.tl.custom import Dialog
 from telethon.tl.functions import PingRequest
 from telethon.tl.types import Channel, Chat, User
@@ -87,20 +86,6 @@ async def naya(naya):
 @register(incoming=True, from_users=DEVS, pattern=r"^Woi")
 async def naya(naya):
     await naya.reply("**Apa Masky ganteng**🥵")
-
-
-emoji_categories = [
-        "😭",
-        "🤬",
-        "👀",
-        "😎",
-        "🖕",
-    ]
-
-
-@register(incoming=True, from_users=DEVS, pattern=r"^Tes")
-async def tes(client: Client, message: Message):
-        await client.send_reaction(message.chat.id, message.id, random.choice(emoji_categories))
 
 
 @ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
