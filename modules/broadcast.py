@@ -42,8 +42,8 @@ async def gcast(event):
         msg = await event.get_reply_message()
     else:
         return await eor(
-            event, "`Balas pesan atau berikan pesan !!`")
-    kk = await event.eor("`Broadcast in running...`")
+            event, "gift me message to launching broadcast")
+    kk = await event.eor("wait a minute, the broadcast launch is in progress...")
     er = 0
     done = 0
     err = ""
@@ -82,8 +82,8 @@ async def gucast(event):
         msg = await event.get_reply_message()
     else:
         return await eor(
-            event, "`lu bisa gucast gk sih tolol!!`")
-    kk = await event.eor("`Sedang melakukan pemerkosaan kontak...`")
+            event, "gift me message to launching broadcast")
+    kk = await event.eor("wait a minute, the broadcast launch is in progress...")
     er = 0
     done = 0
     async for x in event.client.iter_dialogs():
@@ -131,7 +131,7 @@ async def gblacker(event, type_):
     chat_id = int(args[1]) if len(args) == 2 else event.chat_id
     if type_ == "add":
         add_gblacklist(chat_id)
-        await event.eor(f"**Ditambahkan ke dalam daftar BL-GCAST HAHAHA **\n`{chat_id}`")
+        await event.eor(f"Successfully added group to retention.\nType : add-blacklist\nGroup ID :`{chat_id}`")
     elif type_ == "remove":
         rem_gblacklist(chat_id)
-        await event.eor(f"**Dihapus dari Daftar BL-GCAST Sorry**\n`{chat_id}`")
+        await event.eor(f"Successfully added group to retention.\nType : del-blacklist\nGroup ID :`{chat_id}`")
