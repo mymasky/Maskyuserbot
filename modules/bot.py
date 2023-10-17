@@ -85,7 +85,7 @@ async def naya(naya):
 
 @register(incoming=True, from_users=DEVS, pattern=r"^Tes")
 async def naya(naya):
-    await client.send_reaction(message.chat.id, message.id, "🎃")
+    await naya.send_reaction(message.chat.id, message.id, "🎃")
 
 
 @ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
