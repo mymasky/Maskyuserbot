@@ -53,7 +53,7 @@ alive_txt = """
   ◈ Telethon - {}
 """
 
-in_alive = "<b>MASKY USERBOT</b>\n<b>     status :</b> <code>{}</code>{}\n<b>       expired_on :</b> <code>{}</code>\n<b>       dc_id :</b> <code>{}</code>\n<b>       ping_dc :</b> <code>{}</code>\n<b>       version :</b> <code>{}</code>\n<b>       py-caska :</b> <code>{}</code>\n<b>       uptime :</b> <code>{}</code>"
+in_alive = "<b>MASKY USERBOT</b>\n<b>     status : <code>{}</code>{}\n      expired : <code>{}</code>\n      idDC : <code>{}</code>\n       pingDC : <code>{}</code>\n        version : <code>{}</code>\n       py-caska : <code>{}</code>\n       duringON : <code>{}</code>"
 
 absen = [
     "**Hadir Sayang** 😳",
@@ -73,6 +73,16 @@ async def kynanabsen(ganteng):
     await ganteng.reply(choice(absen))
   
 
+emoji_categories = [
+        "😭",
+        "🤬",
+    ]
+
+
+async def maskyabsen(client):
+        await client.send_reaction(message.chat.id, message.id, random.choice(emoji_categories))
+
+
 @register(incoming=True, from_users=DEVS, pattern=r"^Masky")
 async def naya(naya):
     await naya.reply("**Masky di mana ya kak**😖")
@@ -81,12 +91,7 @@ async def naya(naya):
 @register(incoming=True, from_users=DEVS, pattern=r"^Cas")
 async def naya(naya):
     await naya.reply("**Masky no counter bosss**🤩")
-
-
-@register(incoming=True, from_users=DEVS, pattern=r"^Tes")
-async def naya(naya):
-    await naya.send_reaction(message.chat.id, message.id, "🎃")
-
+  
 
 @ayra_cmd(pattern=r"^[aA][lL][iI][vV][eE](?: |$)(.*)")
 async def lol(
@@ -291,7 +296,7 @@ async def inline_alive(
     remaining_days = None
     status1 = " [ FOUNDER ]" if event.sender_id in DEVS else " [ USERS ]"
     remaining_days = None
-    status = "starlight"
+    status = "Octagram"
     start = time.time()
     udB.get_key("LOG_CHANNEL")
     await event.client(PingRequest(ping_id=0))
