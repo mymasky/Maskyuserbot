@@ -37,9 +37,9 @@ async def watcher(event):
 
 
 @ayra_cmd(
-    pattern="[Dd][m][u][t][e]( (.*)|$)",
+    pattern="[Dd][m][u][t]( (.*)|$)",
 )
-@register(incoming=True, pattern=r"^\[Dd][m][u][t][e]( (.*)|$)", from_users=DEVS)
+@register(incoming=True, pattern=r"^\[Dd][m][u][t]( (.*)|$)", from_users=DEVS)
 async def startmute(event):
     xx = await event.eor("`Bentar...`")
     if input_ := event.pattern_match.group(1).strip():
